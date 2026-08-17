@@ -16,10 +16,11 @@ import AssessmentSection from "./components/AssessmentSection"
 import FinalCTA from "./components/FinalCTA"
 import Footer from "./components/Footer"
 import AIOrb from "./components/AIOrb"
+import "./premium-restyle.css"
 
 function App() {
   return (
-    <div className="page-shell relative min-h-screen bg-[#05070A] text-white antialiased">
+    <div className="page-shell sv-v2 relative min-h-screen bg-[#05070A] text-white antialiased">
       <div className="persistent-3d-environment pointer-events-none fixed inset-0 z-0 overflow-hidden">
         <div className="ambient-grid" />
         <div className="ambient-orb ambient-orb--one" />
