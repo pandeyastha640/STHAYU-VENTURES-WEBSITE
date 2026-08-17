@@ -17,7 +17,6 @@ import FinalCTA from "./components/FinalCTA"
 import Footer from "./components/Footer"
 import AIOrb from "./components/AIOrb"
 import "./premium-restyle.css"
-import "./global-theme.css"
 
 function App() {
   return (
@@ -42,11 +41,8 @@ function App() {
 
       <div className="relative z-10">
         <Navbar />
-
         <main className="relative z-10">
-          <section id="hero">
-            <Hero />
-          </section>
+          <section id="hero"><Hero /></section>
           <section id="media-showcase"><MediaShowcase /></section>
           <section id="problem-discovery"><ProblemDiscovery /></section>
           <section id="why-sthayu"><WhySthayu /></section>
