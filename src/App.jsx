@@ -16,6 +16,7 @@ import PremiumPortfolioGallery from "./components/PremiumPortfolioGallery"
 import AssessmentSection from "./components/AssessmentSection"
 import FinalCTA from "./components/FinalCTA"
 import Footer from "./components/Footer"
+import AIOrb from "./components/AIOrb"
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
         <div className="ambient-rail ambient-rail--one" />
         <div className="ambient-rail ambient-rail--two" />
         <div className="ambient-rail ambient-rail--three" />
+        <div className="global-3d-orb" aria-hidden="true">
+          <AIOrb />
+        </div>
       </div>
 
       <div className="relative z-10">
@@ -83,7 +87,6 @@ function App() {
           </section>
 
           <InteractiveShowcase />
-
           <PremiumPortfolioGallery />
 
           <section id="pricing">
@@ -91,7 +94,6 @@ function App() {
           </section>
 
           <AssessmentSection />
-
           <FinalCTA />
         </main>
 
