@@ -1,6 +1,8 @@
 import { useState } from "react"
-import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Sparkles, Play } from "lucide-react"
 import AIOrb from "./AIOrb"
+
+const TECH_VIDEO = "https://www.youtube.com/embed/FVcCIPJO410?autoplay=1&mute=1&loop=1&playlist=FVcCIPJO410&controls=0&modestbranding=1&rel=0&playsinline=1"
 
 export default function Hero() {
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
@@ -8,8 +10,8 @@ export default function Hero() {
 
   const handleMouseMove = (event) => {
     const bounds = event.currentTarget.getBoundingClientRect()
-    const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 10
-    const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 10
+    const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 8
+    const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 8
     setTilt({ x: y * -1, y: x })
   }
 
@@ -21,42 +23,45 @@ export default function Hero() {
   }
 
   return (
-    <section id="hero" className="relative overflow-hidden bg-transparent px-5 pb-14 pt-10 sm:px-6 lg:px-8 lg:pb-20 lg:pt-12">
+    <section
+      id="hero"
+      className="relative overflow-hidden bg-transparent px-5 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:pt-14"
+    >
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-8 h-[420px] w-[760px] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-[160px]" />
-        <div className="absolute left-[6%] top-[18%] h-[220px] w-[220px] rounded-full bg-blue-500/8 blur-[120px] float-slow" />
-        <div className="absolute right-[8%] top-[12%] h-[240px] w-[240px] rounded-full bg-violet-500/8 blur-[140px] float-mid" />
+        <div className="absolute left-[28%] top-[-80px] h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-cyan-400/[0.07] blur-[170px]" />
+        <div className="absolute right-[4%] top-[12%] h-[360px] w-[360px] rounded-full bg-blue-500/[0.08] blur-[150px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr]">
-          <div className="relative z-10">
-            <div className="glass-chip inline-flex items-center gap-3 rounded-full px-4 py-2 text-[13px] font-medium uppercase tracking-[0.22em] text-cyan-700">
+        <div className="grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16 xl:gap-20">
+          <div className="relative z-20 max-w-2xl">
+            <div className="glass-chip inline-flex items-center gap-3 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-cyan-300">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-2 w-2 animate-ping rounded-full bg-cyan-500 opacity-60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500" />
+                <span className="absolute inline-flex h-2 w-2 animate-ping rounded-full bg-cyan-400 opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-300" />
               </span>
-              AI that works
+              Sthayu Ventures · AI + Automation
             </div>
 
-            <h1 className="mt-6 max-w-xl text-[2.75rem] font-extrabold leading-[0.96] tracking-[-0.07em] text-slate-950 sm:text-[3.6rem] md:text-[4.6rem] lg:text-[5rem] xl:text-[5.8rem]">
-              Turn business problems
-              <span className="mt-3 block text-slate-950">
-                into
-                <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-violet-600 bg-clip-text text-transparent">
-                  {" "}intelligent digital systems.
-                </span>
+            <p className="mt-7 text-xs font-semibold uppercase tracking-[0.34em] text-cyan-300/80">
+              Intelligent systems for real-world business
+            </p>
+
+            <h1 className="mt-4 max-w-2xl text-[2.8rem] font-extrabold leading-[0.94] tracking-[-0.065em] text-white sm:text-[3.8rem] md:text-[4.7rem] lg:text-[4.9rem] xl:text-[5.5rem]">
+              Turn business problems into
+              <span className="mt-3 block bg-gradient-to-r from-white via-cyan-200 to-blue-400 bg-clip-text text-transparent">
+                intelligent digital systems.
               </span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-[1.05rem] leading-8 text-slate-600 md:text-[1.15rem]">
-              Are leads getting missed? Are repetitive tasks slowing your team down? Sthayu designs the AI, automation, websites, apps, and operating workflows that turn business friction into connected execution.
+            <p className="mt-7 max-w-xl text-[1rem] leading-8 text-slate-300/90 md:text-[1.08rem]">
+              We design AI agents, automation, SaaS products, websites and operating workflows that connect fragmented business processes into one intelligent system.
             </p>
 
-            <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#assessment"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-3.5 text-[13px] font-semibold text-white shadow-[0_18px_45px_rgba(15,23,42,0.16)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-[0_20px_55px_rgba(37,99,235,0.22)]"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3.5 text-[13px] font-bold text-slate-950 shadow-[0_18px_50px_rgba(34,211,238,0.18)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_65px_rgba(34,211,238,0.26)]"
               >
                 Book Discovery Call
                 <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -64,22 +69,29 @@ export default function Hero() {
 
               <a
                 href="#services"
-                className="group inline-flex items-center justify-center gap-2 rounded-full border border-blue-900/10 bg-white/70 px-6 py-3.5 text-[13px] font-semibold text-slate-900 shadow-[0_12px_30px_rgba(30,64,175,0.08)] backdrop-blur-md transition-all duration-300 hover:border-cyan-400/30 hover:bg-white"
+                className="group inline-flex items-center justify-center gap-2 rounded-full border border-cyan-300/20 bg-slate-950/45 px-6 py-3.5 text-[13px] font-semibold text-white backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/35 hover:bg-slate-900/70"
               >
                 Explore Solutions
                 <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
             </div>
 
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-9 grid max-w-xl grid-cols-3 gap-2.5 sm:gap-3">
               {[
                 ["Lead flow", "24/7"],
                 ["Ops latency", "-62%"],
                 ["AI responses", "< 3 sec"],
               ].map(([label, value]) => (
-                <div key={label} className="rounded-2xl border border-blue-900/10 bg-white/65 px-4 py-3 shadow-[0_18px_36px_rgba(30,64,175,0.08)] backdrop-blur-md">
-                  <div className="text-[10px] uppercase tracking-[0.18em] text-slate-500">{label}</div>
-                  <div className="mt-1 text-[1.05rem] font-semibold tracking-[-0.04em] text-slate-950">{value}</div>
+                <div
+                  key={label}
+                  className="rounded-2xl border border-cyan-300/10 bg-slate-950/40 px-3 py-3.5 backdrop-blur-xl"
+                >
+                  <div className="text-[9px] uppercase tracking-[0.16em] text-slate-400">
+                    {label}
+                  </div>
+                  <div className="mt-1 text-base font-bold tracking-[-0.04em] text-white">
+                    {value}
+                  </div>
                 </div>
               ))}
             </div>
@@ -87,44 +99,73 @@ export default function Hero() {
 
           <div className="relative z-10 flex justify-center lg:justify-end">
             <div
-              className="hero-shell interactive-tilt"
+              className="hero-tech-stage"
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
               style={{
-                transform: `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+                transform: `perspective(1400px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
               }}
             >
-              <div className="hero-glow" />
+              <div className="hero-tech-glow" />
+
+              <div className="hero-video-frame">
+                <iframe
+                  className="hero-tech-video"
+                  src={TECH_VIDEO}
+                  title="Futuristic artificial intelligence technology background"
+                  loading="eager"
+                  allow="autoplay; encrypted-media; picture-in-picture"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+
+                <div className="hero-video-vignette" />
+                <div className="hero-video-scan" />
+
+                <div className="hero-video-label hero-video-label--top">
+                  <span className="hero-live-dot" />
+                  LIVE SYSTEM VISUALIZATION
+                </div>
+
+                <div className="hero-video-label hero-video-label--bottom">
+                  <Play size={11} fill="currentColor" />
+                  AI · DATA · AUTOMATION
+                </div>
+              </div>
+
+              <div className="hero-ai-core" aria-hidden="true">
+                <AIOrb />
+              </div>
+
               <div className="hero-orbit hero-orbit--one" />
               <div className="hero-orbit hero-orbit--two" />
               <div className="hero-orbit hero-orbit--three" />
 
-              <div className="hero-video-layer" aria-label="Interactive 3D AI workflow">
-                <AIOrb />
-              </div>
-
-              <div className="absolute left-3 top-6 z-20 rounded-full border border-blue-500/15 bg-white/75 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-slate-700 shadow-[0_20px_50px_rgba(30,64,175,0.12)] backdrop-blur-md">
-                <span className="text-blue-600">System</span> Online
+              <div className="hero-data-card hero-data-card--top">
+                <span>AI CORE</span>
+                <strong>ONLINE</strong>
               </div>
 
               <button
                 type="button"
                 aria-label="Activate Sthayu intelligence core"
                 onClick={handleCoreClick}
-                className={`absolute right-3 top-6 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-cyan-500/20 bg-white/80 text-cyan-600 shadow-[0_15px_35px_rgba(6,182,212,0.14)] backdrop-blur-md transition ${pulse ? "scale-125 shadow-[0_0_40px_rgba(6,182,212,0.35)]" : ""}`}
+                className={`hero-spark-button ${pulse ? "is-active" : ""}`}
               >
                 <Sparkles size={17} strokeWidth={1.7} />
               </button>
 
-              <div className="absolute bottom-8 left-3 z-20 rounded-full border border-blue-500/15 bg-white/75 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-slate-700 shadow-[0_20px_50px_rgba(30,64,175,0.12)] backdrop-blur-md">
-                3D <span className="text-cyan-600">Neural Core</span>
-              </div>
-
-              <div className="absolute bottom-8 right-3 z-20 rounded-full border border-emerald-500/15 bg-white/75 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-slate-700 shadow-[0_20px_50px_rgba(30,64,175,0.12)] backdrop-blur-md">
-                +92.4% <span className="text-emerald-600">Flow</span>
+              <div className="hero-data-card hero-data-card--bottom">
+                <span>CONNECTED FLOWS</span>
+                <strong>+92.4%</strong>
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mt-12 flex items-center justify-center gap-3 text-[10px] uppercase tracking-[0.28em] text-slate-500">
+          <span className="h-px w-12 bg-gradient-to-r from-transparent to-cyan-300/30" />
+          AI · Automation · SaaS · Digital Operations
+          <span className="h-px w-12 bg-gradient-to-l from-transparent to-cyan-300/30" />
         </div>
       </div>
     </section>
