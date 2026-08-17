@@ -1,4 +1,3 @@
-import "./visual-upgrade.css"
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import MediaShowcase from "./components/MediaShowcase"
@@ -37,9 +36,6 @@ function App() {
         <div className="ambient-rail ambient-rail--one" />
         <div className="ambient-rail ambient-rail--two" />
         <div className="ambient-rail ambient-rail--three" />
-        <div className="global-3d-orb" aria-hidden="true">
-          <AIOrb />
-        </div>
       </div>
 
       <div className="relative z-10">
@@ -49,54 +45,21 @@ function App() {
           <section id="hero">
             <Hero />
           </section>
-
-          <section id="media-showcase">
-            <MediaShowcase />
-          </section>
-
-          <section id="problem-discovery">
-            <ProblemDiscovery />
-          </section>
-
-          <section id="why-sthayu">
-            <WhySthayu />
-          </section>
-
-          <section id="services">
-            <Services />
-          </section>
-
-          <section id="ai-agents">
-            <AIAgents />
-          </section>
-
-          <section id="system-stack">
-            <SystemStack />
-          </section>
-
-          <section id="how-it-works">
-            <HowItWorks />
-          </section>
-
-          <section id="showcase">
-            <Showcase />
-          </section>
-
-          <section id="case-studies">
-            <CaseStudies />
-          </section>
-
+          <section id="media-showcase"><MediaShowcase /></section>
+          <section id="problem-discovery"><ProblemDiscovery /></section>
+          <section id="why-sthayu"><WhySthayu /></section>
+          <section id="services"><Services /></section>
+          <section id="ai-agents"><AIAgents /></section>
+          <section id="system-stack"><SystemStack /></section>
+          <section id="how-it-works"><HowItWorks /></section>
+          <section id="showcase"><Showcase /></section>
+          <section id="case-studies"><CaseStudies /></section>
           <InteractiveShowcase />
           <PremiumPortfolioGallery />
-
-          <section id="pricing">
-            <Pricing />
-          </section>
-
+          <section id="pricing"><Pricing /></section>
           <AssessmentSection />
           <FinalCTA />
         </main>
-
         <Footer />
       </div>
     </div>
