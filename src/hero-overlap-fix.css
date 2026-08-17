@@ -1,0 +1,38 @@
+/* Hero spacing fix: keep floating captions and controls clear of the main visual. */
+
+#hero .max-w-\[650px\]:has(.hero-ai-visual) {
+  padding-bottom: 56px;
+}
+
+/* The external 24/7 / team-style caption gets its own reserved lane. */
+#hero .hero-ai-visual ~ div[class*="-bottom-4"] {
+  bottom: 0 !important;
+  transform: translateY(0) !important;
+  z-index: 50 !important;
+  white-space: nowrap;
+}
+
+/* The sparkle control must remain inside the visual rather than hanging over the section boundary. */
+#hero .hero-ai-visual ~ button[class*="-top-4"] {
+  top: 8px !important;
+  z-index: 50 !important;
+}
+
+/* Extra breathing room before the next section. */
+#hero .hero-ai-visual {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  #hero .max-w-\[650px\]:has(.hero-ai-visual) {
+    padding-bottom: 48px;
+  }
+
+  #hero .hero-ai-visual ~ div[class*="-bottom-4"] {
+    display: none;
+  }
+
+  #hero .hero-ai-visual ~ button[class*="-top-4"] {
+    top: 8px !important;
+  }
+}
