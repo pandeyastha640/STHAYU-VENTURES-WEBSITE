@@ -1,3 +1,4 @@
+import "./visual-upgrade.css"
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import MediaShowcase from "./components/MediaShowcase"
