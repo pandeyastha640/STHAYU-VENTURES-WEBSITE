@@ -17,6 +17,7 @@ import FinalCTA from "./components/FinalCTA"
 import Footer from "./components/Footer"
 import AIOrb from "./components/AIOrb"
 import "./premium-restyle.css"
+import "./global-theme.css"
 
 function App() {
   return (
