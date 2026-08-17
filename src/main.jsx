@@ -4,9 +4,9 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 import "./index.css"
+import "./global-theme.css"
 import App from "./App.jsx"
 
-// Register GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
 
 createRoot(document.getElementById("root")).render(
