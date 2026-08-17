@@ -1,29 +1,56 @@
-/* Hero spacing fix: decorative controls stay inside the media frame and never collide with the next section. */
+/* Hero alignment + Connected business system isolation.
+   Keep the original two-column composition and only isolate the bottom system bar. */
 
-#hero .max-w-\[650px\]:has(.hero-ai-visual) {
-  padding-bottom: 0;
+#hero > .relative.z-10 > .grid {
+  align-items: center !important;
 }
 
-/* Remove the external floating caption. The visual already contains the full
-   Input → Intelligence → Automation → Outcome label, so a second caption
-   outside the frame only creates visual collisions. */
-#hero .hero-ai-visual ~ div[class*="-bottom-4"] {
-  display: none !important;
+#hero > .relative.z-10 > .grid > .relative.z-20 {
+  padding-top: 0 !important;
 }
 
-/* Remove the external sparkle button as well. The AI visual itself is the
-   interaction surface and already contains the animated intelligence core. */
-#hero .hero-ai-visual ~ button[class*="-top-4"] {
-  display: none !important;
-}
-
-/* Keep a clean separation from the next section at every breakpoint. */
 #hero .hero-ai-visual {
-  margin-bottom: 0;
+  height: auto !important;
+  aspect-ratio: 1.08 / 0.92 !important;
+  margin-bottom: 0 !important;
+}
+
+/* The system bar stays inside the visual but gets its own clearly separated
+   surface, so it never visually merges with the animated AI core. */
+#hero .hero-ai-visual > div[class*="bottom-0"] {
+  left: 12px !important;
+  right: 12px !important;
+  bottom: 12px !important;
+  height: 58px !important;
+  z-index: 60 !important;
+  border: 1px solid rgba(103, 232, 249, 0.14) !important;
+  border-radius: 18px !important;
+  background: rgba(3, 16, 29, 0.98) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+}
+
+#hero .hero-ai-visual > div[class*="bottom-0"] p,
+#hero .hero-ai-visual > div[class*="bottom-0"] span {
+  position: relative;
+  z-index: 2;
 }
 
 @media (max-width: 640px) {
-  #hero .max-w-\[650px\]:has(.hero-ai-visual) {
-    padding-bottom: 0;
+  #hero > .relative.z-10 > .grid {
+    align-items: start !important;
+  }
+
+  #hero .hero-ai-visual {
+    aspect-ratio: 1 / 0.94 !important;
+  }
+
+  #hero .hero-ai-visual > div[class*="bottom-0"] {
+    left: 10px !important;
+    right: 10px !important;
+    bottom: 10px !important;
+    height: 56px !important;
+    border-radius: 16px !important;
   }
 }
