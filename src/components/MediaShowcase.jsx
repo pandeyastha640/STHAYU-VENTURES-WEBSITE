@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowUpRight,
   Bot,
@@ -9,8 +8,6 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function MediaShowcase() {
   const sectionRef = useRef(null);

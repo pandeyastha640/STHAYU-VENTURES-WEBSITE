@@ -6,7 +6,6 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function InteractiveDataViz() {
   const containerRef = useRef(null)
-  const particlesRef = useRef([])
 
   useEffect(() => {
     const container = containerRef.current
@@ -15,14 +14,14 @@ export default function InteractiveDataViz() {
     // Create animated particles
     const createParticles = () => {
       const count = 12
-      particlesRef.current = []
+      const tweens = []
 
       for (let i = 0; i < count; i++) {
         const particle = document.createElement("div")
         particle.className = "absolute w-1.5 h-1.5 rounded-full bg-cyan-300"
         particle.style.left = Math.random() * 100 + "%"
         particle.style.top = Math.random() * 100 + "%"
-        particle.style.opacity = Math.random() * 0.7 + 0.3
+        particle.style.opacity = String(Math.random() * 0.7 + 0.3)
 
         container.appendChild(particle)
 
@@ -42,15 +41,23 @@ export default function InteractiveDataViz() {
             duration: Math.random() * 4 + 4,
             ease: "sine.inOut",
           },
-          0
+          0,
         )
+        tweens.push(tl)
       }
+
+      return tweens
     }
 
-    createParticles()
+    const tweens = createParticles()
 
     return () => {
-      particlesRef.current.forEach((p) => p.kill?.())
+      // Kill tweens and remove the dynamically added particles so the container
+      // is left clean for re-mounts (HMR or route changes).
+      tweens.forEach((t) => t.kill())
+      while (container.firstChild) {
+        container.removeChild(container.firstChild)
+      }
     }
   }, [])
 

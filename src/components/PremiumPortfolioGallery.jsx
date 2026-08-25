@@ -39,33 +39,34 @@ export default function PremiumPortfolioGallery() {
     const container = containerRef.current
     if (!container) return
 
-    // Animate items on scroll
-    const items = container.querySelectorAll(".portfolio-item")
-    items.forEach((item, index) => {
-      gsap.fromTo(
-        item,
-        {
-          opacity: 0,
-          y: 60,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          delay: index * 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 85%",
-            once: true,
+    // Scope every animation to this component so the cleanup only kills
+    // triggers we created, not ScrollTriggers from sibling components.
+    const ctx = gsap.context(() => {
+      const items = container.querySelectorAll(".portfolio-item")
+      items.forEach((item, index) => {
+        gsap.fromTo(
+          item,
+          {
+            opacity: 0,
+            y: 60,
           },
-        }
-      )
-    })
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: index * 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 85%",
+              once: true,
+            },
+          },
+        )
+      })
+    }, containerRef)
 
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
-    }
+    return () => ctx.revert()
   }, [])
 
   return (

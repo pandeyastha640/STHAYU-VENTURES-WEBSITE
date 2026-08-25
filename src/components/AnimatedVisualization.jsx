@@ -37,6 +37,7 @@ export default function AnimatedVisualization() {
       })
     }
 
+    let rafId = 0
     const animate = () => {
       // Clear canvas
       ctx.fillStyle = "rgba(5, 7, 10, 0.1)"
@@ -81,7 +82,7 @@ export default function AnimatedVisualization() {
         ctx.stroke()
       })
 
-      requestAnimationFrame(animate)
+      rafId = requestAnimationFrame(animate)
     }
 
     animate()
@@ -90,6 +91,8 @@ export default function AnimatedVisualization() {
 
     return () => {
       window.removeEventListener("resize", updateCanvasSize)
+      // Stop the animation loop when the component unmounts.
+      cancelAnimationFrame(rafId)
     }
   }, [])
 

@@ -11,37 +11,34 @@ export default function Advanced3DVisualization() {
     const svg = container.querySelector("svg")
     if (!svg) return
 
-    // Rotate the SVG continuously
-    const tl = gsap.timeline({ repeat: -1 })
-    tl.to(svg, {
-      rotationZ: 360,
-      rotationX: 20,
-      rotationY: 30,
-      duration: 20,
-      ease: "none",
-      transformOrigin: "50% 50%",
-    })
-
-    // Pulsing animation for circles
-    const circles = svg.querySelectorAll("circle[class*='pulse']")
-    circles.forEach((circle, i) => {
-      gsap.to(circle, {
-        r: () => {
-          const r = parseFloat(circle.getAttribute("r"))
-          return r * 1.3
-        },
-        opacity: 0.2,
-        duration: 2,
+    const ctx = gsap.context(() => {
+      // Rotate the SVG continuously
+      gsap.to(svg, {
+        rotationZ: 360,
+        rotationX: 20,
+        rotationY: 30,
+        duration: 20,
         repeat: -1,
-        yoyo: true,
-        delay: i * 0.3,
-        ease: "sine.inOut",
+        ease: "none",
+        transformOrigin: "50% 50%",
       })
-    })
 
-    return () => {
-      tl.kill()
-    }
+      // Pulsing animation for circles
+      const circles = svg.querySelectorAll("circle.pulse")
+      circles.forEach((circle, i) => {
+        gsap.to(circle, {
+          attr: { r: parseFloat(circle.getAttribute("r")) * 1.3 },
+          opacity: 0.2,
+          duration: 2,
+          repeat: -1,
+          yoyo: true,
+          delay: i * 0.3,
+          ease: "sine.inOut",
+        })
+      })
+    }, containerRef)
+
+    return () => ctx.revert()
   }, [])
 
   return (
@@ -53,7 +50,7 @@ export default function Advanced3DVisualization() {
       }}
     >
       {/* Background glow */}
-      <div className="absolute inset-0 bg-radial-gradient from-cyan-300/5 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(103,232,249,0.05),transparent_70%)]" />
 
       {/* SVG 3D visualization */}
       <svg

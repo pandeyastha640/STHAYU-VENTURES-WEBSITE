@@ -12,43 +12,50 @@ export default function InteractiveMetricsCard() {
     const container = containerRef.current
     if (!container) return
 
-    gsap.fromTo(
-      container,
-      {
-        opacity: 0,
-        y: 40,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: container,
-          start: "top 85%",
-          once: true,
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        container,
+        {
+          opacity: 0,
+          y: 40,
         },
-      }
-    )
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: container,
+            start: "top 85%",
+            once: true,
+          },
+        },
+      )
 
-    // Animate numbers
-    const numbers = container.querySelectorAll("[data-animate-number]")
-    numbers.forEach((num) => {
-      const target = parseFloat(num.getAttribute("data-animate-number"))
-      gsap.to(num, {
-        textContent: target,
-        duration: 2,
-        snap: { textContent: 1 },
-        scrollTrigger: {
-          trigger: container,
-          start: "top 85%",
-          once: true,
-        },
+      // Animate numbers — use snap:0.1 for non-integer targets so 98.7 doesn't
+      // get rounded to 98 (and 0.7 doesn't display as 0).
+      const numbers = container.querySelectorAll("[data-animate-number]")
+      numbers.forEach((num) => {
+        const target = parseFloat(num.getAttribute("data-animate-number"))
+        const useFloat = !Number.isInteger(target)
+        gsap.to(num, {
+          textContent: target,
+          duration: 2,
+          snap: useFloat ? { textContent: 0.1 } : { textContent: 1 },
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: container,
+            start: "top 85%",
+            once: true,
+          },
+        })
       })
-    })
+    }, containerRef)
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+      // Only revert the triggers/tweens this component created, not other
+      // components that share the global ScrollTrigger registry.
+      ctx.revert()
     }
   }, [])
 
