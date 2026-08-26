@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { ArrowRight, Building2, Database, Layers3, LineChart, Sparkles, Workflow, ShoppingBag, Stethoscope, Factory, Laptop, CheckCircle2 } from "lucide-react"
+import { AnimatedSection, SectionHeading } from "./ui"
+import { ArrowRight, Building2, Layers3, Workflow, ShoppingBag, Stethoscope, Factory, Laptop } from "lucide-react"
 
 const industryBlueprints = [
   {
@@ -56,112 +56,112 @@ const maturitySteps = [
 
 export default function SystemStack() {
   return (
-    <section id="system-stack" className="relative overflow-hidden bg-[#030712] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <section id="system-stack" className="relative overflow-hidden bg-[#050505] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute top-1/4 left-1/3 w-[700px] h-[500px] bg-cyan-500/10 rounded-full blur-[180px] opacity-60" />
+      <div className="pointer-events-none absolute top-1/4 left-1/3 w-[700px] h-[500px] bg-white/[0.03] rounded-full blur-[180px] opacity-60" />
 
       <div className="relative mx-auto max-w-7xl">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto">
-          <div className="glass-pill mx-auto">
-            <Layers3 size={13} />
-            <span>Industry Architecture Blueprints</span>
-          </div>
-
-          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-            Architected for the realities <br className="hidden sm:block" />
-            <span className="text-gradient-cyan">of your specific industry.</span>
-          </h2>
-
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
-            We don't deploy cookie-cutter automation templates. We map the exact data dependencies, software APIs, and compliance standards of your vertical.
-          </p>
-        </div>
+        <AnimatedSection>
+          <SectionHeading
+            pill={{ icon: Layers3, text: "Industry Architecture Blueprints" }}
+            title={<>Architected for the realities <br className="hidden sm:block" /><span className="text-white/60">of your specific industry.</span></>}
+            description="We don't deploy cookie-cutter automation templates. We map the exact data dependencies, software APIs, and compliance standards of your vertical."
+          />
+        </AnimatedSection>
 
         {/* 6 Industry Blueprint Cards */}
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {industryBlueprints.map((item) => {
+          {industryBlueprints.map((item, idx) => {
             const Icon = item.icon
             return (
-              <div
-                key={item.industry}
-                className="glass-card p-7 flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
-                      <Icon size={22} />
+              <AnimatedSection key={item.industry} delay={idx * 0.1}>
+                <div className="glass-card p-7 flex flex-col justify-between group h-full">
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8]">
+                        <Icon size={22} />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold text-[#86efac]">VERIFIED BLUEPRINT</span>
                     </div>
-                    <span className="text-[10px] font-mono font-bold text-emerald-400">VERIFIED BLUEPRINT</span>
+
+                    <h3 className="mt-5 text-lg font-bold text-white group-hover:text-[#d4d4d8] transition-colors">
+                      {item.industry}
+                    </h3>
+                    <p className="mt-2 text-xs text-slate-300 leading-relaxed">
+                      {item.tagline}
+                    </p>
+
+                    {/* Connected Stack Pill List */}
+                    <div className="mt-5 space-y-1.5 pt-4 border-t border-white/10">
+                      <div className="text-[9px] uppercase font-mono text-slate-400">Integrated Stack:</div>
+                      <div className="flex flex-wrap gap-1.5 mt-1">
+                        {item.stack.map((st) => (
+                          <span key={st} className="text-[9px] font-mono px-2 py-0.5 rounded-md bg-white/5 text-[#d4d4d8] border border-white/5">
+                            {st}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
 
-                  <h3 className="mt-5 text-lg font-bold text-white group-hover:text-cyan-200 transition-colors">
-                    {item.industry}
-                  </h3>
-                  <p className="mt-2 text-xs text-slate-300 leading-relaxed">
-                    {item.tagline}
-                  </p>
-
-                  {/* Connected Stack Pill List */}
-                  <div className="mt-5 space-y-1.5 pt-4 border-t border-white/10">
-                    <div className="text-[9px] uppercase font-mono text-slate-400">Integrated Stack:</div>
-                    <div className="flex flex-wrap gap-1.5 mt-1">
-                      {item.stack.map((st) => (
-                        <span key={st} className="text-[9px] font-mono px-2 py-0.5 rounded-md bg-white/5 text-cyan-300 border border-white/5">
-                          {st}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+                    <span className="text-[11px] font-mono text-[#86efac] font-bold">{item.outcome}</span>
+                    <ArrowRight size={14} className="text-[#a1a1aa] opacity-60 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
-
-                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-emerald-400 font-bold">{item.outcome}</span>
-                  <ArrowRight size={14} className="text-cyan-400 opacity-60 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
+              </AnimatedSection>
             )
           })}
         </div>
 
         {/* The Transformation Staircase: From Chaos to Proprietary SaaS */}
-        <div className="mt-16 rounded-[2.5rem] border border-cyan-500/20 bg-gradient-to-b from-[#071026] via-[#040816] to-[#02050f] p-8 sm:p-10 shadow-[0_30px_90px_rgba(0,0,0,0.8)] backdrop-blur-2xl">
-          <div className="max-w-3xl">
-            <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-cyan-400">
-              The Sthayu Maturity Framework
-            </div>
-            <h3 className="mt-2 text-2xl sm:text-3xl font-bold text-white">
-              From manual operations to proprietary software IP.
-            </h3>
-            <p className="mt-3 text-sm text-slate-300 leading-relaxed">
-              Every workflow Sthayu engineers turns your internal operational logic into an intangible asset — starting as connected pipelines, evolving into autonomous agents, and culminating in bespoke proprietary software.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {maturitySteps.map((s, idx) => (
-              <div
-                key={s.stage}
-                className="relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-5 hover:border-cyan-400/30 hover:bg-white/[0.04] transition-all"
-              >
-                <div>
-                  <div className="font-mono text-xs font-bold text-cyan-400">{s.stage}</div>
-                  <div className="mt-2 text-base font-bold text-white">{s.name}</div>
-                  <p className="mt-2 text-xs text-slate-400 leading-relaxed">{s.desc}</p>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-slate-400">
-                  <span>Level {idx + 1}</span>
-                  {idx === 4 && <span className="text-emerald-400 font-bold">★ GOAL</span>}
-                </div>
+        <AnimatedSection className="mt-16">
+          <div className="rounded-[2.5rem] border border-white/[0.08] bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-10 backdrop-blur-2xl">
+            <div className="max-w-3xl">
+              <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#a1a1aa]">
+                The Sthayu Maturity Framework
               </div>
-            ))}
+              <h3 className="mt-2 text-2xl sm:text-3xl font-bold text-white">
+                From manual operations to proprietary software IP.
+              </h3>
+              <p className="mt-3 text-sm text-slate-300 leading-relaxed">
+                Every workflow Sthayu engineers turns your internal operational logic into an intangible asset — starting as connected pipelines, evolving into autonomous agents, and culminating in bespoke proprietary software.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+              {maturitySteps.map((s, idx) => (
+                <div key={s.stage} className="relative">
+                  <div className="relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-5 hover:border-white/[0.10] hover:bg-white/[0.04] transition-all h-full">
+                    <div>
+                      <div className="font-mono text-xs font-bold text-[#a1a1aa]">{s.stage}</div>
+                      <div className="mt-2 text-base font-bold text-white">{s.name}</div>
+                      <p className="mt-2 text-xs text-slate-400 leading-relaxed">{s.desc}</p>
+                    </div>
+
+                    <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-slate-400">
+                      <span>Level {idx + 1}</span>
+                      {idx === 4 && <span className="text-[#86efac] font-bold">★ GOAL</span>}
+                    </div>
+                  </div>
+
+                  {/* Connecting line - hidden on last item, vertical on mobile */}
+                  {idx < maturitySteps.length - 1 && (
+                    <>
+                      {/* Mobile: vertical line (grid-cols-1) */}
+                      <div className="block sm:hidden absolute left-1/2 top-full w-[1px] h-4 bg-white/[0.06] -translate-x-1/2" />
+                      {/* Desktop: horizontal line (lg:grid-cols-5) */}
+                      <div className="hidden lg:block absolute top-1/2 left-full w-full h-[1px] bg-white/[0.06] -translate-y-1/2" />
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </AnimatedSection>
 
       </div>
     </section>
   )
 }
-

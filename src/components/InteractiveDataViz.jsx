@@ -1,8 +1,5 @@
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-
-gsap.registerPlugin(ScrollTrigger)
 
 export default function InteractiveDataViz() {
   const containerRef = useRef(null)
@@ -18,7 +15,7 @@ export default function InteractiveDataViz() {
 
       for (let i = 0; i < count; i++) {
         const particle = document.createElement("div")
-        particle.className = "absolute w-1.5 h-1.5 rounded-full bg-cyan-300"
+        particle.className = "absolute w-1.5 h-1.5 rounded-full bg-white/50"
         particle.style.left = Math.random() * 100 + "%"
         particle.style.top = Math.random() * 100 + "%"
         particle.style.opacity = String(Math.random() * 0.7 + 0.3)
@@ -64,7 +61,7 @@ export default function InteractiveDataViz() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-64 rounded-[30px] border border-white/10 bg-[#081117]/60 overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.3)]"
+      className="relative w-full h-64 rounded-[30px] border border-white/10 bg-[#0a0a0a]/60 overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.3)]"
     >
       {/* Animated grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.04)_1px,transparent_1px)] bg-[size:40px_40px]" />
@@ -99,11 +96,11 @@ export default function InteractiveDataViz() {
       {/* Info labels */}
       <div className="absolute top-6 left-6 z-10 text-[11px] uppercase tracking-[0.16em] text-slate-300">
         <p>Intelligence Network</p>
-        <p className="mt-1 text-cyan-300 font-semibold">Live connections: 42</p>
+        <p className="mt-1 text-[#d4d4d8] font-semibold">Live connections: 42</p>
       </div>
 
       <div className="absolute bottom-6 right-6 z-10 flex gap-3">
-        <div className="rounded-lg border border-white/10 bg-[#0a1217]/80 px-3 py-1.5 text-[10px] text-slate-300">AI Processing</div>
+        <div className="rounded-lg border border-white/10 bg-[#0a0a0a]/80 px-3 py-1.5 text-[10px] text-slate-300">AI Processing</div>
         <div className="rounded-lg border border-emerald-300/20 bg-emerald-300/10 px-3 py-1.5 text-[10px] text-emerald-300">100% Active</div>
       </div>
     </div>

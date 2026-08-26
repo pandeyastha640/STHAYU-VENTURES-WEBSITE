@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { ArrowRight, Bot, Check, Crown, Gauge, Headphones, Layers3, Rocket, ShieldCheck, Sparkles, Workflow, Zap } from "lucide-react"
+import { ArrowRight, Check, Crown, Layers3, Rocket, ShieldCheck, Sparkles } from "lucide-react"
+import { AnimatedSection } from "./ui"
 
 const plans = [
   {
@@ -72,28 +72,30 @@ const capabilityComparison = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="relative overflow-hidden bg-[#030712] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <section id="pricing" className="relative overflow-hidden bg-[#050505] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute top-1/3 left-1/4 w-[700px] h-[500px] bg-cyan-500/10 rounded-full blur-[180px] opacity-60" />
+      <div className="pointer-events-none absolute top-1/3 left-1/4 w-[700px] h-[500px] bg-white/[0.03] rounded-full blur-[180px] opacity-60" />
 
       <div className="relative mx-auto max-w-7xl">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto">
-          <div className="glass-pill mx-auto">
-            <Layers3 size={13} />
-            <span>Transparent Investment</span>
+        <AnimatedSection>
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto">
+            <div className="glass-pill mx-auto">
+              <Layers3 size={13} />
+              <span>Transparent Investment</span>
+            </div>
+
+            <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+              Predictable pricing. <br className="hidden sm:block" />
+              <span className="text-white/60">Exponential operational ROI.</span>
+            </h2>
+
+            <p className="mt-4 text-base sm:text-lg text-slate-300">
+              Choose the operational tier that matches your current momentum. Scale seamlessly into full autonomous capability as your data flows mature.
+            </p>
           </div>
-
-          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-            Predictable pricing. <br className="hidden sm:block" />
-            <span className="text-gradient-cyan">Exponential operational ROI.</span>
-          </h2>
-
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
-            Choose the operational tier that matches your current momentum. Scale seamlessly into full autonomous capability as your data flows mature.
-          </p>
-        </div>
+        </AnimatedSection>
 
         {/* 3 Tier Pricing Cards */}
         <div className="mt-16 grid gap-8 lg:grid-cols-3">
@@ -105,19 +107,19 @@ export default function Pricing() {
                 key={plan.name}
                 className={`relative flex flex-col justify-between rounded-[2.5rem] border p-8 transition-all duration-300 ${
                   isFeatured
-                    ? "border-cyan-400/50 bg-gradient-to-b from-[#08152e] via-[#050d21] to-[#02050f] shadow-[0_30px_90px_rgba(6,182,212,0.25)] -translate-y-2"
-                    : "border-white/10 bg-[#070e24]/70 hover:border-white/20"
+                    ? "border-white/[0.12] bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] shadow-[0_0_0_1px_rgba(255,255,255,0.08)] -translate-y-2"
+                    : "border-white/[0.06] bg-[#0a0a0a]/70 hover:border-white/[0.10]"
                 }`}
               >
                 {isFeatured && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-1 text-[10px] font-mono font-bold tracking-widest text-slate-950 shadow-md">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#d4d4d8] to-[#a1a1aa] px-4 py-1 text-[10px] font-mono font-bold tracking-widest text-slate-950 shadow-md">
                     {plan.badge}
                   </div>
                 )}
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.08] text-[#d4d4d8] shadow-[0_0_0_1px_rgba(255,255,255,0.08)]">
                       <Icon size={22} />
                     </div>
                     <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
@@ -139,7 +141,7 @@ export default function Pricing() {
                     href="#assessment"
                     className={`mt-6 flex w-full items-center justify-center gap-2 rounded-xl py-3.5 px-6 text-xs font-bold transition-all cursor-pointer ${
                       isFeatured
-                        ? "btn-primary shadow-[0_0_25px_rgba(6,182,212,0.4)]"
+                        ? "btn-primary shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
                         : "bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-white/20"
                     }`}
                   >
@@ -154,7 +156,7 @@ export default function Pricing() {
                     </div>
                     {plan.features.map((feat) => (
                       <div key={feat} className="flex items-start gap-2.5 text-xs text-slate-300">
-                        <Check size={14} className="text-cyan-400 shrink-0 mt-0.5" />
+                        <Check size={14} className="text-[#a1a1aa] shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </div>
                     ))}
@@ -170,9 +172,9 @@ export default function Pricing() {
         </div>
 
         {/* Capability Comparison Matrix Table */}
-        <div className="mt-20 rounded-[2.5rem] border border-white/10 bg-[#02050f]/80 p-8 sm:p-10 backdrop-blur-xl">
+        <div className="mt-20 rounded-[2.5rem] border border-white/10 bg-[#050505]/80 p-8 sm:p-10 backdrop-blur-xl">
           <div className="max-w-2xl mb-8">
-            <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-cyan-400">
+            <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#a1a1aa]">
               Detailed Feature Matrix
             </div>
             <h3 className="mt-1 text-2xl font-bold text-white">Compare system tier capabilities.</h3>
@@ -184,7 +186,7 @@ export default function Pricing() {
                 <tr className="border-b border-white/10 text-[11px] font-mono font-bold text-slate-400 uppercase">
                   <th className="py-4 pr-4">Operational Dimension</th>
                   <th className="py-4 px-4">Starter Velocity</th>
-                  <th className="py-4 px-4 text-cyan-300">Growth Engine</th>
+                  <th className="py-4 px-4 text-[#d4d4d8]">Growth Engine</th>
                   <th className="py-4 pl-4">Autonomous Enterprise</th>
                 </tr>
               </thead>
@@ -193,7 +195,7 @@ export default function Pricing() {
                   <tr key={row.feature} className="hover:bg-white/[0.02]">
                     <td className="py-4 pr-4 font-medium text-slate-200">{row.feature}</td>
                     <td className="py-4 px-4 text-slate-400">{row.starter}</td>
-                    <td className="py-4 px-4 font-bold text-cyan-300">{row.growth}</td>
+                    <td className="py-4 px-4 font-bold text-[#d4d4d8]">{row.growth}</td>
                     <td className="py-4 pl-4 text-slate-200">{row.enterprise}</td>
                   </tr>
                 ))}
@@ -203,10 +205,10 @@ export default function Pricing() {
         </div>
 
         {/* Custom Advisory Enterprise Banner */}
-        <div className="mt-12 rounded-[2.5rem] border border-cyan-500/25 bg-gradient-to-r from-[#071329] via-[#040816] to-[#0a1838] p-8 sm:p-10 shadow-[0_30px_90px_rgba(0,0,0,0.8)] backdrop-blur-2xl">
+        <div className="mt-12 rounded-[2.5rem] border border-white/[0.08] bg-gradient-to-r from-[#0a0a0a] via-[#080808] to-[#0a0a0a] p-8 sm:p-10 shadow-[0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-2xl">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="max-w-2xl space-y-3 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 rounded-full bg-cyan-500/10 border border-cyan-400/20 px-3 py-1 text-[10px] font-mono text-cyan-300">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.03] border border-white/[0.06] px-3 py-1 text-[10px] font-mono text-[#d4d4d8]">
                 <ShieldCheck size={13} />
                 <span>Custom Architecture & Private Deployments</span>
               </div>

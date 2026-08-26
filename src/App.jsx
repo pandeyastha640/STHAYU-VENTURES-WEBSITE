@@ -1,23 +1,33 @@
+import { lazy, Suspense } from "react"
+
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
-import MediaShowcase from "./components/MediaShowcase"
-import ProblemDiscovery from "./components/ProblemDiscovery"
-import WhySthayu from "./components/WhySthayu"
-import Services from "./components/Services"
-import AIAgents from "./components/AIAgents"
-import SystemStack from "./components/SystemStack"
-import HowItWorks from "./components/HowItWorks"
-import Showcase from "./components/Showcase"
-import CaseStudies from "./components/CaseStudies"
-import Pricing from "./components/Pricing"
-import InteractiveShowcase from "./components/InteractiveShowcase"
-import PremiumPortfolioGallery from "./components/PremiumPortfolioGallery"
-import AssessmentSection from "./components/AssessmentSection"
-import FinalCTA from "./components/FinalCTA"
-import Footer from "./components/Footer"
+
+const MediaShowcase = lazy(() => import("./components/MediaShowcase"))
+const ProblemDiscovery = lazy(() => import("./components/ProblemDiscovery"))
+const WhySthayu = lazy(() => import("./components/WhySthayu"))
+const Services = lazy(() => import("./components/Services"))
+const AIAgents = lazy(() => import("./components/AIAgents"))
+const SystemStack = lazy(() => import("./components/SystemStack"))
+const HowItWorks = lazy(() => import("./components/HowItWorks"))
+const Showcase = lazy(() => import("./components/Showcase"))
+const CaseStudies = lazy(() => import("./components/CaseStudies"))
+const InteractiveShowcase = lazy(() => import("./components/InteractiveShowcase"))
+const PremiumPortfolioGallery = lazy(() => import("./components/PremiumPortfolioGallery"))
+const Pricing = lazy(() => import("./components/Pricing"))
+const AssessmentSection = lazy(() => import("./components/AssessmentSection"))
+const FinalCTA = lazy(() => import("./components/FinalCTA"))
+const Footer = lazy(() => import("./components/Footer"))
 
 import "./premium-restyle.css"
-import "./hero-overlap-fix.css"
+
+function SectionDivider() {
+  return (
+    <div className="relative w-full h-px mx-auto max-w-5xl" aria-hidden="true">
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+    </div>
+  )
+}
 
 function App() {
   return (
@@ -62,21 +72,35 @@ function App() {
       <div className="relative z-10">
         <Navbar />
         <main className="relative z-10">
-          <section id="hero"><Hero /></section>
-          <section id="media-showcase"><MediaShowcase /></section>
-          <section id="problem-discovery"><ProblemDiscovery /></section>
-          <section id="why-sthayu"><WhySthayu /></section>
-          <section id="services"><Services /></section>
-          <section id="ai-agents"><AIAgents /></section>
-          <section id="system-stack"><SystemStack /></section>
-          <section id="how-it-works"><HowItWorks /></section>
-          <section id="showcase"><Showcase /></section>
-          <section id="case-studies"><CaseStudies /></section>
-          <InteractiveShowcase />
-          <PremiumPortfolioGallery />
-          <section id="pricing"><Pricing /></section>
-          <AssessmentSection />
-          <FinalCTA />
+          <Hero />
+          <Suspense fallback={null}>
+            <MediaShowcase />
+            <SectionDivider />
+            <ProblemDiscovery />
+            <SectionDivider />
+            <WhySthayu />
+            <SectionDivider />
+            <Services />
+            <SectionDivider />
+            <AIAgents />
+            <SectionDivider />
+            <SystemStack />
+            <SectionDivider />
+            <HowItWorks />
+            <SectionDivider />
+            <Showcase />
+            <SectionDivider />
+            <CaseStudies />
+            <SectionDivider />
+            <InteractiveShowcase />
+            <SectionDivider />
+            <PremiumPortfolioGallery />
+            <SectionDivider />
+            <Pricing />
+            <SectionDivider />
+            <AssessmentSection />
+            <FinalCTA />
+          </Suspense>
         </main>
         <Footer />
       </div>

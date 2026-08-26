@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { ArrowRight, ArrowUpRight, BarChart3, Bot, CheckCircle2, Clock3, Sparkles, TrendingUp, Users, Workflow, Zap } from "lucide-react"
+import { ArrowRight, Bot, CheckCircle2, Clock3, TrendingUp, Zap } from "lucide-react"
+import { AnimatedSection } from "./ui"
 
 const caseStudies = [
   {
@@ -46,42 +46,44 @@ const outcomeHighlights = [
 
 export default function CaseStudies() {
   return (
-    <section id="case-studies" className="relative overflow-hidden bg-[#030712] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <section id="case-studies" className="relative overflow-hidden bg-[#050505] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute top-1/4 right-[5%] w-[600px] h-[500px] bg-cyan-500/10 rounded-full blur-[180px] opacity-60" />
+      <div className="pointer-events-none absolute top-1/4 right-[5%] w-[600px] h-[500px] bg-white/[0.03] rounded-full blur-[180px] opacity-60" />
 
       <div className="relative mx-auto max-w-7xl">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto">
-          <div className="glass-pill mx-auto">
-            <TrendingUp size={13} />
-            <span>Proven Business Impact</span>
+        <AnimatedSection>
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto">
+            <div className="glass-pill mx-auto">
+              <TrendingUp size={13} />
+              <span>Proven Business Impact</span>
+            </div>
+
+            <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+              Real systems. <br className="hidden sm:block" />
+              <span className="text-white/60">Measurable enterprise outcomes.</span>
+            </h2>
+
+            <p className="mt-4 text-base sm:text-lg text-slate-300">
+              How forward-thinking companies partner with Sthayu to replace operational drag with high-velocity autonomous infrastructure.
+            </p>
           </div>
-
-          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-            Real systems. <br className="hidden sm:block" />
-            <span className="text-gradient-cyan">Measurable enterprise outcomes.</span>
-          </h2>
-
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
-            How forward-thinking companies partner with Sthayu to replace operational drag with high-velocity autonomous infrastructure.
-          </p>
-        </div>
+        </AnimatedSection>
 
         {/* 3 Case Study Cards */}
         <div className="mt-16 space-y-8">
           {caseStudies.map((study) => (
             <div
               key={study.number}
-              className="rounded-[2.5rem] border border-white/10 bg-gradient-to-b from-[#071026] via-[#040816] to-[#02050f] p-8 sm:p-10 md:p-12 shadow-[0_30px_90px_rgba(0,0,0,0.8)] backdrop-blur-2xl transition-all duration-300 hover:border-cyan-400/30"
+              className="rounded-[2.5rem] border border-white/10 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-10 md:p-12 shadow-[0_30px_90px_rgba(0,0,0,0.8)] backdrop-blur-2xl transition-all duration-300 hover:border-white/[0.10]"
             >
               <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
                 
                 {/* Left 7 Columns: Story & Solution */}
                 <div className="lg:col-span-7 space-y-5">
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs font-bold text-cyan-400 px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/25">
+                    <span className="font-mono text-xs font-bold text-[#a1a1aa] px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.08]">
                       CASE {study.number}
                     </span>
                     <span className="text-xs font-mono text-slate-400">{study.client} · {study.industry}</span>
@@ -97,8 +99,8 @@ export default function CaseStudies() {
                       {study.problem}
                     </div>
 
-                    <div className="p-3.5 rounded-2xl bg-cyan-500/[0.04] border border-cyan-500/20 text-xs text-slate-300 leading-relaxed">
-                      <span className="font-bold text-cyan-400 font-mono">THE STHAYU SYSTEM: </span>
+                    <div className="p-3.5 rounded-2xl bg-white/[0.01] border border-white/[0.06] text-xs text-slate-300 leading-relaxed">
+                      <span className="font-bold text-[#a1a1aa] font-mono">THE STHAYU SYSTEM: </span>
                       {study.solution}
                     </div>
                   </div>
@@ -113,27 +115,27 @@ export default function CaseStudies() {
                 </div>
 
                 {/* Right 5 Columns: Big Metric Highlight */}
-                <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl border border-cyan-400/25 bg-[#02050f]/90 p-8 shadow-[0_0_30px_rgba(6,182,212,0.15)] text-center lg:text-left">
+                <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#080808]/90 p-8 text-center lg:text-left">
                   <div>
-                    <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-cyan-400">
+                    <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#a1a1aa]">
                       VERIFIED OUTCOME
                     </div>
-                    <div className="mt-3 font-mono text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-emerald-400">
+                    <div className="mt-3 font-mono text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#fafafa] via-[#d4d4d8] to-[#a1a1aa]">
                       {study.metric}
                     </div>
-                    <p className="mt-3 text-xs text-slate-300 leading-relaxed font-medium">
+                    <p className="mt-3 text-xs text-[#d4d4d8] leading-relaxed font-medium">
                       {study.subMetric}
                     </p>
                   </div>
 
                   <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1.5">
+                    <span className="text-[11px] font-mono text-[#86efac] flex items-center gap-1.5">
                       <CheckCircle2 size={14} />
                       Production Deployed
                     </span>
                     <a
                       href="#assessment"
-                      className="inline-flex items-center gap-1 text-xs font-bold text-cyan-300 hover:text-cyan-200"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[#d4d4d8] hover:text-[#d4d4d8]"
                     >
                       <span>Similar Scope</span>
                       <ArrowRight size={13} />
@@ -153,10 +155,10 @@ export default function CaseStudies() {
             return (
               <div key={stat.label} className="glass-card p-6 flex flex-col justify-between">
                 <div className="flex items-center justify-between">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-400/20 text-cyan-300">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.03] border border-white/[0.08] text-[#d4d4d8]">
                     <Icon size={18} />
                   </div>
-                  <span className="flex h-2 w-2 rounded-full bg-emerald-400" />
+                  <span className="flex h-2 w-2 rounded-full bg-[#86efac]" />
                 </div>
                 <div className="mt-5 font-mono text-3xl font-extrabold text-white">
                   {stat.value}
@@ -171,4 +173,3 @@ export default function CaseStudies() {
     </section>
   )
 }
-

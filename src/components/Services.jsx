@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { ArrowRight, ArrowUpRight, Bot, Code2, Cpu, Database, Globe, Layers, Sparkles, Workflow, Zap, Check } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Bot, Code2, Cpu, Database, Globe, Sparkles, Workflow, Check } from "lucide-react"
+import { AnimatedSection, SectionHeading, GlassCard, Badge } from "./ui"
 
 const solutions = [
   {
@@ -102,111 +102,106 @@ const solutions = [
 
 export default function Services() {
   return (
-    <section id="services" className="relative overflow-hidden bg-[#030712] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <section id="services" className="relative overflow-hidden bg-[#050505] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       {/* Background ambient gradient */}
-      <div className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-cyan-500/10 rounded-full blur-[180px] opacity-60" />
+      <div className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-white/[0.03] rounded-full blur-[180px] opacity-60" />
 
       <div className="relative mx-auto max-w-7xl">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto">
-          <div className="glass-pill mx-auto">
-            <Sparkles size={13} />
-            <span>Full-Spectrum Solutions</span>
-          </div>
-
-          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-            Transforming every layer <br className="hidden sm:block" />
-            <span className="text-gradient-cyan">of modern business operations.</span>
-          </h2>
-
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
-            From autonomous front-office AI agents to deep backend database orchestrations, we build reliable digital systems that scale without adding headcount.
-          </p>
-        </div>
+        <AnimatedSection>
+          <SectionHeading
+            pill={{ icon: Sparkles, text: "Full-Spectrum Solutions" }}
+            title={
+              <>
+                Transforming every layer <br className="hidden sm:block" />
+                <span className="text-white/60">of modern business operations.</span>
+              </>
+            }
+            description="From autonomous front-office AI agents to deep backend database orchestrations, we build reliable digital systems that scale without adding headcount."
+          />
+        </AnimatedSection>
 
         {/* 6 Solutions Grid */}
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {solutions.map((sol) => {
+          {solutions.map((sol, i) => {
             const Icon = sol.icon
             return (
-              <div
-                key={sol.id}
-                className="group relative flex flex-col justify-between rounded-[2rem] border border-white/10 bg-gradient-to-b from-[#070e24]/80 via-[#040816]/70 to-[#02050f] p-7 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-400/40 hover:shadow-[0_30px_70px_rgba(6,182,212,0.15)] backdrop-blur-xl"
-              >
-                <div>
-                  {/* Top Bar with Icon & Category */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 shadow-[0_0_20px_rgba(6,182,212,0.2)] group-hover:scale-105 transition-transform">
-                      <Icon size={22} />
-                    </div>
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-400">
-                      {sol.category}
-                    </span>
-                  </div>
-
-                  {/* Title & Subtitle */}
-                  <h3 className="mt-6 text-xl font-bold text-white group-hover:text-cyan-200 transition-colors">
-                    {sol.title}
-                  </h3>
-                  <p className="mt-2 text-xs font-medium text-cyan-300/90">
-                    {sol.subtitle}
-                  </p>
-                  <p className="mt-4 text-xs text-slate-300 leading-relaxed">
-                    {sol.description}
-                  </p>
-
-                  {/* Feature Checklist */}
-                  <div className="mt-6 space-y-2 pt-4 border-t border-white/10">
-                    {sol.features.map((feat) => (
-                      <div key={feat} className="flex items-start gap-2.5 text-xs text-slate-300">
-                        <Check size={14} className="text-cyan-400 shrink-0 mt-0.5" />
-                        <span>{feat}</span>
+              <AnimatedSection key={sol.id} delay={i * 0.08}>
+                <GlassCard hover={true} glow={true} className="h-full group relative flex flex-col justify-between p-7 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.6)] hover:ring-1 hover:ring-white/[0.08]">
+                  <div>
+                    {/* Top Bar with Icon & Category */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8] group-hover:scale-105 transition-transform">
+                        <Icon size={22} />
                       </div>
-                    ))}
-                  </div>
-                </div>
+                      <Badge>{sol.category}</Badge>
+                    </div>
 
-                {/* Bottom Tags & Action */}
-                <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
-                  <div className="flex flex-wrap gap-1.5">
-                    {sol.tags.slice(0, 2).map((t) => (
-                      <span key={t} className="text-[9px] font-mono px-2 py-0.5 rounded-md bg-white/5 text-slate-400 border border-white/5">
-                        {t}
-                      </span>
-                    ))}
+                    {/* Title & Subtitle */}
+                    <h3 className="mt-6 text-xl font-bold text-white group-hover:text-[#d4d4d8] transition-colors">
+                      {sol.title}
+                    </h3>
+                    <p className="mt-2 text-xs font-medium text-[#d4d4d8]/90">
+                      {sol.subtitle}
+                    </p>
+                    <p className="mt-4 text-xs text-slate-300 leading-relaxed">
+                      {sol.description}
+                    </p>
+
+                    {/* Feature Checklist */}
+                    <div className="mt-6 space-y-2 pt-4 border-t border-white/10">
+                      {sol.features.map((feat) => (
+                        <div key={feat} className="flex items-start gap-2.5 text-xs text-slate-300">
+                          <Check size={14} className="text-[#a1a1aa] shrink-0 mt-0.5" />
+                          <span>{feat}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  <a
-                    href="#assessment"
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-slate-300 border border-white/10 group-hover:bg-cyan-500 group-hover:text-slate-950 group-hover:border-cyan-400 transition-all cursor-pointer"
-                    aria-label={`Get started with ${sol.title}`}
-                  >
-                    <ArrowUpRight size={15} />
-                  </a>
-                </div>
-              </div>
+                  {/* Bottom Tags & Action */}
+                  <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
+                    <div className="flex flex-wrap gap-1.5">
+                      {sol.tags.slice(0, 2).map((t) => (
+                        <span key={t} className="text-[9px] font-mono px-2 py-0.5 rounded-md bg-white/5 text-slate-400 border border-white/5">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a
+                      href="#assessment"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-slate-300 border border-white/10 group-hover:bg-white/[0.08] group-hover:text-[#050505] group-hover:border-white/[0.12] transition-all cursor-pointer"
+                      aria-label={`Get started with ${sol.title}`}
+                    >
+                      <ArrowUpRight size={15} />
+                    </a>
+                  </div>
+                </GlassCard>
+              </AnimatedSection>
             )
           })}
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-16 rounded-3xl border border-cyan-500/20 bg-gradient-to-r from-cyan-500/10 via-blue-500/5 to-transparent p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 backdrop-blur-xl">
-          <div>
-            <h4 className="text-lg font-bold text-white">Need a custom integrated solution?</h4>
-            <p className="text-xs text-slate-400 mt-1">We architect hybrid combinations of AI agents, software portals, and workflow pipelines tailored to your stack.</p>
+        <AnimatedSection delay={0.3}>
+          <div className="mt-16 rounded-3xl border border-white/[0.08] bg-gradient-to-r from-white/[0.03] via-white/[0.02] to-transparent p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 backdrop-blur-xl">
+            <div>
+              <h4 className="text-lg font-bold text-white">Need a custom integrated solution?</h4>
+              <p className="text-xs text-slate-400 mt-1">We architect hybrid combinations of AI agents, software portals, and workflow pipelines tailored to your stack.</p>
+            </div>
+            <a
+              href="#contact"
+              className="btn-primary shrink-0 py-3 px-6 text-xs"
+            >
+              <span>Request Custom Architecture</span>
+              <ArrowRight size={14} />
+            </a>
           </div>
-          <a
-            href="#contact"
-            className="btn-primary shrink-0 py-3 px-6 text-xs"
-          >
-            <span>Request Custom Architecture</span>
-            <ArrowRight size={14} />
-          </a>
-        </div>
+        </AnimatedSection>
 
       </div>
     </section>
   )
 }
-

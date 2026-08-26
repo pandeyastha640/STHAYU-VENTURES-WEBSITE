@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { ArrowUpRight, Bot, Code2, Database, Globe, Sparkles, Workflow, Zap, Layers } from "lucide-react"
+import { ArrowUpRight, Layers } from "lucide-react"
+import { AnimatedSection } from "./ui"
 
 const filterCategories = ["All Architectures", "AI Agents", "Workflow Engines", "Custom SaaS", "Web Platforms"]
 
@@ -56,34 +57,41 @@ const galleryDeployments = [
 
 export default function PremiumPortfolioGallery() {
   const [selectedFilter, setSelectedFilter] = useState("All Architectures")
+  const [failedImages, setFailedImages] = useState({})
 
   const filteredItems = selectedFilter === "All Architectures"
     ? galleryDeployments
     : galleryDeployments.filter((item) => item.category === selectedFilter)
 
+  const handleImageError = (imageSrc) => {
+    setFailedImages((prev) => ({ ...prev, [imageSrc]: true }))
+  }
+
   return (
-    <section id="portfolio" className="relative overflow-hidden bg-[#030712] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <section id="portfolio" className="relative overflow-hidden bg-[#050505] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/10 rounded-full blur-[180px] opacity-60" />
+      <div className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-white/[0.03] rounded-full blur-[180px] opacity-60" />
 
       <div className="relative mx-auto max-w-7xl">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto">
-          <div className="glass-pill mx-auto">
-            <Layers size={13} />
-            <span>Deployment Gallery</span>
+        <AnimatedSection>
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto">
+            <div className="glass-pill mx-auto">
+              <Layers size={13} />
+              <span>Deployment Gallery</span>
+            </div>
+
+            <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+              Proven architectures <br className="hidden sm:block" />
+              <span className="text-white/60">engineered for production.</span>
+            </h2>
+
+            <p className="mt-4 text-base sm:text-lg text-slate-300">
+              Explore a curated selection of live autonomous workflows, bespoke SaaS platforms, and enterprise AI engines designed by Sthayu.
+            </p>
           </div>
-
-          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-            Proven architectures <br className="hidden sm:block" />
-            <span className="text-gradient-cyan">engineered for production.</span>
-          </h2>
-
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
-            Explore a curated selection of live autonomous workflows, bespoke SaaS platforms, and enterprise AI engines designed by Sthayu.
-          </p>
-        </div>
+        </AnimatedSection>
 
         {/* Filter Pills */}
         <div className="mt-12 flex flex-wrap justify-center gap-2">
@@ -96,7 +104,7 @@ export default function PremiumPortfolioGallery() {
                 onClick={() => setSelectedFilter(cat)}
                 className={`rounded-full px-5 py-2.5 text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                   isActive
-                    ? "bg-cyan-500/15 border border-cyan-400/40 text-cyan-300 shadow-[0_0_20px_rgba(6,182,212,0.2)]"
+                    ? "bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8] shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
                     : "bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:border-white/20"
                 }`}
               >
@@ -111,20 +119,32 @@ export default function PremiumPortfolioGallery() {
           {filteredItems.map((item) => (
             <div
               key={item.title}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-b from-[#071026]/80 to-[#02050f] shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-400/40 hover:shadow-[0_30px_70px_rgba(6,182,212,0.15)] backdrop-blur-xl"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-b from-[#0a0a0a]/80 to-[#050505] shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1.5 hover:border-white/[0.10] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-xl"
             >
               <div>
                 {/* Image Section */}
-                <div className="relative h-48 overflow-hidden bg-[#060b14]">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#071026] via-transparent to-transparent" />
+                <div className="relative h-48 overflow-hidden bg-[#0a0a0a]">
+                  {failedImages[item.image] ? (
+                    <div className="h-full w-full bg-gradient-to-br from-white/[0.03] to-white/[0.01] flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-2xl opacity-20">🔧</div>
+                        <div className="mt-2 text-[10px] font-mono text-white/20 uppercase tracking-widest">{item.tag}</div>
+                      </div>
+                    </div>
+                  ) : (
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
+                      onError={() => handleImageError(item.image)}
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
                   
                   {/* Category Pill Over Image */}
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#030712]/80 border border-white/10 backdrop-blur-md text-[10px] font-mono text-cyan-300 font-bold">
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#050505]/80 border border-white/10 backdrop-blur-md text-[10px] font-mono text-[#d4d4d8] font-bold">
                     {item.tag}
                   </div>
                 </div>
@@ -133,10 +153,10 @@ export default function PremiumPortfolioGallery() {
                 <div className="p-6">
                   <div className="flex items-center justify-between text-[10px] font-mono font-bold text-slate-400 uppercase">
                     <span>{item.category}</span>
-                    <span className="text-emerald-400">● VERIFIED LIVE</span>
+                    <span className="text-[#86efac]">● VERIFIED LIVE</span>
                   </div>
 
-                  <h3 className="mt-3 text-lg font-bold text-white group-hover:text-cyan-200 transition-colors">
+                  <h3 className="mt-3 text-lg font-bold text-white group-hover:text-[#d4d4d8] transition-colors">
                     {item.title}
                   </h3>
 
@@ -149,10 +169,10 @@ export default function PremiumPortfolioGallery() {
               {/* Card Footer */}
               <div className="p-6 pt-0 border-t border-white/5 mt-auto">
                 <div className="mt-4 flex items-center justify-between">
-                  <span className="text-xs font-mono text-cyan-300 font-bold">{item.metrics}</span>
+                  <span className="text-xs font-mono text-[#d4d4d8] font-bold">{item.metrics}</span>
                   <a
                     href="#assessment"
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-slate-300 border border-white/10 group-hover:bg-cyan-500 group-hover:text-slate-950 group-hover:border-cyan-400 transition-all cursor-pointer"
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-slate-300 border border-white/10 group-hover:bg-white group-hover:text-[#050505] group-hover:border-white transition-all cursor-pointer"
                   >
                     <ArrowUpRight size={15} />
                   </a>

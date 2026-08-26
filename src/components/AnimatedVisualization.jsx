@@ -1,8 +1,5 @@
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-
-gsap.registerPlugin(ScrollTrigger)
 
 export default function AnimatedVisualization() {
   const canvasRef = useRef(null)
@@ -99,7 +96,7 @@ export default function AnimatedVisualization() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-80 rounded-[30px] border border-white/10 bg-[#081117]/60 overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.3)]"
+      className="relative w-full h-80 rounded-[30px] border border-white/10 bg-[#0a0a0a]/60 overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.3)]"
     >
       <canvas
         ref={canvasRef}
@@ -109,11 +106,11 @@ export default function AnimatedVisualization() {
       {/* Overlay info */}
       <div className="absolute top-6 left-6 z-10 text-[11px] uppercase tracking-[0.16em] text-slate-300">
         <p>Network Analysis</p>
-        <p className="mt-1 text-cyan-300 font-semibold">Real-time data flow</p>
+        <p className="mt-1 text-[#d4d4d8] font-semibold">Real-time data flow</p>
       </div>
 
       <div className="absolute bottom-6 right-6 z-10 flex gap-2">
-        <div className="rounded-lg border border-white/10 bg-[#0a1217]/80 px-3 py-1.5 text-[10px] text-slate-300">Connected</div>
+        <div className="rounded-lg border border-white/10 bg-[#0a0a0a]/80 px-3 py-1.5 text-[10px] text-slate-300">Connected</div>
         <div className="rounded-lg border border-emerald-300/20 bg-emerald-300/10 px-3 py-1.5 text-[10px] text-emerald-300">Stable</div>
       </div>
     </div>

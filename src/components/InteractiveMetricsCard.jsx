@@ -72,15 +72,15 @@ export default function InteractiveMetricsCard() {
       className="relative rounded-[34px] border border-white/10 bg-gradient-to-br from-[#081117] to-[#0a1217] p-8 shadow-[0_40px_120px_rgba(0,0,0,0.4)] overflow-hidden"
     >
       {/* Background glow */}
-      <div className="absolute top-0 right-0 h-96 w-96 bg-cyan-300/5 blur-[120px] rounded-full" />
+      <div className="absolute top-0 right-0 h-96 w-96 bg-white/[0.02] blur-[120px] rounded-full" />
 
       {/* Grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       <div className="relative z-10">
         <div className="flex items-center gap-3 mb-8">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10">
-            <Sparkles size={20} className="text-cyan-300" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04]">
+            <Sparkles size={20} className="text-[#d4d4d8]" />
           </div>
           <div>
             <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">Performance Metrics</p>
@@ -93,10 +93,10 @@ export default function InteractiveMetricsCard() {
           {metrics.map(({ icon: Icon, label, value, unit, change }) => (
             <div
               key={label}
-              className="group rounded-[20px] border border-white/10 bg-[#0a1217]/80 p-5 hover:border-cyan-300/20 transition-all duration-300"
+              className="group rounded-[20px] border border-white/10 bg-[#0a0a0a]/80 p-5 hover:border-white/[0.08] transition-all duration-300"
             >
               <div className="flex items-center justify-between mb-4">
-                <Icon size={16} className="text-cyan-300" />
+                <Icon size={16} className="text-[#d4d4d8]" />
                 <span className="text-[10px] text-emerald-300 font-semibold">{change}</span>
               </div>
 
@@ -123,7 +123,7 @@ export default function InteractiveMetricsCard() {
         {/* Info footer */}
         <div className="mt-8 flex items-center justify-between rounded-xl border border-white/5 bg-white/[0.02] p-4">
           <span className="text-[11px] uppercase tracking-[0.16em] text-slate-400">Last updated</span>
-          <span className="flex items-center gap-2 text-[11px] text-cyan-300">
+          <span className="flex items-center gap-2 text-[11px] text-[#d4d4d8]">
             <span className="w-2 h-2 bg-emerald-300 rounded-full animate-pulse" />
             Real-time
           </span>

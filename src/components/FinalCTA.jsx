@@ -1,13 +1,15 @@
-import { ArrowRight, ArrowUpRight, Bot, Check, Sparkles, Zap, ShieldCheck } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Check, Sparkles, Zap, ShieldCheck } from "lucide-react"
+import { AnimatedSection } from "./ui"
 
 export default function FinalCTA() {
   return (
-    <section id="contact" className="relative overflow-hidden bg-[#030712] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <section id="contact" className="relative overflow-hidden bg-[#050505] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-cyan-500/10 rounded-full blur-[200px] opacity-70" />
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-white/[0.03] rounded-full blur-[200px] opacity-70" />
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="rounded-[2.5rem] border border-cyan-500/30 bg-gradient-to-b from-[#07152e] via-[#040d21] to-[#02050f] p-8 sm:p-12 md:p-16 shadow-[0_40px_120px_rgba(0,0,0,0.8),0_0_60px_rgba(6,182,212,0.15)] backdrop-blur-3xl overflow-hidden relative">
+        <AnimatedSection>
+        <div className="rounded-[2.5rem] border border-white/[0.10] bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-12 md:p-16 shadow-[0_40px_120px_rgba(0,0,0,0.8)] backdrop-blur-3xl overflow-hidden relative">
           
           {/* Subtle grid pattern background */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:32px_32px] opacity-40 pointer-events-none" />
@@ -23,7 +25,7 @@ export default function FinalCTA() {
 
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
                 Turn operational friction <br />
-                <span className="text-gradient-cyan">into autonomous momentum.</span>
+                <span className="text-white/60">into autonomous momentum.</span>
               </h2>
 
               <p className="max-w-xl text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
@@ -33,7 +35,7 @@ export default function FinalCTA() {
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <a
                   href="#assessment"
-                  className="btn-primary py-4 px-8 text-xs font-bold shadow-[0_0_30px_rgba(6,182,212,0.4)]"
+                  className="btn-primary py-4 px-8 text-xs font-bold shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
                 >
                   <span>Request System Architecture Audit</span>
                   <ArrowRight size={15} />
@@ -49,11 +51,11 @@ export default function FinalCTA() {
               </div>
 
               <div className="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400 font-mono">
-                <span className="flex items-center gap-1.5 text-emerald-400">
+                <span className="flex items-center gap-1.5 text-[#86efac]">
                   <Check size={14} />
                   Zero Upfront Obligation
                 </span>
-                <span className="flex items-center gap-1.5 text-cyan-300">
+                <span className="flex items-center gap-1.5 text-[#d4d4d8]">
                   <ShieldCheck size={14} />
                   NDA Protected
                 </span>
@@ -65,20 +67,20 @@ export default function FinalCTA() {
             </div>
 
             {/* Right Column: Mini Live Console Visual */}
-            <div className="lg:col-span-4 rounded-2xl border border-white/10 bg-[#02050f]/80 p-6 font-mono space-y-4 backdrop-blur-xl shadow-2xl">
+            <div className="lg:col-span-4 rounded-2xl border border-white/10 bg-[#050505]/80 p-6 font-mono space-y-4 backdrop-blur-xl shadow-2xl">
               <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[10px] text-slate-400">
                 <span>SYSTEM STATUS</span>
-                <span className="text-emerald-400">● 100% OPERATIONAL</span>
+                <span className="text-[#86efac]">● 100% OPERATIONAL</span>
               </div>
 
               <div className="space-y-2.5 text-xs">
                 <div className="flex justify-between">
                   <span className="text-slate-400">Architecture:</span>
-                  <span className="text-cyan-300 font-bold">Autonomous Fabric</span>
+                  <span className="text-[#d4d4d8] font-bold">Autonomous Fabric</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Security:</span>
-                  <span className="text-emerald-400 font-bold">SOC2 / HIPAA Grade</span>
+                  <span className="text-[#86efac] font-bold">SOC2 / HIPAA Grade</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Avg Implementation:</span>
@@ -86,7 +88,7 @@ export default function FinalCTA() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Target ROI:</span>
-                  <span className="text-cyan-300 font-bold">4.2x Operational Lift</span>
+                  <span className="text-[#d4d4d8] font-bold">4.2x Operational Lift</span>
                 </div>
               </div>
 
@@ -98,6 +100,7 @@ export default function FinalCTA() {
           </div>
 
         </div>
+        </AnimatedSection>
       </div>
     </section>
   )
