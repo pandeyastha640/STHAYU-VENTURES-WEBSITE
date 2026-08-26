@@ -211,7 +211,7 @@ function NeuralNetwork() {
 
 function AIOrb() {
   return (
-    <div className="h-[560px] w-full">
+    <div className="h-full w-full relative">
 
       <Canvas
         camera={{

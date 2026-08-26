@@ -1,98 +1,244 @@
-import { ArrowRight, Bot, ChevronRight, PhoneCall, Sparkles, Workflow } from "lucide-react"
+import { useState } from "react"
+import { Bot, CheckCircle2, ChevronRight, Cpu, Database, MessageSquare, Mic, Phone, ShieldCheck, Sparkles, Terminal, UserCheck, Zap, ArrowRight } from "lucide-react"
 
 const agents = [
-  { name: "AI Sales Agent", detail: "Qualifies leads, enriches context, and routes opportunities to the right next step." },
-  { name: "AI Calling Agent", detail: "Handles outbound or inbound calls, screening, booking, and qualification without losing momentum." },
-  { name: "AI Support Agent", detail: "Answers customer questions, triages requests, and escalates when a human touch is needed." },
-  { name: "AI Receptionist", detail: "Greets visitors, books appointments, and keeps enquiries flowing across channels." },
-  { name: "AI WhatsApp Agent", detail: "Responds to customer messages, sends updates, and captures next actions automatically." },
-  { name: "AI Knowledge Assistant", detail: "Uses your business content and systems to answer employee and customer questions quickly." },
-]
-
-const flow = [
-  "Lead",
-  "AI qualification",
-  "CRM update",
-  "Follow-up",
-  "Appointment",
-  "Human handoff",
-  "Dashboard insight",
+  {
+    id: "sdr",
+    code: "STH-SDR-01",
+    name: "Autonomous Revenue & SDR Agent",
+    role: "Sales & Inbound Lead Conversion",
+    channel: "WhatsApp · Web · Email · Voice",
+    status: "ACTIVE · 98.4% Conv",
+    latency: "1.4s",
+    icon: UserCheck,
+    description: "Engages prospects instantly upon form submission or WhatsApp ping, qualifies budget & timeline against your ICP, and books qualified meetings directly to your executive calendar.",
+    capabilities: [
+      "Dynamic multi-turn qualification conversation",
+      "Live calendar lookup & booking via Cal.com/Calendly",
+      "Automatic lead enrichment & CRM deal creation",
+      "Human escalation protocol with full context briefing"
+    ],
+    telemetry: {
+      active_conversations: 42,
+      meetings_booked_today: 14,
+      avg_qualification_time: "84 seconds",
+      escalation_rate: "4.2%"
+    }
+  },
+  {
+    id: "support",
+    code: "STH-SUP-02",
+    name: "Autonomous Tier-1 Support Specialist",
+    role: "Customer Success & Rapid Resolution",
+    channel: "Omnichannel · 95+ Languages",
+    status: "ACTIVE · 99.1% CSAT",
+    latency: "850ms",
+    icon: MessageSquare,
+    description: "Resolves repetitive product inquiries, handles account verification, processes refunds, and provides technical troubleshooting using your vector-indexed documentation.",
+    capabilities: [
+      "Vector search across Notion, Zendesk & API docs",
+      "Live order status & invoice lookups via ERP APIs",
+      "Automated password reset & tier upgrades",
+      "Tone-matched empathetic conversational style"
+    ],
+    telemetry: {
+      tickets_resolved_24h: 318,
+      first_contact_resolution: "91.8%",
+      avg_csat_score: "4.92 / 5.0",
+      human_handoffs: "8.2%"
+    }
+  },
+  {
+    id: "ops",
+    code: "STH-OPS-03",
+    name: "Operations & Data Reconciliation Operator",
+    role: "Back-Office Ledger & Workflow Sync",
+    channel: "Event Webhooks · SQL · ERP",
+    status: "ACTIVE · 100% Deterministic",
+    latency: "420ms",
+    icon: Database,
+    description: "Monitors transaction pipelines, detects inventory or invoice discrepancies across multiple platforms, and executes automated data transformations without human double-entry.",
+    capabilities: [
+      "Real-time ledger audit across Stripe, SAP & PostgreSQL",
+      "Automated PDF invoice parsing & vendor dispatch",
+      "Inventory threshold alerts & PO draft creation",
+      "Cryptographic audit log generation for compliance"
+    ],
+    telemetry: {
+      records_synced_today: "14,820",
+      discrepancies_corrected: 23,
+      manual_hours_saved: "18.5 hrs",
+      error_rate: "0.00%"
+    }
+  },
+  {
+    id: "voice",
+    code: "STH-VOX-04",
+    name: "Ultra-Low-Latency Voice Agent",
+    role: "Inbound & Outbound Telephony",
+    channel: "SIP Telephony · Twilio · WebRTC",
+    status: "ACTIVE · Sub-500ms Audio",
+    latency: "480ms",
+    icon: Phone,
+    description: "Speaks with natural human cadence, handles interruptions gracefully, collects caller information, and transfers hot leads to available representatives in real time.",
+    capabilities: [
+      "Human-grade acoustic intonation & interruptibility",
+      "Custom voice cloning & multi-accent comprehension",
+      "Automated post-call summary & action items generation",
+      "Seamless warm transfer to mobile or VoIP phones"
+    ],
+    telemetry: {
+      calls_handled_today: 184,
+      avg_call_duration: "2m 14s",
+      sentiment_score: "+0.84 (Positive)",
+      latency_p95: "490ms"
+    }
+  }
 ]
 
 export default function AIAgents() {
+  const [selectedAgent, setSelectedAgent] = useState(agents[0])
+
   return (
-    <section id="ai-agents" className="relative overflow-hidden bg-[#05070a] px-5 py-16 sm:px-6 md:px-8 md:py-20">
-      <div className="pointer-events-none absolute right-[8%] top-[12%] h-[360px] w-[360px] rounded-full bg-blue-500/6 blur-[120px]" />
+    <section id="ai-agents" className="relative overflow-hidden bg-[#030712] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+      <div className="pointer-events-none absolute top-1/2 right-10 w-[700px] h-[500px] bg-cyan-500/10 rounded-full blur-[180px] opacity-60" />
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[13px] font-medium uppercase tracking-[0.18em] text-slate-200">
-          <Bot size={14} className="text-cyan-300" />
-          AI as a workforce
-        </div>
-
-        <div className="mt-8 grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
-          <div>
-            <h2 className="text-[2.3rem] font-extrabold leading-none tracking-[-0.06em] text-white sm:text-[3rem] md:text-[3.8rem]">
-              Smart agents for the work
-              <span className="mt-3 block text-slate-300">that keeps your business moving.</span>
-            </h2>
+        
+        <div className="text-center max-w-3xl mx-auto">
+          <div className="glass-pill mx-auto">
+            <Bot size={13} />
+            <span>Autonomous AI Workforce</span>
           </div>
-          <p className="max-w-xl text-[1.02rem] leading-8 text-slate-300">
-            Sthayu does not sell an AI chatbot. We design specialized business agents that act as part of the operating system: qualifying, routing, responding, updating systems, and escalating the right work at the right time.
+
+          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+            Meet your custom-trained <br className="hidden sm:block" />
+            <span className="text-gradient-cyan">enterprise AI agents.</span>
+          </h2>
+
+          <p className="mt-4 text-base sm:text-lg text-slate-300">
+            Specialized autonomous workers designed to execute mission-critical tasks across sales, support, operations, and voice with sub-second execution speed.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="grid gap-4 md:grid-cols-2">
-            {agents.map((agent) => (
-              <div key={agent.name} className="rounded-[24px] border border-white/10 bg-[#091018]/80 p-5 transition-all duration-300 hover:border-cyan-300/20 hover:bg-[#0b131b]">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                  <Sparkles size={18} className="text-cyan-300" />
-                </div>
-                <h3 className="mt-5 text-[1.2rem] font-semibold tracking-[-0.04em] text-white">{agent.name}</h3>
-                <p className="mt-3 text-[14px] leading-7 text-slate-300">{agent.detail}</p>
-              </div>
-            ))}
-          </div>
+        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {agents.map((agent) => {
+            const Icon = agent.icon
+            const isSelected = selectedAgent.id === agent.id
+            return (
+              <div
+                key={agent.id}
+                onClick={() => setSelectedAgent(agent)}
+                className={`group relative flex flex-col justify-between rounded-[2rem] border p-6 transition-all duration-300 cursor-pointer ${
+                  isSelected
+                    ? "border-cyan-400/50 bg-gradient-to-b from-[#071329] to-[#040c1e] shadow-[0_20px_50px_rgba(6,182,212,0.2)] -translate-y-1"
+                    : "border-white/10 bg-[#070e24]/70 hover:border-white/20 hover:bg-[#091433]"
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                    <span className="text-[10px] font-mono font-bold text-cyan-400">{agent.code}</span>
+                    <span className="flex items-center gap-1.5 text-[9px] font-mono font-semibold text-emerald-400">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      LIVE
+                    </span>
+                  </div>
 
-          <div className="rounded-[30px] border border-white/10 bg-[#081117]/90 p-6 shadow-[0_30px_80px_rgba(2,6,23,0.35)]">
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">System view</p>
-                <h3 className="mt-3 text-[2rem] font-semibold tracking-[-0.05em] text-white">Lead to action</h3>
+                  <div className="mt-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
+                    <Icon size={22} />
+                  </div>
+
+                  <h3 className="mt-4 text-base font-bold text-white group-hover:text-cyan-200 transition-colors">
+                    {agent.name}
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-1">{agent.role}</p>
+
+                  <div className="mt-4 pt-3 border-t border-white/5">
+                    <div className="text-[10px] uppercase font-mono text-slate-400">Channels:</div>
+                    <div className="text-xs text-cyan-200 font-medium mt-0.5">{agent.channel}</div>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+                  <span className="text-[10px] font-mono text-slate-400">Latency: {agent.latency}</span>
+                  <span className={`text-xs font-bold ${isSelected ? "text-cyan-300" : "text-slate-500 group-hover:text-slate-300"}`}>
+                    Inspect →
+                  </span>
+                </div>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10">
-                <Workflow size={18} className="text-cyan-300" />
+            )
+          })}
+        </div>
+
+        <div className="mt-12 rounded-[2.5rem] border border-cyan-500/25 bg-gradient-to-b from-[#071026] via-[#040816] to-[#02050f] p-6 sm:p-8 md:p-10 shadow-[0_30px_90px_rgba(0,0,0,0.8),0_0_40px_rgba(6,182,212,0.12)] backdrop-blur-2xl">
+          
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
+            <div className="flex items-center gap-3.5">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-500/20 border border-cyan-400/35 text-cyan-300">
+                <selectedAgent.icon size={22} />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-white">{selectedAgent.name}</h3>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-400/20">
+                    {selectedAgent.code}
+                  </span>
+                </div>
+                <p className="text-xs text-slate-400 mt-0.5">{selectedAgent.description}</p>
               </div>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-2">
-              {flow.map((step, index) => (
-                <div key={step} className="flex items-center gap-2">
-                  <div className="rounded-full border border-white/10 bg-[#0c141a] px-3 py-2 text-[10px] uppercase tracking-[0.18em] text-slate-200">{step}</div>
-                  {index < flow.length - 1 && <ChevronRight size={14} className="text-cyan-300" />}
+            <a
+              href="#assessment"
+              className="btn-primary text-xs py-2.5 px-5"
+            >
+              <span>Deploy {selectedAgent.code}</span>
+              <ArrowRight size={13} />
+            </a>
+          </div>
+
+          <div className="mt-8 grid gap-8 lg:grid-cols-12">
+            
+            <div className="lg:col-span-7 space-y-3">
+              <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-2">
+                Autonomous Execution Capabilities:
+              </div>
+              {selectedAgent.capabilities.map((cap) => (
+                <div key={cap} className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/[0.03] border border-white/5">
+                  <CheckCircle2 size={16} className="text-cyan-400 shrink-0" />
+                  <span className="text-xs font-medium text-slate-200">{cap}</span>
                 </div>
               ))}
             </div>
 
-            <div className="mt-8 rounded-[24px] border border-white/10 bg-[#0c141a]/80 p-5">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10">
-                  <PhoneCall size={16} className="text-cyan-300" />
-                </div>
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">Example workflow</p>
-                  <p className="mt-1 text-[15px] text-white">Lead calls in → AI qualifies → appointment booked → CRM updated</p>
-                </div>
+            <div className="lg:col-span-5 rounded-2xl border border-white/10 bg-[#02050f]/80 p-5 font-mono">
+              <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[10px] text-slate-400">
+                <span className="flex items-center gap-1.5">
+                  <Terminal size={12} className="text-cyan-400" />
+                  AGENT TELEMETRY (LIVE)
+                </span>
+                <span className="text-emerald-400">● 99.98% HEALTH</span>
+              </div>
+
+              <div className="mt-4 space-y-3">
+                {Object.entries(selectedAgent.telemetry).map(([key, val]) => (
+                  <div key={key} className="flex items-center justify-between text-xs">
+                    <span className="text-slate-400 capitalize">{key.replace(/_/g, " ")}:</span>
+                    <span className="font-bold text-cyan-300">{val}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-400">
+                <span>Model Engine: GPT-4o / Claude 3.5 Sonnet</span>
+                <span className="text-cyan-400">Deterministic Mode</span>
               </div>
             </div>
 
-            <a href="#assessment" className="mt-8 inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-300/10 px-5 py-3 text-[11px] font-medium uppercase tracking-[0.16em] text-cyan-100 transition-all duration-300 hover:border-cyan-300/50 hover:bg-cyan-300/15">
-              Explore AI agents
-              <ArrowRight size={14} />
-            </a>
           </div>
+
         </div>
+
       </div>
     </section>
   )

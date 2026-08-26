@@ -1,309 +1,254 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import {
-  ArrowUpRight,
-  Bot,
-  Check,
-  Maximize2,
-  Sparkles,
-  Zap,
-} from "lucide-react";
+import { useState } from "react"
+import { Bot, CheckCircle2, ChevronRight, Cpu, Database, Play, Sparkles, Terminal, Workflow, Zap, ArrowRight } from "lucide-react"
+
+const scenarios = [
+  {
+    id: "lead",
+    title: "Omnichannel Lead Qualification & Dispatch",
+    tag: "Sales & Growth",
+    description: "Inbound inquiry on WhatsApp or Web is parsed by the Sthayu Sales Agent, matched with CRM records, enriched via data providers, and dispatched to executive calendars.",
+    latency: "1.4s",
+    accuracy: "99.8%",
+    steps: [
+      { name: "Inbound Capture", detail: "WhatsApp / Webform payload received", status: "complete" },
+      { name: "Context Enrichment", detail: "Company revenue, stack, role matched", status: "complete" },
+      { name: "Cognitive Scoring", detail: "Intent score: 94/100 (Enterprise Tier)", status: "complete" },
+      { name: "Calendar & CRM Dispatch", detail: "Meeting scheduled + HubSpot deal created", status: "complete" },
+    ],
+    payload: {
+      event: "lead.enterprise_qualification",
+      source: "whatsapp_business_api",
+      intent: "ai_infrastructure_deployment",
+      ai_agent: "Sthayu-SDR-Alpha",
+      action_taken: "hubspot_deal_created_and_rep_assigned",
+      execution_time: "1.42s",
+    }
+  },
+  {
+    id: "support",
+    title: "Autonomous Tier-1 Customer Resolution",
+    tag: "Customer Operations",
+    description: "Customer service request triaged, authenticated against internal knowledge base and ERP databases, and resolved with human-grade empathy and precise technical instructions.",
+    latency: "820ms",
+    accuracy: "99.4%",
+    steps: [
+      { name: "Intent Analysis", detail: "API key rate limit inquiry identified", status: "complete" },
+      { name: "Knowledge Search", detail: "Vector DB queried for custom tenant policy", status: "complete" },
+      { name: "Solution Generation", detail: "Actionable fix + temporary tier boost applied", status: "complete" },
+      { name: "Ticket Resolution", detail: "Zendesk ticket closed with 5-star CSAT", status: "complete" },
+    ],
+    payload: {
+      event: "support.ticket_auto_resolution",
+      ticket_id: "STH-8942",
+      sentiment: "neutral_to_delighted",
+      vector_search_score: 0.984,
+      escalation_needed: false,
+      execution_time: "0.82s",
+    }
+  },
+  {
+    id: "ops",
+    title: "Real-Time Multi-System Data Reconciliation",
+    tag: "Enterprise ERP",
+    description: "Cross-platform data discrepancy detected between warehouse logistics, billing software, and customer invoices. Auto-corrected and verified without human data entry.",
+    latency: "2.1s",
+    accuracy: "100%",
+    steps: [
+      { name: "Discrepancy Trigger", detail: "Invoice #4102 mismatch detected", status: "complete" },
+      { name: "Cross-Database Audit", detail: "PostgreSQL & Stripe ledgers reconciled", status: "complete" },
+      { name: "Adjustment Execution", detail: "Credit note drafted & ERP synced", status: "complete" },
+      { name: "Audit Trail Logged", detail: "SOC2 compliance cryptographic log sealed", status: "complete" },
+    ],
+    payload: {
+      event: "ops.ledger_reconciliation",
+      entities: ["PostgreSQL_Cluster", "Stripe_Billing", "SAP_ERP"],
+      discrepancy_resolved: "₹1,42,000 variance aligned",
+      human_intervention: "0 hours",
+      execution_time: "2.14s",
+    }
+  }
+]
 
 export default function MediaShowcase() {
-  const sectionRef = useRef(null);
-  const mediaRef = useRef(null);
-  const glowRef = useRef(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const media = mediaRef.current;
-    const glow = glowRef.current;
-
-    if (!section || !media || !glow) return;
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        media,
-        {
-          opacity: 0,
-          y: 70,
-          scale: 0.96,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: media,
-            start: "top 82%",
-            once: true,
-          },
-        }
-      );
-
-      gsap.to(glow, {
-        scale: 1.15,
-        opacity: 0.65,
-        duration: 3.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-    }, section);
-
-    return () => ctx.revert();
-  }, []);
+  const [activeScenario, setActiveScenario] = useState(scenarios[0])
+  const [activeTab, setActiveTab] = useState("pipeline")
 
   return (
-    <section
-      ref={sectionRef}
-      id="media-showcase"
-      className="relative overflow-hidden bg-[#05070a] px-5 py-28 md:px-8 md:py-36"
-    >
-      {/* Background atmosphere */}
-      <div
-        ref={glowRef}
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/[0.045] blur-[140px]"
-      />
+    <section id="media-showcase" className="relative overflow-hidden bg-[#030712] py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
+      {/* Background radial atmosphere */}
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-cyan-500/10 rounded-full blur-[160px] opacity-70" />
 
       <div className="relative mx-auto max-w-7xl">
-        {/* Heading */}
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/15 bg-cyan-400/[0.05] px-4 py-2 text-xs font-medium uppercase tracking-[0.22em] text-cyan-300">
+        
+        {/* Section Heading */}
+        <div className="text-center max-w-3xl mx-auto">
+          <div className="glass-pill mx-auto">
             <Sparkles size={13} />
-            See intelligence in motion
+            <span>Interactive Workflow Engine</span>
           </div>
 
-          <h2 className="mt-7 text-4xl font-semibold tracking-[-0.045em] text-white sm:text-5xl md:text-6xl">
-            Don't just imagine
-            <span className="block bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
-              what's possible.
-            </span>
+          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+            See autonomous execution <br className="hidden sm:block" />
+            <span className="text-gradient-cyan">in live real-time motion.</span>
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-400 md:text-lg">
-            Your business has a hidden layer of repetitive work. We turn that
-            layer into intelligent infrastructure that works quietly in the
-            background.
+          <p className="mt-4 text-base sm:text-lg text-slate-300">
+            Sthayu eliminates manual coordination by running end-to-end cognitive pipelines that ingest, decide, and execute across your enterprise software stack.
           </p>
         </div>
 
-        {/* Cinematic media */}
-        <div
-          ref={mediaRef}
-          className="group relative mt-16 overflow-hidden rounded-[34px] border border-white/[0.08] bg-[#070b10] shadow-[0_40px_120px_rgba(0,0,0,0.5)]"
-        >
-          <div className="business-showcase-scene" aria-label="Business transformation motion graphic">
-            <div className="showcase-scene-glow" />
-            <div className="showcase-scene-grid" />
-            <div className="showcase-scene-node showcase-scene-node--one">Manual</div>
-            <div className="showcase-scene-node showcase-scene-node--two">Ops</div>
-            <div className="showcase-scene-node showcase-scene-node--three">AI</div>
-            <div className="showcase-scene-node showcase-scene-node--four">Scale</div>
-            <div className="showcase-scene-center">
-              <div className="showcase-scene-core">
-                <Sparkles size={26} className="text-cyan-300" strokeWidth={1.2} />
+        {/* Scenario Selectors */}
+        <div className="mt-12 flex flex-wrap justify-center gap-3">
+          {scenarios.map((sc) => {
+            const isSelected = activeScenario.id === sc.id
+            return (
+              <button
+                key={sc.id}
+                type="button"
+                onClick={() => setActiveScenario(sc)}
+                className={`flex items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-bold transition-all cursor-pointer ${
+                  isSelected
+                    ? "border border-cyan-400/40 bg-cyan-500/15 text-cyan-300 shadow-[0_0_25px_rgba(6,182,212,0.25)]"
+                    : "border border-white/10 bg-slate-900/60 text-slate-300 hover:border-white/20 hover:text-white"
+                }`}
+              >
+                <span className={`w-2 h-2 rounded-full ${isSelected ? "bg-cyan-400 animate-pulse" : "bg-slate-500"}`} />
+                <span>{sc.tag}</span>
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Interactive Engine Window */}
+        <div className="mt-8 rounded-[2.5rem] border border-cyan-500/20 bg-gradient-to-b from-[#070e24] via-[#040816] to-[#02050f] shadow-[0_40px_120px_rgba(0,0,0,0.7),0_0_50px_rgba(6,182,212,0.12)] overflow-hidden backdrop-blur-2xl">
+          
+          {/* Engine Header Bar */}
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 px-6 py-4 bg-white/[0.02]">
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/15 border border-cyan-400/30 text-cyan-300">
+                <Workflow size={17} />
+              </div>
+              <div>
+                <div className="text-sm font-bold text-white flex items-center gap-2">
+                  {activeScenario.title}
+                </div>
+                <div className="text-[10px] font-mono text-slate-400">STATUS: EXECUTING PIPELINE</div>
               </div>
             </div>
-            <div className="showcase-scene-line showcase-scene-line--one" />
-            <div className="showcase-scene-line showcase-scene-line--two" />
-            <div className="showcase-scene-line showcase-scene-line--three" />
-            <div className="showcase-scene-line showcase-scene-line--four" />
-          </div>
 
-          {/* Dark cinematic overlay */}
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,7,10,0.92)_0%,rgba(5,7,10,0.6)_45%,rgba(5,7,10,0.35)_100%)]" />
-
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_45%,rgba(34,211,238,0.12),transparent_35%)]" />
-
-          {/* Grid */}
-          <div
-            className="pointer-events-none absolute inset-0 opacity-[0.045]"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)",
-              backgroundSize: "40px 40px",
-            }}
-          />
-
-          {/* Content */}
-          <div className="relative z-10 flex min-h-[560px] flex-col justify-between p-7 md:p-10 lg:p-14">
-            <div className="flex items-start justify-between">
-              <div className="flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.07] text-cyan-200 backdrop-blur-xl">
-                  <Bot size={21} strokeWidth={1.5} />
-                </div>
-
-                <div>
-                  <p className="text-xs font-medium text-white">
-                    Sthayu Intelligence
-                  </p>
-
-                  <p className="mt-1 text-[10px] text-slate-500">
-                    AI + Automation Infrastructure
-                  </p>
-                </div>
-              </div>
-
+            {/* View Switcher Tabs */}
+            <div className="flex items-center gap-1 rounded-xl border border-white/10 bg-black/40 p-1">
               <button
                 type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-black/20 text-slate-400 backdrop-blur-xl transition-all duration-300 hover:border-cyan-300/25 hover:text-cyan-300"
-                aria-label="Expand media"
+                onClick={() => setActiveTab("pipeline")}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
+                  activeTab === "pipeline" ? "bg-cyan-500/20 text-cyan-300 border border-cyan-400/20" : "text-slate-400 hover:text-white"
+                }`}
               >
-                <Maximize2 size={15} />
+                Visual Pipeline
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab("telemetry")}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
+                  activeTab === "telemetry" ? "bg-cyan-500/20 text-cyan-300 border border-cyan-400/20" : "text-slate-400 hover:text-white"
+                }`}
+              >
+                <Terminal size={12} />
+                JSON Payload
               </button>
             </div>
+          </div>
 
-            {/* Main copy */}
-            <div className="max-w-2xl">
-              <div className="mb-5 flex items-center gap-2">
-                <div className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.9)]" />
-
-                <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-cyan-300/80">
-                  Intelligent operations
-                </span>
-              </div>
-
-              <h3 className="text-3xl font-semibold tracking-[-0.035em] text-white sm:text-4xl md:text-5xl">
-                Let your systems
-                <span className="block text-cyan-300">
-                  do the repetitive work.
-                </span>
-              </h3>
-
-              <p className="mt-5 max-w-xl text-sm leading-7 text-slate-400 md:text-base">
-                From customer acquisition to internal operations, Sthayu
-                connects the moving parts of your business and lets intelligent
-                workflows execute them automatically.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                {[
-                  "AI agents",
-                  "Automated workflows",
-                  "Connected data",
-                  "Real-time insights",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-2 rounded-full border border-white/[0.08] bg-black/20 px-3.5 py-2 backdrop-blur-xl"
-                  >
-                    <Check size={12} className="text-cyan-300" />
-                    <span className="text-[10px] text-slate-400">
-                      {item}
+          {/* Body Content */}
+          <div className="p-6 sm:p-8 lg:p-10">
+            {activeTab === "pipeline" ? (
+              <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
+                
+                {/* Left side: Scenario Description and Stats */}
+                <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+                  <div>
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-cyan-400">
+                      Execution Scenario
                     </span>
+                    <h3 className="mt-2 text-xl sm:text-2xl font-bold text-white">
+                      {activeScenario.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-slate-300">
+                      {activeScenario.description}
+                    </p>
                   </div>
-                ))}
+
+                  <div className="grid grid-cols-2 gap-3 pt-2">
+                    <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
+                      <div className="text-[10px] uppercase tracking-wider font-mono text-slate-400">Execution Speed</div>
+                      <div className="mt-1 text-2xl font-extrabold text-cyan-300 font-mono">{activeScenario.latency}</div>
+                      <div className="text-[10px] text-slate-400 mt-0.5">End-to-end processing</div>
+                    </div>
+
+                    <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
+                      <div className="text-[10px] uppercase tracking-wider font-mono text-slate-400">Deterministic Accuracy</div>
+                      <div className="mt-1 text-2xl font-extrabold text-emerald-400 font-mono">{activeScenario.accuracy}</div>
+                      <div className="text-[10px] text-slate-400 mt-0.5">Verified outputs</div>
+                    </div>
+                  </div>
+
+                  <a
+                    href="#assessment"
+                    className="btn-primary w-fit text-xs py-2.5 px-5"
+                  >
+                    <span>Build This Workflow</span>
+                    <ArrowRight size={13} />
+                  </a>
+                </div>
+
+                {/* Right side: Step Execution Nodes */}
+                <div className="lg:col-span-7 space-y-3">
+                  {activeScenario.steps.map((step, idx) => (
+                    <div
+                      key={step.name}
+                      className="group relative flex items-center justify-between rounded-2xl border border-white/10 bg-[#070e24]/80 p-4 transition-all duration-300 hover:border-cyan-400/30 hover:bg-[#0c1738]"
+                    >
+                      <div className="flex items-center gap-3.5">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 font-mono text-xs font-bold">
+                          0{idx + 1}
+                        </div>
+                        <div>
+                          <div className="text-sm font-bold text-white flex items-center gap-2">
+                            {step.name}
+                            <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-400/20">
+                              PASS
+                            </span>
+                          </div>
+                          <div className="text-xs text-slate-300 mt-0.5">{step.detail}</div>
+                        </div>
+                      </div>
+
+                      <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-emerald-400">
+                        <CheckCircle2 size={16} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
               </div>
-            </div>
-
-            {/* Bottom controls */}
-            <div className="mt-12 flex flex-col gap-5 border-t border-white/[0.08] pt-6 sm:flex-row sm:items-end sm:justify-between">
-              <div className="flex items-center gap-5">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full border border-cyan-300/25 bg-cyan-300/10 text-cyan-200 shadow-[0_0_30px_rgba(34,211,238,0.18)]">
-                  <Zap size={19} />
+            ) : (
+              /* JSON Telemetry Payload Inspector */
+              <div className="rounded-2xl border border-cyan-500/20 bg-[#02050f] p-5 font-mono text-xs text-cyan-300 overflow-x-auto shadow-inner">
+                <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-slate-400 text-[10px]">
+                  <span>EVENT_STREAM_INSPECTOR // TLSv1.3 Encrypted</span>
+                  <span className="text-emerald-400">● LIVE_STREAM</span>
                 </div>
-
-                <div>
-                  <p className="text-sm font-medium text-white">
-                    Workflow in motion
-                  </p>
-
-                  <p className="mt-1 text-[10px] text-slate-600">
-                    Manual tasks → automated system
-                  </p>
-                </div>
+                <pre className="text-slate-300 leading-relaxed">
+                  {JSON.stringify(activeScenario.payload, null, 2)}
+                </pre>
               </div>
-
-              <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/[0.07] bg-black/20 text-cyan-300">
-                  <Zap size={15} />
-                </div>
-
-                <div>
-                  <p className="text-xs font-medium text-white">
-                    Always running
-                  </p>
-
-                  <p className="mt-1 text-[10px] text-slate-600">
-                    No manual intervention required
-                  </p>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
 
-          {/* Floating metric cards */}
-          <div className="absolute right-6 top-[32%] z-20 hidden w-44 rounded-2xl border border-white/[0.08] bg-black/40 p-4 backdrop-blur-2xl lg:block">
-            <div className="flex items-center justify-between">
-              <span className="text-[9px] uppercase tracking-[0.16em] text-slate-600">
-                Automation
-              </span>
-
-              <span className="text-[9px] text-emerald-300">LIVE</span>
-            </div>
-
-            <p className="mt-3 text-2xl font-semibold text-white">87%</p>
-
-            <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/[0.05]">
-              <div className="h-full w-[87%] rounded-full bg-gradient-to-r from-cyan-400 to-blue-500" />
-            </div>
-
-            <p className="mt-2 text-[9px] text-slate-600">
-              repetitive work automated
-            </p>
-          </div>
-
-          <div className="absolute bottom-[22%] right-8 z-20 hidden w-48 rounded-2xl border border-cyan-300/10 bg-black/40 p-4 backdrop-blur-2xl lg:block">
-            <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(103,232,249,0.8)]" />
-
-              <span className="text-[10px] text-slate-400">
-                Workflow executed
-              </span>
-            </div>
-
-            <p className="mt-3 text-xs font-medium text-white">
-              Lead → AI → CRM → Follow-up
-            </p>
-
-            <div className="mt-3 flex items-center gap-1">
-              <span className="text-[9px] text-emerald-300">
-                Completed successfully
-              </span>
-
-              <Check size={11} className="text-emerald-300" />
-            </div>
-          </div>
         </div>
 
-        {/* Media note */}
-        <div className="mt-6 flex flex-col gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.018] px-5 py-4 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.07] bg-white/[0.025]">
-              <Sparkles size={14} className="text-cyan-300" />
-            </div>
-
-            <p className="text-xs leading-5 text-slate-500">
-              Replace the placeholder media with your real Sthayu product,
-              team, workflow or client footage.
-            </p>
-          </div>
-
-          <button
-            type="button"
-            className="group inline-flex shrink-0 items-center gap-2 text-xs font-medium text-white transition-colors hover:text-cyan-300"
-          >
-            Explore the platform
-            <ArrowUpRight
-              size={14}
-              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            />
-          </button>
-        </div>
       </div>
     </section>
-  );
-}
+  )
+}

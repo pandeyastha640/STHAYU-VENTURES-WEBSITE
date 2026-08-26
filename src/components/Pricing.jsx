@@ -1,243 +1,235 @@
-import { ArrowRight, Bot, Check, Crown, Gauge, Headphones, Layers3, Rocket, ShieldCheck, Sparkles, Workflow } from "lucide-react"
+import { useState } from "react"
+import { ArrowRight, Bot, Check, Crown, Gauge, Headphones, Layers3, Rocket, ShieldCheck, Sparkles, Workflow, Zap } from "lucide-react"
 
 const plans = [
   {
-    name: "Starter",
-    eyebrow: "For small teams",
-    description: "A lean automation layer for the processes that slow people down every day.",
+    name: "Starter Velocity",
+    eyebrow: "Early-stage & growing teams",
+    description: "Automate high-friction daily operational bottlenecks and launch your first autonomous AI agent.",
     price: "₹9,999",
     period: "/ month",
     icon: Sparkles,
     featured: false,
-    features: ["Up to 3 automation workflows", "1 AI-powered workflow", "Basic integrations", "Monthly performance report", "Email support"],
+    cta: "Deploy Starter",
+    features: [
+      "Up to 3 automated core workflows",
+      "1 specialized autonomous AI agent (SDR or Support)",
+      "Standard CRM & Webhook integrations",
+      "Sub-2s automated response SLA",
+      "Weekly execution performance digest",
+      "Standard business-hours support"
+    ],
   },
   {
-    name: "Growth",
-    eyebrow: "For scaling businesses",
-    description: "A connected operating layer for sales, ops, support, and reporting across critical workflows.",
+    name: "Growth Engine",
+    eyebrow: "Scaling organizations",
+    description: "A complete autonomous operational fabric across sales, support, data reconciliation, and reporting.",
     price: "₹24,999",
     period: "/ month",
     icon: Rocket,
     featured: true,
-    features: ["Up to 10 automation workflows", "5 AI-powered workflows", "CRM and business integrations", "Custom workflow logic", "Priority support", "Monthly optimization review"],
+    badge: "MOST POPULAR",
+    cta: "Scale with Growth",
+    features: [
+      "Up to 10 automated workflow pipelines",
+      "4 multi-channel autonomous AI agents",
+      "Bidirectional CRM, ERP & SQL database sync",
+      "Sub-800ms event processing engine",
+      "Custom vector knowledge base embeddings",
+      "Dedicated solutions engineer & 99.9% SLA",
+      "Bi-weekly optimization & ROI reviews"
+    ],
   },
   {
-    name: "Scale",
-    eyebrow: "For automation-led teams",
-    description: "Advanced deployment across your business with deeper intelligence and broader orchestration.",
+    name: "Autonomous Enterprise",
+    eyebrow: "High-volume operations",
+    description: "Unlimited orchestration, dedicated custom SaaS dashboards, and proprietary fine-tuned AI models.",
     price: "₹49,999",
     period: "/ month",
     icon: Crown,
     featured: false,
-    features: ["Unlimited core workflows", "Advanced AI agents", "Multi-system integrations", "Advanced analytics", "Dedicated automation strategy", "Priority implementation support"],
+    cta: "Deploy Enterprise",
+    features: [
+      "Unlimited automated workflows & pipelines",
+      "Full autonomous AI agent workforce roster",
+      "Custom internal SaaS command center portal",
+      "On-premise / private VPC deployment options",
+      "Zero data retention & SOC2/HIPAA compliance",
+      "24/7 dedicated solutions architect SLA",
+      "Continuous prompt & pipeline engineering"
+    ],
   },
 ]
 
-const comparison = [
-  ["AI workflows", "1", "5", "Advanced"],
-  ["Automation workflows", "3", "10", "Unlimited"],
-  ["Integrations", "Basic", "Advanced", "Custom"],
-  ["Analytics", "Basic", "Advanced", "Enterprise"],
-  ["Optimization", "Monthly", "Monthly", "Dedicated"],
+const capabilityComparison = [
+  { feature: "Autonomous AI Agents Included", starter: "1 Agent", growth: "4 Agents", enterprise: "Unlimited Workforce" },
+  { feature: "Workflow Execution Pipelines", starter: "3 Pipelines", growth: "10 Pipelines", enterprise: "Unlimited Full-Stack" },
+  { feature: "Data & ERP Integrations", starter: "Standard (HubSpot, Stripe)", growth: "Advanced (SAP, SQL, CRM)", enterprise: "Custom & Legacy Systems" },
+  { feature: "Knowledge Base Vector Indexing", starter: "Standard Docs", growth: "Full Notion/Zendesk RAG", enterprise: "Continuous Multi-Source RAG" },
+  { feature: "Execution Speed & Latency", starter: "< 2.0s", growth: "< 800ms", enterprise: "Sub-500ms Dedicated P99" },
+  { feature: "Engineering Support & SLA", starter: "Email Support", growth: "Dedicated Slack Channel", enterprise: "24/7 Solutions Architect SLA" },
 ]
-
-function PlanCard({ plan }) {
-  const Icon = plan.icon
-
-  return (
-    <div className={`group relative flex h-full flex-col overflow-hidden rounded-[28px] border p-6 md:p-7 ${plan.featured ? "border-cyan-300/20 bg-cyan-300/5 shadow-[0_30px_80px_rgba(34,211,238,0.1)]" : "border-white/10 bg-white/[0.02] hover:border-white/15 hover:bg-white/[0.04]"}`}>
-      {plan.featured && (
-        <div className="absolute right-5 top-5 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.18em] text-cyan-200">
-          Most popular
-        </div>
-      )}
-
-      <div className="relative">
-        <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-          <Icon size={18} className={plan.featured ? "text-cyan-300" : "text-slate-300"} />
-        </div>
-
-        <p className="mt-6 text-[10px] uppercase tracking-[0.18em] text-slate-400">{plan.eyebrow}</p>
-        <h3 className="mt-2 text-[2rem] font-semibold tracking-[-0.05em] text-white">{plan.name}</h3>
-        <p className="mt-3 min-h-[56px] text-[15px] leading-7 text-slate-300">{plan.description}</p>
-
-        <div className="mt-7 flex items-end gap-1">
-          <span className="text-[2.3rem] font-semibold tracking-[-0.05em] text-white">{plan.price}</span>
-          <span className="mb-1 text-[11px] text-slate-400">{plan.period}</span>
-        </div>
-
-        <button type="button" className={`mt-7 flex w-full items-center justify-center gap-2 rounded-full border px-5 py-3.5 text-[11px] font-medium uppercase tracking-[0.15em] transition-all duration-300 ${plan.featured ? "border-cyan-300/30 bg-cyan-300/10 text-cyan-100 hover:border-cyan-300/40 hover:bg-cyan-300/15" : "border-white/10 bg-white/5 text-slate-200 hover:border-white/15 hover:bg-white/10"}`}>
-          Start with {plan.name}
-          <ArrowRight size={14} />
-        </button>
-      </div>
-
-      <div className="my-7 h-px bg-white/10" />
-
-      <div className="relative flex-1">
-        <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">What&apos;s included</p>
-        <div className="mt-5 space-y-3.5">
-          {plan.features.map((feature) => (
-            <div key={feature} className="flex items-start gap-3">
-              <div className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-emerald-300/10 text-emerald-300"><Check size={10} /></div>
-              <span className="text-[14px] leading-6 text-slate-300">{feature}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function ComparisonRow({ row, index }) {
-  return (
-    <div className={`grid grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr] gap-3 px-5 py-4 ${index % 2 === 0 ? "bg-white/[0.02]" : ""}`}>
-      {row.map((item, itemIndex) => (
-        <div key={`${item}-${itemIndex}`} className={`text-[12px] ${itemIndex === 0 ? "text-slate-300" : itemIndex === 3 ? "text-cyan-200" : "text-slate-400"}`}>
-          {item}
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function EnterpriseCard() {
-  return (
-    <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.02]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,rgba(34,211,238,0.06),transparent_35%)]" />
-      <div className="relative grid gap-8 p-7 md:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
-        <div>
-          <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-cyan-200">
-            <ShieldCheck size={14} className="text-cyan-300" />
-            Custom automation
-          </div>
-          <h3 className="mt-4 text-[2rem] font-semibold tracking-[-0.05em] text-white">Need a system built around your business?</h3>
-          <p className="mt-3 max-w-2xl text-[15px] leading-7 text-slate-300">
-            For larger organizations, Sthayu can design custom AI agents, integrations, workflow logic, and reporting around your exact operational model.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-[14px] text-slate-300">
-            {['Custom AI agents', 'Private workflows', 'Advanced integrations', 'Dedicated support'].map((item) => (
-              <div key={item} className="flex items-center gap-2">
-                <Check size={12} className="text-emerald-300" />
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <button type="button" className="inline-flex items-center justify-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-300/10 px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.16em] text-cyan-100 transition-all duration-300 hover:border-cyan-300/50 hover:bg-cyan-300/15">
-          Talk to Sthayu
-          <ArrowRight size={14} />
-        </button>
-      </div>
-    </div>
-  )
-}
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="relative overflow-hidden bg-[#05070a] px-5 py-16 sm:px-6 md:px-8 md:py-20">
-      <div className="pointer-events-none absolute left-[10%] top-[15%] h-[420px] w-[420px] rounded-full bg-cyan-300/5 blur-[140px]" />
+    <section id="pricing" className="relative overflow-hidden bg-[#030712] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+      {/* Background ambient lighting */}
+      <div className="pointer-events-none absolute top-1/3 left-1/4 w-[700px] h-[500px] bg-cyan-500/10 rounded-full blur-[180px] opacity-60" />
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[13px] font-medium uppercase tracking-[0.18em] text-slate-200">
-          <Layers3 size={14} className="text-cyan-300" />
-          Simple, scalable pricing
-        </div>
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto">
+          <div className="glass-pill mx-auto">
+            <Layers3 size={13} />
+            <span>Transparent Investment</span>
+          </div>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_0.7fr] lg:items-end">
-          <h2 className="text-[2.3rem] font-extrabold leading-none tracking-[-0.06em] text-white sm:text-[3rem] md:text-[3.8rem]">
-            Start small.
-            <span className="mt-3 block text-slate-300">Scale the intelligence.</span>
+          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+            Predictable pricing. <br className="hidden sm:block" />
+            <span className="text-gradient-cyan">Exponential operational ROI.</span>
           </h2>
-          <p className="max-w-xl text-[1.02rem] leading-8 text-slate-300">
-            Choose the level of automation that matches your business today, and grow into a more connected, intelligent operating model as your systems mature.
+
+          <p className="mt-4 text-base sm:text-lg text-slate-300">
+            Choose the operational tier that matches your current momentum. Scale seamlessly into full autonomous capability as your data flows mature.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 lg:grid-cols-3">
-          {plans.map((plan) => <PlanCard key={plan.name} plan={plan} />)}
-        </div>
-
-        <div className="mt-5 grid gap-3 md:grid-cols-3">
-          {[
-            ["Workflow design included", "Workflow"],
-            ["AI configuration included", "Bot"],
-            ["Ongoing support available", "Headphones"],
-          ].map(([label, iconName]) => {
-            const Icon = iconName === "Workflow" ? Workflow : iconName === "Bot" ? Bot : Headphones
+        {/* 3 Tier Pricing Cards */}
+        <div className="mt-16 grid gap-8 lg:grid-cols-3">
+          {plans.map((plan) => {
+            const Icon = plan.icon
+            const isFeatured = plan.featured
             return (
-              <div key={label} className="flex items-center gap-3 rounded-[20px] border border-white/10 bg-white/[0.02] px-5 py-4 text-[13px] text-slate-300">
-                <Icon size={14} className="text-cyan-300" />
-                {label}
+              <div
+                key={plan.name}
+                className={`relative flex flex-col justify-between rounded-[2.5rem] border p-8 transition-all duration-300 ${
+                  isFeatured
+                    ? "border-cyan-400/50 bg-gradient-to-b from-[#08152e] via-[#050d21] to-[#02050f] shadow-[0_30px_90px_rgba(6,182,212,0.25)] -translate-y-2"
+                    : "border-white/10 bg-[#070e24]/70 hover:border-white/20"
+                }`}
+              >
+                {isFeatured && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-1 text-[10px] font-mono font-bold tracking-widest text-slate-950 shadow-md">
+                    {plan.badge}
+                  </div>
+                )}
+
+                <div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
+                      <Icon size={22} />
+                    </div>
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
+                      {plan.eyebrow}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-6 text-2xl font-bold text-white">{plan.name}</h3>
+                  <p className="mt-2 text-xs text-slate-300 leading-relaxed min-h-[48px]">
+                    {plan.description}
+                  </p>
+
+                  <div className="mt-6 flex items-baseline gap-1.5 pb-6 border-b border-white/10">
+                    <span className="font-mono text-4xl font-extrabold text-white">{plan.price}</span>
+                    <span className="text-xs text-slate-400 font-mono">{plan.period}</span>
+                  </div>
+
+                  <a
+                    href="#assessment"
+                    className={`mt-6 flex w-full items-center justify-center gap-2 rounded-xl py-3.5 px-6 text-xs font-bold transition-all cursor-pointer ${
+                      isFeatured
+                        ? "btn-primary shadow-[0_0_25px_rgba(6,182,212,0.4)]"
+                        : "bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-white/20"
+                    }`}
+                  >
+                    <span>{plan.cta}</span>
+                    <ArrowRight size={14} />
+                  </a>
+
+                  {/* Included features */}
+                  <div className="mt-8 space-y-3">
+                    <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
+                      Included Capabilities:
+                    </div>
+                    {plan.features.map((feat) => (
+                      <div key={feat} className="flex items-start gap-2.5 text-xs text-slate-300">
+                        <Check size={14} className="text-cyan-400 shrink-0 mt-0.5" />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-4 border-t border-white/5 text-[10px] font-mono text-slate-400 text-center">
+                  Cancel or adjust anytime · Zero lock-in
+                </div>
               </div>
             )
           })}
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-[#091019] p-6">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.06),transparent_55%)]" />
-            <div className="relative">
-              <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">Platform architecture</p>
-              <h3 className="mt-3 text-[2rem] font-semibold tracking-[-0.05em] text-white">Built for scale, not sprawl.</h3>
+        {/* Capability Comparison Matrix Table */}
+        <div className="mt-20 rounded-[2.5rem] border border-white/10 bg-[#02050f]/80 p-8 sm:p-10 backdrop-blur-xl">
+          <div className="max-w-2xl mb-8">
+            <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-cyan-400">
+              Detailed Feature Matrix
+            </div>
+            <h3 className="mt-1 text-2xl font-bold text-white">Compare system tier capabilities.</h3>
+          </div>
 
-              <div className="relative mt-8 h-52">
-                <div className="absolute left-8 right-8 top-10 h-px bg-gradient-to-r from-transparent via-cyan-300/40 to-transparent" />
-                <div className="absolute left-10 right-10 bottom-8 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
-
-                <div className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[26px] border border-cyan-300/30 bg-cyan-300/10 shadow-[0_0_40px_rgba(34,211,238,0.14)]">
-                  <Sparkles size={22} className="text-cyan-300" />
-                </div>
-
-                {[
-                  ["Data", "left-4 top-6"],
-                  ["Workflow", "right-4 top-10"],
-                  ["AI", "left-2 bottom-8"],
-                  ["Ops", "right-2 bottom-8"],
-                ].map(([label, position]) => (
-                  <div key={label} className={`absolute ${position} rounded-2xl border border-white/10 bg-[#0b1116]/90 px-3 py-2 text-[10px] uppercase tracking-[0.16em] text-slate-300`}>
-                    {label}
-                  </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse min-w-[600px]">
+              <thead>
+                <tr className="border-b border-white/10 text-[11px] font-mono font-bold text-slate-400 uppercase">
+                  <th className="py-4 pr-4">Operational Dimension</th>
+                  <th className="py-4 px-4">Starter Velocity</th>
+                  <th className="py-4 px-4 text-cyan-300">Growth Engine</th>
+                  <th className="py-4 pl-4">Autonomous Enterprise</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5 text-xs">
+                {capabilityComparison.map((row) => (
+                  <tr key={row.feature} className="hover:bg-white/[0.02]">
+                    <td className="py-4 pr-4 font-medium text-slate-200">{row.feature}</td>
+                    <td className="py-4 px-4 text-slate-400">{row.starter}</td>
+                    <td className="py-4 px-4 font-bold text-cyan-300">{row.growth}</td>
+                    <td className="py-4 pl-4 text-slate-200">{row.enterprise}</td>
+                  </tr>
                 ))}
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div className="mb-6">
-              <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">Compare capabilities</p>
-              <h3 className="mt-2 text-[2rem] font-semibold tracking-[-0.05em] text-white">More automation. More leverage.</h3>
-            </div>
-
-            <div className="overflow-hidden rounded-[26px] border border-white/10 bg-white/[0.02]">
-              <div className="grid grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr] gap-3 border-b border-white/10 bg-white/[0.03] px-5 py-4 text-[10px] uppercase tracking-[0.16em] text-slate-400">
-                <div>Capability</div>
-                <div>Starter</div>
-                <div className="text-cyan-200">Growth</div>
-                <div>Scale</div>
-              </div>
-              {comparison.map((row, index) => <ComparisonRow key={row[0]} row={row} index={index} />)}
-            </div>
+              </tbody>
+            </table>
           </div>
         </div>
 
-        <div className="mt-8"><EnterpriseCard /></div>
+        {/* Custom Advisory Enterprise Banner */}
+        <div className="mt-12 rounded-[2.5rem] border border-cyan-500/25 bg-gradient-to-r from-[#071329] via-[#040816] to-[#0a1838] p-8 sm:p-10 shadow-[0_30px_90px_rgba(0,0,0,0.8)] backdrop-blur-2xl">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="max-w-2xl space-y-3 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 rounded-full bg-cyan-500/10 border border-cyan-400/20 px-3 py-1 text-[10px] font-mono text-cyan-300">
+                <ShieldCheck size={13} />
+                <span>Custom Architecture & Private Deployments</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                Have bespoke legacy systems or strict security mandates?
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                We engineer private VPC deployments, custom fine-tuned on-prem LLMs, and air-gapped data pipelines for financial institutions and health networks.
+              </p>
+            </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 sm:flex-row">
-          <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.16em] text-slate-400">
-            <Gauge size={13} className="text-cyan-300" />
-            Built for measurable efficiency
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12px] text-slate-300">
-            <span>No unnecessary complexity</span>
-            <span className="hidden h-1 w-1 rounded-full bg-slate-500 sm:block" />
-            <span>Scale when you&apos;re ready</span>
-            <span className="hidden h-1 w-1 rounded-full bg-slate-500 sm:block" />
-            <span>Designed around your workflows</span>
+            <a
+              href="#assessment"
+              className="btn-primary py-3.5 px-8 text-xs font-bold shrink-0"
+            >
+              <span>Schedule Architecture Review</span>
+              <ArrowRight size={14} />
+            </a>
           </div>
         </div>
+
       </div>
     </section>
   )
 }
+

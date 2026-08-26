@@ -1,98 +1,183 @@
-import { ArrowRight, Check, MessageSquareText, Search, Sparkles } from "lucide-react"
+import { ArrowRight, AlertTriangle, CheckCircle2, Search, Sparkles, XCircle, TrendingUp, Layers, Zap } from "lucide-react"
 
-const painPoints = [
-  "Missed leads and weak follow-up",
-  "Manual reporting and delayed decisions",
-  "Customers waiting too long for answers",
-  "Disconnected tools and duplicate admin",
-  "Slow sales and service operations",
-  "No clear digital system behind growth",
-]
-
-const problemMatrix = [
-  { label: "Leads lost", outcome: "AI qualification + CRM routing" },
-  { label: "Calls missed", outcome: "Voice agents + automated replies" },
-  { label: "Support delayed", outcome: "AI support + human handoff" },
-  { label: "Reporting slow", outcome: "Dashboards + AI summaries" },
-  { label: "Sales reactive", outcome: "Sales workflow automation" },
-  { label: "Systems fragmented", outcome: "Connected business infrastructure" },
+const frictionPoints = [
+  {
+    title: "The Lead Decay Bottleneck",
+    problem: "Inbound leads wait hours for human response, dropping qualification rates by up to 70%.",
+    solution: "Sub-3-second AI conversational qualification on WhatsApp, Web, and Voice.",
+    metric: "3.8x faster conversion",
+  },
+  {
+    title: "Manual Data & Spreadsheet Chaos",
+    problem: "Staff spend 15+ hours weekly copy-pasting customer records, reconciling invoices, and compiling reports.",
+    solution: "Automated multi-system synchronization across ERP, CRM, and Stripe in real time.",
+    metric: "85% admin time saved",
+  },
+  {
+    title: "Siloed Software Ecosystem",
+    problem: "10+ disconnected SaaS tools that don't speak to each other, creating blind spots and lost context.",
+    solution: "Single event-driven integration layer connecting websites, databases, and internal workflows.",
+    metric: "100% unified source of truth",
+  },
+  {
+    title: "Reactive Customer Support",
+    problem: "Repetitive Tier-1 support tickets overwhelm human teams, driving up wait times and churn.",
+    solution: "Context-aware AI support agents with instant resolution and seamless human handoffs.",
+    metric: "90% autonomous resolution",
+  },
 ]
 
 export default function ProblemDiscovery() {
   return (
-    <section id="problem-discovery" className="relative overflow-hidden bg-[#05070a] px-5 py-16 sm:px-6 md:px-8 md:py-20">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent" />
-      <div className="pointer-events-none absolute left-[10%] top-[10%] h-[340px] w-[340px] rounded-full bg-cyan-300/5 blur-[120px]" />
+    <section id="problem-discovery" className="relative overflow-hidden bg-[#030712] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+      {/* Background ambient lighting */}
+      <div className="pointer-events-none absolute top-1/3 left-1/4 w-[600px] h-[400px] bg-indigo-500/10 rounded-full blur-[160px] opacity-60" />
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[13px] font-medium uppercase tracking-[0.18em] text-slate-200">
-          <Search size={14} className="text-cyan-300" />
-          Your business problem
-        </div>
-
-        <div className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-          <div>
-            <h2 className="text-[2.3rem] font-extrabold leading-none tracking-[-0.06em] text-white sm:text-[3rem] md:text-[3.8rem]">
-              Your business does not need more software.
-              <span className="mt-3 block text-slate-300">It needs systems that work together.</span>
-            </h2>
+        
+        {/* Section Pill & Title */}
+        <div className="text-center max-w-3xl mx-auto">
+          <div className="glass-pill mx-auto">
+            <Search size={13} />
+            <span>Root Cause Analysis</span>
           </div>
 
-          <p className="max-w-xl text-[1.02rem] leading-8 text-slate-300">
-            Most teams are not failing because they lack effort. They are losing time because work is spread across disconnected tools, manual follow-up, and slow decision-making.
+          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+            Your business does not need more software. <br className="hidden sm:block" />
+            <span className="text-gradient-cyan">It needs systems that work together.</span>
+          </h2>
+
+          <p className="mt-4 text-base sm:text-lg text-slate-300">
+            Most organizations don’t suffer from a lack of effort. They suffer from the "fragmentation tax" — work scattered across disparate tools, manual coordination, and delayed decisions.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {painPoints.map((item) => (
-            <div key={item} className="rounded-[24px] border border-white/10 bg-[#091018]/80 p-5 shadow-[0_18px_40px_rgba(2,6,23,0.18)]">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10">
-                <MessageSquareText size={18} className="text-cyan-300" />
+        {/* 2-Column Comparison Architecture */}
+        <div className="mt-16 grid gap-8 lg:grid-cols-2">
+          
+          {/* Column 1: The Fragmentation Tax (Before) */}
+          <div className="rounded-[2.5rem] border border-red-500/20 bg-gradient-to-b from-[#140608]/70 via-[#0d0406]/50 to-[#030712] p-6 sm:p-8 md:p-10 shadow-2xl backdrop-blur-xl">
+            <div className="flex items-center justify-between pb-6 border-b border-red-500/15">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-red-500/10 border border-red-500/25 text-red-400">
+                  <XCircle size={20} />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white">The Fragmented Enterprise</h3>
+                  <p className="text-xs text-red-300 font-mono">STATUS: HIGH FRICTION & BOTTLENECKS</p>
+                </div>
               </div>
-              <p className="mt-4 text-[1.05rem] font-medium leading-7 text-white">{item}</p>
+              <span className="px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-[10px] font-bold uppercase tracking-wider border border-red-500/20">
+                Legacy Reality
+              </span>
             </div>
-          ))}
-        </div>
 
-        <div className="mt-12 rounded-[30px] border border-white/10 bg-[#081117]/90 p-6 md:p-8">
-          <div className="flex items-center justify-between gap-4">
-            <div>
-              <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">From friction to flow</p>
-              <h3 className="mt-3 text-[2rem] font-semibold tracking-[-0.05em] text-white">Problem → connected system</h3>
+            <div className="mt-6 space-y-4">
+              {[
+                { title: "Manual Data Entry & Duplicate Work", desc: "Teams manually copying info between forms, CRM, spreadsheets, and emails." },
+                { title: "Leads Stalling in Queues", desc: "Prospects wait hours for outreach while competitors convert in seconds." },
+                { title: "Opaque Operational Visibility", desc: "Leaders make decisions using stale, week-old static reports." },
+                { title: "Disjointed SaaS Sprawl", desc: "Paying for dozens of isolated tools that require human babysitting." },
+              ].map((item, idx) => (
+                <div key={item.title} className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/[0.02] border border-red-500/10">
+                  <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/15 text-red-400 text-xs font-bold font-mono">
+                    ✕
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-slate-200">{item.title}</h4>
+                    <p className="text-xs text-slate-400 mt-0.5">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="hidden h-px flex-1 bg-gradient-to-r from-cyan-300/20 via-cyan-300/40 to-transparent md:block" />
+
+            <div className="mt-8 pt-6 border-t border-red-500/15 flex items-center justify-between text-xs font-mono text-red-300">
+              <span>Avg operational loss:</span>
+              <span className="font-bold">28+ hrs/employee/month</span>
+            </div>
           </div>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {problemMatrix.map((item) => (
-              <div key={item.label} className="rounded-[22px] border border-white/10 bg-[#0d141a]/80 p-5">
-                <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-slate-400">
-                  <span className="inline-flex h-2 w-2 rounded-full bg-cyan-300" />
-                  {item.label}
+          {/* Column 2: The Sthayu Connected System (After) */}
+          <div className="rounded-[2.5rem] border border-cyan-500/30 bg-gradient-to-b from-[#071329]/80 via-[#040c1e]/60 to-[#030712] p-6 sm:p-8 md:p-10 shadow-[0_20px_70px_rgba(6,182,212,0.15)] backdrop-blur-xl relative">
+            <div className="absolute -top-3 right-8 px-3.5 py-1 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-sans text-[10px] font-extrabold uppercase tracking-wider shadow-lg">
+              Sthayu Transformation
+            </div>
+
+            <div className="flex items-center justify-between pb-6 border-b border-cyan-500/20">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-500/15 border border-cyan-400/35 text-cyan-300">
+                  <CheckCircle2 size={20} />
                 </div>
-                <div className="mt-5 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-300/20 bg-emerald-300/10 text-emerald-300">
-                    <Check size={15} />
+                <div>
+                  <h3 className="text-lg font-bold text-white">The Sthayu Intelligent System</h3>
+                  <p className="text-xs text-cyan-300 font-mono">STATUS: AUTONOMOUS & INTEGRATED</p>
+                </div>
+              </div>
+              <span className="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-[10px] font-bold uppercase tracking-wider border border-cyan-400/20">
+                Connected Future
+              </span>
+            </div>
+
+            <div className="mt-6 space-y-4">
+              {[
+                { title: "Autonomous Workflows & Sync", desc: "Data transforms and syncs instantly across tools with zero manual intervention." },
+                { title: "Instant AI Response & Calendar Routing", desc: "Autonomous sales agents qualify leads in < 3s and book qualified executive meetings." },
+                { title: "Live Real-Time Operational Intelligence", desc: "Dynamic dashboards and proactive anomaly alerts right in Slack or email." },
+                { title: "Unified Enterprise Architecture", desc: "One clean operating layer that amplifies your team's output without tool bloat." },
+              ].map((item, idx) => (
+                <div key={item.title} className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-cyan-500/[0.04] border border-cyan-500/15">
+                  <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-bold font-mono">
+                    ✓
                   </div>
-                  <p className="text-[14px] leading-6 text-slate-200">{item.outcome}</p>
+                  <div>
+                    <h4 className="text-sm font-semibold text-white">{item.title}</h4>
+                    <p className="text-xs text-slate-300 mt-0.5">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-cyan-500/20 flex items-center justify-between text-xs font-mono text-cyan-300">
+              <span>Operational uplift:</span>
+              <span className="font-bold text-emerald-400">+74% faster execution speed</span>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Detailed Friction-to-Flow Matrix Cards */}
+        <div className="mt-16">
+          <div className="text-center mb-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-white">Specific Operational Transformations</h3>
+            <p className="text-sm text-slate-400 mt-1">How we replace friction with high-performance digital infrastructure.</p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {frictionPoints.map((item) => (
+              <div
+                key={item.title}
+                className="glass-card p-6 flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-400/20 text-cyan-300 mb-4">
+                    <Zap size={16} />
+                  </div>
+                  <h4 className="text-sm font-bold text-white">{item.title}</h4>
+                  <p className="text-xs text-slate-400 mt-2 line-clamp-2">{item.problem}</p>
+                  <p className="text-xs text-cyan-200 mt-2 font-medium">{item.solution}</p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+                  <span className="text-[10px] font-mono text-emerald-400 font-bold">{item.metric}</span>
+                  <ArrowRight size={13} className="text-cyan-400 opacity-60 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             ))}
           </div>
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-cyan-200">
-              <Sparkles size={12} />
-              Business-first strategy
-            </div>
-
-            <a href="#services" className="inline-flex items-center gap-2 text-[13px] font-medium text-white transition-colors hover:text-cyan-200">
-              Find the right solution
-              <ArrowRight size={14} className="text-cyan-300" />
-            </a>
-          </div>
         </div>
+
       </div>
     </section>
   )
 }
+
