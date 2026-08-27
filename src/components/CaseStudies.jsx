@@ -1,11 +1,16 @@
 import { ArrowRight, Bot, CheckCircle2, Clock3, TrendingUp, Zap } from "lucide-react"
 import { AnimatedSection } from "./ui"
 
+import imgCaseFinScale from "../assets/images/case_study_finscale_1787842086671.jpg"
+import imgCaseLogistics from "../assets/images/case_study_aura_logistics_1787842102750.jpg"
+import imgCaseOmniGrowth from "../assets/images/case_study_omnigrowth_1787842118729.jpg"
+
 const caseStudies = [
   {
     number: "01",
     client: "FinScale Capital",
     industry: "Financial & Asset Advisory",
+    image: imgCaseFinScale,
     title: "Automated Investor Onboarding & Real-Time Portfolio Sync",
     problem: "Manual KYC verification and multi-broker portfolio reconciliation required 24 hours per client, causing a 35% drop-off during onboarding.",
     solution: "Engineered an autonomous document intake agent + bidirectional SQL ledger sync connecting custodians, Stripe, and customer portals in real time.",
@@ -17,6 +22,7 @@ const caseStudies = [
     number: "02",
     client: "Aura Logistics Global",
     industry: "Supply Chain & Fleet Operations",
+    image: imgCaseLogistics,
     title: "Autonomous Dispatch & Vendor Invoice Auto-Correction",
     problem: "15,000+ monthly vendor invoices had discrepancy mismatches against warehouse delivery slips, requiring 6 full-time staff for manual audit.",
     solution: "Deployed Sthayu Operations Agent with OCR parser to automatically cross-reference ERP purchase orders, adjust ledger variances, and approve payments.",
@@ -28,6 +34,7 @@ const caseStudies = [
     number: "03",
     client: "OmniGrowth Media",
     industry: "High-Volume B2B Lead Generation",
+    image: imgCaseOmniGrowth,
     title: "Sub-3-Second Omnichannel Lead Qualification & Dispatch",
     problem: "Inbound leads across Web and WhatsApp waited an average of 4.5 hours for sales rep contact, leading to severe lead decay and lost revenue.",
     solution: "Trained and deployed Sthayu SDR Agent to engage prospects in real-time, qualify against ideal customer profiles, and book direct executive meetings.",
@@ -115,8 +122,21 @@ export default function CaseStudies() {
                 </div>
 
                 {/* Right 5 Columns: Big Metric Highlight */}
-                <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#080808]/90 p-8 text-center lg:text-left">
+                <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#080808]/90 p-8 text-center lg:text-left overflow-hidden relative">
                   <div>
+                    {study.image && (
+                      <div className="relative h-28 mb-5 overflow-hidden rounded-xl border border-white/10 bg-[#050505]">
+                        <img
+                          src={study.image}
+                          alt={study.title}
+                          loading="lazy"
+                          decoding="async"
+                          referrerPolicy="no-referrer"
+                          className="h-full w-full object-cover opacity-75 hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent" />
+                      </div>
+                    )}
                     <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#a1a1aa]">
                       VERIFIED OUTCOME
                     </div>

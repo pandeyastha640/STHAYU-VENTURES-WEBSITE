@@ -83,7 +83,7 @@
 .sv-v2 main > div > section {
   position: relative;
   isolation: isolate;
-  background: #050505 !important;
+  background: transparent !important;
 }
 
 .sv-v2 main > section:not(#hero)::before,

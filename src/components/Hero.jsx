@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react"
 import { motion } from "motion/react"
 import { ArrowRight, ArrowUpRight } from "lucide-react"
+import heroBgImage from "../assets/images/hero_neural_infrastructure_1787842070922.jpg"
 
 const HLS_URL = "https://stream.mux.com/kimF2ha9zLrX64H00UgLGPflCzNtl1T0215MlAmeOztv8.m3u8"
+const MP4_URL = "https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-network-lines-and-dots-loop-42861-large.mp4"
 
 const staggerChildren = {
   hidden: {},
@@ -30,20 +32,40 @@ export default function Hero() {
     const video = videoRef.current
     if (!video) return
 
+    const tryPlay = () => {
+      video.play().catch(() => {
+        const onUserInteraction = () => {
+          video.play().catch(() => {})
+          window.removeEventListener("click", onUserInteraction)
+          window.removeEventListener("touchstart", onUserInteraction)
+        }
+        window.addEventListener("click", onUserInteraction, { once: true })
+        window.addEventListener("touchstart", onUserInteraction, { once: true })
+      })
+    }
+
     if (video.canPlayType("application/vnd.apple.mpegurl")) {
       video.src = HLS_URL
+      video.addEventListener("loadedmetadata", tryPlay)
     } else {
       import("hls.js").then(({ default: Hls }) => {
-        if (!Hls.isSupported()) return
-        const hls = new Hls({ enableWorker: true, lowLatencyMode: true })
-        hls.loadSource(HLS_URL)
-        hls.attachMedia(video)
-        hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          video.play().catch(() => {})
-        })
-        video._hlsInstance = hls
-      }).catch(() => {})
+        if (Hls.isSupported()) {
+          const hls = new Hls({ enableWorker: true, lowLatencyMode: true })
+          hls.loadSource(HLS_URL)
+          hls.attachMedia(video)
+          hls.on(Hls.Events.MANIFEST_PARSED, tryPlay)
+          video._hlsInstance = hls
+        } else {
+          video.src = MP4_URL
+          tryPlay()
+        }
+      }).catch(() => {
+        video.src = MP4_URL
+        tryPlay()
+      })
     }
+
+    tryPlay()
 
     return () => {
       if (video._hlsInstance) {
@@ -66,9 +88,12 @@ export default function Hero() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-50"
-          style={{ filter: "saturate(0.4) brightness(0.40) contrast(1.3)", pointerEvents: "none" }}
-        />
+          poster={heroBgImage}
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
+          style={{ filter: "saturate(0.5) brightness(0.55) contrast(1.25)", pointerEvents: "none" }}
+        >
+          <source src={MP4_URL} type="video/mp4" />
+        </video>
         {/* Dark cinematic overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/60 via-[#050505]/40 to-[#050505]/90" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050505_70%)]" />

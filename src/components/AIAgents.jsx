@@ -3,6 +3,11 @@ import { motion, AnimatePresence } from "motion/react"
 import { AnimatedSection, SectionHeading } from "./ui"
 import { Bot, CheckCircle2, Database, MessageSquare, Phone, Terminal, UserCheck, ArrowRight } from "lucide-react"
 
+import imgAgentSdr from "../assets/images/agent_sdr_core_1787842135533.jpg"
+import imgAgentSupport from "../assets/images/agent_support_core_1787842151764.jpg"
+import imgAgentOps from "../assets/images/agent_ops_core_1787842167663.jpg"
+import imgAgentVoice from "../assets/images/agent_voice_core_1787842182078.jpg"
+
 const agents = [
   {
     id: "sdr",
@@ -13,6 +18,7 @@ const agents = [
     status: "ACTIVE · 98.4% Conv",
     latency: "1.4s",
     icon: UserCheck,
+    imageCore: imgAgentSdr,
     description: "Engages prospects instantly upon form submission or WhatsApp ping, qualifies budget & timeline against your ICP, and books qualified meetings directly to your executive calendar.",
     capabilities: [
       "Dynamic multi-turn qualification conversation",
@@ -36,6 +42,7 @@ const agents = [
     status: "ACTIVE · 99.1% CSAT",
     latency: "850ms",
     icon: MessageSquare,
+    imageCore: imgAgentSupport,
     description: "Resolves repetitive product inquiries, handles account verification, processes refunds, and provides technical troubleshooting using your vector-indexed documentation.",
     capabilities: [
       "Vector search across Notion, Zendesk & API docs",
@@ -59,6 +66,7 @@ const agents = [
     status: "ACTIVE · 100% Deterministic",
     latency: "420ms",
     icon: Database,
+    imageCore: imgAgentOps,
     description: "Monitors transaction pipelines, detects inventory or invoice discrepancies across multiple platforms, and executes automated data transformations without human double-entry.",
     capabilities: [
       "Real-time ledger audit across Stripe, SAP & PostgreSQL",
@@ -82,6 +90,7 @@ const agents = [
     status: "ACTIVE · Sub-500ms Audio",
     latency: "480ms",
     icon: Phone,
+    imageCore: imgAgentVoice,
     description: "Speaks with natural human cadence, handles interruptions gracefully, collects caller information, and transfers hot leads to available representatives in real time.",
     capabilities: [
       "Human-grade acoustic intonation & interruptibility",
@@ -117,7 +126,6 @@ export default function AIAgents() {
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {agents.map((agent, idx) => {
-            const Icon = agent.icon
             const isSelected = selectedAgent.id === agent.id
             return (
               <AnimatedSection key={agent.id} delay={idx * 0.1}>
@@ -138,8 +146,13 @@ export default function AIAgents() {
                       </span>
                     </div>
 
-                    <div className="mt-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8]">
-                      <Icon size={22} />
+                    <div className="mt-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8] overflow-hidden relative">
+                      <img
+                        src={agent.imageCore}
+                        alt={agent.name}
+                        referrerPolicy="no-referrer"
+                        className="h-full w-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-500"
+                      />
                     </div>
 
                     <h3 className="mt-4 text-base font-bold text-white group-hover:text-[#d4d4d8] transition-colors">
@@ -177,8 +190,13 @@ export default function AIAgents() {
             
             <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
               <div className="flex items-center gap-3.5">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8]">
-                  <selectedAgent.icon size={22} />
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8] overflow-hidden relative">
+                  <img
+                    src={selectedAgent.imageCore}
+                    alt={selectedAgent.name}
+                    referrerPolicy="no-referrer"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">

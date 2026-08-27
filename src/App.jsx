@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react"
 
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
+import Cinematic3DBackground from "./components/Cinematic3DBackground"
 
 const MediaShowcase = lazy(() => import("./components/MediaShowcase"))
 const ProblemDiscovery = lazy(() => import("./components/ProblemDiscovery"))
@@ -32,6 +33,8 @@ function SectionDivider() {
 function App() {
   return (
     <div className="page-shell sv-v2 relative min-h-screen overflow-x-hidden text-white antialiased">
+      <Cinematic3DBackground />
+
       <div
         className="persistent-3d-environment pointer-events-none fixed inset-0 z-0 overflow-hidden"
         aria-hidden="true"

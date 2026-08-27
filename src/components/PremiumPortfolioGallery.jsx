@@ -2,6 +2,13 @@ import { useState } from "react"
 import { ArrowUpRight, Layers } from "lucide-react"
 import { AnimatedSection } from "./ui"
 
+import imgRevenueHub from "../assets/images/portfolio_revenue_hub_1787841972420.jpg"
+import imgIntelligenceConsole from "../assets/images/portfolio_intelligence_console_1787841987404.jpg"
+import imgWebhookEngine from "../assets/images/portfolio_webhook_engine_1787842003320.jpg"
+import imgDigitalFlagship from "../assets/images/portfolio_digital_flagship_1787842021339.jpg"
+import imgVectorRag from "../assets/images/portfolio_vector_rag_1787842039189.jpg"
+import imgInventoryOrchestrator from "../assets/images/portfolio_inventory_orchestrator_1787842054281.jpg"
+
 const filterCategories = ["All Architectures", "AI Agents", "Workflow Engines", "Custom SaaS", "Web Platforms"]
 
 const galleryDeployments = [
@@ -9,7 +16,7 @@ const galleryDeployments = [
     title: "Autonomous Revenue Operations Hub",
     category: "AI Agents",
     tag: "Sales SDR · Multi-Agent",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80",
+    image: imgRevenueHub,
     description: "Multi-turn WhatsApp and Web intake system connected to CRM with real-time intent scoring.",
     metrics: "1.4s response · 4.8x pipeline lift",
   },
@@ -17,7 +24,7 @@ const galleryDeployments = [
     title: "Executive Operational Intelligence Console",
     category: "Custom SaaS",
     tag: "Next.js · Go Microservices",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    image: imgIntelligenceConsole,
     description: "Bespoke internal leadership portal unifying Stripe financial records, team capacity, and SLA tracking.",
     metrics: "Zero latency · SOC2 compliant",
   },
@@ -25,7 +32,7 @@ const galleryDeployments = [
     title: "High-Throughput Webhook Synchronization Engine",
     category: "Workflow Engines",
     tag: "PostgreSQL · Redis · Webhooks",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
+    image: imgWebhookEngine,
     description: "Event-driven asynchronous middleware processing over 250,000 daily order reconciliation events.",
     metrics: "100% deterministic · 0% drift",
   },
@@ -33,7 +40,7 @@ const galleryDeployments = [
     title: "High-Converting AI-Powered Digital Flagship",
     category: "Web Platforms",
     tag: "WebGL · Three.js · Edge CDN",
-    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    image: imgDigitalFlagship,
     description: "Cinematic modern web presence built with sub-second TTFB and native lead qualification widgets.",
     metrics: "100/100 Lighthouse score",
   },
@@ -41,7 +48,7 @@ const galleryDeployments = [
     title: "Proprietary Vector RAG Knowledge Assistant",
     category: "AI Agents",
     tag: "Pinecone · OpenAI · Hybrid RAG",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+    image: imgVectorRag,
     description: "Internal AI research assistant indexing 10,000+ corporate PDFs, contracts, and Zendesk tickets.",
     metrics: "Instant citations · 0% hallucination",
   },
@@ -49,7 +56,7 @@ const galleryDeployments = [
     title: "Cross-Platform Inventory & Billing Orchestrator",
     category: "Workflow Engines",
     tag: "SAP ERP · Shopify · Stripe",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+    image: imgInventoryOrchestrator,
     description: "Automated warehouse threshold monitor with instant purchase order generation and ledger alignment.",
     metrics: "18+ hrs saved weekly",
   },
@@ -137,6 +144,7 @@ export default function PremiumPortfolioGallery() {
                       alt={item.title}
                       loading="lazy"
                       decoding="async"
+                      referrerPolicy="no-referrer"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
                       onError={() => handleImageError(item.image)}
                     />

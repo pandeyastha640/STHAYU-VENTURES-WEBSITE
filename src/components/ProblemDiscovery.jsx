@@ -76,7 +76,7 @@ export default function ProblemDiscovery() {
                   { title: "Leads Stalling in Queues", desc: "Prospects wait hours for outreach while competitors convert in seconds." },
                   { title: "Opaque Operational Visibility", desc: "Leaders make decisions using stale, week-old static reports." },
                   { title: "Disjointed SaaS Sprawl", desc: "Paying for dozens of isolated tools that require human babysitting." },
-                ].map((item, idx) => (
+                ].map((item) => (
                   <div key={item.title} className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/[0.02] border border-red-500/[0.10]">
                     <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/[0.08]">
                       <XCircle size={12} className="text-[#fca5a5]" />
@@ -124,7 +124,7 @@ export default function ProblemDiscovery() {
                   { title: "Instant AI Response & Calendar Routing", desc: "Autonomous sales agents qualify leads in < 3s and book qualified executive meetings." },
                   { title: "Live Real-Time Operational Intelligence", desc: "Dynamic dashboards and proactive anomaly alerts right in Slack or email." },
                   { title: "Unified Enterprise Architecture", desc: "One clean operating layer that amplifies your team's output without tool bloat." },
-                ].map((item, idx) => (
+                ].map((item) => (
                   <div key={item.title} className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
                     <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/[0.04]">
                       <CheckCircle2 size={12} className="text-[#d4d4d8]" />

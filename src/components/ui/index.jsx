@@ -1,8 +1,7 @@
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
 import { motion, useInView } from "motion/react"
-import { ArrowRight, ArrowUpRight } from "lucide-react"
 
-function AnimatedSection({ children, className = "", delay = 0, as = "div" }) {
+function AnimatedSection({ children, className = "", delay = 0 }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.15 })
 
