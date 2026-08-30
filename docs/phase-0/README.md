@@ -82,6 +82,6 @@ Phase 1 (MVP Foundation) produces:
 
 ## References
 
-- PRD v1.1 (`Sthayu_Ventures_PRD_v1.1.md`)
-- TRD v1.1 (`Sthayu_Ventures_TRD_v1.1.md`)
+- PRD (`/docs/product/PRD.md`)
+- TRD (`/docs/technical/TRD.md`)
 - Business Plan v2 (`Sthayu_Ventures_Master_Business_Plan_v2.pdf`)

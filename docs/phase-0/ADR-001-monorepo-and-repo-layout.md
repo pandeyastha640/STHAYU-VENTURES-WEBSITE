@@ -47,11 +47,10 @@ sthayu-ventures/
 │   ├── migrations/     # SQL migrations (Phase 1+)
 │   └── seeds/          # Seed data (Phase 1+)
 ├── docs/
-│   ├── business-plan/  # Business plan PDF mirror
-│   ├── prd/            # PRD v1.0, v1.1, future versions
-│   ├── trd/            # TRD v1.0, v1.1, future versions
-│   ├── phase-0/        # THIS FOLDER
-│   └── decisions/      # Future ADRs
+│   ├── product/        # PRD, Roadmap, Capability Matrix
+│   ├── technical/      # TRD, Architecture, AI Architecture, Integrations
+│   ├── audit/          # Frontend & Content Audits
+│   └── phase-0/        # ADRs and Phase 0 Specifications
 ├── scripts/
 └── .github/
     └── workflows/      # CI/CD (Phase 1+)

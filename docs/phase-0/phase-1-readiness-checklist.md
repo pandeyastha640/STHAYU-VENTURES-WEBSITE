@@ -11,8 +11,8 @@ Define what must be true before Phase 1 (MVP Foundation) begins coding. Phase 1 
 ## Prerequisites
 
 ### Documentation sign-off
-- [ ] PRD v1.1 reviewed and approved
-- [ ] TRD v1.1 reviewed and approved
+- [ ] PRD (`/docs/product/PRD.md`) reviewed and approved
+- [ ] TRD (`/docs/technical/TRD.md`) reviewed and approved
 - [ ] All six ADRs in `docs/phase-0/` reviewed and approved
 - [ ] Unit economics reviewed and D1–D6 decisions made
 - [ ] Environment & secrets strategy approved
