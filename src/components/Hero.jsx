@@ -113,29 +113,29 @@ export default function Hero() {
         >
           {/* Eyebrow */}
           <motion.div variants={fadeUp} className="mb-6">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-[#a1a1aa] backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#86efac] shadow-[0_0_6px_#86efac]" />
-              Practical AI & Business Automation
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#d4b982]/25 bg-[#d4b982]/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#d4b982] backdrop-blur-md shadow-[0_0_20px_rgba(212,185,130,0.06)]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#d4b982] shadow-[0_0_6px_#d4b982]" />
+              Enterprise AI & Business Automation
             </span>
           </motion.div>
 
-          {/* Headline — Instrument Serif */}
+          {/* Headline — High-End Modern Grotesque */}
           <motion.h1
             variants={fadeUp}
-            className="font-[var(--font-serif)] text-[clamp(3rem,7vw,5.5rem)] leading-[1.05] tracking-[-0.03em] text-[#fafafa]"
-            style={{ fontFamily: "var(--font-serif)", textShadow: "0 2px 30px rgba(0,0,0,0.5)" }}
+            className="text-[clamp(2.75rem,6.5vw,5.25rem)] font-extrabold leading-[1.06] tracking-[-0.04em] text-[#fafafa]"
+            style={{ textShadow: "0 2px 30px rgba(0,0,0,0.6)" }}
           >
             AI systems that actually
             <br className="hidden sm:block" />
-            <span className="italic text-white/80"> do the work for you.</span>
+            <span className="text-[#e8d5b5]"> do the work for you.</span>
           </motion.h1>
 
           {/* Supporting Paragraph */}
           <motion.p
             variants={fadeUp}
-            className="mt-6 max-w-2xl text-base sm:text-lg text-[#a1a1aa] leading-relaxed font-light"
+            className="mt-6 max-w-2xl text-base sm:text-lg text-[#a1a1aa] leading-[1.65] font-normal tracking-[-0.01em]"
           >
-            We build AI agents, automated workflows, and custom software that handle repetitive tasks, connect your existing tools, and free your team to focus on growing the business.
+            We engineer autonomous AI agents, connected workflow architectures, and custom portals that eliminate manual tasks, unify fragmented data, and scale your operations intelligently.
           </motion.p>
 
           {/* CTAs */}
@@ -145,16 +145,16 @@ export default function Hero() {
           >
             <a
               href="#assessment"
-              className="btn-primary py-3.5 px-8 text-sm"
+              className="btn-primary py-3.5 px-8 text-xs sm:text-sm font-semibold tracking-[-0.01em]"
             >
               <span>Find What to Automate</span>
               <ArrowRight size={15} />
             </a>
             <a
               href="#services"
-              className="btn-secondary py-3.5 px-8 text-sm"
+              className="btn-secondary py-3.5 px-8 text-xs sm:text-sm font-medium tracking-[-0.01em]"
             >
-              <span>See Our Services</span>
+              <span>Explore Capabilities</span>
               <ArrowUpRight size={15} />
             </a>
           </motion.div>
@@ -166,7 +166,7 @@ export default function Hero() {
           >
             {[
               { value: "74%", label: "Faster Operations" },
-              { value: "<3s", label: "Lead Response Time" },
+              { value: "< 3s", label: "Lead Response Time" },
               { value: "99.4%", label: "Task Accuracy" },
               { value: "Zero", label: "Manual Copy-Pasting" },
             ].map((m, i) => (
@@ -174,10 +174,10 @@ export default function Hero() {
                 key={m.label}
                 className={`text-center ${i > 0 ? "border-l border-white/[0.06] pl-8" : ""}`}
               >
-                <div className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#fafafa]">
+                <div className="font-mono text-2xl sm:text-3xl font-bold tracking-tight text-[#fafafa] tabular-nums">
                   {m.value}
                 </div>
-                <div className="mt-1 text-[11px] uppercase tracking-[0.12em] text-[#71717a]">
+                <div className="mt-1 text-[11px] font-medium uppercase tracking-[0.12em] text-[#71717a]">
                   {m.label}
                 </div>
               </div>
@@ -187,13 +187,13 @@ export default function Hero() {
       </div>
 
       {/* Decorative horizontal line */}
-      <div className="absolute bottom-32 left-1/2 -translate-x-1/2 w-[200px] h-[1px] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent z-10 hidden sm:block" />
+      <div className="absolute bottom-32 left-1/2 -translate-x-1/2 w-[200px] h-[1px] bg-gradient-to-r from-transparent via-[#d4b982]/20 to-transparent z-10 hidden sm:block" />
 
       {/* Animated accent gradient */}
       <motion.div
         className="absolute bottom-28 left-1/2 -translate-x-1/2 w-[300px] h-[1px] z-10 hidden sm:block"
         style={{
-          background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)",
+          background: "linear-gradient(90deg, transparent, rgba(212,185,130,0.35), transparent)",
           backgroundSize: "200% 100%",
         }}
         animate={{

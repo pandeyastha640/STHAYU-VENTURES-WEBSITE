@@ -80,7 +80,7 @@ export default function AssessmentSection() {
       <div className="relative mx-auto max-w-7xl">
         <AnimatedSection>
           <div className="text-center max-w-3xl mx-auto">
-            <div className="glass-pill mx-auto">
+            <div className="glass-pill-gold mx-auto">
               <ClipboardList size={13} />
               <span>Free Automation Assessment</span>
             </div>
@@ -94,10 +94,10 @@ export default function AssessmentSection() {
           </div>
         </AnimatedSection>
 
-        <div className="mt-16 rounded-[2.5rem] border border-white/[0.08] bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-10 md:p-12 shadow-[0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-2xl">
+        <div className="mt-16 rounded-[2.5rem] border border-[#d4b982]/20 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-10 md:p-12 shadow-[0_20px_70px_rgba(0,0,0,0.8)] backdrop-blur-2xl">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-5 space-y-6">
-              <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#a1a1aa]">
+              <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#d4b982]">
                 WHAT HAPPENS NEXT
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
@@ -111,7 +111,7 @@ export default function AssessmentSection() {
                   { title: "Clear Timeline & Pricing", desc: "A transparent project plan with clear milestones and no hidden surprises." },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.03] border border-white/5">
-                    <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/[0.04] border border-white/[0.08] text-[#d4d4d8] shrink-0 mt-0.5">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#d4b982]/[0.08] border border-[#d4b982]/25 text-[#d4b982] shrink-0 mt-0.5">
                       <Check size={14} />
                     </div>
                     <div>
@@ -122,7 +122,7 @@ export default function AssessmentSection() {
                 ))}
               </div>
               <div className="pt-4 border-t border-white/10 flex items-center gap-3 text-xs text-slate-400 font-mono">
-                <ShieldCheck size={16} className="text-[#86efac]" />
+                <ShieldCheck size={16} className="text-[#d4b982]" />
                 <span>100% Confidential & Secure</span>
               </div>
             </div>
@@ -130,7 +130,7 @@ export default function AssessmentSection() {
             <div className="lg:col-span-7 rounded-2xl border border-white/10 bg-[#050505]/90 p-6 sm:p-8 backdrop-blur-xl">
               {submitted ? (
                 <div className="py-12 text-center space-y-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#86efac]/[0.06] border border-[#86efac]/[0.20] text-[#86efac] mx-auto shadow-[0_0_0_1px_rgba(255,255,255,0.08)]">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#d4b982]/[0.08] border border-[#d4b982]/30 text-[#d4b982] mx-auto shadow-[0_0_25px_rgba(212,185,130,0.15)]">
                     <CheckCircle2 size={32} />
                   </div>
                   <h4 className="text-2xl font-bold text-white">Assessment Request Received!</h4>
@@ -140,7 +140,7 @@ export default function AssessmentSection() {
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="mt-4 text-xs font-mono text-[#a1a1aa] hover:underline cursor-pointer"
+                    className="mt-4 text-xs font-mono text-[#d4b982] hover:underline cursor-pointer"
                   >
                     Submit another request →
                   </button>
@@ -149,7 +149,7 @@ export default function AssessmentSection() {
                 <form onSubmit={handleSubmit} noValidate className="space-y-4">
                   <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 pb-2 border-b border-white/10 flex items-center justify-between">
                     <span>ASSESSMENT DETAILS</span>
-                    <span className="text-[#a1a1aa]">FREE REVIEW</span>
+                    <span className="text-[#d4b982] font-semibold">FREE REVIEW</span>
                   </div>
 
                   <div className="grid gap-4 sm:grid-cols-2 pt-2">

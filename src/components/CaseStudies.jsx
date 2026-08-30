@@ -62,7 +62,7 @@ export default function CaseStudies() {
         <AnimatedSection>
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto">
-            <div className="glass-pill mx-auto">
+            <div className="glass-pill-gold mx-auto">
               <TrendingUp size={13} />
               <span>Real Business Results</span>
             </div>
@@ -83,14 +83,14 @@ export default function CaseStudies() {
           {caseStudies.map((study) => (
             <div
               key={study.number}
-              className="rounded-[2.5rem] border border-white/10 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-10 md:p-12 shadow-[0_30px_90px_rgba(0,0,0,0.8)] backdrop-blur-2xl transition-all duration-300 hover:border-white/[0.10]"
+              className="rounded-[2.5rem] border border-white/10 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-10 md:p-12 shadow-[0_30px_90px_rgba(0,0,0,0.8)] backdrop-blur-2xl transition-all duration-300 hover:border-[#d4b982]/30"
             >
               <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
                 
                 {/* Left 7 Columns: Story & Solution */}
                 <div className="lg:col-span-7 space-y-5">
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs font-bold text-[#a1a1aa] px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.08]">
+                    <span className="font-mono text-xs font-bold text-[#d4b982] px-2.5 py-1 rounded-full bg-[#d4b982]/[0.08] border border-[#d4b982]/20">
                       CASE {study.number}
                     </span>
                     <span className="text-xs font-mono text-slate-400">{study.client} · {study.industry}</span>
@@ -106,8 +106,8 @@ export default function CaseStudies() {
                       {study.problem}
                     </div>
 
-                    <div className="p-3.5 rounded-2xl bg-white/[0.01] border border-white/[0.06] text-xs text-slate-300 leading-relaxed">
-                      <span className="font-bold text-[#a1a1aa] font-mono">THE STHAYU SYSTEM: </span>
+                    <div className="p-3.5 rounded-2xl bg-[#d4b982]/[0.03] border border-[#d4b982]/15 text-xs text-slate-300 leading-relaxed">
+                      <span className="font-bold text-[#d4b982] font-mono">THE STHAYU SYSTEM: </span>
                       {study.solution}
                     </div>
                   </div>
@@ -122,7 +122,7 @@ export default function CaseStudies() {
                 </div>
 
                 {/* Right 5 Columns: Big Metric Highlight */}
-                <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#080808]/90 p-8 text-center lg:text-left overflow-hidden relative">
+                <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl border border-[#d4b982]/20 bg-[#080808]/90 p-8 text-center lg:text-left overflow-hidden relative">
                   <div>
                     {study.image && (
                       <div className="relative h-28 mb-5 overflow-hidden rounded-xl border border-white/10 bg-[#050505]">
@@ -137,10 +137,10 @@ export default function CaseStudies() {
                         <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent" />
                       </div>
                     )}
-                    <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#a1a1aa]">
+                    <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#d4b982]">
                       VERIFIED OUTCOME
                     </div>
-                    <div className="mt-3 font-mono text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#fafafa] via-[#d4d4d8] to-[#a1a1aa]">
+                    <div className="mt-3 font-mono text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-[#e8d5b5] to-[#d4b982]">
                       {study.metric}
                     </div>
                     <p className="mt-3 text-xs text-[#d4d4d8] leading-relaxed font-medium">
@@ -149,13 +149,13 @@ export default function CaseStudies() {
                   </div>
 
                   <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-[11px] font-mono text-[#86efac] flex items-center gap-1.5">
+                    <span className="text-[11px] font-mono text-[#d4b982] flex items-center gap-1.5">
                       <CheckCircle2 size={14} />
                       Production Deployed
                     </span>
                     <a
                       href="#assessment"
-                      className="inline-flex items-center gap-1 text-xs font-bold text-[#d4d4d8] hover:text-[#d4d4d8]"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[#d4b982] hover:text-[#e8d5b5]"
                     >
                       <span>Similar Scope</span>
                       <ArrowRight size={13} />
@@ -173,12 +173,12 @@ export default function CaseStudies() {
           {outcomeHighlights.map((stat) => {
             const Icon = stat.icon
             return (
-              <div key={stat.label} className="glass-card p-6 flex flex-col justify-between">
+              <div key={stat.label} className="glass-card p-6 flex flex-col justify-between hover:border-[#d4b982]/30 transition-colors">
                 <div className="flex items-center justify-between">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.03] border border-white/[0.08] text-[#d4d4d8]">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.03] border border-white/[0.08] text-[#d4b982]">
                     <Icon size={18} />
                   </div>
-                  <span className="flex h-2 w-2 rounded-full bg-[#86efac]" />
+                  <span className="flex h-2 w-2 rounded-full bg-[#d4b982]" />
                 </div>
                 <div className="mt-5 font-mono text-3xl font-extrabold text-white">
                   {stat.value}

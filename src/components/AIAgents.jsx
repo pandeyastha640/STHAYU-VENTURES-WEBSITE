@@ -140,17 +140,17 @@ export default function AIAgents() {
         <AnimatedSection delay={0.1}>
           <div className="mt-12 rounded-3xl border border-white/[0.08] bg-white/[0.02] p-6 sm:p-8">
             <div className="flex items-center gap-2 mb-6">
-              <Sparkles size={16} className="text-[#86efac]" />
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-300">How an AI Agent Works in 5 Simple Steps:</span>
+              <Sparkles size={16} className="text-[#d4b982]" />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-300">How an AI Agent Works in 5 Simple Steps:</span>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {agentSteps.map((s) => (
-                <div key={s.step} className="rounded-2xl border border-white/5 bg-white/[0.02] p-4 flex flex-col justify-between">
+                <div key={s.step} className="rounded-2xl border border-white/5 bg-white/[0.02] p-4 flex flex-col justify-between hover:border-[#d4b982]/20 transition-colors">
                   <div>
-                    <span className="text-xs font-mono font-bold text-[#86efac]">{s.step}</span>
-                    <h4 className="text-sm font-bold text-white mt-2">{s.title}</h4>
-                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">{s.desc}</p>
+                    <span className="font-mono text-xs font-semibold text-[#d4b982] tabular-nums">{s.step}</span>
+                    <h4 className="text-sm font-bold tracking-tight text-white mt-2">{s.title}</h4>
+                    <p className="text-xs text-slate-400 mt-1 leading-[1.6] font-normal">{s.desc}</p>
                   </div>
                 </div>
               ))}
@@ -168,13 +168,13 @@ export default function AIAgents() {
                   onClick={() => setSelectedAgent(agent)}
                   className={`group relative flex flex-col justify-between rounded-[2rem] border p-6 transition-all duration-300 cursor-pointer ${
                     isSelected
-                      ? "border-white/[0.12] border-l-2 border-l-[#fafafa]/30 bg-gradient-to-b from-[#0a0a0a] to-[#080808] shadow-[0_0_0_1px_rgba(255,255,255,0.08)] -translate-y-1"
+                      ? "border-[#d4b982]/40 bg-gradient-to-b from-[#0a0a0a] to-[#080808] shadow-[0_0_0_1px_rgba(212,185,130,0.15),0_10px_30px_rgba(0,0,0,0.5)] -translate-y-1"
                       : "border-white/10 bg-[#0a0a0a]/70 hover:border-white/20 hover:bg-[#0a0a0a]/90"
                   }`}
                 >
                   <div>
                     <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                      <span className="text-[10px] font-mono font-bold text-[#a1a1aa]">{agent.code}</span>
+                      <span className="text-[10px] font-mono font-bold text-[#d4b982]">{agent.code}</span>
                       <span className="flex items-center gap-1.5 text-[9px] font-mono font-semibold text-[#86efac]">
                         <span className="h-1.5 w-1.5 rounded-full bg-[#86efac] animate-pulse" />
                         AVAILABLE
@@ -190,20 +190,20 @@ export default function AIAgents() {
                       />
                     </div>
 
-                    <h3 className="mt-4 text-base font-bold text-white group-hover:text-[#d4d4d8] transition-colors">
+                    <h3 className="mt-4 text-base font-bold tracking-tight text-white group-hover:text-white transition-colors">
                       {agent.name}
                     </h3>
-                    <p className="text-xs text-slate-400 mt-1">{agent.role}</p>
+                    <p className="text-xs text-slate-400 mt-1 font-normal">{agent.role}</p>
 
                     <div className="mt-4 pt-3 border-t border-white/5">
-                      <div className="text-[10px] uppercase font-mono text-slate-400">Works On:</div>
+                      <div className="text-[10px] uppercase font-semibold tracking-[0.12em] text-slate-400">Works On:</div>
                       <div className="text-xs text-[#d4d4d8] font-medium mt-0.5">{agent.channel}</div>
                     </div>
                   </div>
 
                   <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-[10px] font-mono text-slate-400">Speed: {agent.latency}</span>
-                    <span className={`text-xs font-bold ${isSelected ? "text-[#d4d4d8]" : "text-slate-500 group-hover:text-slate-300"}`}>
+                    <span className="text-[10px] font-mono text-slate-400 tabular-nums">Speed: {agent.latency}</span>
+                    <span className={`text-xs font-semibold ${isSelected ? "text-[#d4b982]" : "text-slate-500 group-hover:text-slate-300"}`}>
                       See details →
                     </span>
                   </div>
@@ -221,12 +221,12 @@ export default function AIAgents() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
-            className="mt-12 rounded-[2.5rem] border border-white/[0.08] bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-6 sm:p-8 md:p-10 backdrop-blur-2xl"
+            className="mt-12 rounded-[2.5rem] border border-[#d4b982]/20 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-6 sm:p-8 md:p-10 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
           >
             
             <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
               <div className="flex items-center gap-3.5">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8] overflow-hidden relative">
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#d4b982]/[0.08] border border-[#d4b982]/25 text-[#d4b982] overflow-hidden relative">
                   <img
                     src={selectedAgent.imageCore}
                     alt={selectedAgent.name}
@@ -237,7 +237,7 @@ export default function AIAgents() {
                 <div>
                   <div className="flex items-center gap-2">
                     <h3 className="text-lg sm:text-xl font-bold text-white">{selectedAgent.name}</h3>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.03] text-[#d4d4d8] border border-white/[0.08]">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#d4b982]/[0.08] text-[#d4b982] border border-[#d4b982]/20">
                       {selectedAgent.code}
                     </span>
                   </div>
@@ -257,38 +257,38 @@ export default function AIAgents() {
             <div className="mt-8 grid gap-8 lg:grid-cols-12">
               
               <div className="lg:col-span-7 space-y-3">
-                <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-2">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400 mb-2">
                   What this agent can do for your business:
                 </div>
                 {selectedAgent.capabilities.map((cap) => (
                   <div key={cap} className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/[0.03] border border-white/5">
-                    <CheckCircle2 size={16} className="text-[#86efac] shrink-0" />
+                    <CheckCircle2 size={16} className="text-[#d4b982] shrink-0" />
                     <span className="text-xs font-medium text-slate-200">{cap}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="lg:col-span-5 rounded-2xl border border-white/10 bg-[#080808]/80 p-5 font-mono">
+              <div className="lg:col-span-5 rounded-2xl border border-white/10 bg-[#080808]/80 p-5">
                 <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[10px] text-slate-400">
-                  <span className="flex items-center gap-1.5">
-                    <Terminal size={12} className="text-[#a1a1aa]" />
+                  <span className="flex items-center gap-1.5 font-semibold uppercase tracking-[0.12em] text-slate-300">
+                    <Terminal size={12} className="text-[#d4b982]" />
                     LIVE PERFORMANCE STATS
                   </span>
-                  <span className="text-[#86efac]">● ACTIVE</span>
+                  <span className="text-[#d4b982] font-mono text-[10px] font-semibold">● ACTIVE</span>
                 </div>
 
                 <div className="mt-4 space-y-3">
                   {Object.entries(selectedAgent.telemetry).map(([key, val]) => (
                     <div key={key} className="flex items-center justify-between text-xs">
                       <span className="text-slate-400 capitalize">{key.replace(/_/g, " ")}:</span>
-                      <span className="font-bold text-[#d4d4d8]">{val}</span>
+                      <span className="font-mono font-semibold text-[#fafafa] tabular-nums">{val}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-400">
                   <span>Guarded with your business rules</span>
-                  <span className="text-[#86efac]">Zero hallucinations</span>
+                  <span className="text-[#d4b982] font-medium">Zero hallucinations</span>
                 </div>
               </div>
 

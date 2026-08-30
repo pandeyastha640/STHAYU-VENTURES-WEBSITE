@@ -22,32 +22,37 @@ function SectionHeading({ pill, title, description, className = "" }) {
   return (
     <div className={`flex flex-col items-center text-center ${className}`}>
       {pill && (
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-4 py-1.5 text-xs font-medium text-[#a1a1aa] backdrop-blur-sm">
-          {pill.icon && <pill.icon className="h-3.5 w-3.5" />}
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#d4b982]/25 bg-[#d4b982]/[0.06] px-4 py-1.5 text-[11px] font-semibold text-[#d4b982] uppercase tracking-[0.14em] backdrop-blur-sm shadow-[0_0_20px_rgba(212,185,130,0.06)]">
+          {pill.icon && <pill.icon className="h-3.5 w-3.5 text-[#d4b982]" />}
           <span>{pill.text}</span>
         </div>
       )}
-      <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+      <h2 className="text-3xl font-extrabold tracking-[-0.035em] text-[#fafafa] sm:text-4xl lg:text-5xl leading-[1.12]">
         {title}
       </h2>
       {description && (
-        <p className="mt-4 max-w-2xl text-[#a1a1aa] sm:text-lg">{description}</p>
+        <p className="mt-4 max-w-2xl text-base sm:text-lg text-[#a1a1aa] leading-[1.68] font-normal tracking-[-0.01em]">{description}</p>
       )}
     </div>
   )
 }
 
-function GlassCard({ children, className = "", hover = true, glow = false }) {
+function GlassCard({ children, className = "", hover = true, glow = false, goldAccent = false }) {
   return (
     <div
-      className={`relative rounded-3xl border border-white/[0.06] bg-[#0a0a0a]/60 backdrop-blur-xl ${
+      className={`relative rounded-3xl border ${
+        goldAccent ? "border-[#d4b982]/20 hover:border-[#d4b982]/40" : "border-white/[0.06]"
+      } bg-[#0a0a0a]/70 backdrop-blur-xl ${
         hover
-          ? "transition-all duration-500 hover:border-white/[0.12] hover:-translate-y-0.5"
+          ? "transition-all duration-500 hover:border-white/[0.14] hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.55)]"
           : ""
       } ${glow ? "group" : ""} ${className}`}
     >
       {glow && (
-        <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ boxShadow: "0 0 60px 12px rgba(255,255,255,0.04)" }} />
+        <div
+          className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          style={{ boxShadow: goldAccent ? "0 0 50px 8px rgba(212,185,130,0.08)" : "0 0 50px 8px rgba(255,255,255,0.04)" }}
+        />
       )}
       {children}
     </div>
@@ -101,6 +106,7 @@ function Badge({ children, variant = "default", className = "" }) {
   const variants = {
     default: "border-white/[0.08] bg-white/[0.04] text-[#a1a1aa]",
     accent: "border-white/[0.12] bg-white/[0.06] text-[#fafafa]",
+    gold: "border-[#d4b982]/30 bg-[#d4b982]/[0.08] text-[#d4b982]",
     success: "border-[#86efac]/20 bg-[#86efac]/10 text-[#86efac]",
   }
 
@@ -113,9 +119,15 @@ function Badge({ children, variant = "default", className = "" }) {
   )
 }
 
-function GradientText({ children, className = "" }) {
+function GradientText({ children, variant = "white", className = "" }) {
+  const gradients = {
+    white: "from-white via-white/90 to-white/60",
+    gold: "from-white via-[#d4b982] to-[#c5a059]",
+    subtle: "from-[#fafafa] to-[#a1a1aa]",
+  }
+
   return (
-    <span className={`bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/60 ${className}`}>
+    <span className={`bg-clip-text text-transparent bg-gradient-to-b ${gradients[variant] || gradients.white} ${className}`}>
       {children}
     </span>
   )

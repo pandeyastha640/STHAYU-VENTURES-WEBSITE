@@ -87,7 +87,7 @@ export default function WhySthayu() {
                   onClick={() => setSelectedPillar(pillar)}
                   className={`group relative p-6 rounded-[2rem] border transition-all duration-300 cursor-pointer ${
                     isSelected
-                      ? "border-white/[0.12] bg-gradient-to-r from-[#0a0a0a] to-[#080808] shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_0_40px_-8px_rgba(255,255,255,0.04)]"
+                      ? "border-[#d4b982]/30 bg-gradient-to-r from-[#0a0a0a] to-[#080808] shadow-[0_0_0_1px_rgba(212,185,130,0.12),0_0_40px_-8px_rgba(212,185,130,0.08)]"
                       : "border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.03]"
                   }`}
                 >
@@ -96,7 +96,7 @@ export default function WhySthayu() {
                       <div
                         className={`flex h-12 w-12 items-center justify-center rounded-2xl border transition-colors ${
                           isSelected
-                            ? "bg-white/[0.04] border-white/[0.12] text-[#d4d4d8] shadow-[0_0_0_1px_rgba(255,255,255,0.06)]"
+                            ? "bg-[#d4b982]/[0.08] border-[#d4b982]/30 text-[#d4b982] shadow-[0_0_0_1px_rgba(212,185,130,0.1)]"
                             : "bg-white/5 border-white/10 text-slate-400 group-hover:text-white"
                         }`}
                       >
@@ -104,8 +104,8 @@ export default function WhySthayu() {
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-xs font-bold text-[#a1a1aa]">{pillar.number}</span>
-                          <h3 className="text-base font-bold text-white group-hover:text-white transition-colors">
+                          <span className="font-mono text-xs font-semibold text-[#d4b982] tabular-nums">{pillar.number}</span>
+                          <h3 className="text-base font-bold tracking-tight text-white group-hover:text-white transition-colors">
                             {pillar.title}
                           </h3>
                         </div>
@@ -115,7 +115,7 @@ export default function WhySthayu() {
 
                     <span
                       className={`text-xs font-mono font-bold transition-transform duration-300 ${
-                        isSelected ? "text-[#d4d4d8] translate-x-1" : "text-slate-500"
+                        isSelected ? "text-[#d4b982] translate-x-1" : "text-slate-500"
                       }`}
                     >
                       →
@@ -128,7 +128,7 @@ export default function WhySthayu() {
 
           {/* Right Pillar Deep Dive Showcase */}
           <div className="lg:col-span-6 sticky top-28">
-            <GlassCard hover={false} glow={false} className="rounded-[2.5rem] p-8 sm:p-10 shadow-[0_30px_90px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.06)]">
+            <GlassCard hover={false} glow={false} className="rounded-[2.5rem] p-8 sm:p-10 border-[#d4b982]/20 shadow-[0_30px_90px_rgba(0,0,0,0.8),0_0_0_1px_rgba(212,185,130,0.1)]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selectedPillar.id}
@@ -140,18 +140,18 @@ export default function WhySthayu() {
                   {/* Header */}
                   <div className="flex items-center justify-between pb-6 border-b border-white/10">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8]">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#d4b982]/[0.08] border border-[#d4b982]/25 text-[#d4b982]">
                         <selectedPillar.icon size={20} />
                       </div>
                       <div>
-                        <div className="text-xs font-mono text-[#a1a1aa] font-bold uppercase tracking-wider">
+                        <div className="text-[11px] font-semibold text-[#d4b982] uppercase tracking-[0.14em]">
                           PILLAR {selectedPillar.number}
                         </div>
-                        <div className="text-lg font-bold text-white">{selectedPillar.title}</div>
+                        <div className="text-lg font-bold tracking-tight text-white">{selectedPillar.title}</div>
                       </div>
                     </div>
 
-                    <span className="px-3 py-1 rounded-full bg-[#86efac]/[0.06] text-[#86efac] text-[10px] font-mono font-bold border border-[#86efac]/[0.12]">
+                    <span className="px-3 py-1 rounded-full bg-[#d4b982]/[0.08] text-[#d4b982] text-[11px] font-mono font-semibold tabular-nums border border-[#d4b982]/20">
                       {selectedPillar.metrics}
                     </span>
                   </div>
@@ -163,12 +163,12 @@ export default function WhySthayu() {
 
                   {/* Key Capabilities */}
                   <div className="mt-8 space-y-3">
-                    <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
                       Key Highlights:
                     </div>
                     {selectedPillar.features.map((feat) => (
                       <div key={feat} className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
-                        <CheckCircle2 size={16} className="text-[#86efac] shrink-0" />
+                        <CheckCircle2 size={16} className="text-[#d4b982] shrink-0" />
                         <span className="text-xs font-semibold text-slate-200">{feat}</span>
                       </div>
                     ))}
@@ -179,7 +179,7 @@ export default function WhySthayu() {
                     <span className="text-xs text-slate-400">Want this for your business?</span>
                     <a
                       href="#assessment"
-                      className="inline-flex items-center gap-2 text-xs font-bold text-[#d4d4d8] hover:text-white transition-colors"
+                      className="inline-flex items-center gap-2 text-xs font-bold text-[#d4b982] hover:text-[#e8d5b5] transition-colors"
                     >
                       <span>Get Your Free Plan</span>
                       <ArrowRight size={13} />

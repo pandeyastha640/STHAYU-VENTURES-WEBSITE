@@ -33,11 +33,11 @@ function LiveActivityFeed() {
     <div className="rounded-2xl border border-white/10 bg-[#080808]/80 p-4 sm:p-5">
       <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-3">
         <div className="flex items-center gap-2">
-          <Activity size={14} className="text-[#86efac]" />
+          <Activity size={14} className="text-[#d4b982]" />
           <span className="text-xs font-bold text-white">Live System Activity</span>
         </div>
-        <span className="flex items-center gap-1.5 text-[9px] font-mono font-semibold text-[#86efac]">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#86efac] animate-pulse" />
+        <span className="flex items-center gap-1.5 text-[9px] font-mono font-semibold text-[#d4b982]">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#d4b982] animate-pulse" />
           ACTIVE
         </span>
       </div>
@@ -49,9 +49,9 @@ function LiveActivityFeed() {
             style={{ opacity: idx === 0 ? 1 : Math.max(0.4, 1 - idx * 0.2) }}
           >
             <span className="text-slate-500 shrink-0 w-[56px]">{entry.time}</span>
-            <span className="text-[#a1a1aa] shrink-0 w-[96px]">{entry.agent}</span>
+            <span className="text-[#d4b982] shrink-0 w-[96px] font-semibold">{entry.agent}</span>
             <span className="text-slate-300 truncate">{entry.action}</span>
-            <CheckCircle2 size={12} className="text-[#86efac] shrink-0 mt-0.5" />
+            <CheckCircle2 size={12} className="text-[#d4b982] shrink-0 mt-0.5" />
           </div>
         ))}
       </div>
@@ -72,7 +72,7 @@ export default function Showcase() {
         <AnimatedSection>
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto">
-            <div className="glass-pill mx-auto">
+            <div className="glass-pill-gold mx-auto">
               <Layers3 size={13} />
               <span>Executive Dashboard</span>
             </div>
@@ -90,7 +90,7 @@ export default function Showcase() {
 
         <AnimatedSection delay={0.15}>
         {/* Command Center Dashboard Mockup */}
-        <div className="mt-16 rounded-[2.5rem] border border-white/[0.08] bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-4 sm:p-6 md:p-8 shadow-[0_40px_120px_rgba(0,0,0,0.8)] backdrop-blur-2xl">
+        <div className="mt-16 rounded-[2.5rem] border border-[#d4b982]/20 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-4 sm:p-6 md:p-8 shadow-[0_40px_120px_rgba(0,0,0,0.8)] backdrop-blur-2xl">
           
           {/* Top Window Chrome */}
           <div className="flex items-center justify-between pb-4 border-b border-white/10 px-2">
@@ -104,8 +104,8 @@ export default function Showcase() {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[10px] font-mono font-bold text-[#86efac] uppercase tracking-widest">
+              <span className="flex h-2 w-2 rounded-full bg-[#d4b982] animate-pulse" />
+              <span className="text-[10px] font-mono font-bold text-[#d4b982] uppercase tracking-widest">
                 ALL SYSTEMS OPERATIONAL
               </span>
             </div>
@@ -136,7 +136,7 @@ export default function Showcase() {
                       onClick={() => setActiveMenu(item.name)}
                       className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-xs font-semibold transition-all cursor-pointer ${
                         isActive
-                          ? "bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8]"
+                          ? "bg-[#d4b982]/[0.08] border border-[#d4b982]/30 text-[#d4b982]"
                           : "text-slate-400 hover:text-white hover:bg-white/5 border border-transparent"
                       }`}
                     >
@@ -150,10 +150,10 @@ export default function Showcase() {
               <div className="mt-8 pt-4 border-t border-white/10">
                 <div className="flex items-center justify-between text-[10px] font-mono text-slate-400">
                   <span>AVERAGE RESPONSE TIME</span>
-                  <span className="text-[#86efac] font-bold">1.2s</span>
+                  <span className="text-[#d4b982] font-bold">1.2s</span>
                 </div>
                 <div className="mt-2 h-1.5 w-full rounded-full bg-white/5 overflow-hidden">
-                  <div className="h-full w-[94%] bg-gradient-to-r from-[#86efac] to-[#38bdf8] rounded-full" />
+                  <div className="h-full w-[94%] bg-gradient-to-r from-[#d4b982] to-[#e8d5b5] rounded-full" />
                 </div>
               </div>
             </div>
@@ -168,13 +168,13 @@ export default function Showcase() {
                   return (
                     <div
                       key={m.label}
-                      className="rounded-2xl border border-white/10 bg-[#080808]/80 p-4"
+                      className="rounded-2xl border border-white/10 bg-[#080808]/80 p-4 hover:border-[#d4b982]/25 transition-colors"
                     >
                       <div className="flex items-center justify-between">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/[0.03] border border-white/[0.08] text-[#d4d4d8]">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#d4b982]/[0.06] border border-[#d4b982]/20 text-[#d4b982]">
                           <Icon size={15} />
                         </div>
-                        <span className="text-[10px] font-mono font-bold text-[#86efac]">{m.delta}</span>
+                        <span className="text-[10px] font-mono font-bold text-[#d4b982]">{m.delta}</span>
                       </div>
                       <div className="mt-3 font-mono text-xl sm:text-2xl font-extrabold text-white">
                         {m.value}
@@ -192,7 +192,7 @@ export default function Showcase() {
                     <div className="text-xs font-bold text-white">Weekly Automated Activity</div>
                     <div className="text-[10px] text-slate-400 font-mono">Real-time task volume</div>
                   </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#86efac]/[0.06] text-[#86efac] border border-[#86efac]/[0.12]">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#d4b982]/[0.08] text-[#d4b982] border border-[#d4b982]/20 font-semibold">
                     LIVE UPDATING
                   </span>
                 </div>
@@ -201,13 +201,13 @@ export default function Showcase() {
                   <svg className="h-full w-full" viewBox="0 0 500 120" preserveAspectRatio="none">
                     <defs>
                       <linearGradient id="commandChartGlow" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.3" />
-                        <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.0" />
+                        <stop offset="0%" stopColor="#d4b982" stopOpacity="0.25" />
+                        <stop offset="100%" stopColor="#d4b982" stopOpacity="0.0" />
                       </linearGradient>
                       <linearGradient id="commandLine" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0%" stopColor="#38bdf8" />
-                        <stop offset="50%" stopColor="#06b6d4" />
-                        <stop offset="100%" stopColor="#6366f1" />
+                        <stop offset="0%" stopColor="#e8d5b5" />
+                        <stop offset="50%" stopColor="#d4b982" />
+                        <stop offset="100%" stopColor="#bfa068" />
                       </linearGradient>
                     </defs>
                     <path
@@ -218,7 +218,7 @@ export default function Showcase() {
                       d="M0 100 C40 92 60 70 100 80 C140 90 160 55 200 65 C240 75 260 40 300 50 C340 60 380 20 420 30 C460 40 480 15 500 10"
                       fill="none"
                       stroke="url(#commandLine)"
-                      strokeWidth="3"
+                      strokeWidth="2.5"
                     />
                   </svg>
                 </div>

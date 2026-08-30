@@ -76,16 +76,16 @@ export default function SystemStack() {
             const Icon = item.icon
             return (
               <AnimatedSection key={item.industry} delay={idx * 0.1}>
-                <div className="glass-card p-7 flex flex-col justify-between group h-full">
+                <div className="glass-card p-7 flex flex-col justify-between group h-full hover:border-[#d4b982]/30 transition-all">
                   <div>
                     <div className="flex items-center justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8]">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#d4b982]/[0.06] border border-[#d4b982]/20 text-[#d4b982]">
                         <Icon size={22} />
                       </div>
-                      <span className="text-[10px] font-mono font-bold text-[#86efac]">READY BLUEPRINT</span>
+                      <span className="text-[10px] font-mono font-bold text-[#d4b982]">READY BLUEPRINT</span>
                     </div>
 
-                    <h3 className="mt-5 text-lg font-bold text-white group-hover:text-[#d4d4d8] transition-colors">
+                    <h3 className="mt-5 text-lg font-bold text-white group-hover:text-[#d4b982] transition-colors">
                       {item.industry}
                     </h3>
                     <p className="mt-2 text-xs text-slate-300 leading-relaxed">
@@ -106,8 +106,8 @@ export default function SystemStack() {
                   </div>
 
                   <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-[11px] font-mono text-[#86efac] font-bold">{item.outcome}</span>
-                    <ArrowRight size={14} className="text-[#a1a1aa] opacity-60 group-hover:translate-x-1 transition-transform" />
+                    <span className="text-[11px] font-mono text-[#d4b982] font-bold">{item.outcome}</span>
+                    <ArrowRight size={14} className="text-[#a1a1aa] group-hover:text-[#d4b982] group-hover:translate-x-1 transition-all" />
                   </div>
                 </div>
               </AnimatedSection>
@@ -117,9 +117,9 @@ export default function SystemStack() {
 
         {/* The Transformation Staircase */}
         <AnimatedSection className="mt-16">
-          <div className="rounded-[2.5rem] border border-white/[0.08] bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-10 backdrop-blur-2xl">
+          <div className="rounded-[2.5rem] border border-[#d4b982]/20 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-10 backdrop-blur-2xl">
             <div className="max-w-3xl">
-              <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#a1a1aa]">
+              <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#d4b982]">
                 The Automation Journey
               </div>
               <h3 className="mt-2 text-2xl sm:text-3xl font-bold text-white">
@@ -133,16 +133,20 @@ export default function SystemStack() {
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {maturitySteps.map((s, idx) => (
                 <div key={s.stage} className="relative">
-                  <div className="relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-5 hover:border-white/[0.10] hover:bg-white/[0.04] transition-all h-full">
+                  <div className={`relative flex flex-col justify-between rounded-2xl border p-5 transition-all h-full ${
+                    idx === 4
+                      ? "border-[#d4b982]/30 bg-[#d4b982]/[0.03] hover:border-[#d4b982]/50"
+                      : "border-white/10 bg-white/[0.02] hover:border-white/[0.15] hover:bg-white/[0.04]"
+                  }`}>
                     <div>
-                      <div className="font-mono text-xs font-bold text-[#a1a1aa]">{s.stage}</div>
+                      <div className={`font-mono text-xs font-bold ${idx === 4 ? "text-[#d4b982]" : "text-[#a1a1aa]"}`}>{s.stage}</div>
                       <div className="mt-2 text-base font-bold text-white">{s.name}</div>
                       <p className="mt-2 text-xs text-slate-400 leading-relaxed">{s.desc}</p>
                     </div>
 
                     <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-slate-400">
                       <span>Level {idx + 1}</span>
-                      {idx === 4 && <span className="text-[#86efac] font-bold">★ GOAL</span>}
+                      {idx === 4 && <span className="text-[#d4b982] font-bold">★ GOAL</span>}
                     </div>
                   </div>
 

@@ -61,11 +61,11 @@ export default function ProblemDiscovery() {
                     <XCircle size={20} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white">How Most Businesses Work Today</h3>
-                    <p className="text-xs text-[#fca5a5] font-mono">SLOW · MANUAL · REPETITIVE</p>
+                    <h3 className="text-lg font-bold tracking-tight text-white">How Most Businesses Work Today</h3>
+                    <p className="text-[11px] text-[#fca5a5] uppercase tracking-[0.14em] font-semibold">Slow · Manual · Repetitive</p>
                   </div>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-red-500/[0.06] text-[#fca5a5] text-[10px] font-bold uppercase tracking-wider border border-red-500/[0.12]">
+                <span className="px-3 py-1 rounded-full bg-red-500/[0.06] text-[#fca5a5] text-[10px] font-bold uppercase tracking-[0.12em] border border-red-500/[0.12]">
                   Before Sthayu
                 </span>
               </div>
@@ -98,22 +98,22 @@ export default function ProblemDiscovery() {
 
           {/* Column 2: The Sthayu Connected System (After) */}
           <AnimatedSection delay={0.2}>
-            <div className="rounded-[2.5rem] border border-white/[0.10] bg-gradient-to-b from-[#0a0a0a]/80 via-[#080808]/60 to-[#050505] p-6 sm:p-8 md:p-10 shadow-[0_20px_70px_rgba(0,0,0,0.5)] backdrop-blur-xl relative">
-              <div className="absolute -top-3 right-8 px-3.5 py-1 rounded-full bg-white/[0.08] text-[#fafafa] border border-white/[0.12] font-sans text-[10px] font-extrabold uppercase tracking-wider shadow-lg">
+            <div className="rounded-[2.5rem] border border-[#d4b982]/20 bg-gradient-to-b from-[#0a0a0a]/90 via-[#080808]/70 to-[#050505] p-6 sm:p-8 md:p-10 shadow-[0_20px_70px_rgba(0,0,0,0.5)] backdrop-blur-xl relative">
+              <div className="absolute -top-3 right-8 px-3.5 py-1 rounded-full bg-[#d4b982]/10 text-[#d4b982] border border-[#d4b982]/30 text-[10px] font-bold uppercase tracking-[0.14em] shadow-lg">
                 The Sthayu Solution
               </div>
 
               <div className="flex items-center justify-between pb-6 border-b border-white/[0.06]">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8]">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#d4b982]/[0.08] border border-[#d4b982]/25 text-[#d4b982]">
                     <CheckCircle2 size={20} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white">How Your Business Runs With Sthayu</h3>
-                    <p className="text-xs text-[#d4d4d8] font-mono">AUTOMATED · CONNECTED · INSTANT</p>
+                    <h3 className="text-lg font-bold tracking-tight text-white">How Your Business Runs With Sthayu</h3>
+                    <p className="text-[11px] text-[#d4b982] uppercase tracking-[0.14em] font-semibold">Automated · Connected · Instant</p>
                   </div>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-white/[0.03] text-[#d4d4d8] text-[10px] font-bold uppercase tracking-wider border border-white/[0.08]">
+                <span className="px-3 py-1 rounded-full bg-[#d4b982]/[0.08] text-[#d4b982] text-[10px] font-bold uppercase tracking-[0.12em] border border-[#d4b982]/20">
                   After Sthayu
                 </span>
               </div>
@@ -126,8 +126,8 @@ export default function ProblemDiscovery() {
                   { title: "One connected system", desc: "All your software tools work together smoothly, so your team can focus on real work." },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/[0.04]">
-                      <CheckCircle2 size={12} className="text-[#d4d4d8]" />
+                    <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#d4b982]/10">
+                      <CheckCircle2 size={12} className="text-[#d4b982]" />
                     </div>
                     <div>
                       <h4 className="text-sm font-semibold text-white">{item.title}</h4>
@@ -137,9 +137,9 @@ export default function ProblemDiscovery() {
                 ))}
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/06 flex items-center justify-between text-xs font-mono text-[#d4d4d8]">
+              <div className="mt-8 pt-6 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-[#d4d4d8]">
                 <span>Speed improvement:</span>
-                <span className="font-bold text-[#86efac]">+74% faster task completion</span>
+                <span className="font-bold text-[#d4b982]">+74% faster task completion</span>
               </div>
             </div>
           </AnimatedSection>
@@ -159,20 +159,20 @@ export default function ProblemDiscovery() {
             {frictionPoints.map((item, idx) => (
               <AnimatedSection key={item.title} delay={idx * 0.1}>
                 <div
-                  className="glass-card p-6 flex flex-col justify-between group hover:border-white/[0.08] transition"
+                  className="glass-card p-6 flex flex-col justify-between group hover:border-[#d4b982]/30 transition"
                 >
                   <div>
-                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/[0.03] border border-white/[0.08] text-[#d4d4d8] mb-4">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/[0.03] border border-white/[0.08] text-[#d4b982] group-hover:bg-[#d4b982]/10 group-hover:border-[#d4b982]/30 transition-colors mb-4">
                       <Zap size={16} />
                     </div>
                     <h4 className="text-sm font-bold text-white">{item.title}</h4>
                     <p className="text-xs text-slate-400 mt-2 line-clamp-2">{item.problem}</p>
-                    <p className="text-xs text-[#d4d4d8] mt-2 font-medium">{item.solution}</p>
+                    <p className="text-xs text-slate-200 mt-2 font-medium">{item.solution}</p>
                   </div>
 
                   <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-[10px] font-mono text-[#86efac] font-bold">{item.metric}</span>
-                    <ArrowRight size={13} className="text-[#a1a1aa] opacity-60 group-hover:translate-x-1 transition-transform" />
+                    <span className="text-[10px] font-mono text-[#d4b982] font-bold">{item.metric}</span>
+                    <ArrowRight size={13} className="text-[#a1a1aa] opacity-60 group-hover:translate-x-1 group-hover:text-[#d4b982] transition-all" />
                   </div>
                 </div>
               </AnimatedSection>

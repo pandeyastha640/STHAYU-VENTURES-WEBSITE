@@ -106,11 +106,11 @@ export default function MediaShowcase() {
                   onClick={() => setActiveScenario(sc)}
                   className={`flex items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-bold transition-all cursor-pointer ${
                     isSelected
-                      ? "border border-white/[0.12] bg-white/[0.04] text-[#d4d4d8] shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_0_20px_rgba(255,255,255,0.03)]"
+                      ? "border border-[#d4b982]/40 bg-[#d4b982]/[0.08] text-[#d4b982] shadow-[0_0_20px_rgba(212,185,130,0.1)]"
                       : "border border-white/10 bg-white/[0.02] text-slate-300 hover:border-white/20 hover:text-white"
                   }`}
                 >
-                  <span className={`w-2 h-2 rounded-full ${isSelected ? "bg-[#86efac] animate-pulse" : "bg-slate-500"}`} />
+                  <span className={`w-2 h-2 rounded-full ${isSelected ? "bg-[#d4b982] animate-pulse" : "bg-slate-500"}`} />
                   <span>{sc.tag}</span>
                 </button>
               )
@@ -120,19 +120,19 @@ export default function MediaShowcase() {
 
         {/* Interactive Engine Window */}
         <AnimatedSection delay={0.2}>
-          <div className="mt-8 rounded-[2.5rem] border border-white/[0.06] bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] shadow-[0_40px_120px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.06)] overflow-hidden backdrop-blur-2xl">
+          <div className="mt-8 rounded-[2.5rem] border border-[#d4b982]/20 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] shadow-[0_40px_120px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.06)] overflow-hidden backdrop-blur-2xl">
 
             {/* Engine Header Bar */}
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 px-6 py-4 bg-white/[0.02]">
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#d4b982]/[0.06] border border-[#d4b982]/20 text-[#d4b982]">
                   <Workflow size={17} />
                 </div>
                 <div>
                   <div className="text-sm font-bold text-white flex items-center gap-2">
                     {activeScenario.title}
                   </div>
-                  <div className="text-[10px] font-mono text-[#86efac]">STATUS: ACTIVE AUTOMATION</div>
+                  <div className="text-[10px] font-mono text-[#d4b982] font-semibold">STATUS: ACTIVE AUTOMATION</div>
                 </div>
               </div>
 
@@ -142,7 +142,7 @@ export default function MediaShowcase() {
                   type="button"
                   onClick={() => setActiveTab("pipeline")}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                    activeTab === "pipeline" ? "bg-white/[0.04] text-[#d4d4d8] border border-white/[0.08] shadow-[0_0_12px_rgba(255,255,255,0.03)]" : "text-slate-400 hover:text-white hover:bg-white/[0.03]"
+                    activeTab === "pipeline" ? "bg-[#d4b982]/[0.12] text-[#d4b982] border border-[#d4b982]/30 shadow-[0_0_12px_rgba(212,185,130,0.1)]" : "text-slate-400 hover:text-white hover:bg-white/[0.03]"
                   }`}
                 >
                   Step-by-Step Flow
@@ -151,7 +151,7 @@ export default function MediaShowcase() {
                   type="button"
                   onClick={() => setActiveTab("telemetry")}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                    activeTab === "telemetry" ? "bg-white/[0.04] text-[#d4d4d8] border border-white/[0.08] shadow-[0_0_12px_rgba(255,255,255,0.03)]" : "text-slate-400 hover:text-white hover:bg-white/[0.03]"
+                    activeTab === "telemetry" ? "bg-[#d4b982]/[0.12] text-[#d4b982] border border-[#d4b982]/30 shadow-[0_0_12px_rgba(212,185,130,0.1)]" : "text-slate-400 hover:text-white hover:bg-white/[0.03]"
                   }`}
                 >
                   <Terminal size={12} />
@@ -168,7 +168,7 @@ export default function MediaShowcase() {
                   {/* Left side: Scenario Description and Stats */}
                   <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
                     <div>
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#a1a1aa]">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#d4b982]">
                         Automation Flow
                       </span>
                       <h3 className="mt-2 text-xl sm:text-2xl font-bold text-white">
@@ -182,13 +182,13 @@ export default function MediaShowcase() {
                     <div className="grid grid-cols-2 gap-3 pt-2">
                       <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
                         <div className="text-[10px] uppercase tracking-wider font-mono text-slate-400">Response Time</div>
-                        <div className="mt-1 text-2xl font-extrabold text-[#d4d4d8] font-mono">{activeScenario.latency}</div>
+                        <div className="mt-1 text-2xl font-extrabold text-[#d4b982] font-mono">{activeScenario.latency}</div>
                         <div className="text-[10px] text-slate-400 mt-0.5">Instant customer reply</div>
                       </div>
 
                       <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
                         <div className="text-[10px] uppercase tracking-wider font-mono text-slate-400">Accuracy</div>
-                        <div className="mt-1 text-2xl font-extrabold text-[#86efac] font-mono">{activeScenario.accuracy}</div>
+                        <div className="mt-1 text-2xl font-extrabold text-[#d4b982] font-mono">{activeScenario.accuracy}</div>
                         <div className="text-[10px] text-slate-400 mt-0.5">Verified data matching</div>
                       </div>
                     </div>
@@ -207,16 +207,16 @@ export default function MediaShowcase() {
                     {activeScenario.steps.map((step, idx) => (
                       <AnimatedSection key={step.name} delay={0.3 + idx * 0.08}>
                         <div
-                          className="group relative flex items-center justify-between rounded-2xl border border-white/10 bg-[#0a0a0a]/80 p-4 transition-all duration-300 hover:border-white/[0.10] hover:bg-[#0e0e0e]"
+                          className="group relative flex items-center justify-between rounded-2xl border border-white/10 bg-[#0a0a0a]/80 p-4 transition-all duration-300 hover:border-[#d4b982]/30 hover:bg-[#0e0e0e]"
                         >
                           <div className="flex items-center gap-3.5">
-                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8] font-mono text-xs font-bold">
+                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#d4b982]/[0.06] border border-[#d4b982]/20 text-[#d4b982] font-mono text-xs font-bold">
                               0{idx + 1}
                             </div>
                             <div>
                               <div className="text-sm font-bold text-white flex items-center gap-2">
                                 {step.name}
-                                <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-[#86efac]/[0.06] text-[#86efac] border border-[#86efac]/[0.12]">
+                                <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-[#d4b982]/[0.08] text-[#d4b982] border border-[#d4b982]/20 font-semibold">
                                   DONE
                                 </span>
                               </div>
@@ -224,7 +224,7 @@ export default function MediaShowcase() {
                             </div>
                           </div>
 
-                          <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-[#86efac]">
+                          <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-[#d4b982]">
                             <CheckCircle2 size={16} />
                           </div>
                         </div>
@@ -238,7 +238,7 @@ export default function MediaShowcase() {
                 <div className="rounded-2xl border border-white/[0.06] bg-[#080808] p-5 font-mono text-xs text-[#d4d4d8] overflow-x-auto shadow-inner">
                   <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-slate-400 text-[10px]">
                     <span>SYSTEM_DATA_LOG // Secure Channel</span>
-                    <span className="text-[#86efac]">● LIVE</span>
+                    <span className="text-[#d4b982]">● LIVE</span>
                   </div>
                   <pre className="text-slate-300 leading-relaxed">
                     {JSON.stringify(activeScenario.payload, null, 2)}

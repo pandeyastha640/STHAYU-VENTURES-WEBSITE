@@ -15,8 +15,8 @@ export default function InteractiveShowcase() {
 
       <div className="relative mx-auto max-w-7xl">
         {/* Header */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[13px] font-medium uppercase tracking-[0.18em] text-slate-200">
-          <Sparkles size={14} className="text-[#d4d4d8]" />
+        <div className="inline-flex items-center gap-2 rounded-full border border-[#d4b982]/30 bg-[#d4b982]/[0.06] px-4 py-2 text-[13px] font-medium uppercase tracking-[0.18em] text-[#d4b982]">
+          <Sparkles size={14} className="text-[#d4b982]" />
           Interactive Technology
         </div>
 
@@ -76,9 +76,9 @@ export default function InteractiveShowcase() {
               description: "See how all your business tools link together seamlessly without data silos.",
             },
           ].map(({ icon: Icon, title, description }) => (
-            <div key={title} className="rounded-[24px] border border-white/10 bg-[#050505]/80 p-6 hover:border-white/[0.08] transition-all duration-300">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] mb-4">
-                <Icon size={18} className="text-[#d4d4d8]" />
+            <div key={title} className="rounded-[24px] border border-white/10 bg-[#050505]/80 p-6 hover:border-[#d4b982]/30 transition-all duration-300">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#d4b982]/20 bg-[#d4b982]/[0.06] mb-4">
+                <Icon size={18} className="text-[#d4b982]" />
               </div>
               <h3 className="text-[1.1rem] font-semibold text-white mb-2">{title}</h3>
               <p className="text-[14px] text-slate-300">{description}</p>

@@ -134,7 +134,7 @@ export default function HowItWorks() {
             
             {/* Active progress indicator */}
             <motion.div
-              className="absolute top-1/2 h-[2px] bg-white/[0.25] -translate-y-1/2 rounded-full pointer-events-none"
+              className="absolute top-1/2 h-[2px] bg-[#d4b982] -translate-y-1/2 rounded-full pointer-events-none shadow-[0_0_8px_rgba(212,185,130,0.6)]"
               animate={{ left: indicator.left, width: indicator.width }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
@@ -149,19 +149,19 @@ export default function HowItWorks() {
                   onClick={() => setActiveIdx(idx)}
                   className={`group relative z-10 flex min-w-[170px] sm:min-w-[200px] flex-1 flex-col rounded-2xl border p-3 sm:p-4 text-left transition-all duration-300 cursor-pointer snap-start shrink-0 ${
                     isActive
-                      ? "border-white/[0.10] bg-gradient-to-b from-[#0a0a0a] to-[#080808]"
+                      ? "border-[#d4b982]/30 bg-gradient-to-b from-[#0a0a0a] to-[#080808] shadow-[0_0_20px_rgba(212,185,130,0.06)]"
                       : "border-white/10 bg-[#050505] hover:border-white/20 hover:bg-white/[0.03]"
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className={`font-mono text-xs font-bold ${isActive ? "text-[#d4d4d8]" : "text-slate-500"}`}>
+                    <span className={`font-mono text-xs font-bold ${isActive ? "text-[#d4b982]" : "text-slate-500"}`}>
                       PHASE {step.stage}
                     </span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-slate-400">
+                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded ${isActive ? "bg-[#d4b982]/10 text-[#d4b982]" : "bg-white/5 text-slate-400"}`}>
                       {step.phase}
                     </span>
                   </div>
-                  <div className="mt-2 text-sm font-bold text-white group-hover:text-[#d4d4d8] transition-colors truncate">
+                  <div className="mt-2 text-sm font-bold text-white group-hover:text-white transition-colors truncate">
                     {step.title}
                   </div>
                 </button>
@@ -178,7 +178,7 @@ export default function HowItWorks() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
-            className="mt-8 rounded-[2.5rem] border border-white/[0.08] bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-10 md:p-12 shadow-[0_30px_90px_rgba(0,0,0,0.8)] backdrop-blur-2xl"
+            className="mt-8 rounded-[2.5rem] border border-[#d4b982]/20 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-10 md:p-12 shadow-[0_30px_90px_rgba(0,0,0,0.8)] backdrop-blur-2xl"
           >
             
             <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
@@ -186,11 +186,11 @@ export default function HowItWorks() {
               {/* Left Column: Stage Details */}
               <div className="lg:col-span-6 space-y-6">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/[0.04] border border-white/[0.10] font-mono text-xs font-bold text-[#d4d4d8] shadow-md">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#d4b982]/[0.08] border border-[#d4b982]/25 font-mono text-xs font-bold text-[#d4b982] shadow-md">
                     {current.stage}
                   </span>
                   <div>
-                    <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#a1a1aa]">
+                    <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#d4b982]">
                       {current.phase} · {current.title}
                     </div>
                     <div className="text-xs text-slate-400 mt-0.5">{current.highlight}</div>
@@ -206,8 +206,8 @@ export default function HowItWorks() {
                 </p>
 
                 <div className="pt-2">
-                  <div className="inline-flex items-center gap-2 rounded-xl bg-white/[0.03] border border-white/[0.08] px-4 py-2 text-xs font-mono font-bold text-[#d4d4d8]">
-                    <Zap size={14} className="text-[#a1a1aa]" />
+                  <div className="inline-flex items-center gap-2 rounded-xl bg-[#d4b982]/[0.06] border border-[#d4b982]/20 px-4 py-2 text-xs font-mono font-bold text-[#d4b982]">
+                    <Zap size={14} className="text-[#d4b982]" />
                     <span>Key Result: {current.metric}</span>
                   </div>
                 </div>
@@ -217,14 +217,14 @@ export default function HowItWorks() {
               <div className="lg:col-span-6 rounded-2xl border border-white/10 bg-[#080808]/80 p-6 sm:p-8 backdrop-blur-xl">
                 <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 pb-4 border-b border-white/10 flex items-center justify-between">
                   <span>WHAT YOU RECEIVE IN THIS PHASE</span>
-                  <span className="text-[#86efac] font-bold">● INCLUDED</span>
+                  <span className="text-[#d4b982] font-bold">● INCLUDED</span>
                 </div>
 
                 <div className="mt-5 space-y-3.5">
                   {current.deliverables.map((item) => (
                     <div key={item} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                      <CheckCircle2 size={16} className="text-[#86efac] shrink-0 mt-0.5" />
-                      <span className="text-xs font-medium text-[#d4d4d8]">{item}</span>
+                      <CheckCircle2 size={16} className="text-[#d4b982] shrink-0 mt-0.5" />
+                      <span className="text-xs font-medium text-slate-200">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -234,7 +234,7 @@ export default function HowItWorks() {
                   <button
                     type="button"
                     onClick={() => setActiveIdx((prev) => (prev + 1) % lifecycleSteps.length)}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#d4d4d8] hover:text-white cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#d4b982] hover:text-[#e8d5b5] cursor-pointer"
                   >
                     <span>Next Step</span>
                     <ChevronRight size={14} />

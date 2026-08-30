@@ -84,7 +84,7 @@ export default function PremiumPortfolioGallery() {
         <AnimatedSection>
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto">
-            <div className="glass-pill mx-auto">
+            <div className="glass-pill-gold mx-auto">
               <Layers size={13} />
               <span>Work Portfolio</span>
             </div>
@@ -111,7 +111,7 @@ export default function PremiumPortfolioGallery() {
                 onClick={() => setSelectedFilter(cat)}
                 className={`rounded-full px-5 py-2.5 text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                   isActive
-                    ? "bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8] shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
+                    ? "bg-[#d4b982]/[0.10] border border-[#d4b982]/30 text-[#d4b982] shadow-[0_0_12px_rgba(212,185,130,0.15)]"
                     : "bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:border-white/20"
                 }`}
               >
@@ -126,7 +126,7 @@ export default function PremiumPortfolioGallery() {
           {filteredItems.map((item) => (
             <div
               key={item.title}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-b from-[#0a0a0a]/80 to-[#050505] shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1.5 hover:border-white/[0.10] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-xl"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-b from-[#0a0a0a]/80 to-[#050505] shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#d4b982]/30 hover:shadow-[0_0_30px_rgba(212,185,130,0.08)] backdrop-blur-xl"
             >
               <div>
                 {/* Image Section */}
@@ -152,7 +152,7 @@ export default function PremiumPortfolioGallery() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
                   
                   {/* Category Pill Over Image */}
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#050505]/80 border border-white/10 backdrop-blur-md text-[10px] font-mono text-[#d4d4d8] font-bold">
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#050505]/80 border border-[#d4b982]/20 backdrop-blur-md text-[10px] font-mono text-[#d4b982] font-bold">
                     {item.tag}
                   </div>
                 </div>
@@ -161,10 +161,10 @@ export default function PremiumPortfolioGallery() {
                 <div className="p-6">
                   <div className="flex items-center justify-between text-[10px] font-mono font-bold text-slate-400 uppercase">
                     <span>{item.category}</span>
-                    <span className="text-[#86efac]">● VERIFIED LIVE</span>
+                    <span className="text-[#d4b982]">● VERIFIED LIVE</span>
                   </div>
 
-                  <h3 className="mt-3 text-lg font-bold text-white group-hover:text-[#d4d4d8] transition-colors">
+                  <h3 className="mt-3 text-lg font-bold text-white group-hover:text-[#d4b982] transition-colors">
                     {item.title}
                   </h3>
 
@@ -177,10 +177,10 @@ export default function PremiumPortfolioGallery() {
               {/* Card Footer */}
               <div className="p-6 pt-0 border-t border-white/5 mt-auto">
                 <div className="mt-4 flex items-center justify-between">
-                  <span className="text-xs font-mono text-[#d4d4d8] font-bold">{item.metrics}</span>
+                  <span className="text-xs font-mono text-[#d4b982] font-bold">{item.metrics}</span>
                   <a
                     href="#assessment"
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-slate-300 border border-white/10 group-hover:bg-white group-hover:text-[#050505] group-hover:border-white transition-all cursor-pointer"
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-slate-300 border border-white/10 group-hover:bg-[#d4b982] group-hover:text-black group-hover:border-[#d4b982] transition-all cursor-pointer"
                   >
                     <ArrowUpRight size={15} />
                   </a>

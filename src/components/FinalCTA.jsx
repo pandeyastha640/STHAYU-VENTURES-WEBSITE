@@ -9,7 +9,7 @@ export default function FinalCTA() {
 
       <div className="relative mx-auto max-w-7xl">
         <AnimatedSection>
-        <div className="rounded-[2.5rem] border border-white/[0.10] bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-12 md:p-16 shadow-[0_40px_120px_rgba(0,0,0,0.8)] backdrop-blur-3xl overflow-hidden relative">
+        <div className="rounded-[2.5rem] border border-[#d4b982]/25 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-12 md:p-16 shadow-[0_20px_80px_rgba(212,185,130,0.06),0_40px_120px_rgba(0,0,0,0.9)] backdrop-blur-3xl overflow-hidden relative">
           
           {/* Subtle grid pattern background */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:32px_32px] opacity-40 pointer-events-none" />
@@ -18,7 +18,7 @@ export default function FinalCTA() {
             
             {/* Left Column: Heading & CTAs */}
             <div className="lg:col-span-8 space-y-6">
-              <div className="glass-pill">
+              <div className="glass-pill-gold">
                 <Sparkles size={13} />
                 <span>Ready to Get Started?</span>
               </div>
@@ -35,7 +35,7 @@ export default function FinalCTA() {
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <a
                   href="#assessment"
-                  className="btn-primary py-4 px-8 text-xs font-bold shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
+                  className="btn-primary py-4 px-8 text-xs font-bold shadow-[0_0_20px_rgba(212,185,130,0.2)]"
                 >
                   <span>Get My Free Automation Plan</span>
                   <ArrowRight size={15} />
@@ -51,26 +51,26 @@ export default function FinalCTA() {
               </div>
 
               <div className="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400 font-mono">
-                <span className="flex items-center gap-1.5 text-[#86efac]">
+                <span className="flex items-center gap-1.5 text-[#d4b982]">
                   <Check size={14} />
                   No Upfront Cost or Risk
                 </span>
-                <span className="flex items-center gap-1.5 text-[#d4d4d8]">
-                  <ShieldCheck size={14} />
+                <span className="flex items-center gap-1.5 text-slate-300">
+                  <ShieldCheck size={14} className="text-[#d4b982]" />
                   100% Confidential
                 </span>
                 <span className="flex items-center gap-1.5 text-slate-300">
-                  <Zap size={14} className="text-yellow-400" />
+                  <Zap size={14} className="text-[#d4b982]" />
                   24-Hour Plan Delivery
                 </span>
               </div>
             </div>
 
             {/* Right Column: Mini Live Console Visual */}
-            <div className="lg:col-span-4 rounded-2xl border border-white/10 bg-[#050505]/80 p-6 font-mono space-y-4 backdrop-blur-xl shadow-2xl">
+            <div className="lg:col-span-4 rounded-2xl border border-[#d4b982]/20 bg-[#050505]/90 p-6 font-mono space-y-4 backdrop-blur-xl shadow-2xl">
               <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[10px] text-slate-400">
                 <span>SYSTEM STATUS</span>
-                <span className="text-[#86efac]">● ACTIVE & READY</span>
+                <span className="text-[#d4b982]">● ACTIVE & READY</span>
               </div>
 
               <div className="space-y-2.5 text-xs">
@@ -80,19 +80,19 @@ export default function FinalCTA() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Data Security:</span>
-                  <span className="text-[#86efac] font-bold">Bank-Grade Encryption</span>
+                  <span className="text-[#d4b982] font-bold">Bank-Grade Encryption</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Typical Time Saved:</span>
-                  <span className="text-[#d4d4d8] font-bold">20+ Hours / Week</span>
+                  <span className="text-white font-bold">20+ Hours / Week</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">System Ownership:</span>
-                  <span className="text-[#d4d4d8] font-bold">100% Yours</span>
+                  <span className="text-[#d4b982] font-bold">100% Yours</span>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-white/10 text-[10px] text-slate-400 text-center">
+              <div className="pt-3 border-t border-white/10 text-[10px] font-mono text-[#d4b982] text-center tracking-wider">
                 BUILT FOR GROWING BUSINESSES
               </div>
             </div>

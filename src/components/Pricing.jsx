@@ -81,7 +81,7 @@ export default function Pricing() {
         <AnimatedSection>
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto">
-            <div className="glass-pill mx-auto">
+            <div className="glass-pill-gold mx-auto">
               <Layers3 size={13} />
               <span>Simple & Clear Pricing</span>
             </div>
@@ -107,41 +107,45 @@ export default function Pricing() {
                 key={plan.name}
                 className={`relative flex flex-col justify-between rounded-[2.5rem] border p-8 transition-all duration-300 ${
                   isFeatured
-                    ? "border-white/[0.12] bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] shadow-[0_0_0_1px_rgba(255,255,255,0.08)] -translate-y-2"
-                    : "border-white/[0.06] bg-[#0a0a0a]/70 hover:border-white/[0.10]"
+                    ? "border-[#d4b982]/40 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] shadow-[0_0_0_1px_rgba(212,185,130,0.15),0_20px_60px_rgba(0,0,0,0.7)] -translate-y-2"
+                    : "border-white/[0.06] bg-[#0a0a0a]/70 hover:border-white/[0.12]"
                 }`}
               >
                 {isFeatured && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#d4d4d8] to-[#a1a1aa] px-4 py-1 text-[10px] font-mono font-bold tracking-widest text-slate-950 shadow-md">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-[#d4b982] px-4 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-950 shadow-md">
                     {plan.badge}
                   </div>
                 )}
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.08] text-[#d4d4d8] shadow-[0_0_0_1px_rgba(255,255,255,0.08)]">
+                    <div className={`flex h-12 w-12 items-center justify-center rounded-2xl border transition-colors ${
+                      isFeatured
+                        ? "bg-[#d4b982]/[0.08] border-[#d4b982]/30 text-[#d4b982]"
+                        : "bg-white/[0.04] border-white/[0.08] text-[#d4d4d8]"
+                    }`}>
                       <Icon size={22} />
                     </div>
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
+                    <span className="text-[10px] uppercase font-semibold tracking-[0.12em] text-slate-400">
                       {plan.eyebrow}
                     </span>
                   </div>
 
-                  <h3 className="mt-6 text-2xl font-bold text-white">{plan.name}</h3>
-                  <p className="mt-2 text-xs text-slate-300 leading-relaxed min-h-[48px]">
+                  <h3 className="mt-6 text-2xl font-bold tracking-tight text-white">{plan.name}</h3>
+                  <p className="mt-2 text-xs text-slate-300 leading-relaxed min-h-[48px] font-normal">
                     {plan.description}
                   </p>
 
                   <div className="mt-6 flex items-baseline gap-1.5 pb-6 border-b border-white/10">
-                    <span className="font-mono text-4xl font-extrabold text-white">{plan.price}</span>
-                    <span className="text-xs text-slate-400 font-mono">{plan.period}</span>
+                    <span className="font-mono text-4xl font-extrabold text-white tracking-tight tabular-nums">{plan.price}</span>
+                    <span className="text-xs text-slate-400 font-mono tracking-tight">{plan.period}</span>
                   </div>
 
                   <a
                     href="#assessment"
-                    className={`mt-6 flex w-full items-center justify-center gap-2 rounded-xl py-3.5 px-6 text-xs font-bold transition-all cursor-pointer ${
+                    className={`mt-6 flex w-full items-center justify-center gap-2 rounded-xl py-3.5 px-6 text-xs font-semibold tracking-[-0.01em] transition-all cursor-pointer ${
                       isFeatured
-                        ? "btn-primary shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
+                        ? "btn-primary shadow-[0_0_20px_rgba(212,185,130,0.15)]"
                         : "bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-white/20"
                     }`}
                   >
@@ -151,19 +155,19 @@ export default function Pricing() {
 
                   {/* Included features */}
                   <div className="mt-8 space-y-3">
-                    <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
                       What is included:
                     </div>
                     {plan.features.map((feat) => (
-                      <div key={feat} className="flex items-start gap-2.5 text-xs text-slate-300">
-                        <Check size={14} className="text-[#86efac] shrink-0 mt-0.5" />
+                      <div key={feat} className="flex items-start gap-2.5 text-xs text-slate-300 font-normal">
+                        <Check size={14} className="text-[#d4b982] shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-white/5 text-[10px] font-mono text-slate-400 text-center">
+                <div className="mt-8 pt-4 border-t border-white/5 text-xs text-slate-400 text-center font-normal">
                   Cancel or adjust anytime · No long-term lock-in
                 </div>
               </div>
@@ -174,7 +178,7 @@ export default function Pricing() {
         {/* Capability Comparison Matrix Table */}
         <div className="mt-20 rounded-[2.5rem] border border-white/10 bg-[#050505]/80 p-8 sm:p-10 backdrop-blur-xl">
           <div className="max-w-2xl mb-8">
-            <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#a1a1aa]">
+            <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#d4b982]">
               Plan Comparison
             </div>
             <h3 className="mt-1 text-2xl font-bold text-white">Compare what each plan includes.</h3>
@@ -186,7 +190,7 @@ export default function Pricing() {
                 <tr className="border-b border-white/10 text-[11px] font-mono font-bold text-slate-400 uppercase">
                   <th className="py-4 pr-4">Feature</th>
                   <th className="py-4 px-4">Starter</th>
-                  <th className="py-4 px-4 text-[#d4d4d8]">Growth</th>
+                  <th className="py-4 px-4 text-[#d4b982]">Growth</th>
                   <th className="py-4 pl-4">Enterprise</th>
                 </tr>
               </thead>
@@ -195,7 +199,7 @@ export default function Pricing() {
                   <tr key={row.feature} className="hover:bg-white/[0.02]">
                     <td className="py-4 pr-4 font-medium text-slate-200">{row.feature}</td>
                     <td className="py-4 px-4 text-slate-400">{row.starter}</td>
-                    <td className="py-4 px-4 font-bold text-[#d4d4d8]">{row.growth}</td>
+                    <td className="py-4 px-4 font-bold text-[#d4b982]">{row.growth}</td>
                     <td className="py-4 pl-4 text-slate-200">{row.enterprise}</td>
                   </tr>
                 ))}
@@ -205,10 +209,10 @@ export default function Pricing() {
         </div>
 
         {/* Custom Advisory Enterprise Banner */}
-        <div className="mt-12 rounded-[2.5rem] border border-white/[0.08] bg-gradient-to-r from-[#0a0a0a] via-[#080808] to-[#0a0a0a] p-8 sm:p-10 shadow-[0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-2xl">
+        <div className="mt-12 rounded-[2.5rem] border border-[#d4b982]/20 bg-gradient-to-r from-[#0a0a0a] via-[#080808] to-[#0a0a0a] p-8 sm:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="max-w-2xl space-y-3 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.03] border border-white/[0.06] px-3 py-1 text-[10px] font-mono text-[#d4d4d8]">
+              <div className="inline-flex items-center gap-2 rounded-full bg-[#d4b982]/[0.08] border border-[#d4b982]/20 px-3 py-1 text-[10px] font-mono text-[#d4b982]">
                 <ShieldCheck size={13} />
                 <span>Custom Setups & Specific Requirements</span>
               </div>

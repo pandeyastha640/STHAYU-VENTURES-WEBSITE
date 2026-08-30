@@ -128,32 +128,32 @@ export default function Services() {
             const Icon = sol.icon
             return (
               <AnimatedSection key={sol.id} delay={i * 0.08}>
-                <GlassCard hover={true} glow={true} className="h-full group relative flex flex-col justify-between p-7 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.6)] hover:ring-1 hover:ring-white/[0.08]">
+                <GlassCard hover={true} glow={true} className="h-full group relative flex flex-col justify-between p-7 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:border-[#d4b982]/30 hover:shadow-[0_20px_60px_rgba(212,185,130,0.06)]">
                   <div>
                     {/* Top Bar with Icon & Category */}
                     <div className="flex items-center justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8] group-hover:scale-105 transition-transform">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8] group-hover:scale-105 group-hover:border-[#d4b982]/30 group-hover:bg-[#d4b982]/[0.08] group-hover:text-[#d4b982] transition-all">
                         <Icon size={22} />
                       </div>
-                      <Badge>{sol.category}</Badge>
+                      <Badge variant="gold">{sol.category}</Badge>
                     </div>
 
                     {/* Title & Subtitle */}
-                    <h3 className="mt-6 text-xl font-bold text-white group-hover:text-[#d4d4d8] transition-colors">
+                    <h3 className="mt-6 text-xl font-bold tracking-tight text-white group-hover:text-white transition-colors">
                       {sol.title}
                     </h3>
-                    <p className="mt-2 text-xs font-medium text-[#d4d4d8]/90">
+                    <p className="mt-2 text-[13px] font-medium text-[#d4b982]/90">
                       {sol.subtitle}
                     </p>
-                    <p className="mt-4 text-xs text-slate-300 leading-relaxed">
+                    <p className="mt-4 text-xs sm:text-[13px] text-slate-300 leading-[1.65] font-normal">
                       {sol.description}
                     </p>
 
                     {/* Feature Checklist */}
                     <div className="mt-6 space-y-2 pt-4 border-t border-white/10">
                       {sol.features.map((feat) => (
-                        <div key={feat} className="flex items-start gap-2.5 text-xs text-slate-300">
-                          <Check size={14} className="text-[#a1a1aa] shrink-0 mt-0.5" />
+                        <div key={feat} className="flex items-start gap-2.5 text-xs text-slate-300 font-normal">
+                          <Check size={14} className="text-[#d4b982] shrink-0 mt-0.5" />
                           <span>{feat}</span>
                         </div>
                       ))}
@@ -164,7 +164,7 @@ export default function Services() {
                   <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
                     <div className="flex flex-wrap gap-1.5">
                       {sol.tags.slice(0, 2).map((t) => (
-                        <span key={t} className="text-[9px] font-mono px-2 py-0.5 rounded-md bg-white/5 text-slate-400 border border-white/5">
+                        <span key={t} className="text-[10px] font-medium px-2.5 py-0.5 rounded-full bg-white/[0.03] text-slate-400 border border-white/[0.06]">
                           {t}
                         </span>
                       ))}
@@ -172,7 +172,7 @@ export default function Services() {
 
                     <a
                       href="#assessment"
-                      className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-slate-300 border border-white/10 group-hover:bg-white/[0.08] group-hover:text-[#050505] group-hover:border-white/[0.12] transition-all cursor-pointer"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-slate-300 border border-white/10 group-hover:bg-[#d4b982] group-hover:text-[#050505] group-hover:border-[#d4b982] transition-all cursor-pointer"
                       aria-label={`Get started with ${sol.title}`}
                     >
                       <ArrowUpRight size={15} />
@@ -186,7 +186,7 @@ export default function Services() {
 
         {/* Bottom Banner */}
         <AnimatedSection delay={0.3}>
-          <div className="mt-16 rounded-3xl border border-white/[0.08] bg-gradient-to-r from-white/[0.03] via-white/[0.02] to-transparent p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 backdrop-blur-xl">
+          <div className="mt-16 rounded-3xl border border-[#d4b982]/20 bg-gradient-to-r from-[#d4b982]/[0.05] via-white/[0.02] to-transparent p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 backdrop-blur-xl">
             <div>
               <h4 className="text-lg font-bold text-white">Need something custom for your business?</h4>
               <p className="text-xs text-slate-400 mt-1">We can combine AI agents, automated workflows, and custom portals to fit the exact way you work.</p>

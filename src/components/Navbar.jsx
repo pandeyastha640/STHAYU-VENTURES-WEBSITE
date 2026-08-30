@@ -69,14 +69,14 @@ export default function Navbar() {
             className="group flex items-center gap-2.5 text-left focus:outline-none cursor-pointer"
             aria-label="Sthayu Ventures home"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-white/[0.08] to-white/[0.04] border border-white/[0.08] text-sm font-semibold text-[#fafafa] transition-all duration-300 group-hover:from-white/[0.14] group-hover:to-white/[0.08]">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#d4b982]/15 to-white/[0.03] border border-[#d4b982]/25 text-sm font-semibold text-[#fafafa] transition-all duration-300 group-hover:border-[#d4b982]/40 group-hover:from-[#d4b982]/25">
               S
             </div>
             <div className="leading-none">
               <div className="text-sm font-semibold tracking-tight text-[#fafafa] group-hover:text-white transition-colors">
                 Sthayu
               </div>
-              <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#71717a]">
+              <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#d4b982]/80">
                 Ventures
               </div>
             </div>
@@ -94,7 +94,7 @@ export default function Navbar() {
                   aria-current={isActive ? "true" : undefined}
                   className={`nav-link relative rounded-full px-3 py-1.5 text-[13px] font-medium transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? "text-[#fafafa] bg-white/[0.06] border-b border-white/30"
+                      ? "text-[#fafafa] bg-white/[0.06] border-b border-[#d4b982]/40"
                       : "text-[#a1a1aa] hover:text-[#fafafa] hover:bg-white/[0.03]"
                   }`}
                 >
@@ -187,7 +187,7 @@ export default function Navbar() {
           left: 50%;
           width: 0;
           height: 1px;
-          background: rgba(255, 255, 255, 0.4);
+          background: rgba(212, 185, 130, 0.6);
           transition: width 0.25s ease, left 0.25s ease;
           border-radius: 1px;
         }

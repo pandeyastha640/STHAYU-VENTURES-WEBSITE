@@ -11,6 +11,12 @@
   --sv-faint: #71717a;
   --sv-line: rgba(255, 255, 255, 0.06);
   --sv-line-hover: rgba(255, 255, 255, 0.12);
+  --sv-gold: #d4b982;
+  --sv-gold-light: #e8d5b5;
+  --sv-gold-dim: rgba(212, 185, 130, 0.10);
+  --sv-gold-border: rgba(212, 185, 130, 0.22);
+  --sv-gold-border-hover: rgba(212, 185, 130, 0.45);
+  --sv-gold-glow: rgba(212, 185, 130, 0.08);
   min-height: 100vh;
   background: #050505 !important;
   color: var(--sv-ink);
@@ -43,22 +49,64 @@
 .sv-v2 .ambient-beam { opacity: 0.06; }
 .sv-v2 .ambient-light { opacity: 0.08; }
 
-/* ========== TYPOGRAPHY OVERRIDES ========== */
+/* ========== TYPOGRAPHY SYSTEM (ENTERPRISE-GRADE) ========== */
 
-.sv-v2 h1, .sv-v2 h2, .sv-v2 h3, .sv-v2 h4 {
-  letter-spacing: -0.03em;
-  color: #fafafa !important;
+.sv-v2 {
+  font-family: var(--font-body, "Plus Jakarta Sans", sans-serif);
 }
 
-.sv-v2 h2 {
+.sv-v2 h1,
+.sv-v2 h2,
+.sv-v2 h3,
+.sv-v2 h4,
+.sv-v2 h5,
+.sv-v2 h6 {
+  font-family: var(--font-display, "Plus Jakarta Sans", sans-serif);
+  color: #fafafa !important;
   text-wrap: balance;
 }
 
+.sv-v2 h1 {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+.sv-v2 h2 {
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.14;
+}
+
+.sv-v2 h3 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.sv-v2 h4 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+
 .sv-v2 p {
+  font-family: var(--font-body, "Plus Jakarta Sans", sans-serif);
+  font-weight: 400;
+  letter-spacing: -0.011em;
+  line-height: 1.68;
   text-wrap: pretty;
   color: #a1a1aa !important;
 }
 
+.sv-v2 .font-mono,
+.sv-v2 [class*="font-mono"] {
+  font-family: var(--font-mono, "JetBrains Mono", monospace) !important;
+  font-feature-settings: "tnum" 1, "zero" 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Precise Color & Readability */
 .sv-v2 .text-white { color: #fafafa !important; }
 .sv-v2 .text-slate-200, .sv-v2 .text-slate-300 { color: #d4d4d8 !important; }
 .sv-v2 .text-slate-400 { color: #a1a1aa !important; }
@@ -76,6 +124,67 @@
 
 .sv-v2 .text-red-400,
 .sv-v2 .text-red-300 { color: #fca5a5 !important; }
+
+/* Champagne Gold Text & Accents */
+.sv-v2 .text-gold,
+.sv-v2 [class*="text-gold"],
+.sv-v2 [class*="text-[#d4b982]"],
+.sv-v2 [class*="text-[#d4af37]"] {
+  color: #d4b982 !important;
+}
+
+.sv-v2 .border-gold,
+.sv-v2 [class*="border-gold"],
+.sv-v2 [class*="border-[#d4b982]"] {
+  border-color: rgba(212, 185, 130, 0.3) !important;
+}
+
+.sv-v2 .bg-gold-dim {
+  background-color: rgba(212, 185, 130, 0.08) !important;
+}
+
+.sv-v2 .gold-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-sans, "Plus Jakarta Sans", sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #d4b982 !important;
+  background: rgba(212, 185, 130, 0.08) !important;
+  border: 1px solid rgba(212, 185, 130, 0.22) !important;
+  border-radius: 9999px;
+}
+
+.sv-v2 .gold-number {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #d4b982 !important;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Button & Nav Typography */
+.sv-v2 .btn-primary,
+.sv-v2 .btn-secondary,
+.sv-v2 button,
+.sv-v2 .nav-link {
+  font-family: var(--font-sans, "Plus Jakarta Sans", sans-serif);
+}
+
+.sv-v2 .btn-primary {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.sv-v2 .btn-secondary {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
 
 /* ========== SECTION BACKGROUNDS ========== */
 
@@ -99,9 +208,9 @@
 /* ========== NAVBAR ========== */
 
 .sv-v2 header > div,
-.sv-v2 header .bg-\[\#05070a\]\/85,
-.sv-v2 header .bg-\[\#05070a\]\/95 {
-  background: rgba(5, 5, 5, 0.80) !important;
+.sv-v2 header nav,
+.sv-v2 header [class*="bg-"] {
+  background: rgba(5, 5, 5, 0.85) !important;
   border-color: rgba(255, 255, 255, 0.06) !important;
   box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 20px 60px rgba(0,0,0,0.5) !important;
   backdrop-filter: blur(20px) saturate(180%);
