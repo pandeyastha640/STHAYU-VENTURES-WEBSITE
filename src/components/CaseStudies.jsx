@@ -11,44 +11,44 @@ const caseStudies = [
     client: "FinScale Capital",
     industry: "Financial & Asset Advisory",
     image: imgCaseFinScale,
-    title: "Automated Investor Onboarding & Real-Time Portfolio Sync",
-    problem: "Manual KYC verification and multi-broker portfolio reconciliation required 24 hours per client, causing a 35% drop-off during onboarding.",
-    solution: "Engineered an autonomous document intake agent + bidirectional SQL ledger sync connecting custodians, Stripe, and customer portals in real time.",
+    title: "Automatic Client Onboarding & Account Sync",
+    problem: "Manual document verification and spreadsheet tracking took 24 hours per client, causing 35% of prospective clients to drop off during onboarding.",
+    solution: "Built an automated document verification assistant and real-time software sync connecting customer portals, payment gateways, and client accounts.",
     metric: "-82% Onboarding Time",
-    subMetric: "4.8x faster capital deployment · Zero data errors",
-    tags: ["KYC AI Agent", "PostgreSQL Sync", "Stripe Billing", "SOC2 Compliant"],
+    subMetric: "New clients onboarded in hours instead of days · Zero data errors",
+    tags: ["Document AI", "Client Portal", "Payment Sync", "Bank-Grade Security"],
   },
   {
     number: "02",
     client: "Aura Logistics Global",
-    industry: "Supply Chain & Fleet Operations",
+    industry: "Supply Chain & Delivery Operations",
     image: imgCaseLogistics,
-    title: "Autonomous Dispatch & Vendor Invoice Auto-Correction",
-    problem: "15,000+ monthly vendor invoices had discrepancy mismatches against warehouse delivery slips, requiring 6 full-time staff for manual audit.",
-    solution: "Deployed Sthayu Operations Agent with OCR parser to automatically cross-reference ERP purchase orders, adjust ledger variances, and approve payments.",
-    metric: "99.4% Auto-Resolution",
-    subMetric: "120+ monthly hours saved · ₹45L prevented leakage",
-    tags: ["OCR AI Engine", "SAP ERP Connector", "Ledger Audit", "Slack Alert Bot"],
+    title: "Automated Invoice Checking & Payment Reconciliation",
+    problem: "15,000+ monthly supplier invoices had mismatches against delivery slips, requiring 6 staff members for tedious manual checking.",
+    solution: "Deployed an AI document reader to automatically compare supplier invoices against delivery slips and approve accurate payments instantly.",
+    metric: "99.4% Auto-Matched",
+    subMetric: "120+ staff hours saved per month · Zero missed invoice errors",
+    tags: ["Invoice AI", "ERP Sync", "Auto-Matching", "Team Alerts"],
   },
   {
     number: "03",
     client: "OmniGrowth Media",
-    industry: "High-Volume B2B Lead Generation",
+    industry: "B2B Lead Generation & Sales",
     image: imgCaseOmniGrowth,
-    title: "Sub-3-Second Omnichannel Lead Qualification & Dispatch",
-    problem: "Inbound leads across Web and WhatsApp waited an average of 4.5 hours for sales rep contact, leading to severe lead decay and lost revenue.",
-    solution: "Trained and deployed Sthayu SDR Agent to engage prospects in real-time, qualify against ideal customer profiles, and book direct executive meetings.",
-    metric: "+310% Meeting Volume",
-    subMetric: "< 2.8s avg first response · 98.4% qualification accuracy",
-    tags: ["Sales SDR Agent", "WhatsApp API", "HubSpot Deal Sync", "Cal.com Integration"],
+    title: "Instant Lead Replies & Calendar Bookings",
+    problem: "Inbound leads across website forms and WhatsApp waited an average of 4.5 hours for a salesperson to reply, resulting in lost sales.",
+    solution: "Trained and launched a 24/7 AI sales assistant that replies to enquiries in seconds, answers questions, and books qualified meetings directly on calendars.",
+    metric: "+310% Booked Meetings",
+    subMetric: "< 3s average response time · Accurate meeting qualification",
+    tags: ["Sales AI Assistant", "WhatsApp Integration", "CRM Updates", "Calendar Booking"],
   },
 ]
 
 const outcomeHighlights = [
-  { value: "74%", label: "Average latency reduction across client operations", icon: Zap },
-  { value: "< 2.4s", label: "Autonomous response & routing speed", icon: Clock3 },
-  { value: "99.98%", label: "Uptime SLA guaranteed across event pipelines", icon: TrendingUp },
-  { value: "100%", label: "Deterministic accuracy on financial & CRM sync", icon: Bot },
+  { value: "74%", label: "Average reduction in task turnaround time", icon: Zap },
+  { value: "< 2.4s", label: "Average AI assistant response time", icon: Clock3 },
+  { value: "99.98%", label: "System reliability and uptime", icon: TrendingUp },
+  { value: "100%", label: "Accuracy in automated tool syncing", icon: Bot },
 ]
 
 export default function CaseStudies() {
@@ -64,16 +64,16 @@ export default function CaseStudies() {
           <div className="text-center max-w-3xl mx-auto">
             <div className="glass-pill mx-auto">
               <TrendingUp size={13} />
-              <span>Proven Business Impact</span>
+              <span>Real Business Results</span>
             </div>
 
             <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-              Real systems. <br className="hidden sm:block" />
-              <span className="text-white/60">Measurable enterprise outcomes.</span>
+              Real results. <br className="hidden sm:block" />
+              <span className="text-white/60">Measurable time and cost savings.</span>
             </h2>
 
             <p className="mt-4 text-base sm:text-lg text-slate-300">
-              How forward-thinking companies partner with Sthayu to replace operational drag with high-velocity autonomous infrastructure.
+              See how companies partner with Sthayu to eliminate manual busywork and handle more business without hiring more staff.
             </p>
           </div>
         </AnimatedSection>

@@ -115,7 +115,7 @@ export default function Hero() {
           <motion.div variants={fadeUp} className="mb-6">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-[#a1a1aa] backdrop-blur-md">
               <span className="h-1.5 w-1.5 rounded-full bg-[#86efac] shadow-[0_0_6px_#86efac]" />
-              AI-Powered Business Automation
+              Practical AI & Business Automation
             </span>
           </motion.div>
 
@@ -125,9 +125,9 @@ export default function Hero() {
             className="font-[var(--font-serif)] text-[clamp(3rem,7vw,5.5rem)] leading-[1.05] tracking-[-0.03em] text-[#fafafa]"
             style={{ fontFamily: "var(--font-serif)", textShadow: "0 2px 30px rgba(0,0,0,0.5)" }}
           >
-            Intelligent systems that
+            AI systems that actually
             <br className="hidden sm:block" />
-            <span className="italic text-white/80"> run your business</span>
+            <span className="italic text-white/80"> do the work for you.</span>
           </motion.h1>
 
           {/* Supporting Paragraph */}
@@ -135,8 +135,7 @@ export default function Hero() {
             variants={fadeUp}
             className="mt-6 max-w-2xl text-base sm:text-lg text-[#a1a1aa] leading-relaxed font-light"
           >
-            We design and deploy autonomous AI agents, workflow automation, and custom software infrastructure
-            that unify fragmented operations into one intelligent, self-executing system.
+            We build AI agents, automated workflows, and custom software that handle repetitive tasks, connect your existing tools, and free your team to focus on growing the business.
           </motion.p>
 
           {/* CTAs */}
@@ -148,14 +147,14 @@ export default function Hero() {
               href="#assessment"
               className="btn-primary py-3.5 px-8 text-sm"
             >
-              <span>Get Your Blueprint</span>
+              <span>Find What to Automate</span>
               <ArrowRight size={15} />
             </a>
             <a
               href="#services"
               className="btn-secondary py-3.5 px-8 text-sm"
             >
-              <span>Explore Solutions</span>
+              <span>See Our Services</span>
               <ArrowUpRight size={15} />
             </a>
           </motion.div>
@@ -167,9 +166,9 @@ export default function Hero() {
           >
             {[
               { value: "74%", label: "Faster Operations" },
-              { value: "<3s", label: "Lead Response" },
-              { value: "99.4%", label: "Execution Accuracy" },
-              { value: "Zero", label: "Manual Double-Entry" },
+              { value: "<3s", label: "Lead Response Time" },
+              { value: "99.4%", label: "Task Accuracy" },
+              { value: "Zero", label: "Manual Copy-Pasting" },
             ].map((m, i) => (
               <div
                 key={m.label}

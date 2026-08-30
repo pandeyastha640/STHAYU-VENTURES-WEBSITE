@@ -3,10 +3,10 @@ import { motion } from "motion/react"
 import { ArrowRight, Menu, X } from "lucide-react"
 
 const navLinks = [
-  { label: "Solutions", id: "services" },
-  { label: "AI Agents", id: "ai-agents" },
+  { label: "Services", id: "services" },
+  { label: "AI Assistants", id: "ai-agents" },
   { label: "Why Sthayu", id: "why-sthayu" },
-  { label: "Process", id: "how-it-works" },
+  { label: "How It Works", id: "how-it-works" },
   { label: "Case Studies", id: "case-studies" },
   { label: "Pricing", id: "pricing" },
 ]

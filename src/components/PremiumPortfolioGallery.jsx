@@ -9,64 +9,64 @@ import imgDigitalFlagship from "../assets/images/portfolio_digital_flagship_1787
 import imgVectorRag from "../assets/images/portfolio_vector_rag_1787842039189.jpg"
 import imgInventoryOrchestrator from "../assets/images/portfolio_inventory_orchestrator_1787842054281.jpg"
 
-const filterCategories = ["All Architectures", "AI Agents", "Workflow Engines", "Custom SaaS", "Web Platforms"]
+const filterCategories = ["All Systems", "AI Assistants", "Automated Workflows", "Custom Portals", "Websites"]
 
 const galleryDeployments = [
   {
-    title: "Autonomous Revenue Operations Hub",
-    category: "AI Agents",
-    tag: "Sales SDR · Multi-Agent",
+    title: "24/7 Sales Lead Qualification System",
+    category: "AI Assistants",
+    tag: "Sales · Instant Reply",
     image: imgRevenueHub,
-    description: "Multi-turn WhatsApp and Web intake system connected to CRM with real-time intent scoring.",
-    metrics: "1.4s response · 4.8x pipeline lift",
+    description: "Answers website and WhatsApp enquiries in seconds, qualifies buyer requirements, and books meetings directly on your calendar.",
+    metrics: "1.4s reply time · 4.8x more meetings",
   },
   {
-    title: "Executive Operational Intelligence Console",
-    category: "Custom SaaS",
-    tag: "Next.js · Go Microservices",
+    title: "Executive Business Dashboard",
+    category: "Custom Portals",
+    tag: "Management Dashboard",
     image: imgIntelligenceConsole,
-    description: "Bespoke internal leadership portal unifying Stripe financial records, team capacity, and SLA tracking.",
-    metrics: "Zero latency · SOC2 compliant",
+    description: "A private leadership portal showing revenue, client activity, and team capacity all in one secure, real-time place.",
+    metrics: "Live data sync · Secure & private",
   },
   {
-    title: "High-Throughput Webhook Synchronization Engine",
-    category: "Workflow Engines",
-    tag: "PostgreSQL · Redis · Webhooks",
+    title: "Automated Multi-Tool Data Sync",
+    category: "Automated Workflows",
+    tag: "Data Sync · No Typing",
     image: imgWebhookEngine,
-    description: "Event-driven asynchronous middleware processing over 250,000 daily order reconciliation events.",
-    metrics: "100% deterministic · 0% drift",
+    description: "Automatically keeps your payment tools, CRM, and accounting software in sync without manual copy-pasting.",
+    metrics: "100% accurate · Zero data errors",
   },
   {
-    title: "High-Converting AI-Powered Digital Flagship",
-    category: "Web Platforms",
-    tag: "WebGL · Three.js · Edge CDN",
+    title: "Fast, High-Converting Business Website",
+    category: "Websites",
+    tag: "High-Speed Website",
     image: imgDigitalFlagship,
-    description: "Cinematic modern web presence built with sub-second TTFB and native lead qualification widgets.",
-    metrics: "100/100 Lighthouse score",
+    description: "Fast-loading company website designed to turn visitors into booked calls with built-in enquiry forms.",
+    metrics: "Under 1s load time · Mobile optimized",
   },
   {
-    title: "Proprietary Vector RAG Knowledge Assistant",
-    category: "AI Agents",
-    tag: "Pinecone · OpenAI · Hybrid RAG",
+    title: "Company Document Search Assistant",
+    category: "AI Assistants",
+    tag: "Internal Search AI",
     image: imgVectorRag,
-    description: "Internal AI research assistant indexing 10,000+ corporate PDFs, contracts, and Zendesk tickets.",
-    metrics: "Instant citations · 0% hallucination",
+    description: "Allows your team to ask questions and instantly get accurate answers directly from company manuals, PDFs, and guides.",
+    metrics: "Instant answers · Verified sources",
   },
   {
-    title: "Cross-Platform Inventory & Billing Orchestrator",
-    category: "Workflow Engines",
-    tag: "SAP ERP · Shopify · Stripe",
+    title: "Inventory & Order Sync System",
+    category: "Automated Workflows",
+    tag: "Orders · Stock Updates",
     image: imgInventoryOrchestrator,
-    description: "Automated warehouse threshold monitor with instant purchase order generation and ledger alignment.",
-    metrics: "18+ hrs saved weekly",
+    description: "Automatically updates stock levels when orders are placed and notifies suppliers when inventory runs low.",
+    metrics: "18+ hours saved weekly",
   },
 ]
 
 export default function PremiumPortfolioGallery() {
-  const [selectedFilter, setSelectedFilter] = useState("All Architectures")
+  const [selectedFilter, setSelectedFilter] = useState("All Systems")
   const [failedImages, setFailedImages] = useState({})
 
-  const filteredItems = selectedFilter === "All Architectures"
+  const filteredItems = selectedFilter === "All Systems"
     ? galleryDeployments
     : galleryDeployments.filter((item) => item.category === selectedFilter)
 
@@ -86,16 +86,16 @@ export default function PremiumPortfolioGallery() {
           <div className="text-center max-w-3xl mx-auto">
             <div className="glass-pill mx-auto">
               <Layers size={13} />
-              <span>Deployment Gallery</span>
+              <span>Work Portfolio</span>
             </div>
 
             <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-              Proven architectures <br className="hidden sm:block" />
-              <span className="text-white/60">engineered for production.</span>
+              Built and tested systems <br className="hidden sm:block" />
+              <span className="text-white/60">ready for real businesses.</span>
             </h2>
 
             <p className="mt-4 text-base sm:text-lg text-slate-300">
-              Explore a curated selection of live autonomous workflows, bespoke SaaS platforms, and enterprise AI engines designed by Sthayu.
+              Explore a curated selection of live AI assistants, automated workflows, and custom software systems built by Sthayu.
             </p>
           </div>
         </AnimatedSection>

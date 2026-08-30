@@ -3,28 +3,28 @@ import { AnimatedSection, SectionHeading } from "./ui"
 
 const frictionPoints = [
   {
-    title: "The Lead Decay Bottleneck",
-    problem: "Inbound leads wait hours for human response, dropping qualification rates by up to 70%.",
-    solution: "Sub-3-second AI conversational qualification on WhatsApp, Web, and Voice.",
-    metric: "3.8x faster conversion",
+    title: "Leads Waiting Too Long",
+    problem: "When new customer enquiries sit in inboxes for hours, up to 70% of potential sales are lost.",
+    solution: "AI answers in under 3 seconds on WhatsApp or your website, answers questions, and books a call.",
+    metric: "3.8x faster customer response",
   },
   {
-    title: "Manual Data & Spreadsheet Chaos",
-    problem: "Staff spend 15+ hours weekly copy-pasting customer records, reconciling invoices, and compiling reports.",
-    solution: "Automated multi-system synchronization across ERP, CRM, and Stripe in real time.",
-    metric: "85% admin time saved",
+    title: "Endless Manual Data Entry",
+    problem: "Staff spend 15+ hours every week copy-pasting customer details, matching invoices, and typing reports.",
+    solution: "Data syncs automatically between your accounting, CRM, and spreadsheet tools in real time.",
+    metric: "15+ hours saved per person/wk",
   },
   {
-    title: "Siloed Software Ecosystem",
-    problem: "10+ disconnected SaaS tools that don't speak to each other, creating blind spots and lost context.",
-    solution: "Single event-driven integration layer connecting websites, databases, and internal workflows.",
-    metric: "100% unified source of truth",
+    title: "Tools That Don't Talk to Each Other",
+    problem: "You pay for 10+ different apps, but staff still have to manually move information between them.",
+    solution: "We connect your existing tools into one smooth workflow where data flows without human effort.",
+    metric: "100% connected workflow",
   },
   {
-    title: "Reactive Customer Support",
-    problem: "Repetitive Tier-1 support tickets overwhelm human teams, driving up wait times and churn.",
-    solution: "Context-aware AI support agents with instant resolution and seamless human handoffs.",
-    metric: "90% autonomous resolution",
+    title: "Repetitive Customer Support",
+    problem: "Staff spend half their day answering the exact same routine questions instead of helping high-value clients.",
+    solution: "AI handles common questions instantly 24/7 and passes complex issues to your team with full context.",
+    metric: "90% routine questions handled",
   },
 ]
 
@@ -38,21 +38,21 @@ export default function ProblemDiscovery() {
 
         <AnimatedSection>
           <SectionHeading
-            pill={{ icon: Search, text: "Root Cause Analysis" }}
+            pill={{ icon: Search, text: "The Core Problem" }}
             title={
               <>
-                Your business does not need more software. <br className="hidden sm:block" />
-                <span className="text-white/60">It needs systems that work together.</span>
+                Your business does not need more apps. <br className="hidden sm:block" />
+                <span className="text-white/60">It needs your tools to work together.</span>
               </>
             }
-            description={'Most organizations don\'t suffer from a lack of effort. They suffer from the "fragmentation tax" — work scattered across disparate tools, manual coordination, and delayed decisions.'}
+            description="Most companies do not have a work ethic problem. They have a connection problem: time is lost when employees have to manually copy data, switch between tools, and do repetitive administrative chores."
           />
         </AnimatedSection>
 
         {/* 2-Column Comparison Architecture */}
         <div className="mt-16 grid gap-8 lg:grid-cols-2">
 
-          {/* Column 1: The Fragmentation Tax (Before) */}
+          {/* Column 1: The Fragmented Enterprise (Before) */}
           <AnimatedSection delay={0.1}>
             <div className="rounded-[2.5rem] border border-red-500/[0.12] bg-gradient-to-b from-[#140608]/70 via-[#0d0406]/50 to-[#050505] p-6 sm:p-8 md:p-10 shadow-2xl backdrop-blur-xl">
               <div className="flex items-center justify-between pb-6 border-b border-red-500/[0.10]">
@@ -61,21 +61,21 @@ export default function ProblemDiscovery() {
                     <XCircle size={20} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white">The Fragmented Enterprise</h3>
-                    <p className="text-xs text-[#fca5a5] font-mono">STATUS: HIGH FRICTION & BOTTLENECKS</p>
+                    <h3 className="text-lg font-bold text-white">How Most Businesses Work Today</h3>
+                    <p className="text-xs text-[#fca5a5] font-mono">SLOW · MANUAL · REPETITIVE</p>
                   </div>
                 </div>
                 <span className="px-3 py-1 rounded-full bg-red-500/[0.06] text-[#fca5a5] text-[10px] font-bold uppercase tracking-wider border border-red-500/[0.12]">
-                  Legacy Reality
+                  Before Sthayu
                 </span>
               </div>
 
               <div className="mt-6 space-y-4">
                 {[
-                  { title: "Manual Data Entry & Duplicate Work", desc: "Teams manually copying info between forms, CRM, spreadsheets, and emails." },
-                  { title: "Leads Stalling in Queues", desc: "Prospects wait hours for outreach while competitors convert in seconds." },
-                  { title: "Opaque Operational Visibility", desc: "Leaders make decisions using stale, week-old static reports." },
-                  { title: "Disjointed SaaS Sprawl", desc: "Paying for dozens of isolated tools that require human babysitting." },
+                  { title: "Manual data entry & copy-pasting", desc: "Staff spend hours moving data between website forms, spreadsheets, and emails." },
+                  { title: "Enquiries wait hours for a reply", desc: "Potential customers reach out, but staff are too busy to respond immediately." },
+                  { title: "Reports prepared by hand every week", desc: "Managers spend days compiling spreadsheets instead of making quick decisions." },
+                  { title: "Paying for apps that do not communicate", desc: "Your team has to manually bridge the gap between all the software you pay for." },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/[0.02] border border-red-500/[0.10]">
                     <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/[0.08]">
@@ -90,8 +90,8 @@ export default function ProblemDiscovery() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-red-500/[0.10] flex items-center justify-between text-xs font-mono text-[#fca5a5]">
-                <span>Avg operational loss:</span>
-                <span className="font-bold">28+ hrs/employee/month</span>
+                <span>Time lost to manual tasks:</span>
+                <span className="font-bold">20–30 hrs/employee/month</span>
               </div>
             </div>
           </AnimatedSection>
@@ -100,7 +100,7 @@ export default function ProblemDiscovery() {
           <AnimatedSection delay={0.2}>
             <div className="rounded-[2.5rem] border border-white/[0.10] bg-gradient-to-b from-[#0a0a0a]/80 via-[#080808]/60 to-[#050505] p-6 sm:p-8 md:p-10 shadow-[0_20px_70px_rgba(0,0,0,0.5)] backdrop-blur-xl relative">
               <div className="absolute -top-3 right-8 px-3.5 py-1 rounded-full bg-white/[0.08] text-[#fafafa] border border-white/[0.12] font-sans text-[10px] font-extrabold uppercase tracking-wider shadow-lg">
-                Sthayu Transformation
+                The Sthayu Solution
               </div>
 
               <div className="flex items-center justify-between pb-6 border-b border-white/[0.06]">
@@ -109,21 +109,21 @@ export default function ProblemDiscovery() {
                     <CheckCircle2 size={20} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white">The Sthayu Intelligent System</h3>
-                    <p className="text-xs text-[#d4d4d8] font-mono">STATUS: AUTONOMOUS & INTEGRATED</p>
+                    <h3 className="text-lg font-bold text-white">How Your Business Runs With Sthayu</h3>
+                    <p className="text-xs text-[#d4d4d8] font-mono">AUTOMATED · CONNECTED · INSTANT</p>
                   </div>
                 </div>
                 <span className="px-3 py-1 rounded-full bg-white/[0.03] text-[#d4d4d8] text-[10px] font-bold uppercase tracking-wider border border-white/[0.08]">
-                  Connected Future
+                  After Sthayu
                 </span>
               </div>
 
               <div className="mt-6 space-y-4">
                 {[
-                  { title: "Autonomous Workflows & Sync", desc: "Data transforms and syncs instantly across tools with zero manual intervention." },
-                  { title: "Instant AI Response & Calendar Routing", desc: "Autonomous sales agents qualify leads in < 3s and book qualified executive meetings." },
-                  { title: "Live Real-Time Operational Intelligence", desc: "Dynamic dashboards and proactive anomaly alerts right in Slack or email." },
-                  { title: "Unified Enterprise Architecture", desc: "One clean operating layer that amplifies your team's output without tool bloat." },
+                  { title: "Data moves automatically", desc: "Information syncs between your tools instantly with zero manual typing." },
+                  { title: "Instant response to new enquiries", desc: "AI answers customer questions in seconds and books calls on your calendar." },
+                  { title: "Live business reports anytime", desc: "See your sales, leads, and operational numbers updated live, without compiling sheets." },
+                  { title: "One connected system", desc: "All your software tools work together smoothly, so your team can focus on real work." },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
                     <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/[0.04]">
@@ -137,9 +137,9 @@ export default function ProblemDiscovery() {
                 ))}
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-[#d4d4d8]">
-                <span>Operational uplift:</span>
-                <span className="font-bold text-[#86efac]">+74% faster execution speed</span>
+              <div className="mt-8 pt-6 border-t border-white/06 flex items-center justify-between text-xs font-mono text-[#d4d4d8]">
+                <span>Speed improvement:</span>
+                <span className="font-bold text-[#86efac]">+74% faster task completion</span>
               </div>
             </div>
           </AnimatedSection>
@@ -150,8 +150,8 @@ export default function ProblemDiscovery() {
         <div className="mt-16">
           <AnimatedSection>
             <div className="text-center mb-8">
-              <h3 className="text-xl sm:text-2xl font-bold text-white">Specific Operational Transformations</h3>
-              <p className="text-sm text-slate-400 mt-1">How we replace friction with high-performance digital infrastructure.</p>
+              <h3 className="text-xl sm:text-2xl font-bold text-white">Everyday Business Problems We Solve</h3>
+              <p className="text-sm text-slate-400 mt-1">Simple automations that replace manual busywork with smooth digital processes.</p>
             </div>
           </AnimatedSection>
 

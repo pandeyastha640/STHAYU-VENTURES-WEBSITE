@@ -3,71 +3,71 @@ import { AnimatedSection } from "./ui"
 
 const plans = [
   {
-    name: "Starter Velocity",
-    eyebrow: "Early-stage & growing teams",
-    description: "Automate high-friction daily operational bottlenecks and launch your first autonomous AI agent.",
+    name: "Starter",
+    eyebrow: "Small businesses & teams",
+    description: "Automate your most repetitive daily tasks and launch your first 24/7 AI assistant.",
     price: "₹9,999",
     period: "/ month",
     icon: Sparkles,
     featured: false,
-    cta: "Deploy Starter",
+    cta: "Get Started",
     features: [
-      "Up to 3 automated core workflows",
-      "1 specialized autonomous AI agent (SDR or Support)",
-      "Standard CRM & Webhook integrations",
-      "Sub-2s automated response SLA",
-      "Weekly execution performance digest",
+      "Up to 3 automated task workflows",
+      "1 dedicated AI assistant (Sales or Customer Support)",
+      "WhatsApp & website form integration",
+      "Under 2-second response time",
+      "Weekly activity summary report",
       "Standard business-hours support"
     ],
   },
   {
-    name: "Growth Engine",
-    eyebrow: "Scaling organizations",
-    description: "A complete autonomous operational fabric across sales, support, data reconciliation, and reporting.",
+    name: "Growth",
+    eyebrow: "Scaling businesses",
+    description: "Full automation across sales enquiries, customer support, payments, and data updates.",
     price: "₹24,999",
     period: "/ month",
     icon: Rocket,
     featured: true,
     badge: "MOST POPULAR",
-    cta: "Scale with Growth",
+    cta: "Choose Growth",
     features: [
-      "Up to 10 automated workflow pipelines",
-      "4 multi-channel autonomous AI agents",
-      "Bidirectional CRM, ERP & SQL database sync",
-      "Sub-800ms event processing engine",
-      "Custom vector knowledge base embeddings",
-      "Dedicated solutions engineer & 99.9% SLA",
-      "Bi-weekly optimization & ROI reviews"
+      "Up to 10 automated task workflows",
+      "4 specialized AI assistants",
+      "Automatic CRM, accounting & spreadsheet sync",
+      "Instant response time (under 1 second)",
+      "Trained on your company guides & FAQs",
+      "Dedicated account manager & priority support",
+      "Monthly reviews & performance improvements"
     ],
   },
   {
-    name: "Autonomous Enterprise",
-    eyebrow: "High-volume operations",
-    description: "Unlimited orchestration, dedicated custom SaaS dashboards, and proprietary fine-tuned AI models.",
+    name: "Enterprise",
+    eyebrow: "High-volume companies",
+    description: "Custom automation, private dashboards, and tailored AI setups built for your exact operations.",
     price: "₹49,999",
     period: "/ month",
     icon: Crown,
     featured: false,
-    cta: "Deploy Enterprise",
+    cta: "Choose Enterprise",
     features: [
-      "Unlimited automated workflows & pipelines",
-      "Full autonomous AI agent workforce roster",
-      "Custom internal SaaS command center portal",
-      "On-premise / private VPC deployment options",
-      "Zero data retention & SOC2/HIPAA compliance",
-      "24/7 dedicated solutions architect SLA",
-      "Continuous prompt & pipeline engineering"
+      "Unlimited automated task workflows",
+      "Full team of specialized AI assistants",
+      "Custom private business dashboard",
+      "Integration with custom or legacy software",
+      "Strict data privacy & bank-grade security",
+      "24/7 dedicated technical support",
+      "Continuous system tuning & updates"
     ],
   },
 ]
 
 const capabilityComparison = [
-  { feature: "Autonomous AI Agents Included", starter: "1 Agent", growth: "4 Agents", enterprise: "Unlimited Workforce" },
-  { feature: "Workflow Execution Pipelines", starter: "3 Pipelines", growth: "10 Pipelines", enterprise: "Unlimited Full-Stack" },
-  { feature: "Data & ERP Integrations", starter: "Standard (HubSpot, Stripe)", growth: "Advanced (SAP, SQL, CRM)", enterprise: "Custom & Legacy Systems" },
-  { feature: "Knowledge Base Vector Indexing", starter: "Standard Docs", growth: "Full Notion/Zendesk RAG", enterprise: "Continuous Multi-Source RAG" },
-  { feature: "Execution Speed & Latency", starter: "< 2.0s", growth: "< 800ms", enterprise: "Sub-500ms Dedicated P99" },
-  { feature: "Engineering Support & SLA", starter: "Email Support", growth: "Dedicated Slack Channel", enterprise: "24/7 Solutions Architect SLA" },
+  { feature: "AI Assistants Included", starter: "1 Assistant", growth: "4 Assistants", enterprise: "Custom Workforce" },
+  { feature: "Automated Workflows", starter: "3 Workflows", growth: "10 Workflows", enterprise: "Unlimited Workflows" },
+  { feature: "Connected Tools", starter: "WhatsApp, Web Forms, CRM", growth: "CRM, Accounting, Spreadsheets", enterprise: "Custom & Enterprise Software" },
+  { feature: "Knowledge Base Setup", starter: "Company FAQs", growth: "Full Company Documents & Guides", enterprise: "Continuous Multi-File Sync" },
+  { feature: "Response Speed", starter: "Under 2 seconds", growth: "Under 1 second", enterprise: "Instant Priority" },
+  { feature: "Support & Assistance", starter: "Standard Email Support", growth: "Dedicated Account Manager", enterprise: "24/7 Priority Support" },
 ]
 
 export default function Pricing() {
@@ -83,16 +83,16 @@ export default function Pricing() {
           <div className="text-center max-w-3xl mx-auto">
             <div className="glass-pill mx-auto">
               <Layers3 size={13} />
-              <span>Transparent Investment</span>
+              <span>Simple & Clear Pricing</span>
             </div>
 
             <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-              Predictable pricing. <br className="hidden sm:block" />
-              <span className="text-white/60">Exponential operational ROI.</span>
+              Clear, predictable pricing. <br className="hidden sm:block" />
+              <span className="text-white/60">Real time and cost savings.</span>
             </h2>
 
             <p className="mt-4 text-base sm:text-lg text-slate-300">
-              Choose the operational tier that matches your current momentum. Scale seamlessly into full autonomous capability as your data flows mature.
+              Choose the plan that fits your business today. Upgrade or adjust anytime as your operations grow.
             </p>
           </div>
         </AnimatedSection>
@@ -152,11 +152,11 @@ export default function Pricing() {
                   {/* Included features */}
                   <div className="mt-8 space-y-3">
                     <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
-                      Included Capabilities:
+                      What is included:
                     </div>
                     {plan.features.map((feat) => (
                       <div key={feat} className="flex items-start gap-2.5 text-xs text-slate-300">
-                        <Check size={14} className="text-[#a1a1aa] shrink-0 mt-0.5" />
+                        <Check size={14} className="text-[#86efac] shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </div>
                     ))}
@@ -164,7 +164,7 @@ export default function Pricing() {
                 </div>
 
                 <div className="mt-8 pt-4 border-t border-white/5 text-[10px] font-mono text-slate-400 text-center">
-                  Cancel or adjust anytime · Zero lock-in
+                  Cancel or adjust anytime · No long-term lock-in
                 </div>
               </div>
             )
@@ -175,19 +175,19 @@ export default function Pricing() {
         <div className="mt-20 rounded-[2.5rem] border border-white/10 bg-[#050505]/80 p-8 sm:p-10 backdrop-blur-xl">
           <div className="max-w-2xl mb-8">
             <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#a1a1aa]">
-              Detailed Feature Matrix
+              Plan Comparison
             </div>
-            <h3 className="mt-1 text-2xl font-bold text-white">Compare system tier capabilities.</h3>
+            <h3 className="mt-1 text-2xl font-bold text-white">Compare what each plan includes.</h3>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-[600px]">
               <thead>
                 <tr className="border-b border-white/10 text-[11px] font-mono font-bold text-slate-400 uppercase">
-                  <th className="py-4 pr-4">Operational Dimension</th>
-                  <th className="py-4 px-4">Starter Velocity</th>
-                  <th className="py-4 px-4 text-[#d4d4d8]">Growth Engine</th>
-                  <th className="py-4 pl-4">Autonomous Enterprise</th>
+                  <th className="py-4 pr-4">Feature</th>
+                  <th className="py-4 px-4">Starter</th>
+                  <th className="py-4 px-4 text-[#d4d4d8]">Growth</th>
+                  <th className="py-4 pl-4">Enterprise</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5 text-xs">
@@ -210,13 +210,13 @@ export default function Pricing() {
             <div className="max-w-2xl space-y-3 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.03] border border-white/[0.06] px-3 py-1 text-[10px] font-mono text-[#d4d4d8]">
                 <ShieldCheck size={13} />
-                <span>Custom Architecture & Private Deployments</span>
+                <span>Custom Setups & Specific Requirements</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-                Have bespoke legacy systems or strict security mandates?
+                Have custom software or specific security needs?
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                We engineer private VPC deployments, custom fine-tuned on-prem LLMs, and air-gapped data pipelines for financial institutions and health networks.
+                We build dedicated integrations for internal software, custom databases, and strict enterprise security standards.
               </p>
             </div>
 
@@ -224,7 +224,7 @@ export default function Pricing() {
               href="#assessment"
               className="btn-primary py-3.5 px-8 text-xs font-bold shrink-0"
             >
-              <span>Schedule Architecture Review</span>
+              <span>Speak With Our Team</span>
               <ArrowRight size={14} />
             </a>
           </div>

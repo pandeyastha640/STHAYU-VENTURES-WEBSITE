@@ -7,46 +7,46 @@ const pillars = [
   {
     id: "agents",
     number: "01",
-    title: "Autonomous Cognitive Agents",
-    subtitle: "Specialized intelligence across touchpoints",
-    description: "Unlike generic chatbots, Sthayu agents possess deep context about your business operations. They evaluate customer intent, query databases, execute multi-step workflows, and know exactly when to escalate.",
+    title: "AI Digital Workers",
+    subtitle: "Trained on your business rules & tools",
+    description: "Unlike generic chat widgets, our AI agents understand your exact business workflow. They answer customer questions, qualify new buyer leads, update your software, and know when to alert your staff.",
     icon: Bot,
     accent: "from-cyan-400 to-blue-500",
-    features: ["Voice, WhatsApp & Web Omnichannel", "Sub-2.4s contextual reasoning", "Deterministic action guardrails"],
-    metrics: "94% autonomous task completion",
+    features: ["Works on WhatsApp, Website, Email & Phone", "Answers questions in under 3 seconds", "Follows your exact company guidelines"],
+    metrics: "94% routine tasks handled",
   },
   {
     id: "fabric",
     number: "02",
-    title: "Event-Driven Integration Fabric",
-    subtitle: "Real-time bidirectional synchronization",
-    description: "Eliminate data silos permanently. Sthayu connects your legacy ERP, modern cloud CRM, payment gateways, and databases into one continuous nervous system with zero manual double-entry.",
+    title: "Connected Business Tools",
+    subtitle: "Your software working together as one",
+    description: "Stop moving data manually. Sthayu connects your accounting software, CRM, website forms, and payment gateways so information flows automatically with zero copy-pasting.",
     icon: Network,
     accent: "from-blue-400 to-indigo-500",
-    features: ["200+ native enterprise connectors", "Sub-45ms webhook propagation", "Automatic conflict resolution"],
-    metrics: "100% data consistency",
+    features: ["Connects all popular software tools", "Instant updates between apps", "Zero manual data entry errors"],
+    metrics: "100% accurate data sync",
   },
   {
     id: "engine",
     number: "03",
-    title: "Continuous Decision Engine",
-    subtitle: "From passive reporting to active execution",
-    description: "Transform your data from static historical graphs into live operational intelligence that triggers automated interventions, highlights bottlenecks, and guides leadership decisions.",
+    title: "Live Business Reports",
+    subtitle: "Know what's happening without manual work",
+    description: "Stop spending hours creating weekly spreadsheets. Get live updates on sales, customer questions, and operational tasks delivered straight to your WhatsApp, email, or Slack.",
     icon: Cpu,
     accent: "from-indigo-400 to-purple-500",
-    features: ["Live operational anomaly detection", "Predictive bottleneck alerts", "Executive Slack/Email summaries"],
-    metrics: "70% faster decision velocity",
+    features: ["Live overview of sales & enquiries", "Instant alerts when tasks need attention", "Daily or weekly summaries on WhatsApp/Email"],
+    metrics: "70% faster business decisions",
   },
   {
     id: "security",
     number: "04",
-    title: "Enterprise Governance & Security",
-    subtitle: "Bank-grade data privacy and reliability",
-    description: "Engineered with strict tenant isolation, zero training on customer data without consent, cryptographic audit logging, and ready for SOC2 / HIPAA / ISO compliance audits.",
+    title: "Complete Data Privacy",
+    subtitle: "Your company information stays protected",
+    description: "Your customer data and company records are strictly protected. We never use your private data to train public AI models, and all connections use secure, encrypted channels.",
     icon: ShieldCheck,
     accent: "from-emerald-400 to-cyan-500",
-    features: ["End-to-end TLS 1.3 encryption", "Role-based access controls (RBAC)", "Complete audit trail logs"],
-    metrics: "99.98% guaranteed uptime SLA",
+    features: ["Bank-grade data encryption", "Strict access control per employee", "Private and isolated business setup"],
+    metrics: "100% private & secure",
   },
 ]
 
@@ -61,14 +61,14 @@ export default function WhySthayu() {
       <div className="relative mx-auto max-w-7xl">
         <AnimatedSection>
           <SectionHeading
-            pill={{ icon: Sparkles, text: "The Sthayu Advantage" }}
+            pill={{ icon: Sparkles, text: "Why Choose Sthayu" }}
             title={
               <>
-                Built as an operating system. <br className="hidden sm:block" />
-                <span className="text-white/60">Not a patchwork of point tools.</span>
+                Built to make your business run smoother. <br className="hidden sm:block" />
+                <span className="text-white/60">Not just another complicated tool.</span>
               </>
             }
-            description="We engineer resilient digital infrastructure that treats your business as a unified machine — combining autonomous agents, real-time data pipelines, and executive intelligence."
+            description="We connect your tools, automate your busywork, and give your team reliable digital assistants so your business can grow without adding more overhead."
             className="max-w-3xl mx-auto"
           />
         </AnimatedSection>
@@ -164,11 +164,11 @@ export default function WhySthayu() {
                   {/* Key Capabilities */}
                   <div className="mt-8 space-y-3">
                     <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
-                      Core Enterprise Features:
+                      Key Highlights:
                     </div>
                     {selectedPillar.features.map((feat) => (
                       <div key={feat} className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
-                        <CheckCircle2 size={16} className="text-[#a1a1aa] shrink-0" />
+                        <CheckCircle2 size={16} className="text-[#86efac] shrink-0" />
                         <span className="text-xs font-semibold text-slate-200">{feat}</span>
                       </div>
                     ))}
@@ -176,12 +176,12 @@ export default function WhySthayu() {
 
                   {/* CTA link */}
                   <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-xs text-slate-400">Ready to integrate this layer?</span>
+                    <span className="text-xs text-slate-400">Want this for your business?</span>
                     <a
-                      href="#contact"
+                      href="#assessment"
                       className="inline-flex items-center gap-2 text-xs font-bold text-[#d4d4d8] hover:text-white transition-colors"
                     >
-                      <span>Talk to an Architect</span>
+                      <span>Get Your Free Plan</span>
                       <ArrowRight size={13} />
                     </a>
                   </div>

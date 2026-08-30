@@ -3,19 +3,19 @@ import { BarChart3, Bot, Clock3, Database, Layers3, Sparkles, TrendingUp, Workfl
 import { AnimatedSection } from "./ui"
 
 const activityLog = [
-  { time: "14:32:07", agent: "STH-SDR-01", action: "Lead qualified: Apex Corp → Cal.com booking sent", status: "success" },
-  { time: "14:32:04", agent: "STH-OPS-03", action: "Invoice #4102 reconciled across Stripe + SAP ledger", status: "success" },
-  { time: "14:31:58", agent: "STH-SUP-02", action: "Ticket #8942 resolved: vector search match 98.4%", status: "success" },
-  { time: "14:31:51", agent: "STH-VOX-04", action: "Inbound call transferred to sales rep — warm handoff", status: "success" },
-  { time: "14:31:44", agent: "STH-SDR-01", action: "WhatsApp inquiry parsed: intent score 91/100", status: "success" },
-  { time: "14:31:38", agent: "STH-OPS-03", action: "ERP sync batch: 2,480 records aligned in 1.2s", status: "success" },
+  { time: "14:32:07", agent: "Sales Agent", action: "Lead qualified: Meeting booked on Google Calendar", status: "success" },
+  { time: "14:32:04", agent: "Accounts Sync", action: "Invoice #4102 marked as paid in accounting tool", status: "success" },
+  { time: "14:31:58", agent: "Support Agent", action: "Customer query answered on WhatsApp in 1.2s", status: "success" },
+  { time: "14:31:51", agent: "Phone Agent", action: "Caller transferred to sales team with notes", status: "success" },
+  { time: "14:31:44", agent: "Sales Agent", action: "Website inquiry received and lead score calculated", status: "success" },
+  { time: "14:31:38", agent: "Data Sync", action: "2,480 inventory records updated across all channels", status: "success" },
 ]
 
 const metrics = [
-  { icon: Zap, label: "Tasks Automated / Wk", value: "14,820", delta: "+34%" },
-  { icon: Clock3, label: "Manual Hours Reclaimed", value: "640 hrs", delta: "+42%" },
-  { icon: Bot, label: "Autonomous AI Actions", value: "9,140", delta: "+28%" },
-  { icon: TrendingUp, label: "System Execution Health", value: "99.98%", delta: "Optimal" },
+  { icon: Zap, label: "Automated Tasks / Wk", value: "14,820", delta: "+34%" },
+  { icon: Clock3, label: "Staff Hours Saved", value: "640 hrs", delta: "+42%" },
+  { icon: Bot, label: "Queries Handled by AI", value: "9,140", delta: "+28%" },
+  { icon: TrendingUp, label: "System Reliability", value: "99.98%", delta: "Healthy" },
 ]
 
 function LiveActivityFeed() {
@@ -34,11 +34,11 @@ function LiveActivityFeed() {
       <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-3">
         <div className="flex items-center gap-2">
           <Activity size={14} className="text-[#86efac]" />
-          <span className="text-xs font-bold text-white">Live Agent Activity</span>
+          <span className="text-xs font-bold text-white">Live System Activity</span>
         </div>
         <span className="flex items-center gap-1.5 text-[9px] font-mono font-semibold text-[#86efac]">
           <span className="h-1.5 w-1.5 rounded-full bg-[#86efac] animate-pulse" />
-          STREAMING
+          ACTIVE
         </span>
       </div>
       <div ref={feedRef} className="space-y-1.5 font-mono text-[11px]">
@@ -49,7 +49,7 @@ function LiveActivityFeed() {
             style={{ opacity: idx === 0 ? 1 : Math.max(0.4, 1 - idx * 0.2) }}
           >
             <span className="text-slate-500 shrink-0 w-[56px]">{entry.time}</span>
-            <span className="text-[#a1a1aa] shrink-0 w-[72px]">{entry.agent}</span>
+            <span className="text-[#a1a1aa] shrink-0 w-[96px]">{entry.agent}</span>
             <span className="text-slate-300 truncate">{entry.action}</span>
             <CheckCircle2 size={12} className="text-[#86efac] shrink-0 mt-0.5" />
           </div>
@@ -74,16 +74,16 @@ export default function Showcase() {
           <div className="text-center max-w-3xl mx-auto">
             <div className="glass-pill mx-auto">
               <Layers3 size={13} />
-              <span>Executive Command Center</span>
+              <span>Executive Dashboard</span>
             </div>
 
             <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-              One intelligent cockpit <br className="hidden sm:block" />
-              <span className="text-white/60">for your entire operation.</span>
+              One clear dashboard <br className="hidden sm:block" />
+              <span className="text-white/60">to see your business run smoothly.</span>
             </h2>
 
             <p className="mt-4 text-base sm:text-lg text-slate-300">
-              Real-time operational telemetry, live agent queues, automated data flows, and predictive business insights unified in a single high-performance console.
+              See incoming customer enquiries, completed automations, hours saved, and system status all in one simple, real-time screen.
             </p>
           </div>
         </AnimatedSection>
@@ -99,14 +99,14 @@ export default function Showcase() {
               <span className="h-3 w-3 rounded-full bg-yellow-500/80" />
               <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
               <span className="ml-3 text-[11px] font-mono text-slate-400 hidden sm:inline">
-                https://command.sthayu.com/enterprise/orchestration
+                https://dashboard.sthayu.com/company/overview
               </span>
             </div>
 
             <div className="flex items-center gap-2">
               <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-[10px] font-mono font-bold text-[#86efac] uppercase tracking-widest">
-                SYSTEM HEALTH: 100%
+                ALL SYSTEMS OPERATIONAL
               </span>
             </div>
           </div>
@@ -118,14 +118,14 @@ export default function Showcase() {
             <div className="lg:col-span-3 rounded-2xl border border-white/10 bg-[#080808]/80 p-4 flex flex-col justify-between">
               <div className="space-y-1.5">
                 <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">
-                  Operating Modules
+                  Navigation
                 </div>
                 {[
                   { name: "Overview", icon: Sparkles },
                   { name: "Automations", icon: Workflow },
-                  { name: "AI Workforce", icon: Bot },
-                  { name: "Data Streams", icon: Database },
-                  { name: "Analytics", icon: BarChart3 },
+                  { name: "AI Assistants", icon: Bot },
+                  { name: "Connected Tools", icon: Database },
+                  { name: "Reports", icon: BarChart3 },
                 ].map((item) => {
                   const Icon = item.icon
                   const isActive = activeMenu === item.name
@@ -149,11 +149,11 @@ export default function Showcase() {
 
               <div className="mt-8 pt-4 border-t border-white/10">
                 <div className="flex items-center justify-between text-[10px] font-mono text-slate-400">
-                  <span>LATENCY (P99)</span>
-                  <span className="text-[#d4d4d8] font-bold">24ms</span>
+                  <span>AVERAGE RESPONSE TIME</span>
+                  <span className="text-[#86efac] font-bold">1.2s</span>
                 </div>
                 <div className="mt-2 h-1.5 w-full rounded-full bg-white/5 overflow-hidden">
-                  <div className="h-full w-[94%] bg-gradient-to-r from-[#d4d4d8] to-[#a1a1aa] rounded-full" />
+                  <div className="h-full w-[94%] bg-gradient-to-r from-[#86efac] to-[#38bdf8] rounded-full" />
                 </div>
               </div>
             </div>
@@ -189,11 +189,11 @@ export default function Showcase() {
               <div className="rounded-2xl border border-white/10 bg-[#080808]/80 p-5">
                 <div className="flex items-center justify-between pb-4 border-b border-white/10">
                   <div>
-                    <div className="text-xs font-bold text-white">Live Execution Throughput (Events/Sec)</div>
-                    <div className="text-[10px] text-slate-400 font-mono">Continuous webhook orchestration</div>
+                    <div className="text-xs font-bold text-white">Weekly Automated Activity</div>
+                    <div className="text-[10px] text-slate-400 font-mono">Real-time task volume</div>
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#86efac]/[0.06] text-[#86efac] border border-[#86efac]/[0.12]">
-                    REAL-TIME STREAM
+                    LIVE UPDATING
                   </span>
                 </div>
 

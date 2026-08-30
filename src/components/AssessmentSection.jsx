@@ -15,7 +15,7 @@ export default function AssessmentSection() {
     email: "",
     company: "",
     teamSize: "10-50 Employees",
-    primaryFriction: "Lead Qualification & Sales Follow-Up",
+    primaryFriction: "Instant Lead Replies & Sales Follow-Up",
     currentStack: "",
   })
 
@@ -67,7 +67,7 @@ export default function AssessmentSection() {
       email: "",
       company: "",
       teamSize: "10-50 Employees",
-      primaryFriction: "Lead Qualification & Sales Follow-Up",
+      primaryFriction: "Instant Lead Replies & Sales Follow-Up",
       currentStack: "",
     })
     setErrors({})
@@ -82,14 +82,14 @@ export default function AssessmentSection() {
           <div className="text-center max-w-3xl mx-auto">
             <div className="glass-pill mx-auto">
               <ClipboardList size={13} />
-              <span>Operational Diagnostic</span>
+              <span>Free Automation Assessment</span>
             </div>
             <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-              Receive your customized <br className="hidden sm:block" />
-              <span className="text-white/60">System Architecture Blueprint.</span>
+              Get a custom automation plan <br className="hidden sm:block" />
+              <span className="text-white/60">for your business.</span>
             </h2>
             <p className="mt-4 text-base sm:text-lg text-slate-300">
-              Tell us where manual effort is bottlenecking your growth. Our systems architects will analyze your stack and return a concrete implementation roadmap within 24 hours.
+              Tell us where your team spends the most manual time. We will review your tools and send you a practical, step-by-step automation recommendation within 24 hours.
             </p>
           </div>
         </AnimatedSection>
@@ -101,14 +101,14 @@ export default function AssessmentSection() {
                 WHAT HAPPENS NEXT
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-                Not a sales pitch. <br />
-                An actionable engineering audit.
+                Practical advice. <br />
+                No pushy sales calls.
               </h3>
               <div className="space-y-4 pt-2">
                 {[
-                  { title: "Bottleneck Quantification", desc: "Exact calculation of human hours lost to repetitive tasks and data entry drag." },
-                  { title: "Target State Architecture", desc: "System diagram showing recommended agent triggers, webhooks, and databases." },
-                  { title: "Timeline & ROI Projection", desc: "Transparent 30-day delivery roadmap with guaranteed SLA milestones." },
+                  { title: "Identify Repetitive Tasks", desc: "We pinpoint exactly where your team loses hours to manual typing, answering repetitive questions, or copy-pasting." },
+                  { title: "Tailored Automation Roadmap", desc: "A simple diagram showing which AI assistants and automations will save you the most time." },
+                  { title: "Clear Timeline & Pricing", desc: "A transparent project plan with clear milestones and no hidden surprises." },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.03] border border-white/5">
                     <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/[0.04] border border-white/[0.08] text-[#d4d4d8] shrink-0 mt-0.5">
@@ -123,7 +123,7 @@ export default function AssessmentSection() {
               </div>
               <div className="pt-4 border-t border-white/10 flex items-center gap-3 text-xs text-slate-400 font-mono">
                 <ShieldCheck size={16} className="text-[#86efac]" />
-                <span>NDA Protected · 100% Confidential Data</span>
+                <span>100% Confidential & Secure</span>
               </div>
             </div>
 
@@ -133,23 +133,23 @@ export default function AssessmentSection() {
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#86efac]/[0.06] border border-[#86efac]/[0.20] text-[#86efac] mx-auto shadow-[0_0_0_1px_rgba(255,255,255,0.08)]">
                     <CheckCircle2 size={32} />
                   </div>
-                  <h4 className="text-2xl font-bold text-white">Diagnostic Request Received</h4>
+                  <h4 className="text-2xl font-bold text-white">Assessment Request Received!</h4>
                   <p className="text-sm text-slate-300 max-w-md mx-auto">
-                    Thank you, {formData.name || "friend"}. Our lead solutions engineer is analyzing your inputs and will dispatch your custom Architecture Blueprint within 24 hours.
+                    Thank you, {formData.name || "friend"}. Our team is reviewing your requirements and will send your personalized automation plan within 24 hours.
                   </p>
                   <button
                     type="button"
                     onClick={handleReset}
                     className="mt-4 text-xs font-mono text-[#a1a1aa] hover:underline cursor-pointer"
                   >
-                    Submit another scenario →
+                    Submit another request →
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate className="space-y-4">
                   <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 pb-2 border-b border-white/10 flex items-center justify-between">
-                    <span>ASSESSMENT INTAKE</span>
-                    <span className="text-[#a1a1aa]">STEP 1 OF 1</span>
+                    <span>ASSESSMENT DETAILS</span>
+                    <span className="text-[#a1a1aa]">FREE REVIEW</span>
                   </div>
 
                   <div className="grid gap-4 sm:grid-cols-2 pt-2">
@@ -236,7 +236,7 @@ export default function AssessmentSection() {
 
                   <div>
                     <label htmlFor="assess-friction" className="block text-[10px] font-mono uppercase text-slate-400 mb-1.5">
-                      Primary Operational Bottleneck *
+                      Main Challenge to Automate *
                     </label>
                     <select
                       id="assess-friction"
@@ -244,24 +244,24 @@ export default function AssessmentSection() {
                       onChange={(e) => handleChange("primaryFriction", e.target.value)}
                       className="input-glass cursor-pointer"
                     >
-                      <option className="bg-slate-900">Lead Qualification & Sales Follow-Up</option>
-                      <option className="bg-slate-900">Tier-1 Support & Customer Inquiries</option>
-                      <option className="bg-slate-900">Multi-System Data Sync & Reconciliation</option>
-                      <option className="bg-slate-900">Voice Telephony & Call Qualification</option>
-                      <option className="bg-slate-900">Custom Internal SaaS / Dashboard Build</option>
+                      <option className="bg-slate-900">Instant Lead Replies & Sales Follow-Up</option>
+                      <option className="bg-slate-900">24/7 Customer Support & FAQs</option>
+                      <option className="bg-slate-900">Automatic Invoice, Order & Data Sync</option>
+                      <option className="bg-slate-900">Phone Call Answering & Voice Support</option>
+                      <option className="bg-slate-900">Custom Dashboard / Client Portal</option>
                     </select>
                   </div>
 
                   <div>
                     <label htmlFor="assess-stack" className="block text-[10px] font-mono uppercase text-slate-400 mb-1.5">
-                      Current Software Stack (Optional)
+                      Current Software Tools (Optional)
                     </label>
                     <input
                       id="assess-stack"
                       type="text"
                       value={formData.currentStack}
                       onChange={(e) => handleChange("currentStack", e.target.value)}
-                      placeholder="e.g. HubSpot, Shopify, PostgreSQL, WhatsApp"
+                      placeholder="e.g. WhatsApp, Zoho, Shopify, Google Sheets, Tally"
                       className="input-glass"
                     />
                   </div>
@@ -278,14 +278,14 @@ export default function AssessmentSection() {
                       </>
                     ) : (
                       <>
-                        <span>Request Custom Blueprint</span>
+                        <span>Get My Free Automation Plan</span>
                         <ArrowRight size={14} />
                       </>
                     )}
                   </button>
 
                   <div className="text-center text-[10px] font-mono text-slate-400 pt-1">
-                    Guaranteed response within 24 business hours
+                    We will reply within 24 business hours
                   </div>
                 </form>
               )}

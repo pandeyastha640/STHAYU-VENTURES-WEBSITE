@@ -17,16 +17,16 @@ export default function InteractiveShowcase() {
         {/* Header */}
         <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[13px] font-medium uppercase tracking-[0.18em] text-slate-200">
           <Sparkles size={14} className="text-[#d4d4d8]" />
-          Premium visualizations
+          Interactive Technology
         </div>
 
         <h2 className="mt-8 text-[2.3rem] font-extrabold leading-none tracking-[-0.06em] text-white sm:text-[3rem] md:text-[3.8rem] mb-6">
-          See your systems
-          <span className="mt-3 block text-slate-300">in real-time 3D.</span>
+          See how your connected systems
+          <span className="mt-3 block text-slate-300">work together in real time.</span>
         </h2>
 
         <p className="max-w-2xl text-[1.02rem] leading-8 text-slate-300 mb-12">
-          Interactive visualizations, live metrics, and animated intelligence dashboards that bring your business operations to life with stunning 3D clarity.
+          Explore interactive models of your business automations, connected tools, and performance metrics in clear visual displays.
         </p>
 
         {/* Main visualization grid */}
@@ -62,18 +62,18 @@ export default function InteractiveShowcase() {
           {[
             {
               icon: Zap,
-              title: "Interactive 3D",
-              description: "Rotate, zoom, and explore your system architecture with mouse-driven 3D controls.",
+              title: "Interactive System Models",
+              description: "Explore how data moves between your software, CRM, and communication tools.",
             },
             {
               icon: Sparkles,
-              title: "Live Metrics",
-              description: "Real-time performance data with animated transitions and trend indicators.",
+              title: "Real-Time Stats",
+              description: "Check live response times, completed tasks, and system uptime in real time.",
             },
             {
               icon: Sparkles,
-              title: "Network View",
-              description: "Visualize all connected systems and data flows with dynamic connection visualization.",
+              title: "Connected Network",
+              description: "See how all your business tools link together seamlessly without data silos.",
             },
           ].map(({ icon: Icon, title, description }) => (
             <div key={title} className="rounded-[24px] border border-white/10 bg-[#050505]/80 p-6 hover:border-white/[0.08] transition-all duration-300">

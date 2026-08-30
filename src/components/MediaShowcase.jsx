@@ -5,67 +5,67 @@ import { AnimatedSection, SectionHeading } from "./ui"
 const scenarios = [
   {
     id: "lead",
-    title: "Omnichannel Lead Qualification & Dispatch",
-    tag: "Sales & Growth",
-    description: "Inbound inquiry on WhatsApp or Web is parsed by the Sthayu Sales Agent, matched with CRM records, enriched via data providers, and dispatched to executive calendars.",
+    title: "Instant Lead Qualification & Calendar Booking",
+    tag: "Sales & Inquiries",
+    description: "A prospective client reaches out on WhatsApp or your website. The AI agent immediately answers their questions, confirms their requirements, and books a meeting directly onto your calendar.",
     latency: "1.4s",
     accuracy: "99.8%",
     steps: [
-      { name: "Inbound Capture", detail: "WhatsApp / Webform payload received", status: "complete" },
-      { name: "Context Enrichment", detail: "Company revenue, stack, role matched", status: "complete" },
-      { name: "Cognitive Scoring", detail: "Intent score: 94/100 (Enterprise Tier)", status: "complete" },
-      { name: "Calendar & CRM Dispatch", detail: "Meeting scheduled + HubSpot deal created", status: "complete" },
+      { name: "Inquiry Received", detail: "Customer sends a message on WhatsApp or your website form", status: "complete" },
+      { name: "Requirements Checked", detail: "AI understands what the customer needs and their timeline", status: "complete" },
+      { name: "Priority Assigned", detail: "Flags high-value buyer ready for immediate follow-up", status: "complete" },
+      { name: "Meeting Booked", detail: "Call scheduled on your calendar and added to your CRM", status: "complete" },
     ],
     payload: {
-      event: "lead.enterprise_qualification",
-      source: "whatsapp_business_api",
-      intent: "ai_infrastructure_deployment",
-      ai_agent: "Sthayu-SDR-Alpha",
-      action_taken: "hubspot_deal_created_and_rep_assigned",
-      execution_time: "1.42s",
+      event: "new_sales_inquiry",
+      source: "whatsapp_business",
+      inquiry_topic: "business_automation_setup",
+      ai_assistant: "Sales_Assistant",
+      action_taken: "calendar_meeting_booked_and_team_notified",
+      response_time: "1.4s",
     }
   },
   {
     id: "support",
-    title: "Autonomous Tier-1 Customer Resolution",
-    tag: "Customer Operations",
-    description: "Customer service request triaged, authenticated against internal knowledge base and ERP databases, and resolved with human-grade empathy and precise technical instructions.",
+    title: "24/7 Customer Help & Query Resolution",
+    tag: "Customer Support",
+    description: "A client reaches out with a common question or request. The AI checks your approved business knowledge base and provides a friendly, accurate answer in seconds.",
     latency: "820ms",
     accuracy: "99.4%",
     steps: [
-      { name: "Intent Analysis", detail: "API key rate limit inquiry identified", status: "complete" },
-      { name: "Knowledge Search", detail: "Vector DB queried for custom tenant policy", status: "complete" },
-      { name: "Solution Generation", detail: "Actionable fix + temporary tier boost applied", status: "complete" },
-      { name: "Ticket Resolution", detail: "Zendesk ticket closed with 5-star CSAT", status: "complete" },
+      { name: "Customer Asks Question", detail: "Customer asks about order status, pricing, or product instructions", status: "complete" },
+      { name: "Company Knowledge Checked", detail: "AI looks up your verified company documents and FAQs", status: "complete" },
+      { name: "Accurate Answer Sent", detail: "Clear, helpful reply sent back in under 1 second", status: "complete" },
+      { name: "Activity Logged", detail: "Conversation record saved for your team to review", status: "complete" },
     ],
     payload: {
-      event: "support.ticket_auto_resolution",
-      ticket_id: "STH-8942",
-      sentiment: "neutral_to_delighted",
-      vector_search_score: 0.984,
+      event: "customer_support_query",
+      ticket_id: "REQ-8942",
+      topic: "order_tracking_and_status",
+      query_resolved: true,
       escalation_needed: false,
-      execution_time: "0.82s",
+      response_time: "0.82s",
     }
   },
   {
     id: "ops",
-    title: "Real-Time Multi-System Data Reconciliation",
-    tag: "Enterprise ERP",
-    description: "Cross-platform data discrepancy detected between warehouse logistics, billing software, and customer invoices. Auto-corrected and verified without human data entry.",
+    title: "Automatic Invoice & Payment Sync",
+    tag: "Finance & Operations",
+    description: "When a payment arrives, the system automatically matches it with the right client invoice and updates your accounting tools without any manual copy-pasting.",
     latency: "2.1s",
     accuracy: "100%",
     steps: [
-      { name: "Discrepancy Trigger", detail: "Invoice #4102 mismatch detected", status: "complete" },
-      { name: "Cross-Database Audit", detail: "PostgreSQL & Stripe ledgers reconciled", status: "complete" },
-      { name: "Adjustment Execution", detail: "Credit note drafted & ERP synced", status: "complete" },
-      { name: "Audit Trail Logged", detail: "SOC2 compliance cryptographic log sealed", status: "complete" },
+      { name: "Payment Received", detail: "New client payment confirmed via payment gateway", status: "complete" },
+      { name: "Invoice Matched", detail: "Finds matching invoice number and client account", status: "complete" },
+      { name: "Accounting Updated", detail: "Marks invoice as paid across your software tools", status: "complete" },
+      { name: "Receipt Delivered", detail: "Sends confirmation message and receipt to client", status: "complete" },
     ],
     payload: {
-      event: "ops.ledger_reconciliation",
-      entities: ["PostgreSQL_Cluster", "Stripe_Billing", "SAP_ERP"],
-      discrepancy_resolved: "₹1,42,000 variance aligned",
-      human_intervention: "0 hours",
-      execution_time: "2.14s",
+      event: "payment_reconciliation",
+      connected_systems: ["Payment_Gateway", "Accounting_Software", "CRM"],
+      status: "invoice_matched_and_receipt_sent",
+      manual_typing_time: "0 minutes",
+      processing_time: "2.1s",
     }
   }
 ]
@@ -83,14 +83,14 @@ export default function MediaShowcase() {
 
         <AnimatedSection>
           <SectionHeading
-            pill={{ icon: Workflow, text: "Interactive Workflow Engine" }}
+            pill={{ icon: Workflow, text: "Interactive Workflow Example" }}
             title={
               <>
-                See autonomous execution <br className="hidden sm:block" />
-                <span className="text-white/60">in live real-time motion.</span>
+                See automated workflows <br className="hidden sm:block" />
+                <span className="text-white/60">in live action.</span>
               </>
             }
-            description="Sthayu eliminates manual coordination by running end-to-end cognitive pipelines that ingest, decide, and execute across your enterprise software stack."
+            description="Here is how our automations instantly handle customer inquiries, answer questions, and update your software behind the scenes."
           />
         </AnimatedSection>
 
@@ -110,7 +110,7 @@ export default function MediaShowcase() {
                       : "border border-white/10 bg-white/[0.02] text-slate-300 hover:border-white/20 hover:text-white"
                   }`}
                 >
-                  <span className={`w-2 h-2 rounded-full ${isSelected ? "bg-[#d4d4d8] animate-pulse" : "bg-slate-500"}`} />
+                  <span className={`w-2 h-2 rounded-full ${isSelected ? "bg-[#86efac] animate-pulse" : "bg-slate-500"}`} />
                   <span>{sc.tag}</span>
                 </button>
               )
@@ -132,7 +132,7 @@ export default function MediaShowcase() {
                   <div className="text-sm font-bold text-white flex items-center gap-2">
                     {activeScenario.title}
                   </div>
-                  <div className="text-[10px] font-mono text-slate-400">STATUS: EXECUTING PIPELINE</div>
+                  <div className="text-[10px] font-mono text-[#86efac]">STATUS: ACTIVE AUTOMATION</div>
                 </div>
               </div>
 
@@ -145,7 +145,7 @@ export default function MediaShowcase() {
                     activeTab === "pipeline" ? "bg-white/[0.04] text-[#d4d4d8] border border-white/[0.08] shadow-[0_0_12px_rgba(255,255,255,0.03)]" : "text-slate-400 hover:text-white hover:bg-white/[0.03]"
                   }`}
                 >
-                  Visual Pipeline
+                  Step-by-Step Flow
                 </button>
                 <button
                   type="button"
@@ -155,7 +155,7 @@ export default function MediaShowcase() {
                   }`}
                 >
                   <Terminal size={12} />
-                  JSON Payload
+                  Data Log
                 </button>
               </div>
             </div>
@@ -169,7 +169,7 @@ export default function MediaShowcase() {
                   <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
                     <div>
                       <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#a1a1aa]">
-                        Execution Scenario
+                        Automation Flow
                       </span>
                       <h3 className="mt-2 text-xl sm:text-2xl font-bold text-white">
                         {activeScenario.title}
@@ -181,15 +181,15 @@ export default function MediaShowcase() {
 
                     <div className="grid grid-cols-2 gap-3 pt-2">
                       <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
-                        <div className="text-[10px] uppercase tracking-wider font-mono text-slate-400">Execution Speed</div>
+                        <div className="text-[10px] uppercase tracking-wider font-mono text-slate-400">Response Time</div>
                         <div className="mt-1 text-2xl font-extrabold text-[#d4d4d8] font-mono">{activeScenario.latency}</div>
-                        <div className="text-[10px] text-slate-400 mt-0.5">End-to-end processing</div>
+                        <div className="text-[10px] text-slate-400 mt-0.5">Instant customer reply</div>
                       </div>
 
                       <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
-                        <div className="text-[10px] uppercase tracking-wider font-mono text-slate-400">Deterministic Accuracy</div>
+                        <div className="text-[10px] uppercase tracking-wider font-mono text-slate-400">Accuracy</div>
                         <div className="mt-1 text-2xl font-extrabold text-[#86efac] font-mono">{activeScenario.accuracy}</div>
-                        <div className="text-[10px] text-slate-400 mt-0.5">Verified outputs</div>
+                        <div className="text-[10px] text-slate-400 mt-0.5">Verified data matching</div>
                       </div>
                     </div>
 
@@ -197,7 +197,7 @@ export default function MediaShowcase() {
                       href="#assessment"
                       className="btn-primary w-fit text-xs py-2.5 px-5"
                     >
-                      <span>Build This Workflow</span>
+                      <span>Build a Similar Automation</span>
                       <ArrowRight size={13} />
                     </a>
                   </div>
@@ -217,7 +217,7 @@ export default function MediaShowcase() {
                               <div className="text-sm font-bold text-white flex items-center gap-2">
                                 {step.name}
                                 <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-[#86efac]/[0.06] text-[#86efac] border border-[#86efac]/[0.12]">
-                                  PASS
+                                  DONE
                                 </span>
                               </div>
                               <div className="text-xs text-slate-300 mt-0.5">{step.detail}</div>
@@ -237,8 +237,8 @@ export default function MediaShowcase() {
                 /* JSON Telemetry Payload Inspector */
                 <div className="rounded-2xl border border-white/[0.06] bg-[#080808] p-5 font-mono text-xs text-[#d4d4d8] overflow-x-auto shadow-inner">
                   <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-slate-400 text-[10px]">
-                    <span>EVENT_STREAM_INSPECTOR // TLSv1.3 Encrypted</span>
-                    <span className="text-[#86efac]">● LIVE_STREAM</span>
+                    <span>SYSTEM_DATA_LOG // Secure Channel</span>
+                    <span className="text-[#86efac]">● LIVE</span>
                   </div>
                   <pre className="text-slate-300 leading-relaxed">
                     {JSON.stringify(activeScenario.payload, null, 2)}

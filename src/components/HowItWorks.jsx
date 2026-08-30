@@ -6,78 +6,78 @@ import { CheckCircle2, ChevronRight, Workflow, Zap } from "lucide-react"
 const lifecycleSteps = [
   {
     stage: "01",
-    phase: "Week 1",
-    title: "Discovery & Bottleneck Audit",
-    headline: "Deconstruct your operations down to the exact manual friction points.",
-    description: "We analyze your current software tools, data pathways, and manual administrative handoffs. We calculate exact time/revenue losses and map the ideal autonomous target state.",
+    phase: "Phase 1",
+    title: "Review & Discovery",
+    headline: "We learn how your business currently works and where time is lost.",
+    description: "We talk to your team, look at the tools you use every day, and find the repetitive tasks, manual copy-pasting, and communication bottlenecks that slow you down.",
     deliverables: [
-      "Process Bottleneck & Cost-Drag Audit",
-      "Data Entity & API Integration Map",
-      "Measurable ROI & Latency Reduction Targets",
-      "Executive Architectural Blueprint"
+      "Breakdown of repetitive daily tasks and time wasted",
+      "List of software tools to connect",
+      "Expected hours and cost savings",
+      "Clear, simple 1-page automation roadmap"
     ],
-    highlight: "Zero disruption to your ongoing operations",
-    metric: "100% stack visibility in 5 days",
+    highlight: "Zero disruption to your daily work",
+    metric: "Completed in 3-5 days",
   },
   {
     stage: "02",
-    phase: "Week 2",
-    title: "System Design & Agent Modeling",
-    headline: "Engineer the cognitive agent prompts, safety guardrails & API routes.",
-    description: "We architect the technical blueprint: database schema alignments, webhook routing logic, agent reasoning trees, and deterministic fallbacks to guarantee 0% hallucination risk.",
+    phase: "Phase 2",
+    title: "System Design",
+    headline: "We design the AI assistants and automated workflows around your rules.",
+    description: "We outline how data should move between your tools, draft the exact rules and tone your AI agents should follow, and show you a preview before writing any code.",
     deliverables: [
-      "Custom Agent Context & Decision Trees",
-      "Bidirectional Webhook & ERP Connector Schemas",
-      "Security, Privacy & RBAC Protocol Definitions",
-      "Interactive High-Fidelity UI/UX Prototypes"
+      "Visual map of how data will flow between your tools",
+      "Drafted questions and answers for your AI agents",
+      "Clear business safety rules and guidelines",
+      "Simple walkthrough preview for your approval"
     ],
-    highlight: "Deterministic guardrail specifications",
-    metric: "Architectural alignment sealed",
+    highlight: "Customized to your exact company tone",
+    metric: "Plan approved by your team",
   },
   {
     stage: "03",
-    phase: "Week 3-4",
-    title: "Agent Build & Integration Fabric",
-    headline: "Construct high-throughput pipelines and fine-tune domain intelligence.",
-    description: "Our engineers build the microservices, index vector knowledge bases, connect your CRM/ERP endpoints, and train agents on real historical conversation transcripts.",
+    phase: "Phase 3",
+    title: "Build & Connect",
+    headline: "We build the automations and connect your existing software tools.",
+    description: "We connect your CRM, WhatsApp, spreadsheets, accounting software, and databases so information flows automatically without any manual typing.",
     deliverables: [
-      "Vector Embeddings & Private Knowledge Index",
-      "Multi-System Event Sync Engine (PostgreSQL/HubSpot/Stripe)",
-      "Omnichannel Ingestion (WhatsApp, Web, Telephony)",
-      "Complete Staging Environment Deployment"
+      "Custom AI assistants connected to your business documents",
+      "Automated connections between all your daily tools",
+      "Instant notification alerts for your team on WhatsApp/Slack",
+      "Private testing version ready for review"
     ],
-    highlight: "Sub-45ms webhook processing performance",
-    metric: "All core integrations live in staging",
+    highlight: "Works with the tools you already pay for",
+    metric: "Working test system delivered",
   },
   {
     stage: "04",
-    phase: "Week 5",
-    title: "Sandbox Simulation & Guardrail QA",
-    headline: "Simulate edge cases, stress-test high throughput & verify compliance.",
-    description: "We run thousands of simulated edge-case conversations and high-load traffic bursts to verify that every decision matches human-level accuracy and strict company policies.",
+    phase: "Phase 4",
+    title: "Testing & Training",
+    headline: "We test every scenario thoroughly and show your team how to use it.",
+    description: "We simulate hundreds of real customer questions, lead forms, and invoices to verify that the system is 100% accurate. Then we walk your team through simple instructions.",
     deliverables: [
-      "Automated Edge-Case Stress Testing Suite",
-      "Human-in-the-Loop Escalation Verification",
-      "SOC2 / Data Privacy Compliance Validation",
-      "Team Hand-off & Live Training Sessions"
+      "Full accuracy testing with real sample data",
+      "Verification of human handoff when staff are needed",
+      "Short 15-minute video guide for your team",
+      "Simple checklist for daily use"
     ],
-    highlight: "Over 2,500 automated verification passes",
-    metric: "99.8% deterministic accuracy score",
+    highlight: "Thorough testing before going live",
+    metric: "100% test accuracy passed",
   },
   {
     stage: "05",
-    phase: "Week 6+",
-    title: "Live Production & Continuous Optimization",
-    headline: "Deploy to live traffic with 24/7 telemetry and ongoing agent tuning.",
-    description: "The autonomous operating system is switched on. We monitor real-time throughput, track CSAT and lead conversion rates, and continuously optimize agents as your business scales.",
+    phase: "Phase 5",
+    title: "Launch & Ongoing Support",
+    headline: "We turn the system on and provide ongoing monitoring and help.",
+    description: "Your automated workflows and AI assistants go live. We monitor performance daily, check error logs, and make adjustments as your business grows.",
     deliverables: [
-      "Zero-Downtime Production Cutover",
-      "Real-Time Telemetry & Anomaly Alerting",
-      "Weekly Performance & ROI Impact Briefings",
-      "Dedicated Engineering SLA & Continuous Upgrades"
+      "Smooth, zero-downtime live launch",
+      "Daily automated monitoring and error alerts",
+      "Monthly performance and time-saved summary",
+      "Fast, direct founder and engineering support"
     ],
-    highlight: "Backed by 99.98% uptime engineering SLA",
-    metric: "Continuous autonomous scaling",
+    highlight: "Ongoing peace of mind and maintenance",
+    metric: "Smooth live operations",
   },
 ]
 
@@ -120,9 +120,9 @@ export default function HowItWorks() {
         
         <AnimatedSection>
           <SectionHeading
-            pill={{ icon: Workflow, text: "Operational Lifecycle" }}
-            title={<>From fragmented operations <br className="hidden sm:block" /><span className="text-white/60">to a deployed autonomous system.</span></>}
-            description="A battle-tested 5-phase engineering methodology designed to deliver tangible operational ROI in under 30 business days without disrupting your team."
+            pill={{ icon: Workflow, text: "How We Work With You" }}
+            title={<>A simple, step-by-step process <br className="hidden sm:block" /><span className="text-white/60">from idea to working system.</span></>}
+            description="We handle the technical build from start to finish so your team can focus on serving customers and running the business."
           />
         </AnimatedSection>
 
@@ -216,27 +216,27 @@ export default function HowItWorks() {
               {/* Right Column: Concrete Deliverables Checklist */}
               <div className="lg:col-span-6 rounded-2xl border border-white/10 bg-[#080808]/80 p-6 sm:p-8 backdrop-blur-xl">
                 <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 pb-4 border-b border-white/10 flex items-center justify-between">
-                  <span>PHASE {current.stage} DELIVERABLES</span>
-                  <span className="text-[#86efac] font-bold">● GUARANTEED</span>
+                  <span>WHAT YOU RECEIVE IN THIS PHASE</span>
+                  <span className="text-[#86efac] font-bold">● INCLUDED</span>
                 </div>
 
                 <div className="mt-5 space-y-3.5">
                   {current.deliverables.map((item) => (
                     <div key={item} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                      <CheckCircle2 size={16} className="text-[#a1a1aa] shrink-0 mt-0.5" />
+                      <CheckCircle2 size={16} className="text-[#86efac] shrink-0 mt-0.5" />
                       <span className="text-xs font-medium text-[#d4d4d8]">{item}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-xs text-slate-400">Next milestone:</span>
+                  <span className="text-xs text-slate-400">See next step:</span>
                   <button
                     type="button"
                     onClick={() => setActiveIdx((prev) => (prev + 1) % lifecycleSteps.length)}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#d4d4d8] hover:text-[#d4d4d8] cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#d4d4d8] hover:text-white cursor-pointer"
                   >
-                    <span>Advance Stage</span>
+                    <span>Next Step</span>
                     <ChevronRight size={14} />
                   </button>
                 </div>

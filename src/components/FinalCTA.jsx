@@ -20,16 +20,16 @@ export default function FinalCTA() {
             <div className="lg:col-span-8 space-y-6">
               <div className="glass-pill">
                 <Sparkles size={13} />
-                <span>Ready When You Are</span>
+                <span>Ready to Get Started?</span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-                Turn operational friction <br />
-                <span className="text-white/60">into autonomous momentum.</span>
+                Stop wasting time on manual tasks. <br />
+                <span className="text-white/60">Start growing your business.</span>
               </h2>
 
               <p className="max-w-xl text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                Partner with Sthayu to build your intelligent operating system. Eliminate repetitive manual coordination, accelerate lead-to-action cycles, and scale without overhead.
+                Partner with Sthayu to automate repetitive daily tasks, answer client enquiries in seconds, and scale your operations smoothly without extra hiring stress.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
@@ -37,15 +37,15 @@ export default function FinalCTA() {
                   href="#assessment"
                   className="btn-primary py-4 px-8 text-xs font-bold shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
                 >
-                  <span>Request System Architecture Audit</span>
+                  <span>Get My Free Automation Plan</span>
                   <ArrowRight size={15} />
                 </a>
 
                 <a
-                  href="mailto:hello@sthayuventures.com?subject=Strategic%20Inquiry%20-%20Sthayu%20Ventures"
+                  href="mailto:hello@sthayuventures.com?subject=Business%20Inquiry%20-%20Sthayu%20Ventures"
                   className="btn-secondary py-4 px-7 text-xs font-bold"
                 >
-                  <span>Contact Founders Directly</span>
+                  <span>Contact Us Directly</span>
                   <ArrowUpRight size={15} />
                 </a>
               </div>
@@ -53,15 +53,15 @@ export default function FinalCTA() {
               <div className="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400 font-mono">
                 <span className="flex items-center gap-1.5 text-[#86efac]">
                   <Check size={14} />
-                  Zero Upfront Obligation
+                  No Upfront Cost or Risk
                 </span>
                 <span className="flex items-center gap-1.5 text-[#d4d4d8]">
                   <ShieldCheck size={14} />
-                  NDA Protected
+                  100% Confidential
                 </span>
                 <span className="flex items-center gap-1.5 text-slate-300">
                   <Zap size={14} className="text-yellow-400" />
-                  24-Hour Blueprint Delivery
+                  24-Hour Plan Delivery
                 </span>
               </div>
             </div>
@@ -70,30 +70,30 @@ export default function FinalCTA() {
             <div className="lg:col-span-4 rounded-2xl border border-white/10 bg-[#050505]/80 p-6 font-mono space-y-4 backdrop-blur-xl shadow-2xl">
               <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[10px] text-slate-400">
                 <span>SYSTEM STATUS</span>
-                <span className="text-[#86efac]">● 100% OPERATIONAL</span>
+                <span className="text-[#86efac]">● ACTIVE & READY</span>
               </div>
 
               <div className="space-y-2.5 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Architecture:</span>
-                  <span className="text-[#d4d4d8] font-bold">Autonomous Fabric</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-400">Security:</span>
-                  <span className="text-[#86efac] font-bold">SOC2 / HIPAA Grade</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-400">Avg Implementation:</span>
+                  <span className="text-slate-400">Setup Time:</span>
                   <span className="text-white font-bold">14 - 30 Days</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Target ROI:</span>
-                  <span className="text-[#d4d4d8] font-bold">4.2x Operational Lift</span>
+                  <span className="text-slate-400">Data Security:</span>
+                  <span className="text-[#86efac] font-bold">Bank-Grade Encryption</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Typical Time Saved:</span>
+                  <span className="text-[#d4d4d8] font-bold">20+ Hours / Week</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-400">System Ownership:</span>
+                  <span className="text-[#d4d4d8] font-bold">100% Yours</span>
                 </div>
               </div>
 
               <div className="pt-3 border-t border-white/10 text-[10px] text-slate-400 text-center">
-                ENGINEERED BY STHAYU VENTURES
+                BUILT FOR GROWING BUSINESSES
               </div>
             </div>
 

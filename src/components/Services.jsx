@@ -4,98 +4,98 @@ import { AnimatedSection, SectionHeading, GlassCard, Badge } from "./ui"
 const solutions = [
   {
     id: "ai-agents",
-    category: "Autonomous Intelligence",
-    title: "Autonomous Enterprise AI Agents",
-    subtitle: "24/7 self-executing workforce across voice, chat & email",
-    description: "Deploy domain-specific AI agents that qualify inbound sales, resolve multi-step customer inquiries, execute backend API commands, and seamlessly escalate edge cases to human reps.",
+    category: "AI Digital Workers",
+    title: "AI Agents for Repetitive Tasks",
+    subtitle: "24/7 digital assistants for sales, customer queries & support",
+    description: "Digital workers that handle customer questions on WhatsApp and your website, qualify sales enquiries, book calendar appointments, and pass important requests to your team.",
     icon: Bot,
-    tags: ["Sales SDR Agents", "Voice Agents", "WhatsApp Automation", "Support Tier-1"],
-    metrics: "2.4s avg response · 94% autonomous completion",
+    tags: ["Sales Inquiries", "Customer Support", "WhatsApp AI", "Phone AI"],
+    metrics: "< 3s response · 24/7 availability",
     features: [
-      "Omnichannel intake (WhatsApp, Web, Telephony, Email)",
-      "Multi-agent reasoning with tool execution & API calling",
-      "Dynamic CRM & calendar sync (HubSpot, Salesforce, Cal.com)",
-      "Zero hallucinations via deterministic guardrail engines"
+      "Answers customer messages instantly day and night",
+      "Qualifies new buyer leads and books meetings",
+      "Looks up order status and answers common questions",
+      "Passes urgent or complex cases to your staff with notes"
     ],
   },
   {
     id: "workflow-automation",
-    category: "Operational Orchestration",
-    title: "End-to-End Workflow Automation",
-    subtitle: "Eliminate repetitive human handoffs and administrative drag",
-    description: "We architect resilient event-driven pipelines that link your marketing, billing, logistics, and internal operations so data flows instantly and flawlessly between platforms.",
+    category: "Business Automation",
+    title: "Automated Workflows & Tool Sync",
+    subtitle: "Stop copy-pasting data between different apps and spreadsheets",
+    description: "We connect your everyday tools so that when something happens in one place (like a new website form or paid invoice), your other tools update automatically.",
     icon: Workflow,
-    tags: ["Zapier / Make Replacement", "Webhook Routing", "Custom Microservices", "ERP Sync"],
-    metrics: "85% admin time eliminated · Zero manual double entry",
+    tags: ["Spreadsheet Sync", "Invoice Automation", "CRM Updates", "Zero Data Entry"],
+    metrics: "15+ hours saved per week · Zero manual typing",
     features: [
-      "Custom high-throughput asynchronous webhook processors",
-      "Automated invoice reconciliation and financial ledgers",
-      "Cross-platform inventory & supply chain synchronization",
-      "Real-time event logging and automated error recovery"
+      "Syncs new leads directly from website to CRM & WhatsApp",
+      "Matches invoices with payments automatically",
+      "Sends team alerts when an important task needs attention",
+      "Replaces messy manual spreadsheet updates"
     ],
   },
   {
     id: "saas-platforms",
     category: "Custom Software",
-    title: "Custom SaaS & Internal Operations Portals",
-    subtitle: "Tailor-made software built for your exact operational model",
-    description: "Off-the-shelf software forces you to adapt your workflow. We design scalable, intuitive web applications and internal command portals crafted specifically for your team's processes.",
+    title: "Custom Business Portals & Tools",
+    subtitle: "Software built specifically around the way your company operates",
+    description: "Generic software often feels bloated and doesn't fit your exact workflow. We build clean, simple internal portals, client dashboards, and custom tools tailored to your business.",
     icon: Code2,
-    tags: ["Internal Portals", "Partner Portals", "Executive Command Dashboards", "Cloud APIs"],
-    metrics: "Production-ready in 4-8 weeks · High availability",
+    tags: ["Internal Portals", "Client Dashboards", "Team Trackers", "Custom Web Apps"],
+    metrics: "Ready in 3-6 weeks · Fast & easy to use",
     features: [
-      "Modern React / Next.js / TypeScript frontends",
-      "Scalable Node.js / Python / Go backend microservices",
-      "Role-Based Access Control (RBAC) & Single Sign-On (SSO)",
-      "Automated CI/CD deployment pipelines on AWS / GCP"
+      "Clean, modern screens designed for your team's exact workflow",
+      "Secure login with specific permissions for each employee",
+      "Live dashboards showing sales, tasks, and client status",
+      "Works smoothly on desktop, tablets, and phones"
     ],
   },
   {
     id: "digital-experience",
-    category: "Digital Growth",
-    title: "High-Performance Web Platforms",
-    subtitle: "Cinematic design engineered for enterprise conversion",
-    description: "A world-class digital presence that positions your company at the apex of your industry. Blazing fast, visually stunning, and integrated directly into your automated lead capture engine.",
+    category: "Web Platforms",
+    title: "High-Converting Business Websites",
+    subtitle: "Modern websites designed to turn visitors into paying clients",
+    description: "Fast, professional website experiences with built-in lead capture, instant quote calculators, and automated routing that sends enquiries straight to your sales team.",
     icon: Globe,
-    tags: ["Enterprise Websites", "3D WebGL Experiences", "Design Systems", "Conversion Engine"],
-    metrics: "100/100 Lighthouse speed · 3.2x conversion lift",
+    tags: ["Fast Websites", "Lead Capture", "Interactive Calculators", "Mobile-Ready"],
+    metrics: "Top-tier speed · High conversion rates",
     features: [
-      "Apple / Linear-grade visual polish & interactive animations",
-      "Headless CMS integration with instant visual editing",
-      "Interactive product calculators and lead intake wizards",
-      "Global edge CDN deployment with sub-50ms TTFB"
+      "Modern, polished design that builds instant trust",
+      "Fast page loading on all mobile and desktop devices",
+      "Interactive forms and enquiry calculators",
+      "Automatically passes enquiries to your WhatsApp and email"
     ],
   },
   {
     id: "data-ai",
-    category: "Data Infrastructure",
-    title: "RAG & Custom AI Knowledge Systems",
-    subtitle: "Unlock your company's proprietary data for intelligent querying",
-    description: "Connect your enterprise documents, Notion workspaces, databases, and transcripts into private, vector-indexed neural knowledge bases that power internal teams and client agents.",
+    category: "Data & Reports",
+    title: "AI Document Search & Reports",
+    subtitle: "Find answers in your company files and get automatic summaries",
+    description: "Turn piles of PDFs, contracts, past customer messages, and spreadsheets into an instant search engine. Ask questions in plain English and get immediate, accurate answers.",
     icon: Database,
-    tags: ["Vector Databases", "Enterprise RAG", "Fine-Tuning", "Secure Local AI"],
-    metrics: "Strict tenant data privacy · Instant search retrieval",
+    tags: ["PDF Search", "Instant Summaries", "Contract Lookups", "Private & Secure"],
+    metrics: "100% private data · Instant search",
     features: [
-      "Hybrid vector + semantic search architectures",
-      "Private air-gapped or dedicated enterprise cloud deployments",
-      "Automated document ingestion and chunking pipelines",
-      "Strict RBAC data permission compliance (SOC2-ready)"
+      "Search thousands of company documents in under a second",
+      "Extract numbers and invoice details automatically",
+      "Keeps your business data private and secure",
+      "Generate clean executive summaries without reading 50-page files"
     ],
   },
   {
     id: "transformation",
-    category: "Strategic Advisory",
-    title: "Enterprise AI & Operations Advisory",
-    subtitle: "Blueprint your 2-year autonomous transformation roadmap",
-    description: "We audit your existing tech stack, identify high-ROI automation targets, calculate operational cost savings, and provide an executable architectural blueprint for scalable AI adoption.",
+    category: "Consulting & Planning",
+    title: "Automation Audit & Strategy",
+    subtitle: "Find where automation will save you the most time and money",
+    description: "We review your current tools and daily tasks, pinpoint exactly where your team is wasting time, and give you a clear 1-page roadmap of what to automate first for the highest return.",
     icon: Cpu,
-    tags: ["Tech Stack Audit", "ROI Modeling", "AI Readiness Roadmap", "Security & Governance"],
-    metrics: "Clear ROI roadmap delivered in 10 business days",
+    tags: ["Workflow Audit", "Tool Review", "Cost Savings", "Step-by-Step Plan"],
+    metrics: "Clear action plan delivered in 24-48 hours",
     features: [
-      "Comprehensive bottleneck and manual cost breakdown",
-      "Vendor consolidation and tool redundancy elimination",
-      "Security, privacy, and compliance risk assessments",
-      "Phased implementation timeline with clear KPIs"
+      "Detailed breakdown of repetitive tasks and time wasted",
+      "Suggestions to cancel unnecessary software subscriptions",
+      "Step-by-step roadmap prioritized by cost savings and ease",
+      "Zero technical jargon — just practical business steps"
     ],
   },
 ]
@@ -111,14 +111,14 @@ export default function Services() {
         {/* Section Header */}
         <AnimatedSection>
           <SectionHeading
-            pill={{ icon: Sparkles, text: "Full-Spectrum Solutions" }}
+            pill={{ icon: Sparkles, text: "What We Offer" }}
             title={
               <>
-                Transforming every layer <br className="hidden sm:block" />
-                <span className="text-white/60">of modern business operations.</span>
+                Practical AI and automation <br className="hidden sm:block" />
+                <span className="text-white/60">built for growing businesses.</span>
               </>
             }
-            description="From autonomous front-office AI agents to deep backend database orchestrations, we build reliable digital systems that scale without adding headcount."
+            description="We build simple, dependable systems that eliminate repetitive tasks, connect your software tools, and help your team get more work done each day."
           />
         </AnimatedSection>
 
@@ -188,14 +188,14 @@ export default function Services() {
         <AnimatedSection delay={0.3}>
           <div className="mt-16 rounded-3xl border border-white/[0.08] bg-gradient-to-r from-white/[0.03] via-white/[0.02] to-transparent p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 backdrop-blur-xl">
             <div>
-              <h4 className="text-lg font-bold text-white">Need a custom integrated solution?</h4>
-              <p className="text-xs text-slate-400 mt-1">We architect hybrid combinations of AI agents, software portals, and workflow pipelines tailored to your stack.</p>
+              <h4 className="text-lg font-bold text-white">Need something custom for your business?</h4>
+              <p className="text-xs text-slate-400 mt-1">We can combine AI agents, automated workflows, and custom portals to fit the exact way you work.</p>
             </div>
             <a
               href="#contact"
               className="btn-primary shrink-0 py-3 px-6 text-xs"
             >
-              <span>Request Custom Architecture</span>
+              <span>Talk to Our Team</span>
               <ArrowRight size={14} />
             </a>
           </div>
