@@ -1,4 +1,5 @@
 import { ArrowUpRight, Mail, MapPin } from "lucide-react"
+import { SthayuLogo } from "./ui/Logo"
 
 const serviceLinks = ["AI Assistants", "Automated Workflows", "Custom Dashboards", "Fast Business Websites"]
 const companyLinks = [
@@ -53,12 +54,8 @@ export default function Footer() {
 
         <div className="grid gap-12 py-16 md:grid-cols-[1.4fr_0.8fr_0.8fr_0.8fr] md:py-20">
           <div className="max-w-sm">
-            <button type="button" onClick={() => scrollTo("hero")} className="flex items-center gap-3 text-left">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#d4b982]/25 bg-white/[0.04] text-lg font-extrabold text-[#d4b982]">S</div>
-              <div className="leading-none">
-                <div className="text-[1.2rem] font-extrabold tracking-[-0.06em] text-white">Sthayu</div>
-                <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.28em] text-[#d4b982]">Ventures</div>
-              </div>
+            <button type="button" onClick={() => scrollTo("hero")} className="group flex items-center text-left focus:outline-none cursor-pointer">
+              <SthayuLogo height={56} className="py-1" />
             </button>
 
             <p className="mt-7 text-[15px] leading-7 text-slate-300">

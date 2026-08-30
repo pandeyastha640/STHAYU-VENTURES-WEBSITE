@@ -69,7 +69,9 @@ export default function FinalCTA() {
             {/* Right Column: Mini Live Console Visual */}
             <div className="lg:col-span-4 rounded-2xl border border-[#d4b982]/20 bg-[#050505]/90 p-6 font-mono space-y-4 backdrop-blur-xl shadow-2xl">
               <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[10px] text-slate-400">
-                <span>SYSTEM STATUS</span>
+                <span className="flex items-center gap-1.5 font-semibold uppercase tracking-[0.12em] text-slate-300">
+                  SYSTEM STATUS
+                </span>
                 <span className="text-[#d4b982]">● ACTIVE & READY</span>
               </div>
 

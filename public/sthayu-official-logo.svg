@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" fill="none" class="sthayu-official-logo">
+  <defs>
+    <!-- Warm Golden Gradients Matching Exact Logo Palette -->
+    <linearGradient id="goldLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5e2b8" />
+      <stop offset="25%" stop-color="#ddbe82" />
+      <stop offset="60%" stop-color="#ad843a" />
+      <stop offset="100%" stop-color="#694b16" />
+    </linearGradient>
+
+    <linearGradient id="goldDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#caa762" />
+      <stop offset="45%" stop-color="#886423" />
+      <stop offset="100%" stop-color="#3b2606" />
+    </linearGradient>
+
+    <linearGradient id="goldStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ad843a" />
+      <stop offset="50%" stop-color="#e8cd98" />
+      <stop offset="100%" stop-color="#936d29" />
+    </linearGradient>
+
+    <linearGradient id="textGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#faf0db" />
+      <stop offset="30%" stop-color="#dfc085" />
+      <stop offset="70%" stop-color="#9c742e" />
+      <stop offset="100%" stop-color="#553a0d" />
+    </linearGradient>
+
+    <linearGradient id="scriptGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eed8ad" />
+      <stop offset="50%" stop-color="#caa560" />
+      <stop offset="100%" stop-color="#73521b" />
+    </linearGradient>
+
+    <!-- Subtle Depth Shadow -->
+    <filter id="logoShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+  </defs>
+
+  <!-- 1. Globe Grid Wireframe (Behind Top Right) -->
+  <g class="globe-wireframe" stroke="#caa762" stroke-width="1.3" stroke-opacity="0.5" fill="none">
+    <!-- Globe outline arc -->
+    <path d="M 235 140 A 70 70 0 0 1 356 94 A 70 70 0 0 1 382 140" />
+    <!-- Latitudes -->
+    <path d="M 240 126 Q 305 100 372 122" />
+    <path d="M 252 108 Q 308 86 358 104" />
+    <path d="M 270 92 Q 310 74 344 88" />
+    <path d="M 292 78 A 70 70 0 0 1 322 78" />
+    <!-- Longitudes -->
+    <path d="M 307 72 C 307 72 278 102 280 140" />
+    <path d="M 307 72 C 307 72 300 102 304 140" />
+    <path d="M 307 72 C 307 72 324 102 328 140" />
+    <path d="M 307 72 C 307 72 348 102 356 140" />
+  </g>
+
+  <!-- 2. Circuit Board Nodes & Trace Lines -->
+  <g class="circuit-traces" stroke="url(#goldStroke)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Trace Line 1 (Top) -->
+    <path d="M 275 116 L 345 116 L 360 104 L 435 104" />
+    <circle cx="435" cy="104" r="3.5" fill="#faf0db" stroke="#694b16" stroke-width="1.5" />
+    <circle cx="345" cy="116" r="2.8" fill="#ddbe82" />
+
+    <!-- Trace Line 2 -->
+    <path d="M 270 126 L 330 126 L 348 114 L 398 114" />
+    <circle cx="398" cy="114" r="3.8" fill="#faf0db" stroke="#694b16" stroke-width="1.5" />
+
+    <!-- Trace Line 3 -->
+    <path d="M 265 138 L 318 138 L 336 124 L 366 124 L 380 136 L 414 136" />
+    <circle cx="414" cy="136" r="3.2" fill="#faf0db" stroke="#694b16" stroke-width="1.5" />
+    <circle cx="318" cy="138" r="2.8" fill="#ddbe82" />
+
+    <!-- Trace Line 4 (Bottom) -->
+    <path d="M 266 148 L 324 148 L 335 140 L 365 140" />
+    <circle cx="365" cy="140" r="3.2" fill="#faf0db" stroke="#694b16" stroke-width="1.5" />
+  </g>
+
+  <!-- 3. Inverted Golden Triangle ("V" Frame) -->
+  <g filter="url(#logoShadow)">
+    <!-- Outer Golden Triangle Structure -->
+    <polygon points="124,82 254,82 189,240" fill="url(#goldLight)" />
+    <!-- Hollow inner cut out -->
+    <polygon points="144,95 234,95 189,206" fill="#050505" />
+    <!-- Left Inner Dark Bevel -->
+    <polygon points="124,82 146,82 189,240 178,240" fill="url(#goldDark)" />
+    <!-- Right Bevel Highlight -->
+    <polygon points="232,82 254,82 189,240 200,240" fill="url(#goldLight)" />
+    <!-- Bottom V-Point Depth -->
+    <polygon points="178,206 200,206 189,240" fill="url(#goldDark)" />
+  </g>
+
+  <!-- 4. Flourished Golden Monogram "S" -->
+  <g filter="url(#logoShadow)">
+    <!-- Main Swash S Body -->
+    <!-- Top graceful hook curving from top-left -->
+    <path d="M 228,52 C 234,40 216,35 196,40 C 160,50 118,92 108,130 C 100,162 118,196 148,208 C 178,222 194,242 184,264 C 174,286 140,292 114,278 C 102,271 118,260 128,262 C 142,266 160,261 166,248 C 174,228 154,210 130,196 C 96,178 82,142 92,108 C 104,68 152,32 204,30 C 222,29 236,36 228,52 Z" 
+          fill="url(#goldLight)" />
+
+    <!-- Sharp Center Spine & Highlight Ridge of S -->
+    <path d="M 218,94 C 224,92 228,98 222,105 C 204,124 162,136 156,154 C 150,172 168,186 184,188 C 208,192 226,176 232,158 C 236,146 242,148 240,158 C 232,190 204,210 174,208 C 144,206 124,184 132,156 C 140,128 178,112 198,102 C 208,96 215,94 218,94 Z" 
+          fill="url(#goldLight)" />
+
+    <!-- S Top Terminal Swash -->
+    <path d="M 190,92 C 204,86 226,84 236,100 C 231,105 218,102 204,106 Z" fill="#faf0db" />
+  </g>
+
+  <!-- 5. Serif Wordmark: "thayu" (Completing "Sthayu") -->
+  <g filter="url(#logoShadow)">
+    <!-- t -->
+    <g transform="translate(242, 134)">
+      <path d="M 20,10 L 20,28 L 35,28 L 35,37 L 20,37 L 20,68 C 20,78 25,82 34,82 C 38,82 43,80 45,78 L 47,87 C 43,91 35,93 27,93 C 11,93 5,84 5,66 L 5,37 L -4,37 L -4,28 L 5,28 L 5,10 Z" fill="url(#textGold)" />
+    </g>
+
+    <!-- h -->
+    <g transform="translate(288, 134)">
+      <path d="M 5,-12 L 20,-12 L 20,31 C 27,23 37,18 49,18 C 65,18 76,28 76,46 L 76,91 L 61,91 L 61,50 C 61,39 54,33 43,33 C 32,33 20,40 20,55 L 20,91 L 5,91 Z" fill="url(#textGold)" />
+    </g>
+
+    <!-- a -->
+    <g transform="translate(372, 134)">
+      <path d="M 51,20 L 51,33 C 44,22 33,18 22,18 C 9,18 0,27 0,40 C 0,56 13,64 35,66 L 51,67 L 51,70 C 51,81 44,88 31,88 C 21,88 12,84 7,78 L 2,88 C 10,95 22,99 35,99 C 57,99 66,86 66,66 L 66,20 Z M 51,44 L 51,56 L 37,55 C 22,54 15,49 15,40 C 15,32 21,28 30,28 C 41,28 49,35 51,44 Z" fill="url(#textGold)" />
+    </g>
+
+    <!-- y -->
+    <g transform="translate(448, 134)">
+      <path d="M 0,20 L 16,20 L 31,64 L 46,20 L 62,20 L 37,82 C 29,102 19,113 3,113 C -3,113 -9,111 -13,107 L -10,95 C -7,98 -3,100 3,100 C 12,100 19,93 23,80 L 26,72 Z" fill="url(#textGold)" />
+    </g>
+
+    <!-- u -->
+    <g transform="translate(515, 134)">
+      <path d="M 5,20 L 20,20 L 20,61 C 20,72 27,77 38,77 C 49,77 60,70 60,56 L 60,20 L 75,20 L 75,91 L 60,91 L 60,78 C 53,87 43,93 31,93 C 15,93 5,83 5,65 Z" fill="url(#textGold)" />
+    </g>
+  </g>
+
+  <!-- 6. Script Wordmark: "Ventures" (Flowing Calligraphic Italic) -->
+  <g filter="url(#logoShadow)" transform="translate(204, 218)">
+    <text x="0" y="36" font-family="'Plus Jakarta Sans', 'Playfair Display', Georgia, serif" font-size="44" font-weight="600" font-style="italic" letter-spacing="0.04em" fill="url(#scriptGold)">
+      Ventures
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 140" fill="none" class="sthayu-emblem">
+  <defs>
+    <linearGradient id="embGoldMain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faeccb" />
+      <stop offset="35%" stop-color="#d8ba80" />
+      <stop offset="70%" stop-color="#b69150" />
+      <stop offset="100%" stop-color="#7a5a22" />
+    </linearGradient>
+
+    <linearGradient id="embGoldDark" x1="0%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#c9a767" />
+      <stop offset="50%" stop-color="#8a6729" />
+      <stop offset="100%" stop-color="#3d2a0b" />
+    </linearGradient>
+
+    <linearGradient id="embCircuit" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b69150" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#d8ba80" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#faeccb" stop-opacity="1" />
+    </linearGradient>
+
+    <filter id="embShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Circuit nodes extending to the right -->
+  <g stroke="url(#embCircuit)" stroke-width="1.8" fill="none" stroke-linecap="round">
+    <path d="M 85 52 L 122 52 L 132 44 L 154 44" />
+    <circle cx="154" cy="44" r="2.5" fill="#faeccb" stroke="#7a5a22" stroke-width="1" />
+    <circle cx="122" cy="52" r="2" fill="#d8ba80" />
+
+    <path d="M 82 62 L 114 62 L 125 54 L 144 54" />
+    <circle cx="144" cy="54" r="2.5" fill="#faeccb" stroke="#7a5a22" stroke-width="1" />
+
+    <path d="M 78 72 L 104 72 L 115 64 L 132 64" />
+    <circle cx="132" cy="64" r="2" fill="#faeccb" stroke="#7a5a22" stroke-width="1" />
+  </g>
+
+  <!-- Triangle V Geometry -->
+  <g filter="url(#embShadow)">
+    <polygon points="28,28 98,28 63,112" fill="url(#embGoldMain)" />
+    <polygon points="38,36 88,36 63,94" fill="#050505" />
+    <polygon points="28,28 40,28 63,112 56,112" fill="url(#embGoldDark)" />
+    <polygon points="86,28 98,28 63,112 70,112" fill="url(#embGoldMain)" />
+  </g>
+
+  <!-- Stylized Flowing S Monogram -->
+  <g filter="url(#embShadow)">
+    <path d="M 82,12 C 84,6 74,3 64,5 C 44,9 22,32 18,52 C 14,70 26,86 40,94 C 58,102 66,112 62,122 C 58,132 40,136 28,128 C 22,125 30,118 34,119 C 40,121 50,119 52,113 C 55,103 46,95 34,88 C 16,78 10,60 14,44 C 20,24 44,6 72,4 C 80,4 86,7 82,12 Z" fill="url(#embGoldMain)" />
+    <path d="M 76,34 C 79,33 81,36 78,39 C 68,49 46,56 43,66 C 40,76 49,82 58,83 C 70,85 79,77 82,68 C 84,63 86,64 85,70 C 82,85 68,94 53,93 C 38,92 29,81 32,68 C 35,54 55,47 66,41 C 71,37 74,35 76,34 Z" fill="url(#embGoldMain)" />
+  </g>
+</svg>

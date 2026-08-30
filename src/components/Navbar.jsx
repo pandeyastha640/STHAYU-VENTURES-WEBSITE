@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "motion/react"
 import { ArrowRight, Menu, X } from "lucide-react"
+import { SthayuLogo } from "./ui/Logo"
 
 const navLinks = [
   { label: "Services", id: "services" },
@@ -66,20 +67,10 @@ export default function Navbar() {
           <button
             type="button"
             onClick={goHome}
-            className="group flex items-center gap-2.5 text-left focus:outline-none cursor-pointer"
+            className="group flex items-center text-left focus:outline-none cursor-pointer"
             aria-label="Sthayu Ventures home"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#d4b982]/15 to-white/[0.03] border border-[#d4b982]/25 text-sm font-semibold text-[#fafafa] transition-all duration-300 group-hover:border-[#d4b982]/40 group-hover:from-[#d4b982]/25">
-              S
-            </div>
-            <div className="leading-none">
-              <div className="text-sm font-semibold tracking-tight text-[#fafafa] group-hover:text-white transition-colors">
-                Sthayu
-              </div>
-              <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#d4b982]/80">
-                Ventures
-              </div>
-            </div>
+            <SthayuLogo height={42} className="py-0.5" />
           </button>
 
           {/* Desktop Nav */}
