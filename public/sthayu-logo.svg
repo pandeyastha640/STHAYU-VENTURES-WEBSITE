@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" fill="none" class="sthayu-official-logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="70 20 520 270" fill="none" class="sthayu-official-logo">
   <defs>
-    <!-- Warm Golden Gradients Matching Exact Logo Palette -->
+    <!-- Rich Golden Gradients Exact to Brand Identity -->
     <linearGradient id="goldLight" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f5e2b8" />
+      <stop offset="0%" stop-color="#faebd2" />
       <stop offset="25%" stop-color="#ddbe82" />
       <stop offset="60%" stop-color="#ad843a" />
       <stop offset="100%" stop-color="#694b16" />
@@ -16,7 +16,7 @@
 
     <linearGradient id="goldStroke" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#ad843a" />
-      <stop offset="50%" stop-color="#e8cd98" />
+      <stop offset="50%" stop-color="#faebd2" />
       <stop offset="100%" stop-color="#936d29" />
     </linearGradient>
 
@@ -28,8 +28,8 @@
     </linearGradient>
 
     <linearGradient id="scriptGold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#eed8ad" />
-      <stop offset="50%" stop-color="#caa560" />
+      <stop offset="0%" stop-color="#faebd2" />
+      <stop offset="45%" stop-color="#caa560" />
       <stop offset="100%" stop-color="#73521b" />
     </linearGradient>
 

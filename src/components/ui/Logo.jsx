@@ -1,35 +1,35 @@
 /**
  * Official Sthayu Ventures Brand Logo Component
- * Renders the authentic golden emblem & wordmark
+ * Uses the uploaded image asset directly
  */
 
 export function SthayuLogo({
-  height = 42,
+  height = 44,
   className = "",
   alt = "Sthayu Ventures",
 }) {
   return (
     <div className={`relative inline-flex shrink-0 items-center ${className}`}>
       <img
-        src="/sthayu-official-logo.svg"
+        src="/sthayu-ventures-logo.png"
         alt={alt}
         style={{ height: `${height}px`, width: "auto" }}
-        className="max-h-full w-auto object-contain drop-shadow-[0_2px_16px_rgba(212,185,130,0.22)] transition-transform duration-300 group-hover:scale-[1.03]"
+        className="max-h-full w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
         referrerPolicy="no-referrer"
+        loading="eager"
       />
     </div>
   )
 }
 
-export function SthayuSymbol({ size = 36, className = "" }) {
+export function SthayuSymbol({ size = 38, className = "", alt = "Sthayu Ventures" }) {
   return (
-    <div className={`relative inline-flex shrink-0 items-center justify-center ${className}`} style={{ width: size, height: size }}>
+    <div className={`relative inline-flex shrink-0 items-center justify-center ${className}`}>
       <img
-        src="/sthayu-symbol.svg"
-        alt="Sthayu Ventures Emblem"
-        width={size}
-        height={size}
-        className="h-full w-full object-contain drop-shadow-[0_2px_10px_rgba(212,185,130,0.25)] transition-transform duration-300 group-hover:scale-105"
+        src="/sthayu-ventures-logo.png"
+        alt={alt}
+        style={{ height: `${size}px`, width: "auto" }}
+        className="max-h-full w-auto object-contain transition-transform duration-300 group-hover:scale-105"
         referrerPolicy="no-referrer"
       />
     </div>
@@ -38,12 +38,13 @@ export function SthayuSymbol({ size = 36, className = "" }) {
 
 export default function Logo({
   variant = "full",
-  height = 42,
+  height = 44,
   className = "",
+  alt = "Sthayu Ventures",
 }) {
   if (variant === "symbol") {
-    return <SthayuSymbol size={height} className={className} />
+    return <SthayuSymbol size={height} className={className} alt={alt} />
   }
 
-  return <SthayuLogo height={height} className={className} />
+  return <SthayuLogo height={height} className={className} alt={alt} />
 }
