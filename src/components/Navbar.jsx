@@ -6,9 +6,7 @@ import { SthayuLogo } from "./ui/Logo"
 const navLinks = [
   { label: "Services", id: "services" },
   { label: "AI Assistants", id: "ai-agents" },
-  { label: "Why Sthayu", id: "why-sthayu" },
   { label: "How It Works", id: "how-it-works" },
-  { label: "Case Studies", id: "case-studies" },
   { label: "Pricing", id: "pricing" },
 ]
 
@@ -59,7 +57,7 @@ export default function Navbar() {
         <div
           className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border transition-all duration-700 px-4 py-2.5 sm:px-6 ${
             scrolled
-              ? "border-white/[0.08] bg-[#050505]/80 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_60px_rgba(0,0,0,0.5)] backdrop-blur-xl"
+              ? "border-white/[0.08] bg-[#050505]/85 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_60px_rgba(0,0,0,0.5)] backdrop-blur-xl"
               : "border-transparent bg-transparent backdrop-blur-none"
           }`}
         >
@@ -70,11 +68,11 @@ export default function Navbar() {
             className="group flex items-center text-left focus:outline-none cursor-pointer"
             aria-label="Sthayu Ventures home"
           >
-            <SthayuLogo height={42} className="py-0.5" />
+            <SthayuLogo height={38} className="py-0.5" />
           </button>
 
           {/* Desktop Nav */}
-          <nav className="hidden items-center justify-center gap-1 lg:flex" aria-label="Main navigation">
+          <nav className="hidden items-center justify-center gap-1.5 lg:flex" aria-label="Main navigation">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id
               return (
@@ -83,7 +81,7 @@ export default function Navbar() {
                   type="button"
                   onClick={() => goTo(link.id)}
                   aria-current={isActive ? "true" : undefined}
-                  className={`nav-link relative rounded-full px-3 py-1.5 text-[13px] font-medium transition-all duration-200 cursor-pointer ${
+                  className={`nav-link relative rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-all duration-200 cursor-pointer ${
                     isActive
                       ? "text-[#fafafa] bg-white/[0.06] border-b border-[#d4b982]/40"
                       : "text-[#a1a1aa] hover:text-[#fafafa] hover:bg-white/[0.03]"
@@ -107,9 +105,9 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => goTo("contact")}
-              className="btn-primary shimmer-on-hover text-[13px] py-2 px-5 cursor-pointer"
+              className="btn-primary shimmer-on-hover text-[13px] py-2 px-5 cursor-pointer font-semibold"
             >
-              <span>Book a Call</span>
+              <span>Book a Free Call</span>
               <ArrowRight size={13} />
             </button>
           </div>
@@ -135,7 +133,7 @@ export default function Navbar() {
             className="mx-auto mt-2 max-w-6xl overflow-hidden rounded-2xl border border-white/[0.06] bg-[#050505]/95 p-3.5 shadow-[0_30px_80px_rgba(0,0,0,0.7)] backdrop-blur-xl lg:hidden"
           >
             <div className="flex items-center justify-between px-2 py-1.5 pb-3 mb-2 border-b border-white/[0.06]">
-              <SthayuLogo height={34} />
+              <SthayuLogo height={32} />
               <span className="text-[10px] font-mono tracking-wider uppercase text-[#d4b982]/80 bg-[#d4b982]/10 border border-[#d4b982]/20 px-2 py-0.5 rounded-full">Menu</span>
             </div>
             <div className="grid gap-0.5">
@@ -165,9 +163,9 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => goTo("contact")}
-                className="btn-primary w-full text-[13px] py-2.5 justify-center cursor-pointer"
+                className="btn-primary w-full text-[13px] py-2.5 justify-center cursor-pointer font-semibold"
               >
-                Book a Call
+                Book a Free Call
               </button>
             </div>
           </motion.div>

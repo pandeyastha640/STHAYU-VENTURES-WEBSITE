@@ -1,121 +1,85 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { AnimatedSection, SectionHeading } from "./ui"
-import { Bot, CheckCircle2, Database, MessageSquare, Phone, Terminal, UserCheck, ArrowRight, Sparkles } from "lucide-react"
+import { Bot, CheckCircle2, Database, MessageSquare, Phone, UserCheck, ArrowRight } from "lucide-react"
 
 import imgAgentSdr from "../assets/images/agent_sdr_core_1787842135533.jpg"
 import imgAgentSupport from "../assets/images/agent_support_core_1787842151764.jpg"
 import imgAgentOps from "../assets/images/agent_ops_core_1787842167663.jpg"
 import imgAgentVoice from "../assets/images/agent_voice_core_1787842182078.jpg"
 
-const agentSteps = [
-  { step: "01", title: "You give it a task", desc: "For example: 'Qualify new leads from WhatsApp and book calls on my calendar.'" },
-  { step: "02", title: "It reads the information", desc: "It checks the customer's message, business details, and your availability." },
-  { step: "03", title: "It decides what to do", desc: "It follows your business rules to choose the right answer or next step." },
-  { step: "04", title: "It uses your tools", desc: "It updates your CRM, sends the WhatsApp reply, and creates the calendar event." },
-  { step: "05", title: "It reports back", desc: "Your team gets a notification with the summary and next steps." },
-]
-
 const agents = [
   {
     id: "sdr",
     code: "AGENT-01",
     name: "Lead & Sales Agent",
-    role: "Captures new enquiries, qualifies leads & books meetings",
-    channel: "WhatsApp · Website Chat · Email",
-    status: "READY · < 3s Response",
-    latency: "1.4s",
+    role: "Captures new enquiries, qualifies buyer leads & books meetings",
+    channel: "WhatsApp · Website · Email",
     icon: UserCheck,
     imageCore: imgAgentSdr,
-    description: "Instead of leads waiting hours for a salesperson to reply, this AI agent answers instantly on WhatsApp or your website, answers questions, checks if they are a fit, and books a call directly on your calendar.",
+    description: "Instead of leads waiting hours for a salesperson to reply, this AI assistant answers in seconds on WhatsApp or your website, answers questions, checks budget/timeline, and books calls directly on your calendar.",
     capabilities: [
       "Answers customer questions instantly 24/7",
-      "Checks customer budget, requirements, and timeline",
+      "Qualifies budget, project requirements, and timeline",
       "Books meetings directly on Calendly or Google Calendar",
-      "Adds contact details and conversation notes to your CRM",
-      "Hands over hot leads to your human sales team seamlessly"
+      "Syncs contact details and notes to your CRM automatically",
+      "Hands off hot leads to your human sales team with full context"
     ],
-    telemetry: {
-      active_enquiries: 42,
-      meetings_booked_today: 14,
-      avg_response_time: "under 2 seconds",
-      escalation_to_staff: "4.2%"
-    }
+    highlightMetric: "< 3s Lead Response Time",
   },
   {
     id: "support",
     code: "AGENT-02",
     name: "Customer Support Agent",
-    role: "Answers routine customer questions & solves common issues",
-    channel: "Website · Email · WhatsApp · 90+ Languages",
-    status: "READY · 99% Satisfaction",
-    latency: "850ms",
+    role: "Answers routine customer questions & resolves common tickets",
+    channel: "Website · WhatsApp · Email",
     icon: MessageSquare,
     imageCore: imgAgentSupport,
-    description: "Handles repetitive customer questions about orders, pricing, policies, and troubleshooting using your company documents. Frees your support team to focus on high-priority customer cases.",
+    description: "Resolves repetitive customer questions about orders, pricing, company policies, and troubleshooting using your exact company guides. Frees your team to focus on VIP clients.",
     capabilities: [
-      "Answers questions accurately using your guides & FAQs",
-      "Looks up live order and invoice status for customers",
-      "Helps customers reset passwords and update account details",
-      "Speaks politely in over 90 languages",
-      "Passes difficult or sensitive cases to human staff with full context"
+      "Answers customer questions accurately using your guides & FAQs",
+      "Looks up live order, shipping, and invoice status",
+      "Supports customers smoothly in over 90 languages",
+      "Passes complex or sensitive cases to your team with notes",
+      "Maintains a consistent, professional brand tone day and night"
     ],
-    telemetry: {
-      questions_answered_24h: 318,
-      resolved_without_human: "91.8%",
-      customer_satisfaction: "4.9 / 5.0",
-      passed_to_team: "8.2%"
-    }
+    highlightMetric: "90%+ Routine Queries Handled",
   },
   {
     id: "ops",
     code: "AGENT-03",
     name: "Operations & Data Agent",
-    role: "Syncs data across tools, matches invoices & catches errors",
+    role: "Syncs data across apps, matches invoices & alerts staff",
     channel: "Accounting · CRM · Spreadsheets · ERP",
-    status: "READY · Zero Errors",
-    latency: "420ms",
     icon: Database,
     imageCore: imgAgentOps,
-    description: "Works silently in the background moving data between your tools, reading PDF invoices, matching payments against bank records, and notifying you if something does not match.",
+    description: "Works silently in the background moving information between your tools, reading PDF invoices, matching payments against records, and alerting managers when action is required.",
     capabilities: [
       "Syncs customer and sales data between tools in real time",
-      "Reads PDF invoices and receipts automatically",
-      "Checks payments against invoices and flags discrepancies",
-      "Alerts managers on Slack or WhatsApp when inventory is low",
+      "Extracts invoice totals and details from PDF documents",
+      "Checks incoming payments against invoices and flags discrepancies",
+      "Alerts team members on WhatsApp or Slack when tasks need review",
       "Eliminates hours of manual copy-pasting every week"
     ],
-    telemetry: {
-      records_synced_today: "14,820",
-      errors_caught: 23,
-      hours_saved_this_week: "18.5 hrs",
-      accuracy_rate: "100%"
-    }
+    highlightMetric: "Zero Manual Copy-Pasting",
   },
   {
     id: "voice",
     code: "AGENT-04",
     name: "Phone & Voice Agent",
-    role: "Answers phone calls, collects details & routes hot leads",
+    role: "Answers inbound phone calls, collects details & routes urgent callers",
     channel: "Phone Calls · Mobile · Web Calling",
-    status: "READY · Natural Voice",
-    latency: "480ms",
     icon: Phone,
     imageCore: imgAgentVoice,
-    description: "Speaks naturally over the phone, answers caller questions, takes down key information, and transfers important callers directly to your team's mobile phones without keeping people on hold.",
+    description: "Speaks naturally over the phone, answers caller questions, collects key information, and transfers important callers directly to your team without keeping people waiting on hold.",
     capabilities: [
-      "Speaks with clear, natural human-like voice",
-      "Understands caller requests and handles interruptions smoothly",
+      "Natural, clear human-like voice conversations",
+      "Collects inquiry details and answers company FAQs",
       "Sends call recordings and written summaries to your email",
-      "Transfers callers to your team when urgent help is needed",
+      "Transfers callers to team members when human help is needed",
       "Books appointments directly during the phone conversation"
     ],
-    telemetry: {
-      calls_handled_today: 184,
-      avg_call_length: "2m 14s",
-      positive_feedback: "94%",
-      transfer_speed: "instant"
-    }
+    highlightMetric: "Zero Missed Inbound Calls",
   }
 ]
 
@@ -123,180 +87,139 @@ export default function AIAgents() {
   const [selectedAgent, setSelectedAgent] = useState(agents[0])
 
   return (
-    <section id="ai-agents" className="relative overflow-hidden bg-[#050505] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <section id="ai-agents" className="relative overflow-hidden bg-[#050505] py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       <div className="pointer-events-none absolute top-1/2 right-10 w-[700px] h-[500px] bg-white/[0.03] rounded-full blur-[180px] opacity-60" />
 
       <div className="relative mx-auto max-w-7xl">
-        
         <AnimatedSection>
           <SectionHeading
-            pill={{ icon: Bot, text: "AI Digital Workers" }}
-            title={<>What is an AI agent? <br className="hidden sm:block" /><span className="text-white/60">Software that does real tasks for you.</span></>}
-            description="Think of an AI agent as a reliable digital assistant trained specifically for your business. It reads incoming information, makes decisions based on your rules, and completes work using your existing tools."
+            pill={{ icon: Bot, text: "AI Assistants" }}
+            title={
+              <>
+                Specialized AI workers <br className="hidden sm:block" />
+                <span className="text-white/60">trained on your business rules.</span>
+              </>
+            }
+            description="Unlike generic chatbots, our AI agents understand your exact business workflow. They read incoming inquiries, take actions across your software, and know exactly when to alert your staff."
           />
         </AnimatedSection>
 
-        {/* How an AI Agent Works Explainer Box */}
-        <AnimatedSection delay={0.1}>
-          <div className="mt-12 rounded-3xl border border-white/[0.08] bg-white/[0.02] p-6 sm:p-8">
-            <div className="flex items-center gap-2 mb-6">
-              <Sparkles size={16} className="text-[#d4b982]" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-300">How an AI Agent Works in 5 Simple Steps:</span>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {agentSteps.map((s) => (
-                <div key={s.step} className="rounded-2xl border border-white/5 bg-white/[0.02] p-4 flex flex-col justify-between hover:border-[#d4b982]/20 transition-colors">
-                  <div>
-                    <span className="font-mono text-xs font-semibold text-[#d4b982] tabular-nums">{s.step}</span>
-                    <h4 className="text-sm font-bold tracking-tight text-white mt-2">{s.title}</h4>
-                    <p className="text-xs text-slate-400 mt-1 leading-[1.6] font-normal">{s.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </AnimatedSection>
-
-        {/* 4 Agent Selection Cards */}
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {agents.map((agent, idx) => {
-            const isSelected = selectedAgent.id === agent.id
-            return (
-              <AnimatedSection key={agent.id} delay={idx * 0.1}>
+        {/* 4 Agent Selection Cards + Deep Dive Showcase */}
+        <div className="mt-14 grid gap-8 lg:grid-cols-12 lg:items-start">
+          
+          {/* Left Column: 4 Agent Cards */}
+          <div className="lg:col-span-5 space-y-3.5">
+            {agents.map((ag) => {
+              const Icon = ag.icon
+              const isSelected = selectedAgent.id === ag.id
+              return (
                 <div
-                  onClick={() => setSelectedAgent(agent)}
-                  className={`group relative flex flex-col justify-between rounded-[2rem] border p-6 transition-all duration-300 cursor-pointer ${
+                  key={ag.id}
+                  onClick={() => setSelectedAgent(ag)}
+                  className={`group relative p-5 rounded-2xl border transition-all duration-300 cursor-pointer ${
                     isSelected
-                      ? "border-[#d4b982]/40 bg-gradient-to-b from-[#0a0a0a] to-[#080808] shadow-[0_0_0_1px_rgba(212,185,130,0.15),0_10px_30px_rgba(0,0,0,0.5)] -translate-y-1"
-                      : "border-white/10 bg-[#0a0a0a]/70 hover:border-white/20 hover:bg-[#0a0a0a]/90"
+                      ? "border-[#d4b982]/40 bg-gradient-to-r from-[#0d0d0d] to-[#080808] shadow-[0_0_0_1px_rgba(212,185,130,0.15)]"
+                      : "border-white/[0.08] bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.03]"
                   }`}
                 >
-                  <div>
-                    <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                      <span className="text-[10px] font-mono font-bold text-[#d4b982]">{agent.code}</span>
-                      <span className="flex items-center gap-1.5 text-[9px] font-mono font-semibold text-[#86efac]">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#86efac] animate-pulse" />
-                        AVAILABLE
-                      </span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3.5">
+                      <div
+                        className={`flex h-11 w-11 items-center justify-center rounded-xl border transition-colors ${
+                          isSelected
+                            ? "bg-[#d4b982]/[0.08] border-[#d4b982]/30 text-[#d4b982]"
+                            : "bg-white/5 border-white/10 text-slate-400 group-hover:text-white"
+                        }`}
+                      >
+                        <Icon size={20} />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-[10px] font-semibold text-[#d4b982]">{ag.code}</span>
+                          <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-white transition-colors">
+                            {ag.name}
+                          </h3>
+                        </div>
+                        <p className="text-xs text-slate-400 mt-0.5">{ag.channel}</p>
+                      </div>
                     </div>
 
-                    <div className="mt-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/[0.10] text-[#d4d4d8] overflow-hidden relative">
-                      <img
-                        src={agent.imageCore}
-                        alt={agent.name}
-                        referrerPolicy="no-referrer"
-                        className="h-full w-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-
-                    <h3 className="mt-4 text-base font-bold tracking-tight text-white group-hover:text-white transition-colors">
-                      {agent.name}
-                    </h3>
-                    <p className="text-xs text-slate-400 mt-1 font-normal">{agent.role}</p>
-
-                    <div className="mt-4 pt-3 border-t border-white/5">
-                      <div className="text-[10px] uppercase font-semibold tracking-[0.12em] text-slate-400">Works On:</div>
-                      <div className="text-xs text-[#d4d4d8] font-medium mt-0.5">{agent.channel}</div>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-[10px] font-mono text-slate-400 tabular-nums">Speed: {agent.latency}</span>
-                    <span className={`text-xs font-semibold ${isSelected ? "text-[#d4b982]" : "text-slate-500 group-hover:text-slate-300"}`}>
-                      See details →
+                    <span className={`text-xs font-mono font-bold transition-transform duration-300 ${
+                      isSelected ? "text-[#d4b982] translate-x-1" : "text-slate-500"
+                    }`}>
+                      →
                     </span>
                   </div>
                 </div>
-              </AnimatedSection>
-            )
-          })}
+              )
+            })}
+          </div>
+
+          {/* Right Column: Selected Agent Deep-Dive */}
+          <div className="lg:col-span-7">
+            <div className="rounded-[2.5rem] p-7 sm:p-9 border border-[#d4b982]/25 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] shadow-[0_20px_70px_rgba(0,0,0,0.7)] backdrop-blur-2xl">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selectedAgent.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                >
+                  {/* Top Bar */}
+                  <div className="flex items-center justify-between pb-5 border-b border-white/10">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#d4b982]/[0.08] border border-[#d4b982]/25 text-[#d4b982]">
+                        <selectedAgent.icon size={18} />
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-mono font-bold text-[#d4b982] uppercase tracking-wider">
+                          {selectedAgent.code} · {selectedAgent.channel}
+                        </div>
+                        <h4 className="text-lg font-bold text-white">{selectedAgent.name}</h4>
+                      </div>
+                    </div>
+
+                    <span className="px-3 py-1 rounded-full bg-[#d4b982]/[0.08] text-[#d4b982] text-[11px] font-mono font-semibold border border-[#d4b982]/20">
+                      {selectedAgent.highlightMetric}
+                    </span>
+                  </div>
+
+                  {/* Description */}
+                  <p className="mt-5 text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                    {selectedAgent.description}
+                  </p>
+
+                  {/* Capabilities */}
+                  <div className="mt-6 space-y-2.5">
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                      What It Does:
+                    </div>
+                    {selectedAgent.capabilities.map((cap) => (
+                      <div key={cap} className="flex items-start gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5">
+                        <CheckCircle2 size={15} className="text-[#d4b982] shrink-0 mt-0.5" />
+                        <span className="text-xs text-slate-200">{cap}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CTA link */}
+                  <div className="mt-7 pt-5 border-t border-white/10 flex items-center justify-between">
+                    <span className="text-xs text-slate-400">Ready to deploy this assistant?</span>
+                    <a
+                      href="#assessment"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#d4b982] hover:text-[#e8d5b5] transition-colors"
+                    >
+                      <span>Get Started with {selectedAgent.name}</span>
+                      <ArrowRight size={13} />
+                    </a>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
         </div>
-
-        {/* Selected Agent Details */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selectedAgent.id}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
-            className="mt-12 rounded-[2.5rem] border border-[#d4b982]/20 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-6 sm:p-8 md:p-10 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
-          >
-            
-            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
-              <div className="flex items-center gap-3.5">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#d4b982]/[0.08] border border-[#d4b982]/25 text-[#d4b982] overflow-hidden relative">
-                  <img
-                    src={selectedAgent.imageCore}
-                    alt={selectedAgent.name}
-                    referrerPolicy="no-referrer"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-lg sm:text-xl font-bold text-white">{selectedAgent.name}</h3>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#d4b982]/[0.08] text-[#d4b982] border border-[#d4b982]/20">
-                      {selectedAgent.code}
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-300 mt-1 max-w-2xl leading-relaxed">{selectedAgent.description}</p>
-                </div>
-              </div>
-
-              <a
-                href="#assessment"
-                className="btn-primary text-xs py-2.5 px-5"
-              >
-                <span>Set Up This Agent</span>
-                <ArrowRight size={13} />
-              </a>
-            </div>
-
-            <div className="mt-8 grid gap-8 lg:grid-cols-12">
-              
-              <div className="lg:col-span-7 space-y-3">
-                <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400 mb-2">
-                  What this agent can do for your business:
-                </div>
-                {selectedAgent.capabilities.map((cap) => (
-                  <div key={cap} className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/[0.03] border border-white/5">
-                    <CheckCircle2 size={16} className="text-[#d4b982] shrink-0" />
-                    <span className="text-xs font-medium text-slate-200">{cap}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="lg:col-span-5 rounded-2xl border border-white/10 bg-[#080808]/80 p-5">
-                <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[10px] text-slate-400">
-                  <span className="flex items-center gap-1.5 font-semibold uppercase tracking-[0.12em] text-slate-300">
-                    <Terminal size={12} className="text-[#d4b982]" />
-                    LIVE PERFORMANCE STATS
-                  </span>
-                  <span className="text-[#d4b982] font-mono text-[10px] font-semibold">● ACTIVE</span>
-                </div>
-
-                <div className="mt-4 space-y-3">
-                  {Object.entries(selectedAgent.telemetry).map(([key, val]) => (
-                    <div key={key} className="flex items-center justify-between text-xs">
-                      <span className="text-slate-400 capitalize">{key.replace(/_/g, " ")}:</span>
-                      <span className="font-mono font-semibold text-[#fafafa] tabular-nums">{val}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-400">
-                  <span>Guarded with your business rules</span>
-                  <span className="text-[#d4b982] font-medium">Zero hallucinations</span>
-                </div>
-              </div>
-
-            </div>
-
-          </motion.div>
-        </AnimatePresence>
-
       </div>
     </section>
   )

@@ -14,21 +14,22 @@ export default function AssessmentSection() {
     name: "",
     email: "",
     company: "",
-    teamSize: "10-50 Employees",
-    primaryFriction: "Instant Lead Replies & Sales Follow-Up",
-    currentStack: "",
+    teamSize: "1-10 Employees",
+    mainChallenge: "Manual Data Entry & Copy-Pasting",
+    currentTools: "",
   })
 
   const validate = useCallback(() => {
     const newErrors = {}
     if (!formData.name.trim()) newErrors.name = "Name is required"
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required"
+      newErrors.email = "Work email is required"
     } else if (!validateEmail(formData.email)) {
       newErrors.email = "Please enter a valid email address"
     }
+    if (!formData.company.trim()) newErrors.company = "Company name is required"
     return newErrors
-  }, [formData.name, formData.email])
+  }, [formData.name, formData.email, formData.company])
 
   const handleChange = useCallback((field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
@@ -51,11 +52,10 @@ export default function AssessmentSection() {
         return
       }
       setSubmitting(true)
-      // Simulated delay — replace with actual API call when backend is ready
       setTimeout(() => {
         setSubmitting(false)
         setSubmitted(true)
-      }, 800)
+      }, 700)
     },
     [validate]
   )
@@ -66,15 +66,15 @@ export default function AssessmentSection() {
       name: "",
       email: "",
       company: "",
-      teamSize: "10-50 Employees",
-      primaryFriction: "Instant Lead Replies & Sales Follow-Up",
-      currentStack: "",
+      teamSize: "1-10 Employees",
+      mainChallenge: "Manual Data Entry & Copy-Pasting",
+      currentTools: "",
     })
     setErrors({})
   }, [])
 
   return (
-    <section id="assessment" className="relative overflow-hidden bg-[#050505] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <section id="assessment" className="relative overflow-hidden bg-[#050505] py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       <div className="pointer-events-none absolute top-1/4 left-1/3 w-[700px] h-[500px] bg-white/[0.03] rounded-full blur-[180px] opacity-60" />
 
       <div className="relative mx-auto max-w-7xl">
@@ -84,209 +84,177 @@ export default function AssessmentSection() {
               <ClipboardList size={13} />
               <span>Free Automation Assessment</span>
             </div>
-            <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+            <h2 className="mt-5 text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
               Get a custom automation plan <br className="hidden sm:block" />
               <span className="text-white/60">for your business.</span>
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-slate-300">
-              Tell us where your team spends the most manual time. We will review your tools and send you a practical, step-by-step automation recommendation within 24 hours.
+            <p className="mt-3 text-sm sm:text-base text-slate-300">
+              Tell us where your team spends manual time. We will review your tools and send you a practical, step-by-step automation recommendation.
             </p>
           </div>
         </AnimatedSection>
 
-        <div className="mt-16 rounded-[2.5rem] border border-[#d4b982]/20 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-10 md:p-12 shadow-[0_20px_70px_rgba(0,0,0,0.8)] backdrop-blur-2xl">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-5 space-y-6">
-              <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#d4b982]">
-                WHAT HAPPENS NEXT
+        <div className="mt-14 rounded-3xl border border-[#d4b982]/20 bg-[#0a0a0a]/90 p-6 sm:p-9 md:p-10 shadow-[0_20px_70px_rgba(0,0,0,0.8)] backdrop-blur-2xl">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            {/* Left Column: Benefits */}
+            <div className="lg:col-span-5 space-y-5">
+              <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#d4b982]">
+                WHAT YOU RECEIVE
               </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-                Practical advice. <br />
+              <h3 className="text-xl sm:text-2xl font-bold text-white">
+                Clear recommendations. <br />
                 No pushy sales calls.
               </h3>
-              <div className="space-y-4 pt-2">
+              <div className="space-y-3 pt-1">
                 {[
-                  { title: "Identify Repetitive Tasks", desc: "We pinpoint exactly where your team loses hours to manual typing, answering repetitive questions, or copy-pasting." },
-                  { title: "Tailored Automation Roadmap", desc: "A simple diagram showing which AI assistants and automations will save you the most time." },
-                  { title: "Clear Timeline & Pricing", desc: "A transparent project plan with clear milestones and no hidden surprises." },
+                  { title: "Task Breakdown", desc: "Pinpoints exactly where your team loses hours to repetitive typing or slow replies." },
+                  { title: "Automation Blueprint", desc: "A simple diagram showing which AI assistants and tool connections will save the most time." },
+                  { title: "Timeline & Budget", desc: "A transparent project plan with clear milestones and expected ROI." },
                 ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.03] border border-white/5">
-                    <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#d4b982]/[0.08] border border-[#d4b982]/25 text-[#d4b982] shrink-0 mt-0.5">
-                      <Check size={14} />
+                  <div key={item.title} className="flex items-start gap-3 p-3.5 rounded-2xl bg-white/[0.02] border border-white/5">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#d4b982]/[0.08] border border-[#d4b982]/25 text-[#d4b982] shrink-0 mt-0.5">
+                      <Check size={13} />
                     </div>
                     <div>
                       <div className="text-xs font-bold text-white">{item.title}</div>
-                      <div className="text-xs text-slate-400 mt-1 leading-relaxed">{item.desc}</div>
+                      <div className="text-xs text-slate-400 mt-0.5 leading-relaxed">{item.desc}</div>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="pt-4 border-t border-white/10 flex items-center gap-3 text-xs text-slate-400 font-mono">
-                <ShieldCheck size={16} className="text-[#d4b982]" />
+              <div className="pt-3 border-t border-white/10 flex items-center gap-2 text-xs text-slate-400 font-mono">
+                <ShieldCheck size={15} className="text-[#d4b982]" />
                 <span>100% Confidential & Secure</span>
               </div>
             </div>
 
-            <div className="lg:col-span-7 rounded-2xl border border-white/10 bg-[#050505]/90 p-6 sm:p-8 backdrop-blur-xl">
+            {/* Right Column: Clean Form */}
+            <div className="lg:col-span-7 rounded-2xl border border-white/10 bg-[#050505]/95 p-6 sm:p-8 backdrop-blur-xl">
               {submitted ? (
-                <div className="py-12 text-center space-y-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#d4b982]/[0.08] border border-[#d4b982]/30 text-[#d4b982] mx-auto shadow-[0_0_25px_rgba(212,185,130,0.15)]">
-                    <CheckCircle2 size={32} />
+                <div className="py-10 text-center space-y-4">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#d4b982]/[0.08] border border-[#d4b982]/30 text-[#d4b982] mx-auto shadow-[0_0_25px_rgba(212,185,130,0.15)]">
+                    <CheckCircle2 size={28} />
                   </div>
-                  <h4 className="text-2xl font-bold text-white">Assessment Request Received!</h4>
-                  <p className="text-sm text-slate-300 max-w-md mx-auto">
-                    Thank you, {formData.name || "friend"}. Our team is reviewing your requirements and will send your personalized automation plan within 24 hours.
+                  <h4 className="text-xl font-bold text-white">Assessment Request Received!</h4>
+                  <p className="text-xs sm:text-sm text-slate-300 max-w-md mx-auto">
+                    Thank you, {formData.name || "there"}. We are reviewing your requirements and will prepare your custom automation plan.
                   </p>
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="mt-4 text-xs font-mono text-[#d4b982] hover:underline cursor-pointer"
+                    className="btn-secondary text-xs py-2 px-5 mt-4"
                   >
-                    Submit another request →
+                    Submit another response
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate className="space-y-4">
-                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 pb-2 border-b border-white/10 flex items-center justify-between">
-                    <span>ASSESSMENT DETAILS</span>
-                    <span className="text-[#d4b982] font-semibold">FREE REVIEW</span>
-                  </div>
-
-                  <div className="grid gap-4 sm:grid-cols-2 pt-2">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="assess-name" className="block text-[10px] font-mono uppercase text-slate-400 mb-1.5">
-                        Your Full Name *
+                      <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                        Your Name *
                       </label>
                       <input
-                        id="assess-name"
                         type="text"
-                        required
-                        autoComplete="name"
                         value={formData.name}
                         onChange={(e) => handleChange("name", e.target.value)}
-                        placeholder="e.g. Rahul Sharma"
-                        aria-invalid={!!errors.name}
-                        aria-describedby={errors.name ? "assess-name-error" : undefined}
-                        className={`input-glass ${errors.name ? "!border-red-500/60 focus:!border-red-400" : ""}`}
+                        placeholder="Sarah Jenkins"
+                        className={`w-full rounded-xl bg-white/[0.03] border px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#d4b982] transition-colors ${
+                          errors.name ? "border-red-500" : "border-white/10"
+                        }`}
                       />
-                      {errors.name && (
-                        <p id="assess-name-error" className="mt-1 text-[10px] text-red-400 font-mono" role="alert">
-                          {errors.name}
-                        </p>
-                      )}
+                      {errors.name && <p className="text-[11px] text-red-400 mt-1">{errors.name}</p>}
                     </div>
 
                     <div>
-                      <label htmlFor="assess-email" className="block text-[10px] font-mono uppercase text-slate-400 mb-1.5">
+                      <label className="block text-xs font-medium text-slate-300 mb-1.5">
                         Work Email *
                       </label>
                       <input
-                        id="assess-email"
                         type="email"
-                        required
-                        autoComplete="email"
                         value={formData.email}
                         onChange={(e) => handleChange("email", e.target.value)}
-                        placeholder="rahul@company.com"
-                        aria-invalid={!!errors.email}
-                        aria-describedby={errors.email ? "assess-email-error" : undefined}
-                        className={`input-glass ${errors.email ? "!border-red-500/60 focus:!border-red-400" : ""}`}
+                        placeholder="sarah@company.com"
+                        className={`w-full rounded-xl bg-white/[0.03] border px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#d4b982] transition-colors ${
+                          errors.email ? "border-red-500" : "border-white/10"
+                        }`}
                       />
-                      {errors.email && (
-                        <p id="assess-email-error" className="mt-1 text-[10px] text-red-400 font-mono" role="alert">
-                          {errors.email}
-                        </p>
-                      )}
+                      {errors.email && <p className="text-[11px] text-red-400 mt-1">{errors.email}</p>}
                     </div>
                   </div>
 
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="assess-company" className="block text-[10px] font-mono uppercase text-slate-400 mb-1.5">
-                        Company Name
+                      <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                        Company Name *
                       </label>
                       <input
-                        id="assess-company"
                         type="text"
                         value={formData.company}
                         onChange={(e) => handleChange("company", e.target.value)}
-                        placeholder="e.g. Apex Global"
-                        autoComplete="organization"
-                        className="input-glass"
+                        placeholder="Acme Corp"
+                        className={`w-full rounded-xl bg-white/[0.03] border px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#d4b982] transition-colors ${
+                          errors.company ? "border-red-500" : "border-white/10"
+                        }`}
                       />
+                      {errors.company && <p className="text-[11px] text-red-400 mt-1">{errors.company}</p>}
                     </div>
 
                     <div>
-                      <label htmlFor="assess-team" className="block text-[10px] font-mono uppercase text-slate-400 mb-1.5">
+                      <label className="block text-xs font-medium text-slate-300 mb-1.5">
                         Team Size
                       </label>
                       <select
-                        id="assess-team"
                         value={formData.teamSize}
                         onChange={(e) => handleChange("teamSize", e.target.value)}
-                        className="input-glass cursor-pointer"
+                        className="w-full rounded-xl bg-[#111] border border-white/10 px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#d4b982] transition-colors"
                       >
-                        <option className="bg-slate-900">1 - 10 Employees</option>
-                        <option className="bg-slate-900">10 - 50 Employees</option>
-                        <option className="bg-slate-900">50 - 250 Employees</option>
-                        <option className="bg-slate-900">250+ Enterprise</option>
+                        <option value="1-10 Employees">1-10 Employees</option>
+                        <option value="11-50 Employees">11-50 Employees</option>
+                        <option value="51-200 Employees">51-200 Employees</option>
+                        <option value="200+ Employees">200+ Employees</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="assess-friction" className="block text-[10px] font-mono uppercase text-slate-400 mb-1.5">
-                      Main Challenge to Automate *
+                    <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                      Main Operational Challenge
                     </label>
                     <select
-                      id="assess-friction"
-                      value={formData.primaryFriction}
-                      onChange={(e) => handleChange("primaryFriction", e.target.value)}
-                      className="input-glass cursor-pointer"
+                      value={formData.mainChallenge}
+                      onChange={(e) => handleChange("mainChallenge", e.target.value)}
+                      className="w-full rounded-xl bg-[#111] border border-white/10 px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#d4b982] transition-colors"
                     >
-                      <option className="bg-slate-900">Instant Lead Replies & Sales Follow-Up</option>
-                      <option className="bg-slate-900">24/7 Customer Support & FAQs</option>
-                      <option className="bg-slate-900">Automatic Invoice, Order & Data Sync</option>
-                      <option className="bg-slate-900">Phone Call Answering & Voice Support</option>
-                      <option className="bg-slate-900">Custom Dashboard / Client Portal</option>
+                      <option value="Manual Data Entry & Copy-Pasting">Manual Data Entry & Copy-Pasting</option>
+                      <option value="Slow Lead / Customer Response">Slow Lead / Customer Response</option>
+                      <option value="Repetitive Support Inquiries">Repetitive Support Inquiries</option>
+                      <option value="Tools That Don't Communicate">Tools That Don't Communicate</option>
+                      <option value="Document Search & Invoice Processing">Document Search & Invoice Processing</option>
                     </select>
                   </div>
 
                   <div>
-                    <label htmlFor="assess-stack" className="block text-[10px] font-mono uppercase text-slate-400 mb-1.5">
-                      Current Software Tools (Optional)
+                    <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                      Current Tools Used (Optional)
                     </label>
                     <input
-                      id="assess-stack"
                       type="text"
-                      value={formData.currentStack}
-                      onChange={(e) => handleChange("currentStack", e.target.value)}
-                      placeholder="e.g. WhatsApp, Zoho, Shopify, Google Sheets, Tally"
-                      className="input-glass"
+                      value={formData.currentTools}
+                      onChange={(e) => handleChange("currentTools", e.target.value)}
+                      placeholder="e.g. WhatsApp, HubSpot, QuickBooks, Google Sheets"
+                      className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#d4b982] transition-colors"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="btn-primary w-full py-4 text-xs font-bold mt-2 shadow-[0_0_0_1px_rgba(255,255,255,0.08)] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="btn-primary w-full py-3.5 px-6 text-xs font-semibold justify-center mt-3 cursor-pointer shadow-[0_0_20px_rgba(212,185,130,0.15)]"
                   >
-                    {submitting ? (
-                      <>
-                        <span className="inline-block h-3 w-3 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                        <span>Submitting...</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>Get My Free Automation Plan</span>
-                        <ArrowRight size={14} />
-                      </>
-                    )}
+                    <span>{submitting ? "Processing..." : "Get My Free Automation Plan"}</span>
+                    <ArrowRight size={14} />
                   </button>
-
-                  <div className="text-center text-[10px] font-mono text-slate-400 pt-1">
-                    We will reply within 24 business hours
-                  </div>
                 </form>
               )}
             </div>

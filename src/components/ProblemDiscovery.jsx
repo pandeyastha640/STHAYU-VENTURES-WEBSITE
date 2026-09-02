@@ -1,185 +1,99 @@
-import { ArrowRight, CheckCircle2, Search, XCircle, Zap } from "lucide-react"
+import { Clock, MessageSquare, RefreshCw, Layers, ArrowRight, AlertCircle, CheckCircle2 } from "lucide-react"
 import { AnimatedSection, SectionHeading } from "./ui"
 
-const frictionPoints = [
+const painPoints = [
   {
-    title: "Leads Waiting Too Long",
-    problem: "When new customer enquiries sit in inboxes for hours, up to 70% of potential sales are lost.",
-    solution: "AI answers in under 3 seconds on WhatsApp or your website, answers questions, and books a call.",
-    metric: "3.8x faster customer response",
+    icon: RefreshCw,
+    title: "Manual Data Entry",
+    before: "Hours spent copy-pasting data across spreadsheets, CRM, and email.",
+    after: "Instant, automated 2-way sync with zero human data entry.",
   },
   {
-    title: "Endless Manual Data Entry",
-    problem: "Staff spend 15+ hours every week copy-pasting customer details, matching invoices, and typing reports.",
-    solution: "Data syncs automatically between your accounting, CRM, and spreadsheet tools in real time.",
-    metric: "15+ hours saved per person/wk",
+    icon: MessageSquare,
+    title: "Slow Lead Replies",
+    before: "Inbound customer inquiries sit waiting for hours, losing deals.",
+    after: "Instant 24/7 AI replies on WhatsApp and web in under 3 seconds.",
   },
   {
-    title: "Tools That Don't Talk to Each Other",
-    problem: "You pay for 10+ different apps, but staff still have to manually move information between them.",
-    solution: "We connect your existing tools into one smooth workflow where data flows without human effort.",
-    metric: "100% connected workflow",
+    icon: Layers,
+    title: "Disconnected Apps",
+    before: "Paying for software that doesn't talk to each other.",
+    after: "One unified workflow connecting CRM, accounting, and messaging.",
   },
   {
-    title: "Repetitive Customer Support",
-    problem: "Staff spend half their day answering the exact same routine questions instead of helping high-value clients.",
-    solution: "AI handles common questions instantly 24/7 and passes complex issues to your team with full context.",
-    metric: "90% routine questions handled",
+    icon: Clock,
+    title: "Manual Reporting",
+    before: "Managers spending days compiling weekly status sheets.",
+    after: "Live operational visibility and automated daily summaries.",
   },
 ]
 
 export default function ProblemDiscovery() {
   return (
-    <section id="problem-discovery" className="relative overflow-hidden bg-[#050505] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
-      {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute top-1/3 left-1/4 w-[600px] h-[400px] bg-white/[0.03] rounded-full blur-[160px] opacity-60" />
+    <section id="problem-discovery" className="relative overflow-hidden bg-[#050505] py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+      {/* Background ambient glow */}
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-white/[0.02] rounded-full blur-[140px]" />
 
       <div className="relative mx-auto max-w-7xl">
-
         <AnimatedSection>
           <SectionHeading
-            pill={{ icon: Search, text: "The Core Problem" }}
-            title={
-              <>
-                Your business does not need more apps. <br className="hidden sm:block" />
-                <span className="text-white/60">It needs your tools to work together.</span>
-              </>
-            }
-            description="Most companies do not have a work ethic problem. They have a connection problem: time is lost when employees have to manually copy data, switch between tools, and do repetitive administrative chores."
+            pill={{ icon: AlertCircle, text: "The Problem We Solve" }}
+            title="Stop losing time to repetitive work."
+            description="Growing teams lose hundreds of hours each month bridging the gaps between their software tools. We turn those manual bottlenecks into smooth, automated systems."
           />
         </AnimatedSection>
 
-        {/* 2-Column Comparison Architecture */}
-        <div className="mt-16 grid gap-8 lg:grid-cols-2">
-
-          {/* Column 1: The Fragmented Enterprise (Before) */}
-          <AnimatedSection delay={0.1}>
-            <div className="rounded-[2.5rem] border border-red-500/[0.12] bg-gradient-to-b from-[#140608]/70 via-[#0d0406]/50 to-[#050505] p-6 sm:p-8 md:p-10 shadow-2xl backdrop-blur-xl">
-              <div className="flex items-center justify-between pb-6 border-b border-red-500/[0.10]">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-red-500/[0.06] border border-red-500/[0.12] text-[#fca5a5]">
-                    <XCircle size={20} />
-                  </div>
+        {/* 4 Compact, Visual Friction-to-Flow Cards */}
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {painPoints.map((item, idx) => {
+            const Icon = item.icon
+            return (
+              <AnimatedSection key={item.title} delay={idx * 0.06}>
+                <div className="rounded-2xl border border-white/[0.08] bg-[#0a0a0a]/90 p-5 sm:p-6 backdrop-blur-xl hover:border-[#d4b982]/30 transition-all duration-300 flex flex-col justify-between h-full group">
                   <div>
-                    <h3 className="text-lg font-bold tracking-tight text-white">How Most Businesses Work Today</h3>
-                    <p className="text-[11px] text-[#fca5a5] uppercase tracking-[0.14em] font-semibold">Slow · Manual · Repetitive</p>
-                  </div>
-                </div>
-                <span className="px-3 py-1 rounded-full bg-red-500/[0.06] text-[#fca5a5] text-[10px] font-bold uppercase tracking-[0.12em] border border-red-500/[0.12]">
-                  Before Sthayu
-                </span>
-              </div>
-
-              <div className="mt-6 space-y-4">
-                {[
-                  { title: "Manual data entry & copy-pasting", desc: "Staff spend hours moving data between website forms, spreadsheets, and emails." },
-                  { title: "Enquiries wait hours for a reply", desc: "Potential customers reach out, but staff are too busy to respond immediately." },
-                  { title: "Reports prepared by hand every week", desc: "Managers spend days compiling spreadsheets instead of making quick decisions." },
-                  { title: "Paying for apps that do not communicate", desc: "Your team has to manually bridge the gap between all the software you pay for." },
-                ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/[0.02] border border-red-500/[0.10]">
-                    <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/[0.08]">
-                      <XCircle size={12} className="text-[#fca5a5]" />
+                    {/* Card Header Icon & Title */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#d4b982]/[0.08] border border-[#d4b982]/20 text-[#d4b982] group-hover:scale-105 transition-transform">
+                        <Icon size={18} />
+                      </div>
+                      <h3 className="text-sm sm:text-base font-bold text-white tracking-tight">
+                        {item.title}
+                      </h3>
                     </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-slate-200">{item.title}</h4>
-                      <p className="text-xs text-slate-400 mt-0.5">{item.desc}</p>
+
+                    {/* Before & After comparison */}
+                    <div className="space-y-2.5 text-xs">
+                      <div className="p-2.5 rounded-xl bg-red-500/[0.04] border border-red-500/10 text-slate-300 leading-relaxed">
+                        <span className="text-red-400 font-medium block text-[11px] mb-0.5">Without Sthayu:</span>
+                        {item.before}
+                      </div>
+
+                      <div className="p-2.5 rounded-xl bg-[#d4b982]/[0.05] border border-[#d4b982]/20 text-slate-200 leading-relaxed">
+                        <span className="text-[#d4b982] font-medium block text-[11px] mb-0.5 flex items-center gap-1">
+                          <CheckCircle2 size={11} className="inline" /> With Automation:
+                        </span>
+                        {item.after}
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-red-500/[0.10] flex items-center justify-between text-xs font-mono text-[#fca5a5]">
-                <span>Time lost to manual tasks:</span>
-                <span className="font-bold">20–30 hrs/employee/month</span>
-              </div>
-            </div>
-          </AnimatedSection>
-
-          {/* Column 2: The Sthayu Connected System (After) */}
-          <AnimatedSection delay={0.2}>
-            <div className="rounded-[2.5rem] border border-[#d4b982]/20 bg-gradient-to-b from-[#0a0a0a]/90 via-[#080808]/70 to-[#050505] p-6 sm:p-8 md:p-10 shadow-[0_20px_70px_rgba(0,0,0,0.5)] backdrop-blur-xl relative">
-              <div className="absolute -top-3 right-8 px-3.5 py-1 rounded-full bg-[#d4b982]/10 text-[#d4b982] border border-[#d4b982]/30 text-[10px] font-bold uppercase tracking-[0.14em] shadow-lg">
-                The Sthayu Solution
-              </div>
-
-              <div className="flex items-center justify-between pb-6 border-b border-white/[0.06]">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#d4b982]/[0.08] border border-[#d4b982]/25 text-[#d4b982]">
-                    <CheckCircle2 size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold tracking-tight text-white">How Your Business Runs With Sthayu</h3>
-                    <p className="text-[11px] text-[#d4b982] uppercase tracking-[0.14em] font-semibold">Automated · Connected · Instant</p>
-                  </div>
-                </div>
-                <span className="px-3 py-1 rounded-full bg-[#d4b982]/[0.08] text-[#d4b982] text-[10px] font-bold uppercase tracking-[0.12em] border border-[#d4b982]/20">
-                  After Sthayu
-                </span>
-              </div>
-
-              <div className="mt-6 space-y-4">
-                {[
-                  { title: "Data moves automatically", desc: "Information syncs between your tools instantly with zero manual typing." },
-                  { title: "Instant response to new enquiries", desc: "AI answers customer questions in seconds and books calls on your calendar." },
-                  { title: "Live business reports anytime", desc: "See your sales, leads, and operational numbers updated live, without compiling sheets." },
-                  { title: "One connected system", desc: "All your software tools work together smoothly, so your team can focus on real work." },
-                ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-                    <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#d4b982]/10">
-                      <CheckCircle2 size={12} className="text-[#d4b982]" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-white">{item.title}</h4>
-                      <p className="text-xs text-slate-300 mt-0.5">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-[#d4d4d8]">
-                <span>Speed improvement:</span>
-                <span className="font-bold text-[#d4b982]">+74% faster task completion</span>
-              </div>
-            </div>
-          </AnimatedSection>
-
-        </div>
-
-        {/* Detailed Friction-to-Flow Matrix Cards */}
-        <div className="mt-16">
-          <AnimatedSection>
-            <div className="text-center mb-8">
-              <h3 className="text-xl sm:text-2xl font-bold text-white">Everyday Business Problems We Solve</h3>
-              <p className="text-sm text-slate-400 mt-1">Simple automations that replace manual busywork with smooth digital processes.</p>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {frictionPoints.map((item, idx) => (
-              <AnimatedSection key={item.title} delay={idx * 0.1}>
-                <div
-                  className="glass-card p-6 flex flex-col justify-between group hover:border-[#d4b982]/30 transition"
-                >
-                  <div>
-                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/[0.03] border border-white/[0.08] text-[#d4b982] group-hover:bg-[#d4b982]/10 group-hover:border-[#d4b982]/30 transition-colors mb-4">
-                      <Zap size={16} />
-                    </div>
-                    <h4 className="text-sm font-bold text-white">{item.title}</h4>
-                    <p className="text-xs text-slate-400 mt-2 line-clamp-2">{item.problem}</p>
-                    <p className="text-xs text-slate-200 mt-2 font-medium">{item.solution}</p>
-                  </div>
-
-                  <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-[10px] font-mono text-[#d4b982] font-bold">{item.metric}</span>
-                    <ArrowRight size={13} className="text-[#a1a1aa] opacity-60 group-hover:translate-x-1 group-hover:text-[#d4b982] transition-all" />
                   </div>
                 </div>
               </AnimatedSection>
-            ))}
-          </div>
+            )
+          })}
         </div>
 
+        {/* Simple inline bridge to Services */}
+        <AnimatedSection delay={0.25}>
+          <div className="mt-10 text-center">
+            <a
+              href="#services"
+              className="inline-flex items-center gap-2 text-xs font-semibold text-[#d4b982] hover:text-[#e8d5b5] transition-colors"
+            >
+              <span>Explore what we build to fix these bottlenecks</span>
+              <ArrowRight size={13} />
+            </a>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   )

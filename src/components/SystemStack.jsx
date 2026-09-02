@@ -1,171 +1,139 @@
 import { AnimatedSection, SectionHeading } from "./ui"
-import { ArrowRight, Building2, Layers3, Workflow, ShoppingBag, Stethoscope, Factory, Laptop } from "lucide-react"
+import { Building2, Layers3, ShoppingBag, Stethoscope, Factory, Laptop, Check } from "lucide-react"
 
 const industryBlueprints = [
   {
     industry: "Professional & Financial Services",
     icon: Building2,
-    tagline: "Client intake, document verification & CRM updates",
-    stack: ["CRM Software", "Payment Gateway", "AI Intake Agent", "Client Portal"],
-    outcome: "78% faster client onboarding",
+    sentence: "Streamline client onboarding, document compliance, and financial records.",
+    automations: [
+      "Automated client intake & identity verification",
+      "Instant invoice matching with accounting software",
+      "Secure client portal for status and document sharing",
+    ],
   },
   {
     industry: "SaaS & Technology",
     icon: Laptop,
-    tagline: "Customer onboarding, user helpdesk & automated billing",
-    stack: ["Customer Support", "Database", "AI Support Agent", "Billing System"],
-    outcome: "3.4x faster customer question resolution",
+    sentence: "Accelerate user support, trials, product onboarding, and billing operations.",
+    automations: [
+      "AI support assistant resolving technical questions",
+      "Automated user trial tracking & CRM syncing",
+      "Subscription renewal alerts & churn recovery",
+    ],
   },
   {
     industry: "E-Commerce & Retail",
     icon: ShoppingBag,
-    tagline: "WhatsApp order updates, cart recovery & inventory sync",
-    stack: ["Shopify / Store", "Email Marketing", "WhatsApp Business", "Inventory System"],
-    outcome: "+24% recovered sales & instant support",
+    sentence: "Drive repeat sales with instant WhatsApp updates and inventory tracking.",
+    automations: [
+      "WhatsApp order status & shipping notifications",
+      "Abandoned cart recovery & product recommendations",
+      "Multi-channel inventory sync across store systems",
+    ],
   },
   {
     industry: "Real Estate & Property",
-    icon: Workflow,
-    tagline: "Instant lead replies, viewing bookings & phone follow-ups",
-    stack: ["Phone AI Agent", "CRM", "Google Calendar", "WhatsApp Messaging"],
-    outcome: "92% connection rate on buyer enquiries",
+    icon: Building2,
+    sentence: "Convert property inquiries into booked viewings in seconds.",
+    automations: [
+      "Instant response to buyer/renter inquiries 24/7",
+      "Automated calendar booking for site viewings",
+      "Lead qualification & CRM follow-up sequences",
+    ],
   },
   {
     industry: "Healthcare & Wellness",
     icon: Stethoscope,
-    tagline: "Patient bookings, automated appointment reminders & intake",
-    stack: ["Secure Records", "Voice Reminders", "Calendar Scheduling", "WhatsApp Alerts"],
-    outcome: "40% fewer missed appointments",
+    sentence: "Reduce no-shows and simplify appointment booking and patient check-ins.",
+    automations: [
+      "Automated WhatsApp & SMS appointment reminders",
+      "Digital patient intake forms & calendar scheduling",
+      "Routine clinic FAQs answered in plain language",
+    ],
   },
   {
     industry: "Manufacturing & Logistics",
     icon: Factory,
-    tagline: "PDF invoice reading, inventory alerts & purchase orders",
-    stack: ["Inventory Software", "PDF Data Reader", "Team Alerts", "Accounting Sync"],
-    outcome: "Zero manual invoice typing",
+    sentence: "Automate supply chain data entry, PO generation, and delivery alerts.",
+    automations: [
+      "PDF invoice & delivery slip data extraction",
+      "Automated purchase order creation & vendor notifications",
+      "Low-inventory team alerts on Slack & WhatsApp",
+    ],
   },
-]
-
-const maturitySteps = [
-  { stage: "01", name: "Manual Work", desc: "Staff manually copy-pasting info across spreadsheets and emails." },
-  { stage: "02", name: "Basic Triggers", desc: "Simple tool connections that occasionally break and need checking." },
-  { stage: "03", name: "Connected Tools", desc: "Reliable system where all your apps update each other in real time." },
-  { stage: "04", name: "AI Digital Workers", desc: "Smart AI assistants answering enquiries and handling repetitive tasks." },
-  { stage: "05", name: "Custom Software", desc: "Your unique business workflow turned into simple, bespoke software." },
 ]
 
 export default function SystemStack() {
   return (
-    <section id="system-stack" className="relative overflow-hidden bg-[#050505] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <section id="industry-solutions" className="relative overflow-hidden bg-[#050505] py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       {/* Background ambient lighting */}
       <div className="pointer-events-none absolute top-1/4 left-1/3 w-[700px] h-[500px] bg-white/[0.03] rounded-full blur-[180px] opacity-60" />
 
       <div className="relative mx-auto max-w-7xl">
-        
         <AnimatedSection>
           <SectionHeading
             pill={{ icon: Layers3, text: "Industry Solutions" }}
-            title={<>Built for how your specific <br className="hidden sm:block" /><span className="text-white/60">industry actually works.</span></>}
-            description="We do not offer one-size-fits-all templates. We build automations around the exact tools, compliance needs, and daily tasks of your field."
+            title={
+              <>
+                Tailored for how your specific <br className="hidden sm:block" />
+                <span className="text-white/60">industry operates.</span>
+              </>
+            }
+            description="We build automations configured for the exact tools, compliance needs, and daily workflows of your sector."
           />
         </AnimatedSection>
 
-        {/* 6 Industry Blueprint Cards */}
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* 6 Industry Compact Cards */}
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {industryBlueprints.map((item, idx) => {
             const Icon = item.icon
             return (
-              <AnimatedSection key={item.industry} delay={idx * 0.1}>
-                <div className="glass-card p-7 flex flex-col justify-between group h-full hover:border-[#d4b982]/30 transition-all">
+              <AnimatedSection key={item.industry} delay={idx * 0.08}>
+                <div className="rounded-3xl border border-white/10 bg-[#0a0a0a]/80 p-6 sm:p-7 backdrop-blur-xl hover:border-[#d4b982]/30 transition-all duration-300 shadow-[0_15px_40px_rgba(0,0,0,0.4)] flex flex-col justify-between h-full">
                   <div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#d4b982]/[0.06] border border-[#d4b982]/20 text-[#d4b982]">
-                        <Icon size={22} />
+                    <div className="flex items-center gap-3.5 mb-4">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#d4b982]/[0.08] border border-[#d4b982]/25 text-[#d4b982]">
+                        <Icon size={20} />
                       </div>
-                      <span className="text-[10px] font-mono font-bold text-[#d4b982]">READY BLUEPRINT</span>
+                      <div>
+                        <h3 className="text-base font-bold text-white tracking-tight">
+                          {item.industry}
+                        </h3>
+                      </div>
                     </div>
 
-                    <h3 className="mt-5 text-lg font-bold text-white group-hover:text-[#d4b982] transition-colors">
-                      {item.industry}
-                    </h3>
-                    <p className="mt-2 text-xs text-slate-300 leading-relaxed">
-                      {item.tagline}
+                    <p className="text-xs text-slate-300 leading-relaxed min-h-[36px]">
+                      {item.sentence}
                     </p>
 
-                    {/* Connected Stack Pill List */}
-                    <div className="mt-5 space-y-1.5 pt-4 border-t border-white/10">
-                      <div className="text-[9px] uppercase font-mono text-slate-400">Tools Connected:</div>
-                      <div className="flex flex-wrap gap-1.5 mt-1">
-                        {item.stack.map((st) => (
-                          <span key={st} className="text-[9px] font-mono px-2 py-0.5 rounded-md bg-white/5 text-[#d4d4d8] border border-white/5">
-                            {st}
-                          </span>
-                        ))}
-                      </div>
+                    {/* 2-3 Example Automations */}
+                    <div className="mt-5 space-y-2 pt-4 border-t border-white/5">
+                      <div className="text-[10px] uppercase font-mono font-semibold text-slate-400">Example Automations:</div>
+                      {item.automations.map((auto) => (
+                        <div key={auto} className="flex items-start gap-2 text-xs text-slate-300">
+                          <Check size={13} className="text-[#d4b982] shrink-0 mt-0.5" />
+                          <span>{auto}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-[11px] font-mono text-[#d4b982] font-bold">{item.outcome}</span>
-                    <ArrowRight size={14} className="text-[#a1a1aa] group-hover:text-[#d4b982] group-hover:translate-x-1 transition-all" />
+                  <div className="mt-6 pt-4 border-t border-white/5">
+                    <a
+                      href="#assessment"
+                      className="text-xs font-semibold text-[#d4b982] hover:text-[#e8d5b5] transition-colors"
+                    >
+                      Get an industry plan →
+                    </a>
                   </div>
                 </div>
               </AnimatedSection>
             )
           })}
         </div>
-
-        {/* The Transformation Staircase */}
-        <AnimatedSection className="mt-16">
-          <div className="rounded-[2.5rem] border border-[#d4b982]/20 bg-gradient-to-b from-[#0a0a0a] via-[#080808] to-[#050505] p-8 sm:p-10 backdrop-blur-2xl">
-            <div className="max-w-3xl">
-              <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#d4b982]">
-                The Automation Journey
-              </div>
-              <h3 className="mt-2 text-2xl sm:text-3xl font-bold text-white">
-                From manual chaos to a smooth, automated company.
-              </h3>
-              <p className="mt-3 text-sm text-slate-300 leading-relaxed">
-                Step by step, we help you replace messy spreadsheets and manual typing with dependable automations, AI assistants, and software tailored to your team.
-              </p>
-            </div>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {maturitySteps.map((s, idx) => (
-                <div key={s.stage} className="relative">
-                  <div className={`relative flex flex-col justify-between rounded-2xl border p-5 transition-all h-full ${
-                    idx === 4
-                      ? "border-[#d4b982]/30 bg-[#d4b982]/[0.03] hover:border-[#d4b982]/50"
-                      : "border-white/10 bg-white/[0.02] hover:border-white/[0.15] hover:bg-white/[0.04]"
-                  }`}>
-                    <div>
-                      <div className={`font-mono text-xs font-bold ${idx === 4 ? "text-[#d4b982]" : "text-[#a1a1aa]"}`}>{s.stage}</div>
-                      <div className="mt-2 text-base font-bold text-white">{s.name}</div>
-                      <p className="mt-2 text-xs text-slate-400 leading-relaxed">{s.desc}</p>
-                    </div>
-
-                    <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-slate-400">
-                      <span>Level {idx + 1}</span>
-                      {idx === 4 && <span className="text-[#d4b982] font-bold">★ GOAL</span>}
-                    </div>
-                  </div>
-
-                  {/* Connecting line - hidden on last item, vertical on mobile */}
-                  {idx < maturitySteps.length - 1 && (
-                    <>
-                      {/* Mobile: vertical line (grid-cols-1) */}
-                      <div className="block sm:hidden absolute left-1/2 top-full w-[1px] h-4 bg-white/[0.06] -translate-x-1/2" />
-                      {/* Desktop: horizontal line (lg:grid-cols-5) */}
-                      <div className="hidden lg:block absolute top-1/2 left-full w-full h-[1px] bg-white/[0.06] -translate-y-1/2" />
-                    </>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </AnimatedSection>
-
       </div>
     </section>
   )
 }
+

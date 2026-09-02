@@ -135,7 +135,7 @@ export default function Hero() {
             variants={fadeUp}
             className="mt-6 max-w-2xl text-base sm:text-lg text-[#a1a1aa] leading-[1.65] font-normal tracking-[-0.01em]"
           >
-            We engineer autonomous AI agents, connected workflow architectures, and custom portals that eliminate manual tasks, unify fragmented data, and scale your operations intelligently.
+            Sthayu builds AI agents, workflow automation, and custom business software that removes repetitive work, connects your daily tools, and helps your team operate faster.
           </motion.p>
 
           {/* CTAs */}
@@ -147,14 +147,14 @@ export default function Hero() {
               href="#assessment"
               className="btn-primary py-3.5 px-8 text-xs sm:text-sm font-semibold tracking-[-0.01em]"
             >
-              <span>Find What to Automate</span>
+              <span>Get a Free Automation Assessment</span>
               <ArrowRight size={15} />
             </a>
             <a
               href="#services"
               className="btn-secondary py-3.5 px-8 text-xs sm:text-sm font-medium tracking-[-0.01em]"
             >
-              <span>Explore Capabilities</span>
+              <span>Explore Solutions</span>
               <ArrowUpRight size={15} />
             </a>
           </motion.div>
@@ -168,7 +168,7 @@ export default function Hero() {
               { value: "74%", label: "Faster Operations" },
               { value: "< 3s", label: "Lead Response Time" },
               { value: "99.4%", label: "Task Accuracy" },
-              { value: "Zero", label: "Manual Copy-Pasting" },
+              { value: "Zero", label: "Manual Data Entry" },
             ].map((m, i) => (
               <div
                 key={m.label}
