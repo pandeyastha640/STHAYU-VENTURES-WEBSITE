@@ -165,6 +165,8 @@ function SectionDivider({ className = "" }) {
   )
 }
 
+import { SthayuLogo, SthayuSymbol, default as Logo } from "./Logo"
+
 export {
   AnimatedSection,
   SectionHeading,
@@ -175,6 +177,9 @@ export {
   GradientText,
   Button,
   SectionDivider,
+  Logo,
+  SthayuLogo,
+  SthayuSymbol,
 }
 
 export default {
@@ -187,4 +192,7 @@ export default {
   GradientText,
   Button,
   SectionDivider,
+  Logo,
+  SthayuLogo,
+  SthayuSymbol,
 }

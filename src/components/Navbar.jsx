@@ -132,8 +132,12 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mt-2 max-w-6xl overflow-hidden rounded-2xl border border-white/[0.06] bg-[#050505]/95 p-3 shadow-[0_30px_80px_rgba(0,0,0,0.7)] backdrop-blur-xl lg:hidden"
+            className="mx-auto mt-2 max-w-6xl overflow-hidden rounded-2xl border border-white/[0.06] bg-[#050505]/95 p-3.5 shadow-[0_30px_80px_rgba(0,0,0,0.7)] backdrop-blur-xl lg:hidden"
           >
+            <div className="flex items-center justify-between px-2 py-1.5 pb-3 mb-2 border-b border-white/[0.06]">
+              <SthayuLogo height={34} />
+              <span className="text-[10px] font-mono tracking-wider uppercase text-[#d4b982]/80 bg-[#d4b982]/10 border border-[#d4b982]/20 px-2 py-0.5 rounded-full">Menu</span>
+            </div>
             <div className="grid gap-0.5">
               {navLinks.map((link, i) => (
                 <motion.button
