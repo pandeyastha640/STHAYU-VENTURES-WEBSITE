@@ -1,223 +1,227 @@
-import { useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "motion/react"
-import { ArrowRight, ArrowUpRight } from "lucide-react"
-import heroBgImage from "../assets/images/hero_neural_infrastructure_1787842070922.jpg"
-
-const HLS_URL = "https://stream.mux.com/kimF2ha9zLrX64H00UgLGPflCzNtl1T0215MlAmeOztv8.m3u8"
-const MP4_URL = "https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-network-lines-and-dots-loop-42861-large.mp4"
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Bot,
+  CalendarCheck,
+  MessageSquare,
+  PhoneCall,
+  Sparkles,
+  Zap,
+} from "lucide-react"
 
 const staggerChildren = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.3,
+      staggerChildren: 0.1,
+      delayChildren: 0.15,
     },
   },
 }
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 18 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
   },
 }
 
+const LIVE_EVENTS = [
+  { id: 1, time: "Just now", type: "Lead Qualified", details: "Enterprise prospect verified via WhatsApp AI (Budget ₹12L+)", status: "Booked" },
+  { id: 2, time: "2m ago", type: "Invoice Extracted", details: "Vendor PDF parsed & reconciled with bank ledger (₹2.4L)", status: "Synced" },
+  { id: 3, time: "5m ago", type: "Support Triage", details: "Tier-1 billing query resolved autonomously in 2.1s", status: "Resolved" },
+]
+
 export default function Hero() {
-  const videoRef = useRef(null)
+  const [activeEventIndex, setActiveEventIndex] = useState(0)
 
   useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    const tryPlay = () => {
-      video.play().catch(() => {
-        const onUserInteraction = () => {
-          video.play().catch(() => {})
-          window.removeEventListener("click", onUserInteraction)
-          window.removeEventListener("touchstart", onUserInteraction)
-        }
-        window.addEventListener("click", onUserInteraction, { once: true })
-        window.addEventListener("touchstart", onUserInteraction, { once: true })
-      })
-    }
-
-    if (video.canPlayType("application/vnd.apple.mpegurl")) {
-      video.src = HLS_URL
-      video.addEventListener("loadedmetadata", tryPlay)
-    } else {
-      import("hls.js").then(({ default: Hls }) => {
-        if (Hls.isSupported()) {
-          const hls = new Hls({ enableWorker: true, lowLatencyMode: true })
-          hls.loadSource(HLS_URL)
-          hls.attachMedia(video)
-          hls.on(Hls.Events.MANIFEST_PARSED, tryPlay)
-          video._hlsInstance = hls
-        } else {
-          video.src = MP4_URL
-          tryPlay()
-        }
-      }).catch(() => {
-        video.src = MP4_URL
-        tryPlay()
-      })
-    }
-
-    tryPlay()
-
-    return () => {
-      if (video._hlsInstance) {
-        video._hlsInstance.destroy()
-        video._hlsInstance = null
-      }
-    }
+    const interval = setInterval(() => {
+      setActiveEventIndex((prev) => (prev + 1) % LIVE_EVENTS.length)
+    }, 3800)
+    return () => clearInterval(interval)
   }, [])
+
+  const scrollTo = (id) => {
+    const element = document.getElementById(id)
+    if (element) {
+      const yOffset = -70
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
+      window.scrollTo({ top: y, behavior: "smooth" })
+    }
+  }
 
   return (
     <section
       id="hero"
-      className="relative h-screen w-full overflow-hidden flex items-center justify-center"
+      className="relative min-h-[90vh] w-full overflow-hidden flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8"
     >
-      {/* Background HLS Video */}
-      <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={heroBgImage}
-          className="absolute inset-0 w-full h-full object-cover opacity-60"
-          style={{ filter: "saturate(0.5) brightness(0.55) contrast(1.25)", pointerEvents: "none" }}
-        >
-          <source src={MP4_URL} type="video/mp4" />
-        </video>
-        {/* Dark cinematic overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/60 via-[#050505]/40 to-[#050505]/90" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050505_70%)]" />
-        {/* Subtle grain texture */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")" }} />
-        {/* Cinematic scan lines */}
-        <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: "repeating-linear-gradient(180deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 4px)", mixBlendMode: "screen" }} />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 mx-auto max-w-5xl px-5 sm:px-8 text-center">
+      {/* Content Container */}
+      <div className="relative z-10 mx-auto max-w-5xl text-center">
         <motion.div
           variants={staggerChildren}
           initial="hidden"
           animate="visible"
           className="flex flex-col items-center"
         >
-          {/* Eyebrow */}
+          {/* Eyebrow Badge */}
           <motion.div variants={fadeUp} className="mb-6">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#d4b982]/25 bg-[#d4b982]/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#d4b982] backdrop-blur-md shadow-[0_0_20px_rgba(212,185,130,0.06)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#d4b982] shadow-[0_0_6px_#d4b982]" />
-              Enterprise AI & Business Automation
+            <span className="glass-pill-gold shadow-[0_0_15px_rgba(212,185,130,0.1)]">
+              <Sparkles size={13} className="text-[#d4b982]" />
+              AI Agents, Automation & Digital Experiences
             </span>
           </motion.div>
 
-          {/* Headline — High-End Modern Grotesque */}
+          {/* Bold Headline */}
           <motion.h1
             variants={fadeUp}
-            className="text-[clamp(2.75rem,6.5vw,5.25rem)] font-extrabold leading-[1.06] tracking-[-0.04em] text-[#fafafa]"
-            style={{ textShadow: "0 2px 30px rgba(0,0,0,0.6)" }}
+            className="text-[clamp(2.4rem,5.2vw,4.5rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-white max-w-4xl"
           >
-            AI systems that actually
-            <br className="hidden sm:block" />
-            <span className="text-[#e8d5b5]"> do the work for you.</span>
+            AI Agents & Workflow Automations <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-r from-white via-slate-100 to-[#d4b982] bg-clip-text text-transparent">
+              That Scale Your Business Ops
+            </span>
           </motion.h1>
 
-          {/* Supporting Paragraph */}
+          {/* 2-Line Subhead */}
           <motion.p
             variants={fadeUp}
-            className="mt-6 max-w-2xl text-base sm:text-lg text-[#a1a1aa] leading-[1.65] font-normal tracking-[-0.01em]"
+            className="mt-6 max-w-2xl text-base sm:text-lg text-slate-300 leading-[1.65] font-normal tracking-[-0.01em]"
           >
-            Sthayu builds AI agents, workflow automation, and custom business software that removes repetitive work, connects your daily tools, and helps your team operate faster.
+            Eliminate repetitive manual busywork, connect your daily tools into unified pipelines, and let autonomous AI digital workers run routine operations 24/7.
           </motion.p>
 
-          {/* CTAs */}
+          {/* Dual CTAs */}
           <motion.div
             variants={fadeUp}
-            className="mt-10 flex flex-col sm:flex-row items-center gap-4"
+            className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full sm:w-auto"
           >
-            <a
-              href="#assessment"
-              className="btn-primary py-3.5 px-8 text-xs sm:text-sm font-semibold tracking-[-0.01em]"
+            <button
+              type="button"
+              onClick={() => scrollTo("contact")}
+              className="btn-primary w-full sm:w-auto"
             >
-              <span>Get a Free Automation Assessment</span>
-              <ArrowRight size={15} />
-            </a>
-            <a
-              href="#services"
-              className="btn-secondary py-3.5 px-8 text-xs sm:text-sm font-medium tracking-[-0.01em]"
+              <PhoneCall size={14} />
+              <span>Book a Free Call</span>
+              <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5" />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => scrollTo("services")}
+              className="btn-secondary w-full sm:w-auto"
             >
-              <span>Explore Solutions</span>
-              <ArrowUpRight size={15} />
-            </a>
+              <span>Explore Capabilities</span>
+              <ArrowUpRight size={14} className="text-[#d4b982] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </button>
           </motion.div>
 
-          {/* Trust Metrics */}
+          {/* Interactive Live Autonomous Pipeline Preview */}
           <motion.div
             variants={fadeUp}
-            className="mt-14 sm:mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 pt-6 sm:pt-8 border-t border-white/[0.06]"
+            className="mt-12 w-full max-w-3xl rounded-3xl border border-white/10 bg-[#0a0a0a]/90 p-4 sm:p-5 shadow-[0_20px_70px_rgba(0,0,0,0.8)] backdrop-blur-2xl text-left"
+          >
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4b982] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#d4b982]" />
+                </span>
+                <span className="text-xs font-semibold text-white">Live Agent Pipeline Telemetry</span>
+              </div>
+              <span className="text-[11px] font-mono text-slate-400 bg-white/5 border border-white/10 rounded-md px-2 py-0.5">
+                Status: Operational (99.98% Uptime)
+              </span>
+            </div>
+
+            {/* Simulated Live Execution Nodes */}
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-4 gap-2.5">
+              <div className="flex items-center gap-2 rounded-2xl bg-white/[0.03] border border-white/10 p-2.5">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#d4b982]/10 text-[#d4b982] border border-[#d4b982]/20">
+                  <MessageSquare size={13} />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-[10px] font-medium uppercase text-[#d4b982]">Inbound Lead</div>
+                  <div className="truncate text-xs font-semibold text-slate-200">WhatsApp / Web</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 rounded-2xl bg-white/[0.03] border border-white/10 p-2.5">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#d4b982]/10 text-[#d4b982] border border-[#d4b982]/20">
+                  <Bot size={13} />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-[10px] font-medium uppercase text-[#d4b982]">AI Qualification</div>
+                  <div className="truncate text-xs font-semibold text-slate-200">Intent & Budget</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 rounded-2xl bg-white/[0.03] border border-white/10 p-2.5">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#d4b982]/10 text-[#d4b982] border border-[#d4b982]/20">
+                  <CalendarCheck size={13} />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-[10px] font-medium uppercase text-[#d4b982]">Auto Booking</div>
+                  <div className="truncate text-xs font-semibold text-slate-200">Calendar Locked</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 rounded-2xl bg-white/[0.03] border border-white/10 p-2.5">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  <Zap size={13} />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-[10px] font-medium uppercase text-emerald-400">CRM Sync</div>
+                  <div className="truncate text-xs font-semibold text-slate-200">Deal Created</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Real-time ticker */}
+            <div className="mt-3.5 flex items-center justify-between rounded-xl bg-white/[0.02] px-3 py-2 text-xs border border-white/5">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="font-semibold text-[#d4b982] shrink-0">
+                  {LIVE_EVENTS[activeEventIndex].type}:
+                </span>
+                <span className="truncate text-slate-300">
+                  {LIVE_EVENTS[activeEventIndex].details}
+                </span>
+              </div>
+              <span className="shrink-0 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded font-semibold ml-2">
+                {LIVE_EVENTS[activeEventIndex].status}
+              </span>
+            </div>
+          </motion.div>
+
+          {/* 3 Verified Stats */}
+          <motion.div
+            variants={fadeUp}
+            className="mt-12 grid grid-cols-3 gap-4 sm:gap-8 pt-8 border-t border-white/10 w-full max-w-2xl"
           >
             {[
-              { value: "74%", label: "Faster Operations" },
-              { value: "< 3s", label: "Lead Response Time" },
-              { value: "99.4%", label: "Task Accuracy" },
-              { value: "Zero", label: "Manual Data Entry" },
-            ].map((m, i) => (
+              { value: "70%+", label: "Cost Reduction" },
+              { value: "24/7", label: "Autonomous Execution" },
+              { value: "10x", label: "Ops Velocity" },
+            ].map((stat, idx) => (
               <div
-                key={m.label}
-                className={`text-center ${i > 0 ? "border-l border-white/[0.06] pl-8" : ""}`}
+                key={stat.label}
+                className={`text-center ${idx > 0 ? "border-l border-white/10" : ""}`}
               >
-                <div className="font-mono text-2xl sm:text-3xl font-bold tracking-tight text-[#fafafa] tabular-nums">
-                  {m.value}
+                <div className="font-mono text-2xl sm:text-3xl font-extrabold tracking-tight text-white tabular-nums">
+                  {stat.value}
                 </div>
-                <div className="mt-1 text-[11px] font-medium uppercase tracking-[0.12em] text-[#71717a]">
-                  {m.label}
+                <div className="mt-1 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.1em] text-slate-400">
+                  {stat.label}
                 </div>
               </div>
             ))}
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Decorative horizontal line */}
-      <div className="absolute bottom-32 left-1/2 -translate-x-1/2 w-[200px] h-[1px] bg-gradient-to-r from-transparent via-[#d4b982]/20 to-transparent z-10 hidden sm:block" />
-
-      {/* Animated accent gradient */}
-      <motion.div
-        className="absolute bottom-28 left-1/2 -translate-x-1/2 w-[300px] h-[1px] z-10 hidden sm:block"
-        style={{
-          background: "linear-gradient(90deg, transparent, rgba(212,185,130,0.35), transparent)",
-          backgroundSize: "200% 100%",
-        }}
-        animate={{
-          backgroundPosition: ["0% 0%", "200% 0%"],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      />
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-        <span className="text-[10px] uppercase tracking-[0.2em] text-[#71717a]">Scroll</span>
-        <motion.div
-          className="w-[1px] h-8 bg-gradient-to-b from-[#a1a1aa] to-transparent"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent z-10 pointer-events-none" />
     </section>
   )
 }
