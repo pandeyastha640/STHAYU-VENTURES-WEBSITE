@@ -53,6 +53,8 @@ export default function AssessmentSection() {
       const newErrors = validate()
       if (Object.keys(newErrors).length > 0) {
         setErrors(newErrors)
+        const firstError = Object.values(newErrors)[0]
+        setSubmitError(firstError)
         return
       }
 
@@ -101,6 +103,9 @@ export default function AssessmentSection() {
         }
 
         if (!response.ok) {
+          if (data.errors && typeof data.errors === "object") {
+            setErrors(data.errors)
+          }
           throw new Error(data.message || "Failed to submit assessment request. Please try again.")
         }
 

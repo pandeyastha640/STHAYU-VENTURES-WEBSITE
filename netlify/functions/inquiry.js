@@ -35,35 +35,43 @@ export const handler = async (event, context) => {
       const data = typeof event.body === "string" ? JSON.parse(event.body || "{}") : (event.body || {})
       const { name, contact, email, phone, goal, planInterest, source } = data
 
-      if (!name || typeof name !== "string" || name.trim() === "") {
+      const contactValue = (contact || email || phone || "").trim()
+      const trimmedName = (name || "").trim()
+
+      const errors = {}
+      if (!trimmedName) {
+        errors.name = "Please enter your name."
+      }
+
+      if (!contactValue || contactValue.length < 3) {
+        errors.contact = "Please enter your work email or phone number."
+      }
+
+      if (Object.keys(errors).length > 0) {
+        const firstErrorMessage = Object.values(errors)[0]
         return {
           statusCode: 400,
           headers,
-          body: JSON.stringify({ success: false, message: "Validation error: 'name' is required." }),
+          body: JSON.stringify({
+            success: false,
+            message: firstErrorMessage || "Please check your contact details.",
+            errors,
+          }),
         }
       }
 
-      const contactValue = contact || email || phone || ""
-      if (!contactValue || typeof contactValue !== "string" || contactValue.trim() === "") {
-        return {
-          statusCode: 400,
-          headers,
-          body: JSON.stringify({ success: false, message: "Validation error: 'contact' (email or phone) is required." }),
-        }
-      }
+      const defaultGoal = planInterest
+        ? `Interested in ${planInterest} tier - Requesting strategy consultation.`
+        : "General strategy session and business automation discovery."
 
-      if (!goal || typeof goal !== "string" || goal.trim().length < 3) {
-        return {
-          statusCode: 400,
-          headers,
-          body: JSON.stringify({ success: false, message: "Validation error: 'goal' description is required." }),
-        }
-      }
+      const goalValue = goal && typeof goal === "string" && goal.trim().length > 0
+        ? goal.trim()
+        : defaultGoal
 
       const inquiry = await Inquiry.create({
-        name: name.trim(),
-        contact: contactValue.trim(),
-        goal: goal.trim(),
+        name: trimmedName,
+        contact: contactValue,
+        goal: goalValue,
         planInterest: (planInterest || "").trim() || null,
         source: (source || "website_strategy_call").trim(),
       })

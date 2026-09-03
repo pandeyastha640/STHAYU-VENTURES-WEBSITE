@@ -15,36 +15,33 @@ export const validateInquiryInput = (req, res, next) => {
   goal = sanitizeString(goal)
 
   // Validate Name
-  if (!name) {
+  if (!name || name.length < 1) {
     errors.name = "Please enter your full name."
-  } else if (name.length < 2) {
-    errors.name = "Name must be at least 2 characters long."
   } else if (name.length > 120) {
     errors.name = "Name cannot exceed 120 characters."
   }
 
   // Validate Contact (Email or WhatsApp Phone)
-  if (!contact) {
+  if (!contact || contact.length < 3) {
     errors.contact = "Please enter your work email or WhatsApp phone number."
-  } else if (contact.length < 3) {
-    errors.contact = "Contact information must be at least 3 characters."
   } else if (contact.length > 150) {
     errors.contact = "Contact information cannot exceed 150 characters."
   }
 
-  // Validate Goal / Message
-  if (!goal) {
-    errors.goal = "Please describe the task or bottleneck you would like to automate."
-  } else if (goal.length < 5) {
-    errors.goal = "Please provide at least a brief description (min 5 characters)."
+  // If goal is empty, provide a clean default so leads are never dropped
+  if (!goal || goal.trim().length === 0) {
+    goal = planInterest
+      ? `Interested in ${planInterest} tier - Requesting strategy consultation.`
+      : "General strategy session and business automation discovery."
   } else if (goal.length > 3000) {
     errors.goal = "Description is too long (maximum 3000 characters)."
   }
 
   if (Object.keys(errors).length > 0) {
+    const firstErrorMessage = Object.values(errors)[0]
     return res.status(400).json({
       success: false,
-      message: "Please fill out all required fields properly.",
+      message: firstErrorMessage || "Please fill out all required fields properly.",
       errors,
     })
   }
@@ -74,8 +71,8 @@ export const validateAssessmentInput = (req, res, next) => {
   currentTools = sanitizeString(currentTools)
 
   // Validate Name
-  if (!name || name.length < 2) {
-    errors.name = "Your name is required (min 2 characters)."
+  if (!name || name.length < 1) {
+    errors.name = "Your name is required."
   }
 
   // Validate Work Email
@@ -92,9 +89,10 @@ export const validateAssessmentInput = (req, res, next) => {
   }
 
   if (Object.keys(errors).length > 0) {
+    const firstErrorMessage = Object.values(errors)[0]
     return res.status(400).json({
       success: false,
-      message: "Please correct the form errors.",
+      message: firstErrorMessage || "Please correct the highlighted form errors.",
       errors,
     })
   }

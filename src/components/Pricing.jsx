@@ -68,6 +68,7 @@ export default function Pricing() {
     contact: "",
     goal: "",
   })
+  const [selectedPlan, setSelectedPlan] = useState("")
   const [errors, setErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -75,12 +76,9 @@ export default function Pricing() {
 
   const validate = () => {
     const errs = {}
-    if (!formData.name.trim()) errs.name = "Please enter your name"
+    if (!formData.name.trim()) errs.name = "Please enter your full name."
     if (!formData.contact.trim()) {
-      errs.contact = "Please enter your work email or phone number"
-    }
-    if (!formData.goal.trim()) {
-      errs.goal = "Please describe the task or bottleneck you want to automate"
+      errs.contact = "Please enter your work email or WhatsApp phone number."
     }
     return errs
   }
@@ -104,6 +102,8 @@ export default function Pricing() {
     const validationErrors = validate()
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors)
+      const firstError = Object.values(validationErrors)[0]
+      setSubmitError(firstError)
       return
     }
 
@@ -113,7 +113,8 @@ export default function Pricing() {
     const payload = {
       name: formData.name.trim(),
       contact: formData.contact.trim(),
-      goal: formData.goal.trim(),
+      goal: formData.goal.trim() || undefined,
+      planInterest: selectedPlan || undefined,
       source: "website_strategy_call",
     }
 
@@ -150,7 +151,10 @@ export default function Pricing() {
       }
 
       if (!response.ok) {
-        throw new Error(data.message || "Failed to submit inquiry. Please try again.")
+        if (data.errors && typeof data.errors === "object") {
+          setErrors(data.errors)
+        }
+        throw new Error(data.message || "Failed to submit inquiry. Please check the form and try again.")
       }
 
       setSubmitted(true)
@@ -163,6 +167,7 @@ export default function Pricing() {
   }
 
   const scrollToContact = (planName) => {
+    setSelectedPlan(planName)
     setFormData((prev) => ({
       ...prev,
       goal: prev.goal || `Interested in the ${planName} plan. Looking to automate: `,
@@ -366,7 +371,7 @@ export default function Pricing() {
                   {/* Field 3: Automation Goal / Message */}
                   <div>
                     <label htmlFor="goal" className="block text-xs font-semibold text-slate-300 mb-1.5 font-mono">
-                      What would you like to build or automate? <span className="text-[#d4b982]">*</span>
+                      What would you like to build or automate? <span className="text-slate-500 font-normal">(Optional)</span>
                     </label>
                     <textarea
                       id="goal"

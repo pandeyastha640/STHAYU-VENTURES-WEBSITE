@@ -18,9 +18,8 @@ const inquirySchema = new mongoose.Schema(
     },
     goal: {
       type: String,
-      required: [true, "Goal or message is required"],
+      default: "General strategy session and automation consultation",
       trim: true,
-      minlength: [5, "Goal description must be at least 5 characters"],
       maxlength: [3000, "Goal description cannot exceed 3000 characters"],
     },
     source: {
