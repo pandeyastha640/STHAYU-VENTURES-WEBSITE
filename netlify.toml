@@ -1,0 +1,45 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Explicit redirects to dedicated serverless handlers
+[[redirects]]
+  from = "/api/inquiry"
+  to = "/.netlify/functions/inquiry"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/contact"
+  to = "/.netlify/functions/inquiry"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/assessment"
+  to = "/.netlify/functions/assessment"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/health"
+  to = "/.netlify/functions/health"
+  status = 200
+  force = true
+
+# Wildcard routing for all other /api/* endpoints to unified Express serverless handler
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true
+
+# Client-side Single Page Application (SPA) routing fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

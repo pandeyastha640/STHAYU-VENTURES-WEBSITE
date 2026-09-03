@@ -110,21 +110,44 @@ export default function Pricing() {
     setSubmitting(true)
     setSubmitError("")
 
+    const payload = {
+      name: formData.name.trim(),
+      contact: formData.contact.trim(),
+      goal: formData.goal.trim(),
+      source: "website_strategy_call",
+    }
+
+    const apiBase = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "")
+
     try {
-      const response = await fetch("/api/inquiry", {
+      let response = await fetch(`${apiBase}/api/inquiry`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: formData.name.trim(),
-          contact: formData.contact.trim(),
-          goal: formData.goal.trim(),
-          source: "website_strategy_call",
-        }),
+        body: JSON.stringify(payload),
       })
 
-      const data = await response.json()
+      // If /api/inquiry returned 404 (e.g. on Netlify without proxy rewrite), retry directly to Netlify function
+      if (response.status === 404 && !apiBase) {
+        console.warn("Direct /api/inquiry returned 404. Falling back to /.netlify/functions/inquiry...")
+        response = await fetch("/.netlify/functions/inquiry", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        })
+      }
+
+      const contentType = response.headers.get("content-type") || ""
+      let data = {}
+      if (contentType.includes("application/json")) {
+        data = await response.json()
+      } else {
+        const text = await response.text()
+        throw new Error(`Server returned unexpected response (status ${response.status}): ${text.slice(0, 100)}`)
+      }
 
       if (!response.ok) {
         throw new Error(data.message || "Failed to submit inquiry. Please try again.")
@@ -132,6 +155,7 @@ export default function Pricing() {
 
       setSubmitted(true)
     } catch (err) {
+      console.error("Submission error:", err)
       setSubmitError(err.message || "Unable to send inquiry. Please try again or email us directly.")
     } finally {
       setSubmitting(false)

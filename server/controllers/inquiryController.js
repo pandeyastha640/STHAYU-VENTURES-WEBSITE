@@ -1,5 +1,5 @@
 import Inquiry from "../models/Inquiry.js"
-import { checkDBStatus } from "../config/db.js"
+import { checkDBStatus, connectDB } from "../config/db.js"
 
 /**
  * @desc    Submit a new inquiry / strategy call booking
@@ -13,16 +13,20 @@ export const createInquiry = async (req, res, next) => {
     const clientIp = req.headers["x-forwarded-for"] || req.socket.remoteAddress || null
     const userAgent = req.headers["user-agent"] || null
 
-    const dbState = checkDBStatus()
+    let dbState = checkDBStatus()
+    if (!dbState.connected) {
+      await connectDB()
+      dbState = checkDBStatus()
+    }
 
     if (!dbState.connected) {
       console.warn(
-        `[Inquiry Submission - DB Pending]: Received inquiry from "${name}" (${contact}), but MongoDB Atlas is not connected yet. Add MONGODB_URI to .env to save permanently.`
+        `[Inquiry Submission - DB Pending]: Received inquiry from "${name}" (${contact}), but MongoDB Atlas is not connected yet. Add MONGODB_URI to environment variables to save permanently.`
       )
       // Return helpful response without exposing internal secrets
       return res.status(503).json({
         success: false,
-        message: "Database connection is not configured or currently unavailable. Please verify MONGODB_URI in .env.",
+        message: "Database connection is not configured or currently unavailable. Please verify MONGODB_URI.",
         isDBPending: true,
       })
     }

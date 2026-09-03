@@ -59,23 +59,46 @@ export default function AssessmentSection() {
       setSubmitting(true)
       setSubmitError("")
 
+      const payload = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        company: formData.company.trim(),
+        teamSize: formData.teamSize,
+        mainChallenge: formData.mainChallenge,
+        currentTools: formData.currentTools.trim(),
+      }
+
+      const apiBase = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "")
+
       try {
-        const response = await fetch("/api/assessment", {
+        let response = await fetch(`${apiBase}/api/assessment`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            name: formData.name.trim(),
-            email: formData.email.trim(),
-            company: formData.company.trim(),
-            teamSize: formData.teamSize,
-            mainChallenge: formData.mainChallenge,
-            currentTools: formData.currentTools.trim(),
-          }),
+          body: JSON.stringify(payload),
         })
 
-        const data = await response.json()
+        // If /api/assessment returned 404 (e.g. on Netlify without proxy rewrite), retry directly to Netlify function
+        if (response.status === 404 && !apiBase) {
+          console.warn("Direct /api/assessment returned 404. Falling back to /.netlify/functions/assessment...")
+          response = await fetch("/.netlify/functions/assessment", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          })
+        }
+
+        const contentType = response.headers.get("content-type") || ""
+        let data = {}
+        if (contentType.includes("application/json")) {
+          data = await response.json()
+        } else {
+          const text = await response.text()
+          throw new Error(`Server returned unexpected response (status ${response.status}): ${text.slice(0, 100)}`)
+        }
 
         if (!response.ok) {
           throw new Error(data.message || "Failed to submit assessment request. Please try again.")
@@ -83,6 +106,7 @@ export default function AssessmentSection() {
 
         setSubmitted(true)
       } catch (err) {
+        console.error("Assessment submission error:", err)
         setSubmitError(err.message || "Unable to submit assessment request. Please try again.")
       } finally {
         setSubmitting(false)

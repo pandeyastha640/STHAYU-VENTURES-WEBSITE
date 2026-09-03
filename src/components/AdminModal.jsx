@@ -14,12 +14,23 @@ export default function AdminModal({ isOpen, onClose }) {
     setTimeout(() => setNotification(null), 3500)
   }
 
+  const apiBase = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "")
+
+  const safeFetch = useCallback(async (path, opts) => {
+    let res = await fetch(`${apiBase}${path}`, opts)
+    if (res.status === 404 && !apiBase) {
+      const netlifyPath = path.replace("/api/", "/.netlify/functions/")
+      res = await fetch(netlifyPath, opts)
+    }
+    return res.json()
+  }, [apiBase])
+
   const fetchData = useCallback(async () => {
     setLoading(true)
     try {
       const [resInq, resAss] = await Promise.all([
-        fetch("/api/inquiry").then((r) => r.json()),
-        fetch("/api/assessment").then((r) => r.json()),
+        safeFetch("/api/inquiry"),
+        safeFetch("/api/assessment"),
       ])
 
       if (resInq.success) {
@@ -33,7 +44,7 @@ export default function AdminModal({ isOpen, onClose }) {
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, [safeFetch])
 
   useEffect(() => {
     if (!isOpen) return
@@ -43,8 +54,8 @@ export default function AdminModal({ isOpen, onClose }) {
       setLoading(true)
       try {
         const [resInq, resAss] = await Promise.all([
-          fetch("/api/inquiry").then((r) => r.json()),
-          fetch("/api/assessment").then((r) => r.json()),
+          safeFetch("/api/inquiry"),
+          safeFetch("/api/assessment"),
         ])
         if (isMounted) {
           if (resInq.success) setInquiries(resInq.data || [])
@@ -63,7 +74,7 @@ export default function AdminModal({ isOpen, onClose }) {
     return () => {
       isMounted = false
     }
-  }, [isOpen])
+  }, [isOpen, safeFetch])
 
   const handleUpdateStatus = async (type, id, newStatus) => {
     try {

@@ -1,5 +1,5 @@
 import Assessment from "../models/Assessment.js"
-import { checkDBStatus } from "../config/db.js"
+import { checkDBStatus, connectDB } from "../config/db.js"
 
 /**
  * @desc    Submit a free automation assessment request
@@ -13,15 +13,19 @@ export const createAssessment = async (req, res, next) => {
     const clientIp = req.headers["x-forwarded-for"] || req.socket.remoteAddress || null
     const userAgent = req.headers["user-agent"] || null
 
-    const dbState = checkDBStatus()
+    let dbState = checkDBStatus()
+    if (!dbState.connected) {
+      await connectDB()
+      dbState = checkDBStatus()
+    }
 
     if (!dbState.connected) {
       console.warn(
-        `[Assessment Submission - DB Pending]: Received assessment from "${name}" (${email} / ${company}), but MongoDB Atlas is not connected yet. Add MONGODB_URI to .env to save permanently.`
+        `[Assessment Submission - DB Pending]: Received assessment from "${name}" (${email} / ${company}), but MongoDB Atlas is not connected yet. Add MONGODB_URI to environment variables to save permanently.`
       )
       return res.status(503).json({
         success: false,
-        message: "Database connection is not configured or currently unavailable. Please verify MONGODB_URI in .env.",
+        message: "Database connection is not configured or currently unavailable. Please verify MONGODB_URI.",
         isDBPending: true,
       })
     }
