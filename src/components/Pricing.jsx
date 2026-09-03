@@ -318,7 +318,7 @@ export default function Pricing() {
                     <textarea
                       id="goal"
                       rows={3}
-                      placeholder="e.g. Inbound lead qualification on WhatsApp, invoice matching with accounting software, custom website or portal..."
+                      placeholder="e.g. WhatsApp business bot, Instagram DM comment-to-lead automation, AI email auto-replies, client CRM pipeline..."
                       value={formData.goal}
                       onChange={(e) => handleChange("goal", e.target.value)}
                       className={`w-full rounded-xl border bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 transition-all resize-none ${

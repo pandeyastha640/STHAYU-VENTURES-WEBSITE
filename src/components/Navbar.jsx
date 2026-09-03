@@ -5,6 +5,7 @@ import { SthayuLogo } from "./ui/Logo"
 
 const navLinks = [
   { label: "Services", id: "services" },
+  { label: "Auto-Replies", id: "omnichannel" },
   { label: "How It Works", id: "how-it-works" },
   { label: "Results", id: "results" },
   { label: "Pricing", id: "pricing" },

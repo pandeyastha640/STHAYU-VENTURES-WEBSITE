@@ -6,6 +6,7 @@ import Cinematic3DBackground from "./components/Cinematic3DBackground"
 
 const ProblemDiscovery = lazy(() => import("./components/ProblemDiscovery"))
 const Services = lazy(() => import("./components/Services"))
+const OmnichannelAutomation = lazy(() => import("./components/OmnichannelAutomation"))
 const HowItWorks = lazy(() => import("./components/HowItWorks"))
 const ResultsSection = lazy(() => import("./components/ResultsSection"))
 const Pricing = lazy(() => import("./components/Pricing"))
@@ -41,7 +42,11 @@ function App() {
             <SectionDivider />
             <Services />
 
-            {/* 5. HOW IT WORKS (3 Simple Steps) */}
+            {/* 5. OMNICHANNEL MESSAGING, AUTO-REPLIES & CLIENT OPS */}
+            <SectionDivider />
+            <OmnichannelAutomation />
+
+            {/* 6. HOW IT WORKS (3 Simple Steps) */}
             <SectionDivider />
             <HowItWorks />
 

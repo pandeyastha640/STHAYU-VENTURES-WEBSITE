@@ -2,20 +2,22 @@ import { Mail, MapPin } from "lucide-react"
 import { SthayuLogo } from "./ui/Logo"
 
 const navigationLinks = [
-  { label: "Services", id: "services" },
+  { label: "Services & Capabilities", id: "services" },
+  { label: "WhatsApp & Auto-Replies", id: "omnichannel" },
   { label: "How It Works", id: "how-it-works" },
-  { label: "Results", id: "results" },
-  { label: "Pricing", id: "pricing" },
+  { label: "Results & ROI", id: "results" },
+  { label: "Pricing & Booking", id: "pricing" },
   { label: "Contact", id: "contact" },
 ]
 
 const servicesList = [
-  "Autonomous AI Agents",
-  "Workflow Automation",
-  "Custom Internal Portals",
-  "Modern Websites & Landing Pages",
-  "Digital Experiences & Creative",
-  "Video Ads & Motion Creative",
+  "WhatsApp Business AI & Bots",
+  "Instagram DM & Comment Auto-Replies",
+  "AI Email Auto-Responder & Triage",
+  "Automated Client CRM & Retention",
+  "Autonomous AI Agents & SDRs",
+  "Workflow Automation (Make / n8n)",
+  "Modern Websites & Web Portals",
 ]
 
 function SocialLink({ href, label, children }) {
