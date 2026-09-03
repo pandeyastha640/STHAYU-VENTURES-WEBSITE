@@ -71,6 +71,7 @@ export default function Pricing() {
   const [errors, setErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState("")
 
   const validate = () => {
     const errs = {}
@@ -86,6 +87,7 @@ export default function Pricing() {
 
   const handleChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
+    if (submitError) setSubmitError("")
     if (errors[field]) {
       setErrors((prev) => {
         const next = { ...prev }
@@ -95,18 +97,45 @@ export default function Pricing() {
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    if (submitting) return
+
     const validationErrors = validate()
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors)
       return
     }
+
     setSubmitting(true)
-    setTimeout(() => {
-      setSubmitting(false)
+    setSubmitError("")
+
+    try {
+      const response = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          contact: formData.contact.trim(),
+          goal: formData.goal.trim(),
+          source: "website_strategy_call",
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to submit inquiry. Please try again.")
+      }
+
       setSubmitted(true)
-    }, 750)
+    } catch (err) {
+      setSubmitError(err.message || "Unable to send inquiry. Please try again or email us directly.")
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const scrollToContact = (planName) => {
@@ -331,6 +360,12 @@ export default function Pricing() {
                       <p className="mt-1 text-[11px] text-red-400 font-medium">{errors.goal}</p>
                     )}
                   </div>
+
+                  {submitError && (
+                    <div className="p-3 rounded-xl border border-red-500/30 bg-red-500/10 text-red-300 text-xs flex items-center gap-2">
+                      <span>⚠️ {submitError}</span>
+                    </div>
+                  )}
 
                   {/* Submit Button */}
                   <div className="pt-2">

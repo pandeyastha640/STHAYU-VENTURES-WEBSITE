@@ -1,4 +1,4 @@
-import { Mail, MapPin } from "lucide-react"
+import { Mail, MapPin, Database } from "lucide-react"
 import { SthayuLogo } from "./ui/Logo"
 
 const navigationLinks = [
@@ -34,7 +34,7 @@ function SocialLink({ href, label, children }) {
   )
 }
 
-export default function Footer() {
+export default function Footer({ onOpenAdmin }) {
   const scrollTo = (id) => {
     const element = document.getElementById(id)
     if (element) {
@@ -113,6 +113,16 @@ export default function Footer() {
                   {item.label}
                 </button>
               ))}
+              {onOpenAdmin && (
+                <button
+                  type="button"
+                  onClick={onOpenAdmin}
+                  className="flex items-center gap-1.5 text-left text-xs text-[#d4b982] hover:underline cursor-pointer pt-1"
+                >
+                  <Database size={12} />
+                  <span>Admin Leads Portal</span>
+                </button>
+              )}
             </div>
           </div>
 
@@ -121,8 +131,18 @@ export default function Footer() {
         {/* Bottom copyright line */}
         <div className="flex flex-col sm:flex-row items-center justify-between border-t border-white/10 pt-8 text-xs text-slate-500 gap-4">
           <p>© {new Date().getFullYear()} Sthayu Ventures. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <span className="text-slate-400">AI Agents, Custom Software & Modern Digital Experiences</span>
+          <div className="flex items-center gap-4 flex-wrap">
+            <span className="text-slate-400 hidden sm:inline">AI Agents, Custom Software &amp; Modern Digital Experiences</span>
+            {onOpenAdmin && (
+              <button
+                type="button"
+                onClick={onOpenAdmin}
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[11px] text-slate-300 hover:text-[#d4b982] hover:border-[#d4b982]/40 transition-colors cursor-pointer"
+              >
+                <Database size={11} className="text-[#d4b982]" />
+                <span>Admin Leads Center</span>
+              </button>
+            )}
           </div>
         </div>
       </div>

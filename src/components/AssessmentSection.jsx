@@ -9,6 +9,7 @@ function validateEmail(email) {
 export default function AssessmentSection() {
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState("")
   const [errors, setErrors] = useState({})
   const [formData, setFormData] = useState({
     name: "",
@@ -33,6 +34,7 @@ export default function AssessmentSection() {
 
   const handleChange = useCallback((field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
+    setSubmitError("")
     setErrors((prev) => {
       if (prev[field]) {
         const next = { ...prev }
@@ -44,24 +46,54 @@ export default function AssessmentSection() {
   }, [])
 
   const handleSubmit = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault()
+      if (submitting) return
+
       const newErrors = validate()
       if (Object.keys(newErrors).length > 0) {
         setErrors(newErrors)
         return
       }
+
       setSubmitting(true)
-      setTimeout(() => {
-        setSubmitting(false)
+      setSubmitError("")
+
+      try {
+        const response = await fetch("/api/assessment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name.trim(),
+            email: formData.email.trim(),
+            company: formData.company.trim(),
+            teamSize: formData.teamSize,
+            mainChallenge: formData.mainChallenge,
+            currentTools: formData.currentTools.trim(),
+          }),
+        })
+
+        const data = await response.json()
+
+        if (!response.ok) {
+          throw new Error(data.message || "Failed to submit assessment request. Please try again.")
+        }
+
         setSubmitted(true)
-      }, 700)
+      } catch (err) {
+        setSubmitError(err.message || "Unable to submit assessment request. Please try again.")
+      } finally {
+        setSubmitting(false)
+      }
     },
-    [validate]
+    [validate, submitting, formData]
   )
 
   const handleReset = useCallback(() => {
     setSubmitted(false)
+    setSubmitError("")
     setFormData({
       name: "",
       email: "",
@@ -246,6 +278,12 @@ export default function AssessmentSection() {
                       className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#d4b982] transition-colors"
                     />
                   </div>
+
+                  {submitError && (
+                    <div className="p-3 rounded-xl border border-red-500/30 bg-red-500/10 text-red-300 text-xs flex items-center gap-2">
+                      <span>⚠️ {submitError}</span>
+                    </div>
+                  )}
 
                   <button
                     type="submit"

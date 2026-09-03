@@ -1,8 +1,9 @@
-import { lazy, Suspense } from "react"
+import { useState, lazy, Suspense } from "react"
 
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import Cinematic3DBackground from "./components/Cinematic3DBackground"
+import AdminModal from "./components/AdminModal"
 
 const ProblemDiscovery = lazy(() => import("./components/ProblemDiscovery"))
 const Services = lazy(() => import("./components/Services"))
@@ -21,6 +22,8 @@ function SectionDivider() {
 }
 
 function App() {
+  const [adminOpen, setAdminOpen] = useState(false)
+
   return (
     <div className="page-shell relative min-h-screen overflow-x-hidden text-slate-100 antialiased bg-[#050505]">
       <Cinematic3DBackground />
@@ -61,7 +64,10 @@ function App() {
         </main>
 
         {/* OFFICIAL FOOTER */}
-        <Footer />
+        <Footer onOpenAdmin={() => setAdminOpen(true)} />
+
+        {/* ADMIN LEADS PORTAL MODAL */}
+        <AdminModal isOpen={adminOpen} onClose={() => setAdminOpen(false)} />
       </div>
     </div>
   )

@@ -129,7 +129,6 @@ export default function OmnichannelAutomation() {
   const [waIsTyping, setWaIsTyping] = useState(false)
 
   // INSTAGRAM SIMULATOR STATE
-  const [igTriggered, setIgTriggered] = useState(false)
   const [igMessages, setIgMessages] = useState([
     { from: "user", text: "Commented on Reel: 'SEND LINK' 🔥", time: "Just now" },
     { from: "bot", text: "Hey Alex! 👋 Here is your instant access to our Workflow Automation Architecture Guide + 2026 Strategy Template:", time: "Just now", isLink: true }
@@ -137,7 +136,7 @@ export default function OmnichannelAutomation() {
 
   // EMAIL SIMULATOR STATE
   const [selectedEmail, setSelectedEmail] = useState(0)
-  const [emails, setEmails] = useState([
+  const [emails] = useState([
     {
       id: 1,
       sender: "Marcus Vance",
@@ -177,7 +176,7 @@ export default function OmnichannelAutomation() {
   ])
 
   // CRM SIMULATOR STATE
-  const [crmClient, setCrmClient] = useState({
+  const [crmClient] = useState({
     name: "Aarav Mehta",
     role: "VP of Growth · Apex Retail",
     status: "Active Enterprise Client",
