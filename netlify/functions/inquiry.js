@@ -1,4 +1,4 @@
-import { connectDB } from "../../server/config/db.js"
+import { connectDB, checkDBStatus } from "../../server/config/db.js"
 import Inquiry from "../../server/models/Inquiry.js"
 
 const headers = {
@@ -16,7 +16,20 @@ export const handler = async (event, context) => {
   }
 
   try {
-    await connectDB()
+    const isConnected = await connectDB()
+    const dbStatus = checkDBStatus()
+
+    if (!isConnected && !dbStatus.connected) {
+      return {
+        statusCode: 503,
+        headers,
+        body: JSON.stringify({
+          success: false,
+          message: "Database service is temporarily unavailable. Please try again shortly or contact hello@sthayuventures.com.",
+          error: dbStatus.lastError || "Database connection unavailable",
+        }),
+      }
+    }
 
     if (event.httpMethod === "POST") {
       const data = typeof event.body === "string" ? JSON.parse(event.body || "{}") : (event.body || {})

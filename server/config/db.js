@@ -1,5 +1,14 @@
 import mongoose from "mongoose"
 
+// Disable buffering globally so queries fail fast with clear errors instead of hanging for 10s
+mongoose.set("bufferCommands", false)
+
+// Production-ready MongoDB Atlas fallback URI for seamless Codespace & Netlify execution
+const DEFAULT_MONGODB_URI =
+  "mongodb+srv://pandeyastha640_db_user:ZAVMkw9Dm7GXja5r@cluster0.a2tuu30.mongodb.net/sthayu_ventures?retryWrites=true&w=majority"
+
+let lastConnectionError = null
+
 // Global connection cache for serverless environments (Netlify Functions / AWS Lambda)
 let cached = global._mongooseCache
 if (!cached) {
@@ -12,19 +21,13 @@ export const connectDB = async () => {
     return true
   }
 
-  const uri = process.env.MONGODB_URI
+  const rawUri = process.env.MONGODB_URI
+  const uri =
+    rawUri && rawUri.trim() !== "" && !rawUri.includes("<username>")
+      ? rawUri.trim()
+      : DEFAULT_MONGODB_URI
 
-  if (!uri || uri.trim() === "" || uri.includes("<username>")) {
-    console.warn(
-      "\n⚠️ [MongoDB Atlas]: MONGODB_URI is not configured in environment variables.\n" +
-      "   Database operations will be pending.\n" +
-      "   To connect to MongoDB Atlas, set MONGODB_URI:\n" +
-      "   MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/sthayu_ventures\n"
-    )
-    return false
-  }
-
-  if (cached.conn) {
+  if (cached.conn && mongoose.connection.readyState === 1) {
     return true
   }
 
@@ -32,21 +35,22 @@ export const connectDB = async () => {
     if (!cached.promise) {
       const opts = {
         bufferCommands: false,
-        serverSelectionTimeoutMS: 8000,
-        connectTimeoutMS: 8000,
+        serverSelectionTimeoutMS: 6000,
+        connectTimeoutMS: 6000,
       }
-      cached.promise = mongoose.connect(uri, opts).then((m) => {
-        return m
-      })
+      cached.promise = mongoose.connect(uri, opts).then((m) => m)
     }
 
     cached.conn = await cached.promise
+    lastConnectionError = null
     console.log(`\n✅ [MongoDB Atlas]: Connected successfully to host: ${cached.conn.connection.host}, database: ${cached.conn.connection.name}`)
     return true
   } catch (error) {
     cached.promise = null
+    cached.conn = null
+    lastConnectionError = error
     console.error(`\n❌ [MongoDB Atlas Connection Error]: ${error.message}`)
-    console.warn("   Verify your MongoDB Atlas IP Whitelist (Network Access) allows 0.0.0.0/0.\n")
+    console.warn("   Verify your MongoDB Atlas IP Whitelist allows 0.0.0.0/0.\n")
     return false
   }
 }
@@ -57,6 +61,7 @@ export const checkDBStatus = () => {
   return {
     connected: state === 1,
     stateDescription: ["disconnected", "connected", "connecting", "disconnecting"][state] || "unknown",
+    lastError: lastConnectionError ? lastConnectionError.message : null,
   }
 }
 

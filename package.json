@@ -8,6 +8,7 @@
     "dev:client": "vite --host 0.0.0.0 --port 3000",
     "dev:full": "concurrently -k -p \"[{name}]\" -n \"API,CLIENT\" -c \"yellow.bold,cyan.bold\" \"npm run server\" \"npm run dev:client\"",
     "server": "node server/server.js",
+    "start": "node server/server.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

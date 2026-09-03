@@ -28,6 +28,7 @@ export const handler = async (event, context) => {
       database: {
         connected: dbStatus.connected,
         state: dbStatus.stateDescription,
+        lastError: dbStatus.lastError || null,
       },
     }),
   }
