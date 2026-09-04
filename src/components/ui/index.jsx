@@ -108,6 +108,7 @@ export function SectionDivider({ className = "" }) {
 }
 
 import { SthayuLogo, SthayuSymbol, default as Logo } from "./Logo"
+export { ErrorBoundary } from "./ErrorBoundary"
 
 export {
   SthayuLogo,

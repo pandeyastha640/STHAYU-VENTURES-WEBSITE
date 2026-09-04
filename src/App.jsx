@@ -1,17 +1,28 @@
 import { useState, lazy, Suspense } from "react"
+import { ErrorBoundary } from "./components/ui/ErrorBoundary"
 
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import Cinematic3DBackground from "./components/Cinematic3DBackground"
 import AdminModal from "./components/AdminModal"
 
-const ProblemDiscovery = lazy(() => import("./components/ProblemDiscovery"))
-const Services = lazy(() => import("./components/Services"))
-const OmnichannelAutomation = lazy(() => import("./components/OmnichannelAutomation"))
-const HowItWorks = lazy(() => import("./components/HowItWorks"))
-const ResultsSection = lazy(() => import("./components/ResultsSection"))
-const Pricing = lazy(() => import("./components/Pricing"))
-const Footer = lazy(() => import("./components/Footer"))
+// Resilient dynamic importer that retries on network hiccups or stale dev server cache
+function lazyWithRetry(factory) {
+  return lazy(() =>
+    factory().catch((err) => {
+      console.warn("Dynamic import failed, retrying once...", err)
+      return factory()
+    })
+  )
+}
+
+const ProblemDiscovery = lazyWithRetry(() => import("./components/ProblemDiscovery"))
+const Services = lazyWithRetry(() => import("./components/Services"))
+const OmnichannelAutomation = lazyWithRetry(() => import("./components/OmnichannelAutomation"))
+const HowItWorks = lazyWithRetry(() => import("./components/HowItWorks"))
+const ResultsSection = lazyWithRetry(() => import("./components/ResultsSection"))
+const Pricing = lazyWithRetry(() => import("./components/Pricing"))
+const Footer = lazyWithRetry(() => import("./components/Footer"))
 
 function SectionDivider() {
   return (
@@ -36,31 +47,33 @@ function App() {
           {/* 2. HERO SECTION */}
           <Hero />
 
-          <Suspense fallback={null}>
-            {/* 3. THE PROBLEM & THE SOLUTION */}
-            <SectionDivider />
-            <ProblemDiscovery />
+          <ErrorBoundary>
+            <Suspense fallback={null}>
+              {/* 3. THE PROBLEM & THE SOLUTION */}
+              <SectionDivider />
+              <ProblemDiscovery />
 
-            {/* 4. WHAT STHAYU BUILDS (Capability Groups + Interactive Workflow Demos + Portfolio) */}
-            <SectionDivider />
-            <Services />
+              {/* 4. WHAT STHAYU BUILDS (Capability Groups + Interactive Workflow Demos + Portfolio) */}
+              <SectionDivider />
+              <Services />
 
-            {/* 5. OMNICHANNEL MESSAGING, AUTO-REPLIES & CLIENT OPS */}
-            <SectionDivider />
-            <OmnichannelAutomation />
+              {/* 5. OMNICHANNEL MESSAGING, AUTO-REPLIES & CLIENT OPS */}
+              <SectionDivider />
+              <OmnichannelAutomation />
 
-            {/* 6. HOW IT WORKS (3 Simple Steps) */}
-            <SectionDivider />
-            <HowItWorks />
+              {/* 6. HOW IT WORKS (3 Simple Steps) */}
+              <SectionDivider />
+              <HowItWorks />
 
-            {/* 6. VERIFIED RESULTS & CASE STUDIES */}
-            <SectionDivider />
-            <ResultsSection />
+              {/* 6. VERIFIED RESULTS & CASE STUDIES */}
+              <SectionDivider />
+              <ResultsSection />
 
-            {/* 7. TRANSPARENT PRICING & BOOKING FORM */}
-            <SectionDivider />
-            <Pricing />
-          </Suspense>
+              {/* 7. TRANSPARENT PRICING & BOOKING FORM */}
+              <SectionDivider />
+              <Pricing />
+            </Suspense>
+          </ErrorBoundary>
         </main>
 
         {/* OFFICIAL FOOTER */}

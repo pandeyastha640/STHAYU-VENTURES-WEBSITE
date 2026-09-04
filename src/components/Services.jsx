@@ -19,7 +19,7 @@ import {
   X,
   Zap
 } from "lucide-react"
-import { AnimatedSection, SectionHeading } from "./ui"
+import { AnimatedSection, SectionHeading } from "./ui/index.jsx"
 
 // Local image imports
 import imgRevenueHub from "../assets/images/portfolio_revenue_hub_1787841972420.jpg"
