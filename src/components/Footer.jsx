@@ -1,4 +1,4 @@
-import { Mail, MapPin, Database } from "lucide-react"
+import { Mail, MapPin, Database, PhoneCall } from "lucide-react"
 import { SthayuLogo } from "./ui/Logo"
 
 const navigationLinks = [
@@ -63,17 +63,56 @@ export default function Footer({ onOpenAdmin }) {
               Sthayu builds autonomous AI agents, connected workflow pipelines, custom business systems, and high-converting modern digital experiences that eliminate manual busywork and scale operations.
             </p>
 
-            <div className="mt-6 flex items-center gap-3">
-              <a
-                href="mailto:hello@sthayuventures.com"
-                aria-label="Email Sthayu"
-                className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-300 transition-colors hover:border-[#d4b982]/40 hover:bg-[#d4b982]/10 hover:text-[#d4b982] shadow-sm"
-              >
-                <Mail size={14} />
-              </a>
-              <SocialLink href="https://www.linkedin.com" label="Sthayu on LinkedIn">in</SocialLink>
-              <SocialLink href="https://twitter.com" label="Sthayu on X / Twitter">𝕏</SocialLink>
-              <SocialLink href="https://github.com" label="Sthayu on GitHub">git</SocialLink>
+            <div className="mt-6 space-y-3">
+              <div className="flex items-center gap-3">
+                <a
+                  href="mailto:sthayu.ventures@gmail.com"
+                  aria-label="Email Sthayu Ventures"
+                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-300 transition-colors hover:border-[#d4b982]/40 hover:bg-[#d4b982]/10 hover:text-[#d4b982] shadow-sm"
+                >
+                  <Mail size={14} />
+                </a>
+                <a
+                  href="tel:+916307773640"
+                  aria-label="Call Sthayu Ventures"
+                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-300 transition-colors hover:border-[#d4b982]/40 hover:bg-[#d4b982]/10 hover:text-[#d4b982] shadow-sm"
+                >
+                  <PhoneCall size={14} />
+                </a>
+                <SocialLink href="https://www.linkedin.com" label="Sthayu on LinkedIn">in</SocialLink>
+                <SocialLink href="https://twitter.com" label="Sthayu on X / Twitter">𝕏</SocialLink>
+                <SocialLink href="https://github.com" label="Sthayu on GitHub">git</SocialLink>
+              </div>
+
+              <div className="space-y-1.5 text-sm font-sans pt-1">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-slate-400 font-medium">Email:</span>
+                  <a
+                    href="mailto:sthayu.ventures@gmail.com"
+                    className="text-slate-200 hover:text-[#d4b982] font-medium transition-colors"
+                  >
+                    sthayu.ventures@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-slate-400 font-medium">Phone:</span>
+                  <a
+                    href="tel:+916307773640"
+                    className="text-slate-200 hover:text-[#d4b982] font-semibold transition-colors tracking-normal"
+                  >
+                    +91 63077 73640
+                  </a>
+                  <span className="text-white/20 mx-1">·</span>
+                  <a
+                    href="https://wa.me/916307773640"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-emerald-400 hover:text-emerald-300 font-semibold transition-colors"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
+              </div>
             </div>
 
             <div className="mt-5 flex items-center gap-2 text-xs text-slate-400">

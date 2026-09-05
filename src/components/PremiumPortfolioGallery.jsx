@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { ArrowUpRight, Layers } from "lucide-react"
-import { AnimatedSection } from "./ui"
+import { AnimatedSection } from "./ui/index.jsx"
 
 import imgRevenueHub from "../assets/images/portfolio_revenue_hub_1787841972420.jpg"
 import imgIntelligenceConsole from "../assets/images/portfolio_intelligence_console_1787841987404.jpg"

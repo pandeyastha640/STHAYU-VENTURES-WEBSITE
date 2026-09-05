@@ -94,7 +94,7 @@ When the monorepo is introduced in Phase 1, the default branch is `main`.
 NEXT_PUBLIC_API_URL=http://localhost:3001
 NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_xxxxxxxxxxxx
 NEXT_PUBLIC_SENTRY_DSN=
-NEXT_PUBLIC_SUPPORT_EMAIL=hello@sthayuventures.com
+NEXT_PUBLIC_SUPPORT_EMAIL=sthayu.ventures@gmail.com
 
 # ─── Server-only ───────────────────────────────────────────
 NODE_ENV=development
@@ -158,7 +158,7 @@ If `ENCRYPTION_KEY` is compromised, **all stored integration credentials must be
 
 - All secrets access events logged to Doppler audit log
 - Anomalous access (new IP, new user, off-hours) → Slack alert
-- API key revoked → immediate notification to security@sthayuventures.com
+- API key revoked → immediate notification to sthayu.ventures@gmail.com
 
 ## References
 

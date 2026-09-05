@@ -25,7 +25,7 @@ export const handler = async (event, context) => {
         headers,
         body: JSON.stringify({
           success: false,
-          message: "Database service is temporarily unavailable. Please try again shortly or contact hello@sthayuventures.com.",
+          message: "Database service is temporarily unavailable. Please try again shortly or contact sthayu.ventures@gmail.com.",
           error: dbStatus.lastError || "Database connection unavailable",
         }),
       }

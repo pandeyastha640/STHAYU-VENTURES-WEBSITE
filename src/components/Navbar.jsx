@@ -97,6 +97,16 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden items-center gap-3 lg:flex">
+            <a
+              href="https://wa.me/916307773640"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Chat on WhatsApp: +91 63077 73640"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[13px] font-sans font-medium text-slate-200 hover:text-[#d4b982] hover:border-[#d4b982]/40 transition-colors tracking-normal whitespace-nowrap"
+            >
+              <span className="h-2 w-2 rounded-full bg-emerald-400 shrink-0"></span>
+              <span>+91 63077 73640</span>
+            </a>
             <button
               type="button"
               onClick={() => goTo("contact")}
@@ -144,7 +154,22 @@ export default function Navbar() {
                 {link.label}
               </button>
             ))}
-            <div className="mt-3 border-t border-white/10 pt-4">
+            <div className="mt-3 border-t border-white/10 pt-4 space-y-2.5">
+              <a
+                href="https://wa.me/916307773640"
+                target="_blank"
+                rel="noreferrer"
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 py-3 text-sm font-sans font-medium text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+              >
+                <span className="h-2 w-2 rounded-full bg-emerald-400"></span>
+                <span>WhatsApp: +91 63077 73640</span>
+              </a>
+              <a
+                href="mailto:sthayu.ventures@gmail.com"
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 py-2.5 text-sm font-sans font-medium text-slate-200 hover:text-[#d4b982] transition-colors"
+              >
+                <span>sthayu.ventures@gmail.com</span>
+              </a>
               <button
                 type="button"
                 onClick={() => goTo("contact")}

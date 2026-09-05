@@ -1,5 +1,5 @@
 import { ArrowRight, CheckCircle2, Workflow } from "lucide-react"
-import { AnimatedSection, SectionHeading } from "./ui"
+import { AnimatedSection, SectionHeading } from "./ui/index.jsx"
 
 const steps = [
   {

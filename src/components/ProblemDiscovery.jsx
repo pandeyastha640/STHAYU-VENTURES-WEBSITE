@@ -1,5 +1,5 @@
 import { AlertCircle, ArrowRight, CheckCircle2, ShieldAlert, XCircle, Zap } from "lucide-react"
-import { AnimatedSection, SectionHeading } from "./ui"
+import { AnimatedSection, SectionHeading } from "./ui/index.jsx"
 
 export default function ProblemDiscovery() {
   const scrollTo = (id) => {

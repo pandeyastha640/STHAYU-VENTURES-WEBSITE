@@ -1,4 +1,4 @@
-import { AnimatedSection, SectionHeading } from "./ui"
+import { AnimatedSection, SectionHeading } from "./ui/index.jsx"
 import { Building2, Layers3, ShoppingBag, Stethoscope, Factory, Laptop, Check } from "lucide-react"
 
 const industryList = [

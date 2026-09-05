@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { ArrowRight, Check, CheckCircle2, Crown, Layers3, Lock, PhoneCall, Rocket, Sparkles } from "lucide-react"
-import { AnimatedSection, SectionHeading } from "./ui"
+import { AnimatedSection, SectionHeading } from "./ui/index.jsx"
 
 const plans = [
   {
@@ -160,7 +160,7 @@ export default function Pricing() {
       setSubmitted(true)
     } catch (err) {
       console.error("Submission error:", err)
-      setSubmitError(err.message || "Unable to send inquiry. Please try again or email us directly.")
+      setSubmitError(err.message || "Unable to send inquiry. Please try again or email sthayu.ventures@gmail.com or WhatsApp +91 63077 73640 directly.")
     } finally {
       setSubmitting(false)
     }
@@ -300,6 +300,32 @@ export default function Pricing() {
                 <p className="mt-2 text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
                   Tell us about your team and what manual tasks you'd like to eliminate. We will analyze your workflows and give you an actionable automation roadmap.
                 </p>
+
+                {/* Direct quick-connect contact links */}
+                <div className="mt-5 flex flex-wrap items-center justify-center gap-3 pt-1">
+                  <a
+                    href="https://wa.me/916307773640"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs sm:text-sm text-emerald-400 hover:bg-emerald-500/20 transition-all font-sans font-medium"
+                  >
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 shrink-0"></span>
+                    <span>WhatsApp: +91 63077 73640</span>
+                  </a>
+                  <a
+                    href="tel:+916307773640"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs sm:text-sm text-slate-200 hover:text-[#d4b982] hover:border-[#d4b982]/40 transition-all font-sans font-medium"
+                  >
+                    <PhoneCall size={13} className="text-[#d4b982]" />
+                    <span>Call: +91 63077 73640</span>
+                  </a>
+                  <a
+                    href="mailto:sthayu.ventures@gmail.com"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs sm:text-sm text-slate-200 hover:text-[#d4b982] hover:border-[#d4b982]/40 transition-all font-sans font-medium"
+                  >
+                    <span>Email: sthayu.ventures@gmail.com</span>
+                  </a>
+                </div>
               </div>
 
               {submitted ? (
@@ -354,7 +380,7 @@ export default function Pricing() {
                     <input
                       id="contact-input"
                       type="text"
-                      placeholder="e.g. rahul@company.com or +91 98765 43210"
+                      placeholder="e.g. rahul@company.com or +91 63077 73640"
                       value={formData.contact}
                       onChange={(e) => handleChange("contact", e.target.value)}
                       className={`w-full rounded-xl border bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 transition-all ${

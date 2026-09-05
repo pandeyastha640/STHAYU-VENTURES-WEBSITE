@@ -1,5 +1,5 @@
 import { ArrowRight, ArrowUpRight, Check, Sparkles, Zap, ShieldCheck } from "lucide-react"
-import { AnimatedSection } from "./ui"
+import { AnimatedSection } from "./ui/index.jsx"
 
 export default function FinalCTA() {
   return (
@@ -34,7 +34,7 @@ export default function FinalCTA() {
 
                 <div className="flex flex-col sm:flex-row gap-4 pt-2">
                   <a
-                    href="mailto:hello@sthayuventures.com?subject=Discovery%20Call%20with%20Sthayu"
+                    href="mailto:sthayu.ventures@gmail.com?subject=Discovery%20Call%20with%20Sthayu"
                     className="btn-primary py-4 px-8 text-xs font-bold shadow-[0_0_20px_rgba(212,185,130,0.2)]"
                   >
                     <span>Book a Free Call</span>
@@ -42,12 +42,21 @@ export default function FinalCTA() {
                   </a>
 
                   <a
-                    href="#assessment"
-                    className="btn-secondary py-4 px-7 text-xs font-bold"
+                    href="https://wa.me/916307773640"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-secondary py-4 px-7 text-sm font-sans font-semibold flex items-center justify-center gap-2 text-emerald-400 hover:text-emerald-300"
                   >
-                    <span>Get a Free Automation Assessment</span>
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 shrink-0"></span>
+                    <span>WhatsApp: +91 63077 73640</span>
                     <ArrowUpRight size={15} />
                   </a>
+                </div>
+
+                <div className="pt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-sans text-slate-300">
+                  <span>Direct Email: <a href="mailto:sthayu.ventures@gmail.com" className="text-white font-medium hover:text-[#d4b982] transition-colors">sthayu.ventures@gmail.com</a></span>
+                  <span className="text-white/20">·</span>
+                  <span>Phone: <a href="tel:+916307773640" className="text-white font-semibold hover:text-[#d4b982] transition-colors tracking-normal">+91 63077 73640</a></span>
                 </div>
 
                 <div className="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400 font-mono">

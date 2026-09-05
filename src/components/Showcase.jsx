@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { BarChart3, Bot, Clock3, Database, Layers3, Sparkles, Workflow, Zap, CheckCircle2 } from "lucide-react"
-import { AnimatedSection } from "./ui"
+import { AnimatedSection } from "./ui/index.jsx"
 
 const systemOverviewCards = [
   { icon: Zap, label: "Automated Workflows Active", value: "14", detail: "CRM, WhatsApp, Billing & Spreadsheets" },

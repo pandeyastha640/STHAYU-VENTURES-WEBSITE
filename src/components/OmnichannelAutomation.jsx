@@ -19,7 +19,7 @@ import {
   Maximize2,
   X
 } from "lucide-react"
-import { SectionHeading, AnimatedSection } from "./ui"
+import { SectionHeading, AnimatedSection } from "./ui/index.jsx"
 
 // Static Image imports from assets
 import imgWhatsapp from "../assets/images/whatsapp_ai_automation_1788362900141.jpg"
@@ -560,7 +560,7 @@ export default function OmnichannelAutomation() {
                       </div>
                     </div>
 
-                    <div className="pt-2">
+                    <div className="pt-2 flex flex-wrap items-center gap-3">
                       <button
                         type="button"
                         onClick={() => scrollTo("contact")}
@@ -569,6 +569,15 @@ export default function OmnichannelAutomation() {
                         <span>Build Your WhatsApp Bot</span>
                         <ArrowRight size={13} />
                       </button>
+                      <a
+                        href="https://wa.me/916307773640"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-secondary flex items-center gap-2 text-xs sm:text-sm py-2.5 px-4 font-sans font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
+                      >
+                        <span className="h-2 w-2 rounded-full bg-emerald-400 shrink-0"></span>
+                        <span>Chat on WhatsApp: +91 63077 73640</span>
+                      </a>
                     </div>
                   </div>
                 </div>

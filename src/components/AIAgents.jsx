@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
-import { AnimatedSection, SectionHeading } from "./ui"
+import { AnimatedSection, SectionHeading } from "./ui/index.jsx"
 import { Bot, CheckCircle2, Database, MessageSquare, Phone, UserCheck, ArrowRight } from "lucide-react"
 
 import imgAgentSdr from "../assets/images/agent_sdr_core_1787842135533.jpg"

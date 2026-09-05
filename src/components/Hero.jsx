@@ -120,6 +120,29 @@ export default function Hero() {
             </button>
           </motion.div>
 
+          {/* Quick Direct Connect */}
+          <motion.div
+            variants={fadeUp}
+            className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-sans text-slate-300"
+          >
+            <a
+              href="https://wa.me/916307773640"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 hover:text-[#d4b982] transition-colors font-medium text-slate-200"
+            >
+              <span className="h-2 w-2 rounded-full bg-emerald-400 shrink-0"></span>
+              <span>WhatsApp / Call: <strong className="text-white font-semibold tracking-normal">+91 63077 73640</strong></span>
+            </a>
+            <span className="text-white/20 hidden sm:inline">·</span>
+            <a
+              href="mailto:sthayu.ventures@gmail.com"
+              className="inline-flex items-center gap-1.5 text-slate-300 hover:text-[#d4b982] transition-colors font-medium"
+            >
+              <span>Email: <strong className="text-white font-semibold">sthayu.ventures@gmail.com</strong></span>
+            </a>
+          </motion.div>
+
           {/* Interactive Live Autonomous Pipeline Preview */}
           <motion.div
             variants={fadeUp}

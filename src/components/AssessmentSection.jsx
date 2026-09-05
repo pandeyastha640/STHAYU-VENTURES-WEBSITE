@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react"
 import { ArrowRight, Check, CheckCircle2, ClipboardList, ShieldCheck } from "lucide-react"
-import { AnimatedSection } from "./ui"
+import { AnimatedSection } from "./ui/index.jsx"
 
 function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)

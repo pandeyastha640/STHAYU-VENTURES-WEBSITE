@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { ArrowRight, Bot, Cpu, Network, ShieldCheck, Sparkles, CheckCircle2 } from "lucide-react"
-import { AnimatedSection, SectionHeading, GlassCard } from "./ui"
+import { AnimatedSection, SectionHeading, GlassCard } from "./ui/index.jsx"
 
 const pillars = [
   {

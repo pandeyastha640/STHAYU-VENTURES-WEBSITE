@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { CheckCircle2, Terminal, Workflow, ArrowRight } from "lucide-react"
-import { AnimatedSection, SectionHeading } from "./ui"
+import { AnimatedSection, SectionHeading } from "./ui/index.jsx"
 
 const scenarios = [
   {

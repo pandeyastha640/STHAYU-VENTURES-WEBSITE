@@ -1,5 +1,5 @@
 import { ArrowRight, Award, CheckCircle2, MessageSquare, Receipt, Zap } from "lucide-react"
-import { AnimatedSection, SectionHeading } from "./ui"
+import { AnimatedSection, SectionHeading } from "./ui/index.jsx"
 
 const caseStudies = [
   {
